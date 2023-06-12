@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 3rem;
+  box-shadow: 0 0 10px 10px #ededed;
+}
+.heading {
+  /* color: rgb(255 206 36); */
+  color: #ffc11b;
+}
+.heading span {
+  color: #666666;
+}

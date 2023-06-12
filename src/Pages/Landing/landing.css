@@ -1,0 +1,104 @@
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  background-color: #ffebb8;
+  color: #333333;
+  margin: auto;
+  height: 90vh;
+}
+.landing .heading {
+  text-align: center;
+  padding: 0 0 2rem;
+  margin-top: 0;
+  font-size: 55px;
+}
+
+.landing-img {
+  height: 60vh;
+  border-radius: 10px;
+}
+.landing-details {
+  /* border: #999999 solid; */
+  height: 460px;
+  letter-spacing: 0.5px;
+  line-height: 2rem;
+  padding: 1rem 8rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.landing .landing-details p span {
+  font-size: 27px;
+  font-weight: 500;
+  color: #ffc11b;
+  letter-spacing: 0.5px;
+}
+.landing .landing-details p::after {
+  content: ".";
+  font-size: 35px;
+  padding: 0 2px;
+  color: #ffc11b;
+}
+.landing .landing-details h1::after {
+  content: ".";
+  font-size: 45px;
+  padding: 0 5px;
+  color: #ffc11b;
+}
+.landing button {
+  background-color: #ffc11b;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: large;
+  color: white;
+  font-weight: 700;
+  margin: 1rem 0 0;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.landing small {
+  color: #666666;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+.landing small:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 600px) {
+  .landing {
+    height: auto;
+    flex-wrap: wrap-reverse;
+    padding: 5rem 0 8rem;
+  }
+  .landing-details {
+    padding: 1rem 2rem;
+    line-height: 1rem;
+  }
+  .landing .heading {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    font-size: 35px;
+  }
+  .landing-img {
+    height: 50vh;
+    border-radius: 10px;
+  }
+  .landing .landing-details p {
+    font-size: 15px;
+  }
+  .landing .landing-details p span {
+    font-size: 20px;
+  }
+  .landing small {
+    font-size: 14px;
+  }
+  .landing button {
+    font-size: 16px;
+  }
+}
