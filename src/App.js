@@ -11,17 +11,47 @@ import {
   SignUp,
 } from "./Pages";
 import { Header } from "./Components/Header/Header";
+import { RequiresAuth } from "./Components/RequireAuth";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <RequiresAuth>
+              <Home />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <RequiresAuth>
+              <Explore />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <RequiresAuth>
+              <Bookmarks />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequiresAuth>
+              <Profile />
+            </RequiresAuth>
+          }
+        />
+
         <Route path="/landing" element={<Landing />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

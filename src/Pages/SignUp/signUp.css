@@ -60,6 +60,9 @@
   color: #333333;
   font-weight: 600;
 }
+.sign-up-form small a:hover {
+  text-decoration: underline;
+}
 .sign-up-form .inputs {
   display: block;
   padding: 0.7rem 1rem;

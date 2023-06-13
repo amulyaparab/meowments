@@ -5,6 +5,7 @@
   height: 90vh;
   /* padding-top: 5rem;
   position: relative; */
+  background-color: #ededed;
   display: flex;
 }
 .parent img {
@@ -66,6 +67,9 @@
   font-size: 15px;
   color: #333333;
   font-weight: 600;
+}
+.login-form small a:hover {
+  text-decoration: underline;
 }
 .login-form .inputs {
   display: block;

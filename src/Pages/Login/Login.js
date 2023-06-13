@@ -1,7 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./login.css";
 import loginCat from "../../assets/Images/login.jpg";
+import { useAuth } from "../../Contexts/AuthProvider";
 export const Login = () => {
+  const { setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
   return (
     <div className="parent">
       <img src={loginCat} alt="cat" />
@@ -24,7 +27,14 @@ export const Login = () => {
           Remember Me
         </label>
         <button>Login</button>
-        <button>Login As Guest</button>
+        <button
+          onClick={() => {
+            setIsLoggedIn(true);
+            navigate("/");
+          }}
+        >
+          Login As Guest
+        </button>
         <small>
           <NavLink to="/signUp">Create New Account</NavLink>
         </small>
