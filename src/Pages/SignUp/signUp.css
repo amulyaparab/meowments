@@ -1,0 +1,77 @@
+.parent {
+  height: 90vh;
+  display: flex;
+}
+.parent img {
+  width: 50%;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: auto;
+  background-color: #ffebb8;
+  align-items: center;
+  height: 700px;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  padding: 3rem;
+  text-align: left;
+}
+.sign-up-form h1 {
+  text-align: center;
+  color: #333333;
+  font-size: 40px;
+}
+.sign-up-form button {
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  background-color: #ffc11b;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+  width: 400px;
+  color: #ffffff;
+}
+.sign-up-form button:hover {
+  background-color: #ffffff;
+  color: #ffc11b;
+}
+.sign-up-form .left {
+  align-self: baseline;
+  margin-left: 1.5rem;
+  padding: 0 0 1.5rem;
+  font-size: 17px;
+}
+.sign-up-form small {
+  text-align: center;
+  margin-top: 10px;
+}
+.sign-up-form label {
+  font-weight: 600;
+  font-size: medium;
+  color: #333333;
+}
+.sign-up-form small a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 600;
+}
+.sign-up-form .inputs {
+  display: block;
+  padding: 0.7rem 1rem;
+  width: 370px;
+  margin: 10px 0 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  background-color: #ffffff;
+}
+.sign-up-form .checkbox {
+  width: 17px;
+  height: 17px;
+  margin-right: 1rem;
+}

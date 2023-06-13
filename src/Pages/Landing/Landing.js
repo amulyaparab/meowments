@@ -1,5 +1,6 @@
 import "./landing.css";
 import landingCat from "../../assets/Images/landing.jpg";
+import { NavLink } from "react-router-dom";
 export const Landing = () => {
   return (
     <>
@@ -17,8 +18,12 @@ export const Landing = () => {
           <p>
             <span>Connect</span> with Fellow Cat lovers
           </p>
-          <button>Join Now</button>
-          <small>Already have an account ?</small>
+          <button>
+            <NavLink to="/signUp">Join Now</NavLink>
+          </button>
+          <small>
+            <NavLink to="/login">Already have an account ?</NavLink>
+          </small>
         </div>
         <img src={landingCat} alt="orange kitten" className="landing-img" />
       </div>

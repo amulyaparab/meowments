@@ -1,0 +1,84 @@
+.parent {
+  /* background-image: url("https://images.pexels.com/photos/8523559/pexels-photo-8523559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat; */
+  /* background-size: cover; */
+  height: 90vh;
+  /* padding-top: 5rem;
+  position: relative; */
+  display: flex;
+}
+.parent img {
+  width: 50%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: auto;
+  background-color: #ffebb8;
+  color: #ffc11b;
+  align-items: center;
+
+  /* position: absolute;
+  right: 15%; */
+  height: 600px;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  padding: 0 3rem 3rem;
+  text-align: left;
+}
+.login-form h1 {
+  text-align: center;
+  color: #333333;
+  font-size: 45px;
+}
+.login-form button {
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  background-color: #ffc11b;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+  width: 400px;
+  color: #ffffff;
+}
+.login-form button:hover {
+  background-color: #ffffff;
+  color: #ffc11b;
+}
+.left {
+  align-self: baseline;
+  margin-left: 1.5rem;
+}
+.login-form small {
+  text-align: center;
+  margin-top: -17px;
+}
+.login-form label {
+  font-weight: 600;
+  font-size: large;
+  color: #333333;
+}
+.login-form small a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 600;
+}
+.login-form .inputs {
+  display: block;
+  padding: 0.7rem 1rem;
+  width: 370px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: medium;
+  background-color: #ffffff;
+}
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+}
