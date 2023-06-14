@@ -1,3 +1,4 @@
+export { Feed } from "./Feed/Feed";
 export { Bookmarks } from "./Bookmarks/Bookmarks";
 export { Explore } from "./Explore/Explore";
 export { Home } from "./Home/Home";

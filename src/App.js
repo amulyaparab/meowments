@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   Bookmarks,
   Explore,
+  Feed,
   Home,
   Landing,
   Login,
@@ -12,7 +13,7 @@ import {
 } from "./Pages";
 import { Header } from "./Components/Header/Header";
 import { RequiresAuth } from "./Components/RequireAuth";
-
+import Mockman from "mockman-js";
 function App() {
   return (
     <div className="App">
@@ -31,6 +32,14 @@ function App() {
           element={
             <RequiresAuth>
               <Explore />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/feed"
+          element={
+            <RequiresAuth>
+              <Feed />
             </RequiresAuth>
           }
         />
@@ -54,6 +63,7 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,17 @@
+import { SideNav } from "../../Components/SideNav/SideNav";
+import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 import "./bookmarks.css";
 
 export const Bookmarks = () => {
   return (
     <>
-      <h1>Bookmarks</h1>
+      <div className="page-fractions">
+        <SideNav />
+        <div>
+          <h1>Bookmarks</h1>
+        </div>
+        <Suggestions />
+      </div>
     </>
   );
 };

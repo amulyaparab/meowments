@@ -1,17 +1,16 @@
-import { NavLink } from "react-router-dom";
 import "./home.css";
 import { SideNav } from "../../Components/SideNav/SideNav";
+import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 
 export const Home = () => {
   return (
     <>
-      {/* <h1>Home</h1> */}
-      <div className="home-page">
+      <div className="page-fractions">
         <SideNav />
-        <div className="posts"></div>
-        <div className="followers">
-          <h3>Suggested Users</h3>
+        <div className="posts">
+          <h1>Home</h1>
         </div>
+        <Suggestions />
       </div>
     </>
   );
