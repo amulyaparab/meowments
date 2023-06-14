@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
+import { useAuth } from "../../Contexts/AuthProvider";
 export const SignUp = () => {
+  const { userSignUpData } = useAuth();
   return (
     <div className="parent">
       <img src={signUpCat} alt="cat" />
@@ -33,7 +35,18 @@ export const SignUp = () => {
           <input type="checkbox" className="checkbox" /> I Accept All Terms &
           Conditions
         </label>
-        <button>Create New Account</button>
+        <button
+        // onClick={() =>
+        //   userSignUpData({
+        //     username: "amulya",
+        //     password: "1234",
+        //     firstName: "amy",
+        //     lastName: "parab",
+        //   })
+        // }
+        >
+          Create New Account
+        </button>
         <small>
           <NavLink to="/login">Already have an account ?</NavLink>
         </small>
