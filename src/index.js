@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthProvider";
 import { UtilsProvider } from "./Contexts/UtilsProvider";
 import { PostsProvider } from "./Contexts/PostsProvider";
+import { UsersProvider } from "./Contexts/UsersProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,9 +20,11 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <UtilsProvider>
-          <PostsProvider>
-            <App />
-          </PostsProvider>
+          <UsersProvider>
+            <PostsProvider>
+              <App />
+            </PostsProvider>
+          </UsersProvider>
         </UtilsProvider>
       </AuthProvider>
     </BrowserRouter>

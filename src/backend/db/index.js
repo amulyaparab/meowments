@@ -10,7 +10,13 @@ import kittenAdopt from "../../assets/Images/kittenAdopt.jpg";
 import napCat from "../../assets/Images/nap.jpg";
 import rockstarCat from "../../assets/Images/rockstarCat.jpg";
 import rudeCat from "../../assets/Images/rudeCat.jpg";
-
+import shubham from "../../assets/Images/shubham.jpg";
+import amelia from "../../assets/Images/amelia.jpg";
+import adarsh from "../../assets/Images/adarsh.jpg";
+import natasha from "../../assets/Images/natasha.jpg";
+import james from "../../assets/Images/james.jpg";
+import noah from "../../assets/Images/noah.jpg";
+import amulya from "../../assets/Images/amulya.jpeg";
 export {
   booksCat,
   catInArms,
@@ -24,4 +30,11 @@ export {
   napCat,
   rockstarCat,
   rudeCat,
+  shubham,
+  amelia,
+  adarsh,
+  natasha,
+  james,
+  noah,
+  amulya,
 };
