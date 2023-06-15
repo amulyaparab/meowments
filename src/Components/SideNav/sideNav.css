@@ -3,7 +3,7 @@
   flex-direction: column;
   text-align: left;
   padding: 1rem 0;
-  background-color: #ffebb8;
+  /* background-color: #ffebb8; */
   height: 89vh;
 }
 .side-nav a {

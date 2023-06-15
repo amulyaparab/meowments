@@ -8,6 +8,7 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthProvider";
 import { UtilsProvider } from "./Contexts/UtilsProvider";
+import { PostsProvider } from "./Contexts/PostsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,7 +19,9 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <UtilsProvider>
-          <App />
+          <PostsProvider>
+            <App />
+          </PostsProvider>
         </UtilsProvider>
       </AuthProvider>
     </BrowserRouter>
