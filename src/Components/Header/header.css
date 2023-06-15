@@ -24,12 +24,7 @@
   padding: 0.5rem 0.7rem;
   margin: 0 0.3rem;
 }
-/* .theme-toggler::before {
-  content: "i";
 
-  background-color: black;
-  border-radius: 50%;
-} */
 .toggle-button {
   background-color: #ffffff;
   width: 17px;

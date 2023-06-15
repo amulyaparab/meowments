@@ -1,10 +1,5 @@
 .parent {
-  /* background-image: url("https://images.pexels.com/photos/8523559/pexels-photo-8523559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  background-repeat: no-repeat; */
-  /* background-size: cover; */
   height: 90vh;
-  /* padding-top: 5rem;
-  position: relative; */
 
   display: flex;
 }
@@ -21,8 +16,6 @@
   color: #ffc11b;
   align-items: center;
 
-  /* position: absolute;
-  right: 15%; */
   height: 600px;
   justify-content: space-evenly;
   border-radius: 10px;
