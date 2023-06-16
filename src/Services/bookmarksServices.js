@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const encodedToken = localStorage.getItem("encodedToken");
+const userData = localStorage.getItem("userData");
+const encodedToken = JSON.parse(userData)?.encodedToken;
 
 const bookmarkPost = async (postId) => {
   const {

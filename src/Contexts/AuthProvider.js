@@ -16,6 +16,10 @@ export const AuthProvider = ({ children }) => {
     switch (action.type) {
       case "SET_USER":
         return { ...state, loginInUser: action.payload };
+      case "SET_USERNAME":
+        return { ...state, username: action.payload };
+      case "SET_PASSWORD":
+        return { ...state, password: action.payload };
       default:
         return state;
     }
@@ -34,7 +38,10 @@ export const AuthProvider = ({ children }) => {
       if (status === 200) {
         authDispatch({ type: "SET_USER", payload: foundUser });
         setToken(encodedToken);
-        localStorage.setItem("encodedToken", encodedToken);
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({ user: foundUser, encodedToken: encodedToken })
+        );
       }
       console.log(foundUser, "sdks", status, "df");
     } catch (err) {
@@ -55,7 +62,10 @@ export const AuthProvider = ({ children }) => {
       if (status === 201) {
         authDispatch({ type: "SET_USER", payload: createdUser });
         setToken(encodedToken);
-        localStorage.setItem("encodedToken", encodedToken);
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({ user: createdUser, encodedToken: encodedToken })
+        );
       }
       console.log(createdUser, "user", status, "df");
     } catch (err) {
@@ -68,6 +78,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
   const initialState = {
     loginInUser: {},
+    username: "",
+    password: "",
   };
   const [state, authDispatch] = useReducer(reducer, initialState);
   console.log(state, "state");
@@ -81,6 +93,7 @@ export const AuthProvider = ({ children }) => {
         token,
         state,
         setToken,
+        authDispatch,
       }}
     >
       {children}

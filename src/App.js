@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/feed"
+          path="/"
           element={
             <RequiresAuth>
               <Feed />

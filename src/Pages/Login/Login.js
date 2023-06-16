@@ -5,7 +5,7 @@ import { useAuth } from "../../Contexts/AuthProvider";
 export const Login = () => {
   const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const { userLoginData } = useAuth();
+  const { userLoginData, authDispatch, state } = useAuth();
   const loginAsGuest = async () => {
     try {
       setIsLoggedIn(true);
@@ -16,10 +16,22 @@ export const Login = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      navigate("/feed");
+      navigate("/");
     }
   };
-
+  const login = async () => {
+    try {
+      setIsLoggedIn(true);
+      await userLoginData({
+        username: state.username,
+        password: state.password,
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      navigate("/");
+    }
+  };
   return (
     <div className="parent">
       <img src={loginCat} alt="cat" />
@@ -31,17 +43,33 @@ export const Login = () => {
             className="inputs"
             type="email"
             placeholder="adarshbalika@gmail.com"
+            onChange={(event) =>
+              authDispatch({
+                type: "SET_USERNAME",
+                payload: event.target.value,
+              })
+            }
           />
         </label>
         <label>
           Password
-          <input className="inputs" type="password" placeholder="********" />
+          <input
+            className="inputs"
+            type="password"
+            placeholder="********"
+            onChange={(event) =>
+              authDispatch({
+                type: "SET_PASSWORD",
+                payload: event.target.value,
+              })
+            }
+          />
         </label>
         <label className="left">
           <input type="checkbox" className="checkbox" />
           Remember Me
         </label>
-        <button>Login</button>
+        <button onClick={login}>Login</button>
         <button onClick={() => loginAsGuest()}>Login As Guest</button>
         <small>
           <NavLink to="/signUp">Create New Account</NavLink>

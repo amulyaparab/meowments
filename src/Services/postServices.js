@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const encodedToken = localStorage.getItem("encodedToken");
+const userData = localStorage.getItem("userData");
+const encodedToken = JSON.parse(userData)?.encodedToken;
 
 const getAllPosts = async () => {
   const {
@@ -8,7 +9,6 @@ const getAllPosts = async () => {
     status,
   } = await axios.get("/api/posts");
   if (status === 200) {
-    console.log("posts", posts);
     return posts;
   }
 };

@@ -10,6 +10,7 @@ import kittenAdopt from "../../assets/Images/kittenAdopt.jpg";
 import napCat from "../../assets/Images/nap.jpg";
 import rockstarCat from "../../assets/Images/rockstarCat.jpg";
 import rudeCat from "../../assets/Images/rudeCat.jpg";
+import scratchCat from "../../assets/Images/scratchCat.jpg";
 import shubham from "../../assets/Images/shubham.jpg";
 import amelia from "../../assets/Images/amelia.jpg";
 import adarsh from "../../assets/Images/adarsh.jpg";
@@ -37,4 +38,5 @@ export {
   james,
   noah,
   amulya,
+  scratchCat,
 };

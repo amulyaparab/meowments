@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const encodedToken = localStorage.getItem("encodedToken");
+const userData = localStorage.getItem("userData");
+const encodedToken = JSON.parse(userData)?.encodedToken;
 const followUser = async (followUserId) => {
   const { data, status } = await axios({
     method: "POST",
@@ -9,7 +10,6 @@ const followUser = async (followUserId) => {
     data: {},
   });
   if (status === 200) {
-    console.log(data);
     return data;
   }
 };

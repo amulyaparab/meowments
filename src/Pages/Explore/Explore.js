@@ -27,7 +27,9 @@ export const Explore = () => {
           return (
             <div className="posts" key={_id}>
               {userState?.users?.map((user) =>
-                user?.username === username ? <SuggestedUser {...user} /> : null
+                user?.username === username ? (
+                  <SuggestedUser {...user} date={createdAt} />
+                ) : null
               )}
               <img
                 className="postImg"
@@ -37,10 +39,10 @@ export const Explore = () => {
               <p>{content}</p>
               <div>{likeCount} likes </div>
               <div className="icons">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-regular fa-comment"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-                <i class="fa-regular fa-bookmark"></i>
+                <i className="fa-solid fa-heart"></i>
+                <i className="fa-regular fa-comment"></i>
+                <i className="fa-solid fa-share-nodes"></i>
+                <i className="fa-regular fa-bookmark"></i>
               </div>
             </div>
           );

@@ -14,7 +14,7 @@ export const users = [
     lastName: "Parab",
     username: "amulyaparab",
     password: "amy123",
-    createdAt: formatDate(),
+    createdAt: "2020-09-15T08:20:45+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -24,7 +24,7 @@ export const users = [
     lastName: "Smith",
     username: "ameliasmith",
     password: "ameliasmith123",
-    createdAt: formatDate(),
+    createdAt: "2020-11-18T16:26:45+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -34,7 +34,7 @@ export const users = [
     lastName: "Sharma",
     username: "adarshsharma",
     password: "adarshsharma123",
-    createdAt: formatDate(),
+    createdAt: "2019-12-15T01:17:30+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -44,7 +44,7 @@ export const users = [
     lastName: "Soni",
     username: "shubhamsoni",
     password: "shubhamsoni123",
-    createdAt: formatDate(),
+    createdAt: "2018-06-07T20:52:07+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -54,7 +54,7 @@ export const users = [
     lastName: "Davis",
     username: "jamesdavis",
     password: "jamesdavis123",
-    createdAt: formatDate(),
+    createdAt: "2020-11-18T16:26:45+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -64,7 +64,7 @@ export const users = [
     lastName: "Iyer",
     username: "natashaiyer",
     password: "natashaiyer123",
-    createdAt: formatDate(),
+    createdAt: "2019-11-28T19:05:52+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -74,7 +74,7 @@ export const users = [
     lastName: "Martinez",
     username: "noahmartinez",
     password: "noahmartinez123",
-    createdAt: formatDate(),
+    createdAt: "2020-10-08T14:33:37+05:30",
     updatedAt: formatDate(),
   },
 ];

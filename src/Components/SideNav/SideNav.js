@@ -6,7 +6,7 @@ export const SideNav = () => {
   const logout = () => {
     try {
       setIsLoggedIn(false);
-      localStorage.removeItem("encodedToken");
+      localStorage.removeItem("userData");
       setToken(null);
     } catch (err) {
       console.log(err);
@@ -15,22 +15,17 @@ export const SideNav = () => {
   return (
     <>
       <div className="side-nav">
-        {/* <NavLink to="/">
-          <i class="fa-solid fa-house"></i>
-          Home
-        </NavLink> */}
-        {/* <i class="fa-brands fa-slack"></i> */}
-        <NavLink to="/feed">
-          <i class="fa-solid fa-house"></i>
+        <NavLink to="/">
+          <i className="fa-solid fa-house"></i>
           Feed
         </NavLink>
         <NavLink to="/explore">
-          <i class="fa-solid fa-earth-americas"></i>Explore
+          <i className="fa-solid fa-earth-americas"></i>Explore
         </NavLink>
 
         <NavLink to="/bookmarks">
           {" "}
-          <i class="fa-solid fa-bookmark"></i>Bookmarks
+          <i className="fa-solid fa-bookmark"></i>Bookmarks
         </NavLink>
 
         <button onClick={logout}>Logout</button>

@@ -26,6 +26,7 @@
 }
 .suggestionsPerson h4 {
   font-size: 15px;
+  margin-top: 10px;
 }
 .suggestions .suggestionsPerson {
   margin: auto;
@@ -33,7 +34,7 @@
 .suggestions .one-user {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  gap: 1rem;
 }
 .suggestions button {
   background-color: #ffebb8;
@@ -49,4 +50,7 @@
 .suggestions button:hover {
   background-color: #ffc11b;
   color: #ffffff;
+}
+.suggestionsPerson .date {
+  color: #999999;
 }
