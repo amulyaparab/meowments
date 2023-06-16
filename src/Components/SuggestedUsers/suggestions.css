@@ -1,3 +1,10 @@
+.followers {
+  height: 89vh;
+  padding: 2rem;
+  position: sticky;
+  top: 100px;
+}
+
 .suggestionsPerson img {
   width: 50px;
   height: 50px;
@@ -7,7 +14,6 @@
 .suggestionsPerson {
   display: flex;
   width: 80%;
-  margin: auto;
   align-items: center;
   text-align: left;
   color: #333333;
@@ -20,4 +26,27 @@
 }
 .suggestionsPerson h4 {
   font-size: 15px;
+}
+.suggestions .suggestionsPerson {
+  margin: auto;
+}
+.suggestions .one-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.suggestions button {
+  background-color: #ffebb8;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: 700;
+  color: #666666;
+  width: 120px;
+  cursor: pointer;
+}
+.suggestions button:hover {
+  background-color: #ffc11b;
+  color: #ffffff;
 }

@@ -5,6 +5,8 @@
   padding: 1rem 0;
   /* background-color: #ffebb8; */
   height: 89vh;
+  position: sticky;
+  top: 100px;
 }
 .side-nav a {
   text-decoration: none;

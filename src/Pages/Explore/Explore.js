@@ -1,17 +1,20 @@
 import { SideNav } from "../../Components/SideNav/SideNav";
+import { SuggestedUser } from "../../Components/SuggestedUsers/Suggestion";
 import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 import { usePost } from "../../Contexts/PostsProvider";
+import { useUsers } from "../../Contexts/UsersProvider";
+import { likePost } from "../../Services/likeServices";
 import "./explore.css";
 
 export const Explore = () => {
   const { state } = usePost();
+  const { state: userState } = useUsers();
   return (
     <div className="page-fractions">
       <SideNav />
       <div className="background">
-        <h1>Explore</h1>
-        {state?.posts.map(
-          ({
+        {state?.posts.map((post) => {
+          const {
             _id,
             imageUrl,
             content,
@@ -19,15 +22,20 @@ export const Explore = () => {
             username,
             createdAt,
             updatedAt,
-          }) => (
+          } = post;
+
+          return (
             <div className="posts" key={_id}>
-              {" "}
-              <p>{username}</p>
+              {userState?.users?.map((user) =>
+                user?.username === username ? <SuggestedUser {...user} /> : null
+              )}
               <img
+                className="postImg"
                 src={imageUrl}
                 alt={`Cat post with the caption ${content}`}
               />
               <p>{content}</p>
+              <div>{likeCount} likes </div>
               <div className="icons">
                 <i class="fa-solid fa-heart"></i>
                 <i class="fa-regular fa-comment"></i>
@@ -35,8 +43,8 @@ export const Explore = () => {
                 <i class="fa-regular fa-bookmark"></i>
               </div>
             </div>
-          )
-        )}
+          );
+        })}
       </div>
       <Suggestions />
     </div>

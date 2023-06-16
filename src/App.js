@@ -5,7 +5,6 @@ import {
   Bookmarks,
   Explore,
   Feed,
-  Home,
   Landing,
   Login,
   Profile,
@@ -19,14 +18,6 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <RequiresAuth>
-              <Home />
-            </RequiresAuth>
-          }
-        />
         <Route
           path="/explore"
           element={

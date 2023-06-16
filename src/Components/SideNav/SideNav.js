@@ -6,13 +6,14 @@ export const SideNav = () => {
   return (
     <>
       <div className="side-nav">
-        <NavLink to="/">
+        {/* <NavLink to="/">
           <i class="fa-solid fa-house"></i>
           Home
-        </NavLink>
-
+        </NavLink> */}
+        {/* <i class="fa-brands fa-slack"></i> */}
         <NavLink to="/feed">
-          <i class="fa-brands fa-slack"></i>Feed
+          <i class="fa-solid fa-house"></i>
+          Feed
         </NavLink>
         <NavLink to="/explore">
           <i class="fa-solid fa-earth-americas"></i>Explore

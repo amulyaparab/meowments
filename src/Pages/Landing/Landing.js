@@ -1,7 +1,8 @@
 import "./landing.css";
 import landingCat from "../../assets/Images/landing.jpg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 export const Landing = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="landing">
@@ -18,9 +19,7 @@ export const Landing = () => {
           <p>
             <span>Connect</span> with Fellow Cat lovers
           </p>
-          <button>
-            <NavLink to="/signUp">Join Now</NavLink>
-          </button>
+          <button onClick={() => navigate("/signUp")}>Join Now</button>
           <small>
             <NavLink to="/login">Already have an account ?</NavLink>
           </small>

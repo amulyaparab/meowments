@@ -56,11 +56,9 @@
   margin: 1rem 0 0;
   cursor: pointer;
   letter-spacing: 0.5px;
-}
-.landing button a {
   color: white;
-  text-decoration: none;
 }
+
 .landing small {
   font-size: 18px;
   font-weight: 600;

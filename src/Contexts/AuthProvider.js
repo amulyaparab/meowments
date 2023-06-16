@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
         return state;
     }
   };
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(null);
   const userLoginData = async (loginData) => {
     try {
       const {
@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+  console.log(token, "token");
   const userSignUpData = async (signUpData) => {
     try {
       const {
@@ -61,6 +62,7 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     // userLoginData({ username: "adarshbalika", password: "adarshBalika123" });
   }, []);
@@ -77,6 +79,7 @@ export const AuthProvider = ({ children }) => {
         userSignUpData,
         userLoginData,
         token,
+        state,
       }}
     >
       {children}

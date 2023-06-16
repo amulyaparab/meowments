@@ -5,6 +5,21 @@ import { useAuth } from "../../Contexts/AuthProvider";
 export const Login = () => {
   const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { userLoginData } = useAuth();
+  const loginAsGuest = async () => {
+    try {
+      setIsLoggedIn(true);
+      await userLoginData({
+        username: "adarshsharma",
+        password: "adarshsharma123",
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      navigate("/feed");
+    }
+  };
+
   return (
     <div className="parent">
       <img src={loginCat} alt="cat" />
@@ -27,14 +42,7 @@ export const Login = () => {
           Remember Me
         </label>
         <button>Login</button>
-        <button
-          onClick={() => {
-            setIsLoggedIn(true);
-            navigate("/");
-          }}
-        >
-          Login As Guest
-        </button>
+        <button onClick={() => loginAsGuest()}>Login As Guest</button>
         <small>
           <NavLink to="/signUp">Create New Account</NavLink>
         </small>
