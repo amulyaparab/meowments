@@ -5,14 +5,14 @@ import { SuggestedUser } from "../SuggestedUsers/Suggestion";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { state } = useAuth();
+  const { state, token } = useAuth();
   console.log(state, "fsdf");
   return (
     <div className="navbar">
-      <h1 className="heading" onClick={() => navigate("/")}>
+      <h1 className="heading" onClick={() => navigate("/feed")}>
         meow<span>Ments</span>
       </h1>
-      <div className="userAndTheme">
+      <div className={`${state?.loginInUser && token && "userAndTheme"}`}>
         <div className="theme">
           <i class="fa-solid fa-sun"></i>
           <div className="theme-toggler">
@@ -20,7 +20,9 @@ export const Header = () => {
           </div>
           <i class="fa-solid fa-moon"></i>
         </div>
-        <SuggestedUser {...(state?.loginInUser ? state?.loginInUser : null)} />
+        {state?.loginInUser && token && (
+          <SuggestedUser {...state?.loginInUser} />
+        )}
       </div>
     </div>
   );

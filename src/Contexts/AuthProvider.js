@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }) => {
         userLoginData,
         token,
         state,
+        setToken,
       }}
     >
       {children}

@@ -2,7 +2,16 @@ import { NavLink } from "react-router-dom";
 import "./sideNav.css";
 import { useAuth } from "../../Contexts/AuthProvider";
 export const SideNav = () => {
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setToken } = useAuth();
+  const logout = () => {
+    try {
+      setIsLoggedIn(false);
+      localStorage.removeItem("encodedToken");
+      setToken(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="side-nav">
@@ -24,7 +33,7 @@ export const SideNav = () => {
           <i class="fa-solid fa-bookmark"></i>Bookmarks
         </NavLink>
 
-        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        <button onClick={logout}>Logout</button>
       </div>
     </>
   );
