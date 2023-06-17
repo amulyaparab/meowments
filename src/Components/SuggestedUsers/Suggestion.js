@@ -1,4 +1,5 @@
 import { fetchSingleUser } from "../../Services/userServices";
+import { useNavigate } from "react-router-dom";
 
 export const SuggestedUser = ({
   _id,
@@ -9,10 +10,11 @@ export const SuggestedUser = ({
   showUserName,
   createdAt,
 }) => {
-  const goToProfile = async (userId) => {
+  const navigate = useNavigate();
+  const takeToProfilePage = async (userId) => {
     try {
-      const user = await fetchSingleUser(userId);
-      console.log(user);
+      await fetchSingleUser(userId);
+      navigate(`/profile/${userId}`);
     } catch (err) {
       console.log(err);
     }
@@ -25,15 +27,19 @@ export const SuggestedUser = ({
   const year = formattedDate.getFullYear();
 
   return (
-    <div className="suggestionsPerson" onClick={() => goToProfile(_id)}>
-      <img src={avatarUrl} alt={username} />
+    <div className="suggestionsPerson">
+      <img
+        src={avatarUrl}
+        alt={username}
+        onClick={() => takeToProfilePage(_id)}
+      />
       <div>
         {" "}
         <h4>
           {firstName} {lastName}
         </h4>
         {showUserName ? (
-          <p>{username}</p>
+          <p onClick={() => takeToProfilePage(_id)}>{username}</p>
         ) : (
           <p className="date">
             {`${date}

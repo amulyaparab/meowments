@@ -9,6 +9,8 @@ import "./explore.css";
 export const Explore = () => {
   const { state } = usePost();
   const { state: userState } = useUsers();
+  const userData = localStorage.getItem("userData");
+  const user = JSON.parse(userData)?.user;
   return (
     <div className="page-fractions">
       <SideNav />
@@ -23,8 +25,7 @@ export const Explore = () => {
             createdAt,
             updatedAt,
           } = post;
-
-          return (
+          return user?.username !== username ? (
             <div className="posts" key={_id}>
               {userState?.users?.map((user) =>
                 user?.username === username ? (
@@ -45,7 +46,7 @@ export const Explore = () => {
                 <i className="fa-regular fa-bookmark"></i>
               </div>
             </div>
-          );
+          ) : null;
         })}
       </div>
       <Suggestions />

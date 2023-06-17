@@ -2,6 +2,7 @@ import { useUsers } from "../../Contexts/UsersProvider";
 import { followUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
+
 export const Suggestions = () => {
   const { state } = useUsers();
   const userData = localStorage.getItem("userData");
@@ -15,6 +16,7 @@ export const Suggestions = () => {
       console.log(err);
     }
   };
+
   return (
     <div className="followers">
       <h3>Suggested Users</h3>

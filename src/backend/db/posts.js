@@ -340,7 +340,7 @@ export const posts = [
     _id: uuid(),
     imageUrl:
       "https://images.pexels.com/photos/2835623/pexels-photo-2835623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    content: "Hi there!",
+    content: "Hi there! Can I take a nap in your lap?",
     likes: {
       likeCount: 47,
       likedBy: [],
