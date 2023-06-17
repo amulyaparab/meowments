@@ -19,13 +19,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <UtilsProvider>
-          <UsersProvider>
-            <PostsProvider>
+        <UsersProvider>
+          <PostsProvider>
+            <UtilsProvider>
               <App />
-            </PostsProvider>
-          </UsersProvider>
-        </UtilsProvider>
+            </UtilsProvider>
+          </PostsProvider>
+        </UsersProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,3 +1,5 @@
+import { usePost } from "../../Contexts/PostsProvider";
+import { getPostsByUser } from "../../Services/postServices";
 import { fetchSingleUser } from "../../Services/userServices";
 import { useNavigate } from "react-router-dom";
 
@@ -10,11 +12,14 @@ export const SuggestedUser = ({
   showUserName,
   createdAt,
 }) => {
+  const { postDispatch } = usePost();
   const navigate = useNavigate();
-  const takeToProfilePage = async (userId) => {
+  const takeToProfilePage = async (userId, username) => {
     try {
       await fetchSingleUser(userId);
       navigate(`/profile/${userId}`);
+      const postsByUser = await getPostsByUser(username);
+      postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +36,7 @@ export const SuggestedUser = ({
       <img
         src={avatarUrl}
         alt={username}
-        onClick={() => takeToProfilePage(_id)}
+        onClick={() => takeToProfilePage(_id, username)}
       />
       <div>
         {" "}

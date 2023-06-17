@@ -3,6 +3,8 @@ import "./profile.css";
 import { useUsers } from "../../Contexts/UsersProvider";
 import { SideNav } from "../../Components/SideNav/SideNav";
 import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
+import { usePost } from "../../Contexts/PostsProvider";
+import { PostCard } from "../../Components/PostCard";
 
 export const Profile = () => {
   const { userId } = useParams();
@@ -16,6 +18,7 @@ export const Profile = () => {
     month: "long",
   });
   const year = formattedDate.getFullYear();
+  const { state: userPostsState } = usePost();
   return (
     <div className="page-fractions">
       <SideNav />
@@ -57,18 +60,23 @@ export const Profile = () => {
 
             <div className="profile-tabs">
               <div>
-                <p>0</p>
+                <h4>0</h4>
                 <h4>Following</h4>
               </div>
               <div>
-                <p>0</p>
+                <h4>{userPostsState?.userPosts?.length}</h4>
                 <h4>Posts</h4>
               </div>
               <div>
-                <p>0</p>
+                <h4>0</h4>
                 <h4>Followers</h4>
               </div>
             </div>
+          </div>
+          <div className="expandPosts">
+            {userPostsState?.userPosts?.map((post) => (
+              <PostCard {...post} />
+            ))}
           </div>
         </div>
       </div>

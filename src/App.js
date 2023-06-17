@@ -13,6 +13,7 @@ import {
 import { Header } from "./Components/Header/Header";
 import { RequiresAuth } from "./Components/RequireAuth";
 import Mockman from "mockman-js";
+import { SinglePost } from "./Pages/SinglePost";
 function App() {
   return (
     <div className="App">
@@ -50,7 +51,14 @@ function App() {
             </RequiresAuth>
           }
         />
-
+        <Route
+          path="/post/:postId"
+          element={
+            <RequiresAuth>
+              <SinglePost />
+            </RequiresAuth>
+          }
+        />
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

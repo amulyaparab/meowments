@@ -13,6 +13,7 @@
   padding: 2rem 1.5rem 2rem;
   text-align: left;
   border-radius: 7px;
+  position: relative;
 }
 .posts .postImg {
   height: auto;
@@ -20,6 +21,7 @@
   margin: auto;
   margin-top: 1rem;
   border-radius: 3px;
+  cursor: pointer;
 }
 .posts .icons {
   font-size: 20px;
@@ -37,4 +39,36 @@
 .posts p {
   color: #333333;
   font-weight: 500;
+}
+.posts .icons .yellow {
+  color: #ffc11b;
+}
+.post-settings {
+  position: absolute;
+  right: 2rem;
+  font-size: 30px;
+  top: 1.5rem;
+  cursor: pointer;
+  z-index: 3;
+}
+.edit-block {
+  background-color: #ffffff;
+  width: 100px;
+  position: absolute;
+  right: 1.3rem;
+  text-align: left;
+  top: 2.3rem;
+  height: 100px;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 5px #ffebb8;
+}
+.edit-block p {
+  /* border-bottom: #333333 solid 1px; */
+
+  cursor: pointer;
+}
+.edit-block p:hover {
+  color: #ffc11b;
 }

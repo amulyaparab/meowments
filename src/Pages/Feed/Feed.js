@@ -7,6 +7,8 @@ export const Feed = () => {
       <SideNav />
       <div>
         <h1>Your Feed</h1>
+        <button>Trending</button>
+        <button>Latest</button>
       </div>
       <Suggestions />
     </div>
