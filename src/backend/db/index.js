@@ -17,8 +17,8 @@ import adarsh from "../../assets/Images/adarsh.jpg";
 import natasha from "../../assets/Images/natasha.jpg";
 import james from "../../assets/Images/james.jpg";
 import noah from "../../assets/Images/noah.jpg";
-
 import amulya from "../../assets/Images/amulya.jpg";
+import myCat from "../../assets/Images/myCat.jpeg";
 
 export {
   booksCat,
@@ -41,4 +41,5 @@ export {
   noah,
   scratchCat,
   amulya,
+  myCat,
 };

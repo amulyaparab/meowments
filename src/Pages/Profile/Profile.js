@@ -8,10 +8,10 @@ import { PostCard } from "../../Components/PostCard";
 
 export const Profile = () => {
   const { userId } = useParams();
-  console.log(userId, "username");
+  // console.log(userId, "username");
   const { state } = useUsers();
   const findUser = state.users.find((user) => user._id === userId);
-  console.log(findUser, "userjkfhds");
+  // console.log(findUser, "userjkfhds");
   const formattedDate = new Date(findUser?.createdAt);
   const date = formattedDate.getDate();
   const month = formattedDate.toLocaleString("default", {

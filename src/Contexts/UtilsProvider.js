@@ -23,7 +23,9 @@ export const UtilsProvider = ({ children }) => {
     // getAllPosts();
   }, []);
   return (
-    <UtilsContext.Provider value={{ likePostHandler, user }}>
+    <UtilsContext.Provider
+      value={{ likePostHandler, user, userData, encodedToken }}
+    >
       {children}
     </UtilsContext.Provider>
   );

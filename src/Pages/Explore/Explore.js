@@ -9,11 +9,13 @@ import { likePost } from "../../Services/likeServices";
 import "./explore.css";
 
 export const Explore = () => {
+  const { likePostHandler, user } = useUtils();
   const { state } = usePost();
-
+  const isThePostByTheCurrentUser = state?.posts?.filter(
+    (post) => post?.username === user?.username
+  );
   // const userData = localStorage.getItem("userData");
   // const user = JSON.parse(userData)?.user;
-  const { likePostHandler, user } = useUtils();
 
   return (
     <div className="page-fractions">
@@ -24,7 +26,9 @@ export const Explore = () => {
             (currUser) => currUser._id === user._id
           );
 
-          console.log(likedByArray);
+          {
+            /* console.log(likedByArray); */
+          }
 
           {
             /* 

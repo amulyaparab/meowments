@@ -9,6 +9,7 @@ import {
   dogHuggingCat,
   family,
   kittenAdopt,
+  myCat,
   napCat,
   rockstarCat,
   rudeCat,
@@ -62,6 +63,30 @@ export const posts = [
     ],
     username: "ameliasmith",
     createdAt: "2022-03-05T14:45:22+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    imageUrl: myCat,
+    content: "A yawn from the heart leads to rainbows and dreams.",
+    likes: {
+      likeCount: 70,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [
+      {
+        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+        username: "adarshsharma",
+        text: "Black Love.",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    username: "amulyaparab",
+    createdAt: "2021-08-05T08:20:45+05:30",
     updatedAt: formatDate(),
   },
   {

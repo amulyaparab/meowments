@@ -4,6 +4,7 @@ import { SuggestedUser } from "./SuggestedUsers/Suggestion";
 import "../Pages/Explore/explore.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { usePost } from "../Contexts/PostsProvider";
 export const PostCard = ({
   _id,
   imageUrl,
@@ -15,7 +16,8 @@ export const PostCard = ({
   isLiked,
 }) => {
   const { state: userState } = useUsers();
-  const { likePostHandler } = useUtils();
+  const { likePostHandler, user } = useUtils();
+  const { state, editPost, deleteThePost } = usePost();
   const [showDetails, setShowDetails] = useState(false);
   const handleCopyLink = (postId) => {
     navigator.clipboard
@@ -29,19 +31,30 @@ export const PostCard = ({
         // You can show an error message or handle the error as needed
       });
   };
+  const isThePostByTheCurrentUser =
+    // _id ===
+    state?.userPosts
+      ?.filter((post) => post?.username === user?.username)
+      .map((post) => post?._id)
+      .includes(_id);
+
+  console.log(isThePostByTheCurrentUser, "kasjlkash");
+
   const navigate = useNavigate();
   return (
     <div className="posts" key={_id}>
-      <div
-        className="post-settings"
-        onClick={() => setShowDetails(!showDetails)}
-      >
-        ...
-      </div>
-      {showDetails && (
+      {isThePostByTheCurrentUser && (
+        <div
+          className="post-settings"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          ...
+        </div>
+      )}
+      {isThePostByTheCurrentUser && showDetails && (
         <div className="edit-block">
-          <p>Edit</p>
-          <p>Delete</p>
+          <p onClick={() => editPost(_id)}>Edit</p>
+          <p onClick={() => deleteThePost(_id)}>Delete</p>
         </div>
       )}
       {userState?.users?.map((user) =>
@@ -49,12 +62,14 @@ export const PostCard = ({
           <SuggestedUser {...user} date={createdAt} />
         ) : null
       )}
-      <img
-        className="postImg"
-        src={imageUrl}
-        alt={`Cat post with the caption ${content}`}
-        onClick={() => navigate(`/post/${_id}`)}
-      />
+      {imageUrl.length ? (
+        <img
+          className="postImg"
+          src={imageUrl}
+          alt={`Cat post with the caption ${content}`}
+          onClick={() => navigate(`/post/${_id}`)}
+        />
+      ) : null}
       <p>{content}</p>
       <div>{likeCount} likes </div>
       <div className="icons">
