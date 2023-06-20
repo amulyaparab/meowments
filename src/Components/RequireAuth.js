@@ -9,6 +9,6 @@ export const RequiresAuth = ({ children }) => {
   // console.log(state, "amulya");
   // console.log(userData, "dshfkj");
   // const userData = localStorage.getItem("userData");
-
+  console.log(state, "dfjsdlk");
   return <>{state?.encodedToken ? children : <Navigate to="/landing" />}</>;
 };

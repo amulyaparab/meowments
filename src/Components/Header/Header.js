@@ -21,7 +21,9 @@ export const Header = () => {
           </div>
           <i className="fa-solid fa-moon"></i>
         </div>
-        {state?.encodedToken && <SuggestedUser {...user} showUserName />}
+        {state?.encodedToken && (
+          <SuggestedUser {...user} showUserName hideUserDetails />
+        )}
       </div>
     </div>
   );

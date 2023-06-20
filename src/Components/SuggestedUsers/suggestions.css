@@ -12,6 +12,22 @@
   margin-right: 1rem;
   cursor: pointer;
 }
+.alt-profile-img {
+  background-color: #ffc11b;
+  color: #333333;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.alt-profile-img p {
+  position: absolute;
+  left: 40%;
+  bottom: 10%;
+  color: #333333;
+}
 .suggestionsPerson {
   display: flex;
   width: 80%;
@@ -54,4 +70,18 @@
 }
 .suggestionsPerson .date {
   color: #999999;
+}
+@media screen and (max-width: 1024px) {
+  .suggestions .one-user {
+    flex-wrap: wrap;
+  }
+  .suggestions button {
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .suggestionsPerson h4 {
+    font-size: 13px;
+    width: 90px;
+    margin-top: 10px;
+  }
 }

@@ -20,18 +20,22 @@ export const SideNav = () => {
       <div className="side-nav">
         <NavLink to="/">
           <i className="fa-solid fa-house"></i>
-          Feed
+          <span className="nav-no-words">Feed</span>
         </NavLink>
         <NavLink to="/explore">
-          <i className="fa-solid fa-earth-americas"></i>Explore
+          <i className="fa-solid fa-earth-americas"></i>{" "}
+          <span className="nav-no-words">Explore</span>
         </NavLink>
 
         <NavLink to="/bookmarks">
           {" "}
-          <i className="fa-solid fa-bookmark"></i>Bookmarks
+          <i className="fa-solid fa-bookmark"></i>{" "}
+          <span className="nav-no-words">Bookmarks</span>
         </NavLink>
 
-        <button onClick={logout}>Logout</button>
+        <button className="nav-no-words logout" onClick={logout}>
+          Logout
+        </button>
       </div>
     </>
   );

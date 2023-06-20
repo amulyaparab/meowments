@@ -5,7 +5,7 @@
 .posts {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
   height: auto;
   margin: auto;
   margin-top: 1.5rem;
@@ -71,4 +71,14 @@
 }
 .edit-block p:hover {
   color: #ffc11b;
+}
+@media screen and (max-width: 1024px) {
+  .posts {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .posts {
+    width: 70%;
+  }
 }

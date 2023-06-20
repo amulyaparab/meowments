@@ -9,7 +9,7 @@
 .profile {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   height: max-content;
   margin: auto;
   margin-top: 2rem;
@@ -51,4 +51,22 @@
 }
 .expandPosts .posts {
   width: 84%;
+}
+@media screen and (max-width: 768px) {
+  .profile-deets {
+    flex-wrap: wrap;
+  }
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-tabs {
+    width: 100%;
+    gap: 2rem;
+  }
+  .profile {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 }

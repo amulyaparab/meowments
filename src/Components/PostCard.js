@@ -5,11 +5,12 @@ import "../Pages/Explore/explore.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { usePost } from "../Contexts/PostsProvider";
+import { toast } from "react-toastify";
 export const PostCard = ({
   _id,
   imageUrl,
   content,
-  likes: { likeCount, likedBy, dislikedBy },
+  likes,
   username,
   createdAt,
   updatedAt,
@@ -24,11 +25,15 @@ export const PostCard = ({
       .writeText(`http://localhost:3000/post/${postId}`)
       .then(() => {
         console.log("Link copied to clipboard!");
-        // You can also show a success message or perform other actions here
+        toast.success("Link copied successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
       .catch((error) => {
-        console.error("Failed to copy link to clipboard:", error);
-        // You can show an error message or handle the error as needed
+        console.error("Failed to copy link to clipboard", error);
+        toast.success("Failed to copy link...Try again.", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       });
   };
   const isThePostByTheCurrentUser =
@@ -62,7 +67,7 @@ export const PostCard = ({
           <SuggestedUser {...user} date={createdAt} />
         ) : null
       )}
-      {imageUrl.length ? (
+      {imageUrl?.length ? (
         <img
           className="postImg"
           src={imageUrl}
@@ -71,7 +76,7 @@ export const PostCard = ({
         />
       ) : null}
       <p>{content}</p>
-      <div>{likeCount} likes </div>
+      <div>{likes?.likeCount} likes </div>
       <div className="icons">
         <i
           className={`fa-solid fa-heart ${isLiked && "yellow"}`}

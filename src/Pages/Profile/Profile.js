@@ -42,7 +42,9 @@ export const Profile = () => {
                   {findUser?.bio}
                 </p>
                 <i class="fa-solid fa-display"></i>
-                <a href={findUser?.website}>Portfolio website</a>
+                <a href={findUser?.website} target="_blank" rel="noreferrer">
+                  Portfolio website
+                </a>
                 <p>
                   {" "}
                   <i class="fa-solid fa-user"></i>

@@ -34,3 +34,16 @@
 .side-nav i {
   margin-right: 10px;
 }
+
+@media screen and (max-width: 1024px) {
+  .nav-no-words {
+    display: none;
+  }
+
+  .side-nav a {
+    padding: 0.5rem 1.5rem;
+  }
+  .side-nav {
+    box-shadow: 0 0 5px 5px #ffebb8;
+  }
+}

@@ -11,6 +11,7 @@ export const SuggestedUser = ({
   lastName,
   showUserName,
   createdAt,
+  hideUserDetails,
 }) => {
   const { postDispatch } = usePost();
   const navigate = useNavigate();
@@ -33,18 +34,27 @@ export const SuggestedUser = ({
 
   return (
     <div className="suggestionsPerson">
-      <img
-        src={avatarUrl}
-        alt={username}
-        onClick={() => takeToProfilePage(_id, username)}
-      />
-      <div>
+      {avatarUrl?.length !== 0 ? (
+        <img
+          src={avatarUrl}
+          alt={username}
+          onClick={() => takeToProfilePage(_id, username)}
+        />
+      ) : (
+        <div
+          className="alt-profile-img"
+          onClick={() => takeToProfilePage(_id, username)}
+        >
+          <p>{firstName.charAt(0)}</p>
+        </div>
+      )}
+      <div className={`${hideUserDetails && "no-display"}`}>
         {" "}
         <h4>
           {firstName} {lastName}
         </h4>
         {showUserName ? (
-          <p onClick={() => takeToProfilePage(_id)}>{username}</p>
+          <p onClick={() => takeToProfilePage(_id, username)}>{username}</p>
         ) : (
           <p className="date">
             {`${date}
