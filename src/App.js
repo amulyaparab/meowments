@@ -1,5 +1,6 @@
 import "./App.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Route, Routes } from "react-router-dom";
 import {
   Bookmarks,
@@ -64,6 +65,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

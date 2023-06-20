@@ -38,7 +38,7 @@ export const PostCard = ({
       .map((post) => post?._id)
       .includes(_id);
 
-  console.log(isThePostByTheCurrentUser, "kasjlkash");
+  // console.log(isThePostByTheCurrentUser, "kasjlkash");
 
   const navigate = useNavigate();
   return (

@@ -5,7 +5,7 @@ import { SuggestedUser } from "../SuggestedUsers/Suggestion";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { state, token } = useAuth();
+  const { state } = useAuth();
   const userData = localStorage.getItem("userData");
   const user = JSON.parse(userData)?.user;
   return (
@@ -13,7 +13,7 @@ export const Header = () => {
       <h1 className="heading" onClick={() => navigate("/")}>
         meow<span>Ments</span>
       </h1>
-      <div className={`${state?.loginInUser && token && "userAndTheme"}`}>
+      <div className={`${state?.encodedToken && "userAndTheme"}`}>
         <div className="theme">
           <i className="fa-solid fa-sun"></i>
           <div className="theme-toggler">
@@ -21,9 +21,7 @@ export const Header = () => {
           </div>
           <i className="fa-solid fa-moon"></i>
         </div>
-        {state?.loginInUser && token && (
-          <SuggestedUser {...user} showUserName />
-        )}
+        {state?.encodedToken && <SuggestedUser {...user} showUserName />}
       </div>
     </div>
   );

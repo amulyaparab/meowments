@@ -1,12 +1,14 @@
+import { useEffect } from "react";
 import { useUsers } from "../../Contexts/UsersProvider";
 import { followUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 export const Suggestions = () => {
   const { state } = useUsers();
-  const userData = localStorage.getItem("userData");
-  const currentUser = JSON.parse(userData)?.user;
+
+  const { currentUser } = useAuth();
 
   const followUsername = async (userId) => {
     try {
@@ -22,12 +24,12 @@ export const Suggestions = () => {
       <h3>Suggested Users</h3>
       <div className="suggestions">
         {state?.users?.map((user) =>
-          user._id !== currentUser._id ? (
+          user.username === currentUser.username ? null : (
             <div className="one-user">
               <SuggestedUser {...user} showUserName />
               <button onClick={() => followUsername(user._id)}>+ Follow</button>
             </div>
-          ) : null
+          )
         )}
       </div>
     </div>

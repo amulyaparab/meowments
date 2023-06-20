@@ -1,14 +1,13 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./login.css";
 import loginCat from "../../assets/Images/login.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 export const Login = () => {
-  const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { userLoginData, authDispatch, state } = useAuth();
+
   const loginAsGuest = async () => {
     try {
-      setIsLoggedIn(true);
       await userLoginData({
         username: "adarshsharma",
         password: "adarshsharma123",
@@ -19,9 +18,9 @@ export const Login = () => {
       navigate("/");
     }
   };
+
   const login = async () => {
     try {
-      setIsLoggedIn(true);
       await userLoginData({
         username: state.username,
         password: state.password,
@@ -32,6 +31,7 @@ export const Login = () => {
       navigate("/");
     }
   };
+
   return (
     <div className="parent">
       <img src={loginCat} alt="cat" />
@@ -43,6 +43,7 @@ export const Login = () => {
             className="inputs"
             type="email"
             placeholder="adarshbalika@gmail.com"
+            value={state?.username}
             onChange={(event) =>
               authDispatch({
                 type: "SET_USERNAME",
@@ -57,6 +58,7 @@ export const Login = () => {
             className="inputs"
             type="password"
             placeholder="********"
+            value={state?.password}
             onChange={(event) =>
               authDispatch({
                 type: "SET_PASSWORD",
@@ -70,7 +72,7 @@ export const Login = () => {
           Remember Me
         </label>
         <button onClick={login}>Login</button>
-        <button onClick={() => loginAsGuest()}>Login As Guest</button>
+        <button onClick={loginAsGuest}>Login As Guest</button>
         <small>
           <NavLink to="/signUp">Create New Account</NavLink>
         </small>

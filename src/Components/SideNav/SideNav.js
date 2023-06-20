@@ -2,12 +2,15 @@ import { NavLink } from "react-router-dom";
 import "./sideNav.css";
 import { useAuth } from "../../Contexts/AuthProvider";
 export const SideNav = () => {
-  const { setIsLoggedIn, setToken } = useAuth();
+  const { authDispatch } = useAuth();
   const logout = () => {
     try {
-      setIsLoggedIn(false);
       localStorage.removeItem("userData");
-      setToken(null);
+      authDispatch({
+        type: "SET_USER",
+        payload: null,
+        encodedTokenPayload: null,
+      });
     } catch (err) {
       console.log(err);
     }
