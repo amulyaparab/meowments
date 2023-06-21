@@ -20,9 +20,19 @@ export const postReducer = (state, action) => {
         // userPosts: action.postPayload,
       };
     case "POST_CONTENT":
-      return { ...state, post: { ...state.post, content: action.payload } };
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          content: action.payload,
+        },
+      };
     case "CREATE_POST":
-      return { ...state, posts: [...state.posts, state.post] };
+      return {
+        ...state,
+        post: { ...state.post, username: action.payload },
+        posts: [...state.posts, state.post],
+      };
     case "EDIT_POST":
       return {};
     case "DELETE_POST":

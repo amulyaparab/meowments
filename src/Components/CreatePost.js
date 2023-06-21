@@ -59,7 +59,13 @@ export const CreatePost = () => {
         <label>
           <input type="file" />
         </label>
-        <button onClick={createPost}>Post</button>
+        <button
+          onClick={() => {
+            createPost();
+          }}
+        >
+          Post
+        </button>
         <div>
           <button onClick={handleShowToast}>Show Toast</button>
         </div>

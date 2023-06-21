@@ -4,10 +4,12 @@ import { formatDate } from "../backend/utils/authUtils";
 import { v4 as uuid } from "uuid";
 import { useAuth } from "./AuthProvider";
 import { postReducer } from "../reducers/postReducer";
+import { useUsers } from "./UsersProvider";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, state: authState } = useAuth();
+
   const fetchPosts = async () => {
     try {
       const posts = await getAllPosts();
@@ -40,7 +42,7 @@ export const PostsProvider = ({ children }) => {
           },
         },
       ],
-      username: currentUser?.username,
+      username: authState?.loginInUser?.username,
       createdAt: formatDate(),
       updatedAt: formatDate(),
     },
@@ -64,8 +66,10 @@ export const PostsProvider = ({ children }) => {
   };
   const createPost = async () => {
     try {
-      const created = await newPost(state.post);
-      console.log(created, "meowbdhjhhk");
+      await newPost(state.post);
+      const posts = await newPost(state.post);
+      console.log(posts, "meowbdhjhhk");
+      // postDispatch({ type: "CREATE_POST" });
     } catch (err) {
       console.log(err);
     }

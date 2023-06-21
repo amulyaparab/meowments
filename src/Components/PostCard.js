@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { usePost } from "../Contexts/PostsProvider";
 import { toast } from "react-toastify";
+import { useAuth } from "../Contexts/AuthProvider";
 export const PostCard = ({
   _id,
   imageUrl,
@@ -17,8 +18,9 @@ export const PostCard = ({
   isLiked,
 }) => {
   const { state: userState } = useUsers();
-  const { likePostHandler, user } = useUtils();
+  const { likePostHandler } = useUtils();
   const { state, editPost, deleteThePost } = usePost();
+  const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
   const handleCopyLink = (postId) => {
     navigator.clipboard
@@ -39,7 +41,7 @@ export const PostCard = ({
   const isThePostByTheCurrentUser =
     // _id ===
     state?.userPosts
-      ?.filter((post) => post?.username === user?.username)
+      ?.filter((post) => post?.username === currentUser?.username)
       .map((post) => post?._id)
       .includes(_id);
 

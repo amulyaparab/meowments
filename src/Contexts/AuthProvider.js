@@ -8,7 +8,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const initialState = {
-    loginInUser: {},
+    loginInUser: JSON.parse(localStorage.getItem("userData"))?.user || {},
     username: "",
     password: "",
     newUser: {
@@ -92,7 +92,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const [state, authDispatch] = useReducer(authReducer, initialState);
-  console.log(state?.encodedToken, "state");
+  console.log(state, "state");
   const userData = localStorage.getItem("userData");
   const currentUser = JSON.parse(userData)?.user;
   const currentToken = JSON.parse(userData)?.encodedToken;
@@ -116,8 +116,11 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchCurrentUser();
+
     fetchCurrentToken();
+    // console.log(currentUser, currentToken, "amullllllllllllllllllllll");
   }, [currentUser, currentToken]);
+
   return (
     <AuthContext.Provider
       value={{
