@@ -165,7 +165,9 @@ export const AuthProvider = ({ children }) => {
         userLoginData,
         currentUser,
         state,
-
+        fetchCurrentToken,
+        fetchCurrentUser,
+        currentToken,
         authDispatch,
       }}
     >

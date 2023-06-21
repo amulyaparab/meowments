@@ -13,12 +13,16 @@ export const Explore = () => {
   // const { likePostHandler, user } = useUtils();
   const { state } = usePost();
   const { currentUser } = useAuth();
+  const { state: userState } = useUsers();
   const isThePostByTheCurrentUser = state?.posts?.filter(
     (post) => post?.username === currentUser?.username
   );
   // const userData = localStorage.getItem("userData");
   // const user = JSON.parse(userData)?.user;
-
+  console.log(
+    currentUser.following,
+    "jddddddddddddddddddddddddddddddddddddddddddddddd"
+  );
   return (
     <div className="page-fractions">
       <SideNav />

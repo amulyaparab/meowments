@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./sideNav.css";
 import { useAuth } from "../../Contexts/AuthProvider";
+import { useEffect } from "react";
 export const SideNav = () => {
   const { authDispatch } = useAuth();
   const logout = () => {
     try {
       localStorage.removeItem("userData");
+
       authDispatch({
         type: "SET_USER",
         payload: null,
@@ -15,6 +17,7 @@ export const SideNav = () => {
       console.log(err);
     }
   };
+
   return (
     <>
       <div className="side-nav">

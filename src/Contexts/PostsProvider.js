@@ -2,12 +2,13 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { deletePost, getAllPosts, newPost } from "../Services/postServices";
 import { formatDate } from "../backend/utils/authUtils";
 import { v4 as uuid } from "uuid";
+import { useAuth } from "./AuthProvider";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const user = userData?.user;
-
+  // const userData = JSON.parse(localStorage.getItem("userData"));
+  // const user = userData?.user;
+  const { currentUser } = useAuth();
   const fetchPosts = async () => {
     try {
       const posts = await getAllPosts();
@@ -81,7 +82,7 @@ export const PostsProvider = ({ children }) => {
           },
         },
       ],
-      username: user?.username,
+      username: currentUser?.username,
       createdAt: formatDate(),
       updatedAt: formatDate(),
     },
