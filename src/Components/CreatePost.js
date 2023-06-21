@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { usePost } from "../Contexts/PostsProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 import { useAuth } from "../Contexts/AuthProvider";
@@ -8,30 +7,6 @@ export const CreatePost = () => {
   // const { user } = useUtils();
   const { state, postDispatch, createPost } = usePost();
   const { currentUser } = useAuth();
-  //     post: {
-  //       _id: uuid(),
-  //       imageUrl: "",
-  //       content: "",
-  //       likes: {
-  //         likeCount: 0,
-  //         likedBy: [],
-  //         dislikedBy: [],
-  //       },
-  //       comments: [
-  //         {
-  //           _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-  //           username: "adarshsharma",
-  //           text: "Black Love.",
-  //           votes: {
-  //             upvotedBy: [],
-  //             downvotedBy: [],
-  //           },
-  //         },
-  //       ],
-  //       username: user?.username,
-  //       createdAt: formatDate(),
-  //       updatedAt: formatDate(),
-  //     },
 
   const handleShowToast = () => {
     toast.success("Toast message!", { position: toast.POSITION.TOP_RIGHT });

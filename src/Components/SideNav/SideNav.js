@@ -1,18 +1,31 @@
 import { NavLink } from "react-router-dom";
 import "./sideNav.css";
 import { useAuth } from "../../Contexts/AuthProvider";
-import { useEffect } from "react";
+
+import { usePost } from "../../Contexts/PostsProvider";
+import { useUsers } from "../../Contexts/UsersProvider";
 export const SideNav = () => {
   const { authDispatch } = useAuth();
+  const { postDispatch } = usePost();
+  const { userDispatch } = useUsers();
   const logout = () => {
     try {
       localStorage.removeItem("userData");
 
+      // authDispatch({
+      //   type: "SET_USER",
+      //   payload: null,
+      //   encodedTokenPayload: null,
+      // });
       authDispatch({
-        type: "SET_USER",
-        payload: null,
-        encodedTokenPayload: null,
+        type: "EMPTY_EVERYTHING",
       });
+      // postDispatch({
+      //   type: "EMPTY_EVERYTHING",
+      // });
+      // userDispatch({
+      //   type: "EMPTY_EVERYTHING",
+      // });
     } catch (err) {
       console.log(err);
     }

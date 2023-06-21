@@ -20,6 +20,14 @@ export const authReducer = (state, action) => {
         ...state,
         newUser: { ...state.newUser, password: action.payload },
       };
+    case "EMPTY_EVERYTHING":
+      return {
+        ...state,
+        loginInUser: {},
+        username: "",
+        password: "",
+        encodedToken: "",
+      };
     case "FIRST_NAME":
       return {
         ...state,

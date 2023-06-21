@@ -2,6 +2,8 @@ export const userReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_USERS":
       return { ...state, users: action.payload };
+    case "EMPTY_EVERYTHING":
+      return { ...state, users: [] };
     case "FOLLOW_USER":
       return {
         ...state,

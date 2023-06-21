@@ -42,11 +42,14 @@ export const PostsProvider = ({ children }) => {
           },
         },
       ],
-      username: authState?.loginInUser?.username,
+      username:
+        JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
       createdAt: formatDate(),
       updatedAt: formatDate(),
     },
   };
+
+  console.log(authState?.loginInUser?.username, "hduhsauhdushaudhsad");
   const [state, postDispatch] = useReducer(postReducer, initialState);
   const editPost = async (postId, newData) => {
     try {
@@ -66,6 +69,7 @@ export const PostsProvider = ({ children }) => {
   };
   const createPost = async () => {
     try {
+      // postDispatch({ type: "CREATE_POST" });
       await newPost(state.post);
       const posts = await newPost(state.post);
       console.log(posts, "meowbdhjhhk");
@@ -74,6 +78,8 @@ export const PostsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  console.log(state.post, " statetetetette");
   useEffect(() => {
     fetchPosts();
   }, []);

@@ -3,8 +3,6 @@ import { followUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
 import { useAuth } from "../../Contexts/AuthProvider";
-import { fetchUsers } from "../../Services/userServices";
-import { useEffect } from "react";
 
 export const Suggestions = () => {
   const { state, userDispatch } = useUsers();

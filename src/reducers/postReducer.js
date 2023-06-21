@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
@@ -25,16 +27,51 @@ export const postReducer = (state, action) => {
         post: {
           ...state.post,
           content: action.payload,
+          username: JSON.parse(localStorage.getItem("userData"))?.user
+            ?.username,
         },
       };
     case "CREATE_POST":
       return {
         ...state,
-        post: { ...state.post, username: action.payload },
+        post: {
+          ...state.post,
+          username: JSON.parse(localStorage.getItem("userData"))?.user
+            ?.username,
+        },
         posts: [...state.posts, state.post],
       };
-    case "EDIT_POST":
-      return {};
+
+    case "SET_POST_USERNAME":
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          username: JSON.parse(localStorage.getItem("userData"))?.user
+            ?.username,
+        },
+      };
+    case "EMPTY_EVERYTHING":
+      return {
+        ...state,
+        posts: [],
+        userPosts: [],
+        post: {
+          _id: uuid(),
+          imageUrl: "",
+          content: "",
+          likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+          },
+
+          username:
+            JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
+        },
+      };
+    // case "EDIT_POST":
+    //   return {};
     case "DELETE_POST":
       return {
         ...state,

@@ -9,8 +9,10 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const initialState = {
     loginInUser: JSON.parse(localStorage.getItem("userData"))?.user || {},
-    username: "",
-    password: "",
+    username:
+      JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
+    password:
+      JSON.parse(localStorage.getItem("userData"))?.user?.password || "",
     newUser: {
       _id: uuid(),
       avatarUrl: "",
@@ -42,6 +44,7 @@ export const AuthProvider = ({ children }) => {
         data: loginData,
         url: "/api/auth/login",
       });
+      console.log({ foundUser });
       if (status === 200) {
         authDispatch({
           type: "SET_USER",
@@ -54,6 +57,7 @@ export const AuthProvider = ({ children }) => {
           JSON.stringify({ user: foundUser, encodedToken: encodedToken })
         );
       }
+
       console.log(foundUser, "sdks", status, "df");
     } catch (err) {
       console.log(err);
@@ -92,6 +96,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const [state, authDispatch] = useReducer(authReducer, initialState);
+
   console.log(state, "state");
   const userData = localStorage.getItem("userData");
   const currentUser = JSON.parse(userData)?.user;
@@ -105,9 +110,12 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  console.log(state, currentUser);
   const fetchCurrentToken = () => {
     try {
       const userData = localStorage.getItem("userData");
+
       const currentToken = JSON.parse(userData)?.encodedToken;
       return currentToken;
     } catch (err) {
