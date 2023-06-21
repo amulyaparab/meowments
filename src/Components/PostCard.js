@@ -24,7 +24,7 @@ export const PostCard = ({
   const [showDetails, setShowDetails] = useState(false);
   const handleCopyLink = (postId) => {
     navigator.clipboard
-      .writeText(`/post/${postId}`)
+      .writeText(`https://meowments.vercel.app/post/${postId}`)
       .then(() => {
         console.log("Link copied to clipboard!");
         toast.success("Link copied successfully!", {
