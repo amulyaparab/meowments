@@ -49,7 +49,6 @@ export const PostsProvider = ({ children }) => {
     },
   };
 
-  console.log(authState?.loginInUser?.username, "hduhsauhdushaudhsad");
   const [state, postDispatch] = useReducer(postReducer, initialState);
   const editPost = async (postId, newData) => {
     try {
@@ -61,7 +60,7 @@ export const PostsProvider = ({ children }) => {
   const deleteThePost = async (postId) => {
     try {
       const deleted = await deletePost(postId);
-      console.log(deleted, "fsdlkhfusdjkhhkjhjksdhjkfhsdfjkhdsjk");
+
       postDispatch({ type: "DELETE_POST", payload: postId });
     } catch (err) {
       console.log(err);
@@ -72,14 +71,13 @@ export const PostsProvider = ({ children }) => {
       // postDispatch({ type: "CREATE_POST" });
       await newPost(state.post);
       const posts = await newPost(state.post);
-      console.log(posts, "meowbdhjhhk");
+
       // postDispatch({ type: "CREATE_POST" });
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(state.post, " statetetetette");
   useEffect(() => {
     fetchPosts();
   }, []);

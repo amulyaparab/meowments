@@ -11,7 +11,6 @@ export const UtilsProvider = ({ children }) => {
     try {
       const liked = await likePost(postId);
       postDispatch({ type: "LIKED_POST", payload: postId, postPayload: liked });
-      console.log(liked, "dsfgsdjh");
     } catch (err) {
       console.log(err);
     }

@@ -19,10 +19,7 @@ export const Explore = () => {
   );
   // const userData = localStorage.getItem("userData");
   // const user = JSON.parse(userData)?.user;
-  console.log(
-    currentUser.following,
-    "jddddddddddddddddddddddddddddddddddddddddddddddd"
-  );
+
   return (
     <div className="page-fractions">
       <SideNav />

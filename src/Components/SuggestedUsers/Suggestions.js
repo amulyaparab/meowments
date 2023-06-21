@@ -12,13 +12,13 @@ export const Suggestions = () => {
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId);
-      console.log(state, "adjasdjsakkkkkk");
+
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(state, "meowwwwwwwwwww");
+
   const isUserFollowedByMe = (user) => {
     const isUserFollowedByMe = user?.followedBy?.includes(
       user?.followedBy.find((user) => user._id === currentUser._id)

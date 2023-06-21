@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
         data: loginData,
         url: "/api/auth/login",
       });
-      console.log({ foundUser });
+
       if (status === 200) {
         authDispatch({
           type: "SET_USER",
@@ -97,7 +97,6 @@ export const AuthProvider = ({ children }) => {
 
   const [state, authDispatch] = useReducer(authReducer, initialState);
 
-  console.log(state, "state");
   const userData = localStorage.getItem("userData");
   const currentUser = JSON.parse(userData)?.user;
   const currentToken = JSON.parse(userData)?.encodedToken;
@@ -111,7 +110,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  console.log(state, currentUser);
   const fetchCurrentToken = () => {
     try {
       const userData = localStorage.getItem("userData");
