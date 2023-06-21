@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 export const postReducer = (state, action) => {
+  console.log(action.type);
   switch (action.type) {
     case "FETCH_ALL_POSTS":
       return { ...state, posts: action.payload };

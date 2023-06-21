@@ -1,9 +1,12 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { fetchUsers } from "../Services/userServices";
 import { userReducer } from "../reducers/userReducer";
+import { useAuth } from "./AuthProvider";
 
 const UsersContext = createContext();
+
 export const UsersProvider = ({ children }) => {
+  const { currentUser } = useAuth();
   const fetchAllUsers = async () => {
     try {
       const users = await fetchUsers();
@@ -18,8 +21,8 @@ export const UsersProvider = ({ children }) => {
   };
   const [state, userDispatch] = useReducer(userReducer, initialState);
   useEffect(() => {
-    fetchAllUsers();
-  }, []);
+    if (currentUser) fetchAllUsers();
+  }, [currentUser]);
   return (
     <UsersContext.Provider value={{ state, userDispatch }}>
       {children}

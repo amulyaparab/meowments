@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuth } from "../Contexts/AuthProvider";
 
 const userData = localStorage.getItem("userData");
 const encodedToken = JSON.parse(userData)?.encodedToken;
@@ -32,14 +33,17 @@ const getPostsByUser = async (username) => {
     return posts;
   }
 };
-const newPost = async (post) => {
+console.log({ encodedToken });
+
+const newPost = async (post, token) => {
+  console.log({ token });
   const {
     data: { posts },
     status,
   } = await axios({
     method: "POST",
     url: "/api/posts",
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
     data: { postData: post },
   });
   if (status === 201) {
@@ -74,6 +78,7 @@ const editPost = async (postId, postData) => {
     return posts;
   }
 };
+
 export {
   getAllPosts,
   getPostsByUser,

@@ -20,9 +20,9 @@ export const SideNav = () => {
       authDispatch({
         type: "EMPTY_EVERYTHING",
       });
-      // postDispatch({
-      //   type: "EMPTY_EVERYTHING",
-      // });
+      postDispatch({
+        type: "EMPTY_EVERYTHING",
+      });
       // userDispatch({
       //   type: "EMPTY_EVERYTHING",
       // });

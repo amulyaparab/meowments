@@ -8,7 +8,7 @@ import { useUsers } from "./UsersProvider";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
-  const { currentUser, state: authState } = useAuth();
+  const { currentUser, state: authState, currentToken } = useAuth();
 
   const fetchPosts = async () => {
     try {
@@ -57,6 +57,7 @@ export const PostsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const deleteThePost = async (postId) => {
     try {
       const deleted = await deletePost(postId);
@@ -69,9 +70,9 @@ export const PostsProvider = ({ children }) => {
   const createPost = async () => {
     try {
       // postDispatch({ type: "CREATE_POST" });
-      await newPost(state.post);
-      const posts = await newPost(state.post);
-
+      console.log({ abcd: state.post });
+      const posts = await newPost(state.post, currentToken);
+      console.log(posts);
       // postDispatch({ type: "CREATE_POST" });
     } catch (err) {
       console.log(err);
@@ -79,8 +80,11 @@ export const PostsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (currentUser) fetchPosts();
+  }, [currentUser]);
+
+  console.log({ state });
+
   return (
     <PostContext.Provider
       value={{ state, postDispatch, deleteThePost, editPost, createPost }}

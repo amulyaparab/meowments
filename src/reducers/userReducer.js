@@ -1,4 +1,5 @@
 export const userReducer = (state, action) => {
+  console.log(action.type);
   switch (action.type) {
     case "FETCH_ALL_USERS":
       return { ...state, users: action.payload };
