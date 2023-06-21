@@ -3,11 +3,10 @@ import { deletePost, getAllPosts, newPost } from "../Services/postServices";
 import { formatDate } from "../backend/utils/authUtils";
 import { v4 as uuid } from "uuid";
 import { useAuth } from "./AuthProvider";
+import { postReducer } from "../reducers/postReducer";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
-  // const userData = JSON.parse(localStorage.getItem("userData"));
-  // const user = userData?.user;
   const { currentUser } = useAuth();
   const fetchPosts = async () => {
     try {
@@ -18,47 +17,6 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "FETCH_ALL_POSTS":
-        return { ...state, posts: action.payload };
-      case "LIKED_POST":
-        return {
-          ...state,
-          // posts: state.posts.map((post) => {
-          //   return post._id === action.payload
-          //     ? {
-          //         ...post,
-          //         likes: {
-          //           likeCount: post.likes.likeCount + 1,
-          //           likedBy: [user, "sdfhsdjk"],
-          //         },
-          //       }
-          //     : post;
-          // }),
-          posts: action.postPayload,
-          // userPosts: action.postPayload,
-        };
-      case "POST_CONTENT":
-        return { ...state, post: { ...state.post, content: action.payload } };
-      case "CREATE_POST":
-        return { ...state, posts: [...state.posts, state.post] };
-      case "EDIT_POST":
-        return {};
-      case "DELETE_POST":
-        return {
-          ...state,
-          posts: state?.posts?.filter((post) => post._id !== action.payload),
-          userPosts: state?.userPosts?.filter(
-            (post) => post._id !== action.payload
-          ),
-        };
-      case "GET_USER_POSTS":
-        return { ...state, userPosts: action.payload };
-      default:
-        return state;
-    }
-  };
   const initialState = {
     posts: [],
     userPosts: [],
@@ -87,7 +45,7 @@ export const PostsProvider = ({ children }) => {
       updatedAt: formatDate(),
     },
   };
-  const [state, postDispatch] = useReducer(reducer, initialState);
+  const [state, postDispatch] = useReducer(postReducer, initialState);
   const editPost = async (postId, newData) => {
     try {
       await editPost(postId, newData);

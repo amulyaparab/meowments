@@ -3,55 +3,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import { formatDate } from "../backend/utils/authUtils";
 import { v4 as uuid } from "uuid";
+import { authReducer } from "../reducers/authReducer";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "SET_USER":
-        return {
-          ...state,
-          loginInUser: action.payload,
-          encodedToken: action.encodedTokenPayload,
-        };
-      case "SET_USERNAME":
-        return { ...state, username: action.payload };
-      case "SET_PASSWORD":
-        return { ...state, password: action.payload };
-      case "NEW_USERNAME":
-        return {
-          ...state,
-          newUser: { ...state.newUser, username: action.payload },
-        };
-      case "NEW_PASSWORD":
-        return {
-          ...state,
-          newUser: { ...state.newUser, password: action.payload },
-        };
-      case "FIRST_NAME":
-        return {
-          ...state,
-          newUser: { ...state.newUser, firstName: action.payload },
-        };
-      case "LAST_NAME":
-        return {
-          ...state,
-          newUser: { ...state.newUser, lastName: action.payload },
-        };
-      case "SET_EMAIL":
-        return {
-          ...state,
-          newUser: { ...state.newUser, email: action.payload },
-        };
-      default:
-        return state;
-    }
-  };
   const initialState = {
     loginInUser: {},
     username: "",
     password: "",
-
     newUser: {
       _id: uuid(),
       avatarUrl: "",
@@ -72,6 +31,7 @@ export const AuthProvider = ({ children }) => {
     encodedToken:
       JSON?.parse(localStorage?.getItem("userData"))?.encodedToken || "",
   };
+
   const userLoginData = async (loginData) => {
     try {
       const {
@@ -131,7 +91,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const [state, authDispatch] = useReducer(reducer, initialState);
+  const [state, authDispatch] = useReducer(authReducer, initialState);
   console.log(state?.encodedToken, "state");
   const userData = localStorage.getItem("userData");
   const currentUser = JSON.parse(userData)?.user;
