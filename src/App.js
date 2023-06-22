@@ -15,6 +15,7 @@ import { Header } from "./Components/Header/Header";
 import { RequiresAuth } from "./Components/RequireAuth";
 import Mockman from "mockman-js";
 import { SinglePost } from "./Pages/SinglePost";
+
 function App() {
   return (
     <div className="App">

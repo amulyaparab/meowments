@@ -2,19 +2,19 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./login.css";
 import loginCat from "../../assets/Images/login.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
-import { useEffect } from "react";
 import { usePost } from "../../Contexts/PostsProvider";
+
 export const Login = () => {
   const navigate = useNavigate();
   const { userLoginData, authDispatch, state } = useAuth();
   const { postDispatch } = usePost();
+
   const loginAsGuest = async () => {
     try {
       await userLoginData({
         username: "adarshsharma",
         password: "adarshsharma123",
       });
-
       postDispatch({
         type: "SET_POST_USERNAME",
       });

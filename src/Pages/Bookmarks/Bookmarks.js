@@ -7,7 +7,7 @@ export const Bookmarks = () => {
     <>
       <div className="page-fractions">
         <SideNav />
-        <div>
+        <div className="background">
           <h1>Bookmarks</h1>
         </div>
         <Suggestions />

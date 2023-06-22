@@ -4,6 +4,8 @@ export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
       return { ...state, posts: action.payload };
+    case "USER_FEED_POSTS":
+      return { ...state, feedPosts: action.payload };
     case "LIKED_POST":
       return {
         ...state,
@@ -55,6 +57,7 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         posts: [],
+        feedPosts: [],
         userPosts: [],
         post: {
           _id: uuid(),

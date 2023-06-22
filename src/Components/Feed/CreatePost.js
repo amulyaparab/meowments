@@ -1,6 +1,6 @@
-import { usePost } from "../Contexts/PostsProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { useAuth } from "../Contexts/AuthProvider";
+import { usePost } from "../../Contexts/PostsProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
+import { useAuth } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const CreatePost = () => {
