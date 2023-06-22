@@ -6,8 +6,7 @@ import { SuggestedUser } from "../SuggestedUsers/Suggestion";
 export const Header = () => {
   const navigate = useNavigate();
   const { state, currentUser } = useAuth();
-  // const userData = localStorage.getItem("userData");
-  // const user = JSON.parse(userData)?.user;
+
   return (
     <div className="navbar">
       <h1 className="heading" onClick={() => navigate("/")}>

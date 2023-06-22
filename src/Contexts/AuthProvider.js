@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       createdAt: formatDate(),
       updatedAt: formatDate(),
       bookmarks: [],
-      followedBy: [],
+      followers: [],
       following: [],
       email: "",
     },
@@ -124,7 +124,6 @@ export const AuthProvider = ({ children }) => {
     fetchCurrentUser();
 
     fetchCurrentToken();
-    // console.log(currentUser, currentToken, "amullllllllllllllllllllll");
   }, [currentUser, currentToken]);
 
   return (

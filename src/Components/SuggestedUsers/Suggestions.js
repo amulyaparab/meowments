@@ -1,5 +1,5 @@
 import { useUsers } from "../../Contexts/UsersProvider";
-import { followUser } from "../../Services/followServices";
+import { followUser, unfollowUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
 import { useAuth } from "../../Contexts/AuthProvider";
@@ -7,21 +7,30 @@ import { useAuth } from "../../Contexts/AuthProvider";
 export const Suggestions = () => {
   const { state, userDispatch } = useUsers();
 
-  const { currentUser } = useAuth();
+  const { currentUser, currentToken } = useAuth();
 
   const followUsername = async (userId) => {
     try {
-      const followed = await followUser(userId);
-
+      const followed = await followUser(userId, currentToken);
+      console.log(followed, "follow");
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
     }
   };
-
+  const unfollowUsername = async (userId) => {
+    try {
+      const unfollowed = await unfollowUser(userId, currentToken);
+      console.log(unfollowed, "unfollow");
+      userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(state, "suer");
   const isUserFollowedByMe = (user) => {
-    const isUserFollowedByMe = user?.followedBy?.includes(
-      user?.followedBy.find((user) => user._id === currentUser._id)
+    const isUserFollowedByMe = user?.followers?.includes(
+      user?.followers.find((user) => user._id === currentUser._id)
     );
     return isUserFollowedByMe;
   };
@@ -36,10 +45,11 @@ export const Suggestions = () => {
               <SuggestedUser {...user} showUserName />
               {isUserFollowedByMe(user) ? (
                 <button
-                // onClick={() => {
-                //   followUsername(user._id);
-                //   isUserFollowedByMe(user);
-                // }}
+                  className="followed"
+                  onClick={() => {
+                    unfollowUsername(user._id);
+                    // isUserFollowedByMe(user);
+                  }}
                 >
                   Unfollow
                 </button>
@@ -47,7 +57,7 @@ export const Suggestions = () => {
                 <button
                   onClick={() => {
                     followUsername(user._id);
-                    isUserFollowedByMe(user);
+                    // isUserFollowedByMe(user);
                   }}
                 >
                   + Follow

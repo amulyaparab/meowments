@@ -71,6 +71,14 @@
 .suggestionsPerson .date {
   color: #999999;
 }
+.suggestions .followed {
+  background-color: #ffc11b;
+  color: #ffffff;
+}
+.suggestions .followed:hover {
+  background-color: #ffebb8;
+  color: #666666;
+}
 @media screen and (max-width: 1024px) {
   .suggestions .one-user {
     flex-wrap: wrap;

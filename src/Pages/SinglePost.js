@@ -8,6 +8,7 @@ export const SinglePost = () => {
   const { postId } = useParams();
   const { state } = usePost();
   const findPost = state?.posts?.find((post) => post._id === postId);
+
   return (
     <div className="page-fractions">
       <SideNav />
