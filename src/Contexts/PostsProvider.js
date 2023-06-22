@@ -114,7 +114,7 @@ export const PostsProvider = ({ children }) => {
       fetchPosts();
       fetchUserFeedPosts();
     }
-  }, [currentUser, state?.posts, userState?.users]);
+  }, [currentUser, userState?.users]);
 
   console.log({ state });
 
