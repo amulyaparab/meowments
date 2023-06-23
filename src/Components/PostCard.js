@@ -19,7 +19,7 @@ export const PostCard = ({
 }) => {
   const { state: userState } = useUsers();
   const { likePostHandler } = useUtils();
-  const { state, editPost, deleteThePost } = usePost();
+  const { state, editPost, deleteThePost, fetchUserFeedPosts } = usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
   const handleCopyLink = (postId) => {
@@ -40,10 +40,10 @@ export const PostCard = ({
   };
   const isThePostByTheCurrentUser =
     // _id ===
-    state?.userPosts
+    state?.posts
       ?.filter((post) => post?.username === currentUser?.username)
-      .map((post) => post?._id)
-      .includes(_id);
+      .map((post) => post?.username)
+      .includes(username);
 
   const navigate = useNavigate();
   return (
@@ -58,8 +58,24 @@ export const PostCard = ({
       )}
       {isThePostByTheCurrentUser && showDetails && (
         <div className="edit-block">
-          <p onClick={() => editPost(_id)}>Edit</p>
-          <p onClick={() => deleteThePost(_id)}>Delete</p>
+          <p
+            onClick={() => {
+              editPost(_id);
+              // fetchUserFeedPosts();
+              setShowDetails(false);
+            }}
+          >
+            Edit
+          </p>
+          <p
+            onClick={() => {
+              deleteThePost(_id);
+              // fetchUserFeedPosts();
+              setShowDetails(false);
+            }}
+          >
+            Delete
+          </p>
         </div>
       )}
       {userState?.users?.map((user) =>

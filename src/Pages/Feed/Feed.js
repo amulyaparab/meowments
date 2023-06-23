@@ -11,8 +11,8 @@ export const Feed = () => {
       <SideNav />
       <div className="background">
         <h1>Your Feed</h1>
-        <button>Trending</button>
-        <button>Latest</button>
+        <button className="feed-buttons">Trending</button>
+        <button className="feed-buttons">Latest</button>
         <CreatePost />
         <FeedPosts />
       </div>

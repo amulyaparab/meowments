@@ -12,7 +12,6 @@ export const Suggestions = () => {
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
-      console.log(followed, "follow");
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
@@ -21,13 +20,12 @@ export const Suggestions = () => {
   const unfollowUsername = async (userId) => {
     try {
       const unfollowed = await unfollowUser(userId, currentToken);
-      console.log(unfollowed, "unfollow");
       userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(state, "suer");
+
   const isUserFollowedByMe = (user) => {
     const isUserFollowedByMe = user?.followers?.includes(
       user?.followers.find((user) => user._id === currentUser._id)

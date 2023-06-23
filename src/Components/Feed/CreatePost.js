@@ -3,14 +3,17 @@ import { useUtils } from "../../Contexts/UtilsProvider";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import { useUsers } from "../../Contexts/UsersProvider";
 export const CreatePost = () => {
   // const { user } = useUtils();
-  const { state, postDispatch, createPost } = usePost();
+  const { state, postDispatch, createPost, fetchUserFeedPosts } = usePost();
   const { currentUser } = useAuth();
-
+  const { state: userState } = useUsers();
   const handleShowToast = () => {
     toast.success("Toast message!", { position: toast.POSITION.TOP_RIGHT });
   };
+  const navigate = useNavigate();
 
   return (
     <>
@@ -20,7 +23,9 @@ export const CreatePost = () => {
             className="avatar"
             src={currentUser?.avatarUrl}
             alt={currentUser?.username}
+            onClick={() => navigate(`/profile/${currentUser?._id}`)}
           />
+
           <textarea
             placeholder="Share your meowment"
             onChange={(event) =>
@@ -31,9 +36,6 @@ export const CreatePost = () => {
             }
           />
         </div>
-        <label>
-          <input type="file" />
-        </label>
         <button
           onClick={() => {
             createPost();
@@ -41,9 +43,9 @@ export const CreatePost = () => {
         >
           Post
         </button>
-        <div>
-          <button onClick={handleShowToast}>Show Toast</button>
-        </div>
+        {/* <label><input type="file" /></label> */}
+
+        {/* <button onClick={handleShowToast}>Show Toast</button> */}
       </div>
     </>
   );

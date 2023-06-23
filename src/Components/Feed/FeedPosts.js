@@ -3,7 +3,7 @@ import { PostCard } from "../PostCard";
 export const FeedPosts = () => {
   //   const feedPosts = () => {};
   const { state } = usePost();
-  console.log(state, "sadsah");
+
   return (
     <>
       {state?.feedPosts?.map((post) => (

@@ -33,10 +33,8 @@ const getPostsByUser = async (username) => {
     return posts;
   }
 };
-console.log({ encodedToken });
 
 const newPost = async (post, token) => {
-  console.log({ token });
   const {
     data: { posts },
     status,
@@ -50,14 +48,14 @@ const newPost = async (post, token) => {
     return posts;
   }
 };
-const deletePost = async (postId) => {
+const deletePost = async (postId, token) => {
   const {
     data: { posts },
     status,
   } = await axios({
     method: "DELETE",
     url: `/api/posts/${postId}`,
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
   });
   if (status === 201) {
     return posts;

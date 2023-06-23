@@ -46,14 +46,37 @@
   background-color: #ffc11b;
   height: 300px;
   padding: 2rem;
+  padding-bottom: 5rem;
   border-radius: 10px;
+  width: 44%;
+  margin: auto;
+  height: max-content;
+  position: relative;
 }
 .new-post-div {
   display: flex;
-  align-items: flex-start;
+}
+.new-post-div img {
+  position: relative;
+  top: 20px;
+  left: 0px;
+}
+.new-post button {
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-weight: bold;
+  color: #282c34;
+  position: absolute;
+  right: 2rem;
 }
 .new-post textarea {
   width: 90%;
+  border: none;
+  border-radius: 10px;
 }
 .avatar {
   width: 50px;
@@ -66,9 +89,15 @@
   .page-fractions {
     grid-template-columns: 70px 3fr 1fr;
   }
+  .new-post {
+    width: 58%;
+  }
 }
 @media screen and (max-width: 768px) {
   .page-fractions {
     grid-template-columns: 70px 2fr;
+  }
+  .new-post {
+    width: 67%;
   }
 }

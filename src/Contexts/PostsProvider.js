@@ -57,8 +57,6 @@ export const PostsProvider = ({ children }) => {
   const fetchUserFeedPosts = async () => {
     console.log(userState, currentUser, state.posts, "meww");
     try {
-      await userState;
-      await state.posts;
       const currentUserInState = userState?.users?.find(
         (user) => user?.username === currentUser?.username
       );
@@ -74,7 +72,6 @@ export const PostsProvider = ({ children }) => {
         type: "USER_FEED_POSTS",
         payload: postsByFollowingAndUser,
       });
-      // console.log(postsByFollowingAndUser, "meww");
     } catch (err) {
       console.log(err);
     }
@@ -90,8 +87,7 @@ export const PostsProvider = ({ children }) => {
 
   const deleteThePost = async (postId) => {
     try {
-      const deleted = await deletePost(postId);
-
+      await deletePost(postId, currentToken);
       postDispatch({ type: "DELETE_POST", payload: postId });
     } catch (err) {
       console.log(err);
@@ -99,11 +95,11 @@ export const PostsProvider = ({ children }) => {
   };
   const createPost = async () => {
     try {
-      // postDispatch({ type: "CREATE_POST" });
-      console.log({ abcd: state.post });
-      const posts = await newPost(state.post, currentToken);
-      console.log(posts);
-      // postDispatch({ type: "CREATE_POST" });
+      await newPost(state.post, currentToken);
+      postDispatch({
+        type: "UPDATE_FEED_POSTS",
+        payload: state.post,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -116,8 +112,6 @@ export const PostsProvider = ({ children }) => {
     }
   }, [currentUser, userState?.users]);
 
-  console.log({ state });
-
   return (
     <PostContext.Provider
       value={{
@@ -125,7 +119,7 @@ export const PostsProvider = ({ children }) => {
         postDispatch,
         deleteThePost,
         editPost,
-
+        fetchUserFeedPosts,
         createPost,
       }}
     >

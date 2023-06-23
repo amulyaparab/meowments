@@ -1,0 +1,24 @@
+.feed-buttons {
+  background-image: url("https://images.unsplash.com/photo-1602971591754-60a28cbcea9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  width: 24%;
+  margin: 1rem 0.5rem 1rem;
+  color: #ffebb8;
+  font-size: medium;
+  font-weight: 550;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .feed-buttons {
+    width: 32.5%;
+    background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
+  }
+}
+@media screen and (max-width: 768px) {
+  .feed-buttons {
+    width: 39%;
+  }
+}

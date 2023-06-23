@@ -6,6 +6,8 @@ export const postReducer = (state, action) => {
       return { ...state, posts: action.payload };
     case "USER_FEED_POSTS":
       return { ...state, feedPosts: action.payload };
+    case "UPDATE_FEED_POSTS":
+      return { ...state, feedPosts: [...state.feedPosts, action.payload] };
     case "LIKED_POST":
       return {
         ...state,
@@ -80,6 +82,9 @@ export const postReducer = (state, action) => {
         ...state,
         posts: state?.posts?.filter((post) => post._id !== action.payload),
         userPosts: state?.userPosts?.filter(
+          (post) => post._id !== action.payload
+        ),
+        feedPosts: state?.feedPosts?.filter(
           (post) => post._id !== action.payload
         ),
       };
