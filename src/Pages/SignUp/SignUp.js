@@ -3,7 +3,8 @@ import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 export const SignUp = () => {
-  const { state, userSignUpData, authDispatch } = useAuth();
+  const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
+    useAuth();
   const signUpHandler = async () => {
     try {
       await userSignUpData({
@@ -12,6 +13,7 @@ export const SignUp = () => {
         username: state?.newUser?.username,
         email: state?.newUser?.email,
         password: state?.newUser?.password,
+        confirmPassword: state?.newUser?.comfirmPassword,
       });
     } catch (err) {
       console.log(err);
@@ -69,10 +71,34 @@ export const SignUp = () => {
         </label>
         <label>
           Password{" "}
+          {showPassword.signUpPassword ? (
+            <i
+              class="fa-solid fa-eye"
+              onClick={() =>
+                state?.newUser?.password &&
+                setShowPassword({
+                  ...showPassword,
+                  signUpPassword: false,
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fa-solid fa-eye-slash"
+              onClick={() =>
+                state?.newUser?.password &&
+                setShowPassword({
+                  ...showPassword,
+                  signUpPassword: true,
+                })
+              }
+            ></i>
+          )}
           <input
             className="inputs"
-            type="password"
+            type={`${showPassword.signUpPassword ? "text" : "password"}`}
             placeholder="********"
+            value={state?.newUser?.password}
             onChange={(event) =>
               authDispatch({
                 type: "NEW_PASSWORD",
@@ -83,7 +109,41 @@ export const SignUp = () => {
         </label>
         <label>
           Confirm Password{" "}
-          <input className="inputs" type="password" placeholder="********" />
+          {showPassword.signUpConfirmPassword ? (
+            <i
+              class="fa-solid fa-eye"
+              onClick={() =>
+                state?.newUser?.confirmPassword?.length &&
+                setShowPassword({
+                  ...showPassword,
+                  signUpConfirmPassword: false,
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fa-solid fa-eye-slash"
+              onClick={() =>
+                state?.newUser?.confirmPassword?.length &&
+                setShowPassword({
+                  ...showPassword,
+                  signUpConfirmPassword: true,
+                })
+              }
+            ></i>
+          )}
+          <input
+            className="inputs"
+            value={state?.newUser?.confirmPassword}
+            onChange={(event) =>
+              authDispatch({
+                type: "CONFIRM_PASSWORD",
+                payload: event.target.value,
+              })
+            }
+            type={`${showPassword.signUpConfirmPassword ? "text" : "password"}`}
+            placeholder="********"
+          />
         </label>
         <label className="left">
           <input type="checkbox" className="checkbox" /> I Accept All Terms &

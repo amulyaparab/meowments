@@ -95,7 +95,8 @@ export const PostsProvider = ({ children }) => {
   };
   const createPost = async () => {
     try {
-      await newPost(state.post, currentToken);
+      const posts = await newPost(state.post, currentToken);
+      console.log(posts, "daslkdhaskjhdkjsah");
       postDispatch({
         type: "UPDATE_FEED_POSTS",
         payload: state.post,
@@ -108,10 +109,14 @@ export const PostsProvider = ({ children }) => {
   useEffect(() => {
     if (currentUser) {
       fetchPosts();
-      fetchUserFeedPosts();
     }
   }, [currentUser, userState?.users]);
 
+  useEffect(() => {
+    if (currentUser) {
+      fetchUserFeedPosts();
+    }
+  }, [currentUser, userState?.users, state?.posts]);
   return (
     <PostContext.Provider
       value={{

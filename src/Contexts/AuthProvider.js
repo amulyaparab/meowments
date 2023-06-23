@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { formatDate } from "../backend/utils/authUtils";
@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
       occupation: "",
       username: "",
       password: "",
+      confirmPassword: "",
       createdAt: formatDate(),
       updatedAt: formatDate(),
       bookmarks: [],
@@ -33,7 +34,11 @@ export const AuthProvider = ({ children }) => {
     encodedToken:
       JSON?.parse(localStorage?.getItem("userData"))?.encodedToken || "",
   };
-
+  const [showPassword, setShowPassword] = useState({
+    login: false,
+    signUpPassword: false,
+    signUpConfirmPassword: false,
+  });
   const userLoginData = async (loginData) => {
     try {
       const {
@@ -137,6 +142,8 @@ export const AuthProvider = ({ children }) => {
         fetchCurrentUser,
         currentToken,
         authDispatch,
+        showPassword,
+        setShowPassword,
       }}
     >
       {children}

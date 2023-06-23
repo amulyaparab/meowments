@@ -20,6 +20,11 @@ export const authReducer = (state, action) => {
         ...state,
         newUser: { ...state.newUser, password: action.payload },
       };
+    case "CONFIRM_PASSWORD":
+      return {
+        ...state,
+        newUser: { ...state.newUser, confirmPassword: action.payload },
+      };
     case "EMPTY_EVERYTHING":
       return {
         ...state,

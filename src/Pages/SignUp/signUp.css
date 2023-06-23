@@ -79,3 +79,12 @@
   height: 17px;
   margin-right: 1rem;
 }
+.sign-up-form label {
+  position: relative;
+}
+.sign-up-form i {
+  position: absolute;
+  top: 2.6rem;
+  right: 0.7rem;
+  cursor: pointer;
+}

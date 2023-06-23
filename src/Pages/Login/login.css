@@ -54,6 +54,7 @@
   font-weight: 600;
   font-size: large;
   color: #333333;
+  position: relative;
 }
 .login-form small a {
   text-decoration: none;
@@ -78,6 +79,12 @@
   width: 20px;
   height: 20px;
   margin-right: 1rem;
+}
+.login-form i {
+  position: absolute;
+  top: 2.8rem;
+  right: 0.7rem;
+  cursor: pointer;
 }
 @media screen and (max-width: 1300px) {
   .parent {

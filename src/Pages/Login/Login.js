@@ -6,9 +6,14 @@ import { usePost } from "../../Contexts/PostsProvider";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { userLoginData, authDispatch, state } = useAuth();
+  const { userLoginData, authDispatch, state, showPassword, setShowPassword } =
+    useAuth();
   const { postDispatch } = usePost();
-
+  // const [showPassword, setShowPassword] = useState({
+  //   login: false,
+  //   signUpPassword: false,
+  //   signUpConfirmPassword: false,
+  // });
   const loginAsGuest = async () => {
     try {
       await userLoginData({
@@ -63,9 +68,32 @@ export const Login = () => {
         </label>
         <label>
           Password
+          {showPassword.login ? (
+            <i
+              class="fa-solid fa-eye"
+              onClick={() =>
+                state?.password?.length !== 0 &&
+                setShowPassword({
+                  ...showPassword,
+                  login: false,
+                })
+              }
+            ></i>
+          ) : (
+            <i
+              class="fa-solid fa-eye-slash"
+              onClick={() =>
+                state?.password?.length !== 0 &&
+                setShowPassword({
+                  ...showPassword,
+                  login: true,
+                })
+              }
+            ></i>
+          )}
           <input
             className="inputs"
-            type="password"
+            type={`${showPassword.login ? "text" : "password"}`}
             placeholder="********"
             value={state?.password}
             onChange={(event) =>
