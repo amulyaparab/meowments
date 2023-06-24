@@ -38,7 +38,13 @@ export const postReducer = (state, action) => {
         },
         posts: [...state.posts, state.post],
       };
-
+    case "BOOKMARK_POSTS":
+      return {
+        ...state,
+        bookmarks: state.posts.filter((post) =>
+          action.payload.includes(post._id)
+        ),
+      };
     case "SET_POST_USERNAME":
       return {
         ...state,
@@ -48,6 +54,7 @@ export const postReducer = (state, action) => {
             ?.username,
         },
       };
+
     case "EMPTY_EVERYTHING":
       return {
         ...state,

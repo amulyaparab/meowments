@@ -3,11 +3,12 @@ import { getAllPosts } from "../Services/postServices";
 import { dislikePost, likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
+import { bookmarkPost } from "../Services/bookmarksServices";
 
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
-  const { postDispatch } = usePost();
+  const { postDispatch, state } = usePost();
   const { currentToken } = useAuth();
   const likePostHandler = async (postId) => {
     try {
@@ -25,8 +26,20 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const bookMarkPostHandler = async (postId) => {
+    try {
+      const bookmarked = await bookmarkPost(postId, currentToken);
+      console.log(bookmarked, state.bookmarks, "bookmarked");
+      postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <UtilsContext.Provider value={{ likePostHandler, dislikePostHandler }}>
+    <UtilsContext.Provider
+      value={{ likePostHandler, dislikePostHandler, bookMarkPostHandler }}
+    >
       {children}
     </UtilsContext.Provider>
   );

@@ -3,14 +3,14 @@ import axios from "axios";
 const userData = localStorage.getItem("userData");
 const encodedToken = JSON.parse(userData)?.encodedToken;
 
-const bookmarkPost = async (postId) => {
+const bookmarkPost = async (postId, token) => {
   const {
     data: { bookmarks },
     status,
   } = await axios({
     method: "POST",
     url: `/api/users/bookmark/${postId}`,
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
     data: {},
   });
   if (status === 200) {

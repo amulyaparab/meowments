@@ -46,7 +46,7 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           followers: [],
           following: [],
-          // bookmarks: [],
+          bookmarks: [],
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));

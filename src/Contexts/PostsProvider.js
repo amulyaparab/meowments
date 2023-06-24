@@ -18,6 +18,7 @@ export const PostsProvider = ({ children }) => {
     posts: [],
     userPosts: [],
     feedPosts: [],
+    bookmarks: [],
     post: {
       _id: uuid(),
       imageUrl: "",

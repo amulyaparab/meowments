@@ -18,7 +18,8 @@ export const PostCard = ({
   isLiked,
 }) => {
   const { state: userState } = useUsers();
-  const { likePostHandler, dislikePostHandler } = useUtils();
+  const { likePostHandler, dislikePostHandler, bookMarkPostHandler } =
+    useUtils();
   const { state, editPost, deleteThePost } = usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
@@ -26,18 +27,21 @@ export const PostCard = ({
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${postId}`)
       .then(() => {
-        console.log("Link copied to clipboard!");
         toast.success("Link copied successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
       })
       .catch((error) => {
-        console.error("Failed to copy link to clipboard", error);
         toast.success("Failed to copy link...Try again.", {
           position: toast.POSITION.TOP_RIGHT,
         });
       });
   };
+
+  const isBookmarked = state.bookmarks.filter(
+    (bookmark) => bookmark._id === _id
+  ).length;
+
   const isThePostByTheCurrentUser = state?.posts
     ?.filter((post) => post?.username === currentUser?.username)
     .map((post) => post?.username)
@@ -101,7 +105,10 @@ export const PostCard = ({
           className="fa-solid fa-share-nodes"
           onClick={() => handleCopyLink(_id)}
         ></i>
-        <i className="fa-regular fa-bookmark"></i>
+        <i
+          class={`fa-solid fa-bookmark ${isBookmarked && "yellow"}`}
+          onClick={() => bookMarkPostHandler(_id)}
+        ></i>
       </div>
     </div>
   );
