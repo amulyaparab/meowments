@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const userData = localStorage.getItem("userData");
-const encodedToken = JSON.parse(userData)?.encodedToken;
 const likePost = async (postId, token) => {
   const {
     data: { posts },
@@ -16,14 +14,14 @@ const likePost = async (postId, token) => {
     return posts;
   }
 };
-const dislikePost = async (postId) => {
+const dislikePost = async (postId, token) => {
   const {
     data: { posts },
     status,
   } = await axios({
     method: "POST",
     url: `/api/posts/dislike/${postId}`,
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
     data: {},
   });
   if (status === 201) {

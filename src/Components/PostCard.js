@@ -18,8 +18,8 @@ export const PostCard = ({
   isLiked,
 }) => {
   const { state: userState } = useUsers();
-  const { likePostHandler } = useUtils();
-  const { state, editPost, deleteThePost, fetchUserFeedPosts } = usePost();
+  const { likePostHandler, dislikePostHandler } = useUtils();
+  const { state, editPost, deleteThePost } = usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
   const handleCopyLink = (postId) => {
@@ -38,12 +38,10 @@ export const PostCard = ({
         });
       });
   };
-  const isThePostByTheCurrentUser =
-    // _id ===
-    state?.posts
-      ?.filter((post) => post?.username === currentUser?.username)
-      .map((post) => post?.username)
-      .includes(username);
+  const isThePostByTheCurrentUser = state?.posts
+    ?.filter((post) => post?.username === currentUser?.username)
+    .map((post) => post?.username)
+    .includes(username);
 
   const navigate = useNavigate();
   return (
@@ -61,7 +59,6 @@ export const PostCard = ({
           <p
             onClick={() => {
               editPost(_id);
-              // fetchUserFeedPosts();
               setShowDetails(false);
             }}
           >
@@ -70,7 +67,6 @@ export const PostCard = ({
           <p
             onClick={() => {
               deleteThePost(_id);
-              // fetchUserFeedPosts();
               setShowDetails(false);
             }}
           >
@@ -97,7 +93,7 @@ export const PostCard = ({
         <i
           className={`fa-solid fa-heart ${isLiked && "yellow"}`}
           onClick={() => {
-            likePostHandler(_id);
+            isLiked ? dislikePostHandler(_id) : likePostHandler(_id);
           }}
         ></i>
         <i className="fa-regular fa-comment"></i>

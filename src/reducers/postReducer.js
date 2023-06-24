@@ -11,19 +11,12 @@ export const postReducer = (state, action) => {
     case "LIKED_POST":
       return {
         ...state,
-        // posts: state.posts.map((post) => {
-        //   return post._id === action.payload
-        //     ? {
-        //         ...post,
-        //         likes: {
-        //           likeCount: post.likes.likeCount + 1,
-        //           likedBy: [user, "sdfhsdjk"],
-        //         },
-        //       }
-        //     : post;
-        // }),
-        posts: action.postPayload,
-        // userPosts: action.postPayload,
+        posts: action.payload,
+      };
+    case "DISLIKE_POST":
+      return {
+        ...state,
+        posts: action.payload,
       };
     case "POST_CONTENT":
       return {

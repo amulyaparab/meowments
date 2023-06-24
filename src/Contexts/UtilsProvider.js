@@ -1,32 +1,32 @@
 import { createContext, useContext, useEffect } from "react";
 import { getAllPosts } from "../Services/postServices";
-import { likePost } from "../Services/likeServices";
+import { dislikePost, likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
 
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
-  const { state, postDispatch } = usePost();
+  const { postDispatch } = usePost();
   const { currentToken } = useAuth();
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
-      postDispatch({ type: "LIKED_POST", payload: postId, postPayload: liked });
+      postDispatch({ type: "LIKED_POST", payload: liked });
     } catch (err) {
       console.log(err);
     }
   };
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const user = userData?.user;
-  const encodedToken = userData?.encodedToken;
-  useEffect(() => {
-    // getAllPosts();
-  }, []);
+  const dislikePostHandler = async (postId) => {
+    try {
+      const disliked = await dislikePost(postId, currentToken);
+      postDispatch({ type: "DISLIKE_POST", payload: disliked });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
-    <UtilsContext.Provider
-      value={{ likePostHandler, user, userData, encodedToken }}
-    >
+    <UtilsContext.Provider value={{ likePostHandler, dislikePostHandler }}>
       {children}
     </UtilsContext.Provider>
   );
