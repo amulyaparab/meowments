@@ -91,7 +91,7 @@ export const PostCard = ({
           onClick={() => navigate(`/post/${_id}`)}
         />
       ) : null}
-      <p>{content}</p>
+      <p className="post-text-width">{content}</p>
       <div>{likes?.likeCount} likes </div>
       <div className="icons">
         <i

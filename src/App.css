@@ -101,3 +101,24 @@
     width: 67%;
   }
 }
+.sort-div {
+  position: relative;
+}
+.sort-by-date {
+  background-color: #ffffff;
+  width: max-content;
+  /* margin: auto; */
+  padding: 1rem;
+  text-align: left;
+  border-radius: 10px;
+  position: absolute;
+  right: 7rem;
+}
+.sort-by-date label {
+  display: block;
+  padding: 0.5rem;
+}
+.sort-by-date input {
+  padding: 0 1rem;
+  cursor: pointer;
+}
