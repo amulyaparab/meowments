@@ -2,14 +2,16 @@ import { createContext, useContext, useEffect } from "react";
 import { getAllPosts } from "../Services/postServices";
 import { likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
+import { useAuth } from "./AuthProvider";
 
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { state, postDispatch } = usePost();
+  const { currentToken } = useAuth();
   const likePostHandler = async (postId) => {
     try {
-      const liked = await likePost(postId);
+      const liked = await likePost(postId, currentToken);
       postDispatch({ type: "LIKED_POST", payload: postId, postPayload: liked });
     } catch (err) {
       console.log(err);
