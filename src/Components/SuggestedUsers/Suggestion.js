@@ -10,7 +10,7 @@ export const SuggestedUser = ({
   firstName,
   lastName,
   showUserName,
-  createdAt,
+  postDate,
   hideUserDetails,
 }) => {
   const { postDispatch } = usePost();
@@ -25,7 +25,7 @@ export const SuggestedUser = ({
       console.log(err);
     }
   };
-  const formattedDate = new Date(createdAt);
+  const formattedDate = new Date(postDate);
   const date = formattedDate.getDate();
   const month = formattedDate.toLocaleString("default", {
     month: "long",

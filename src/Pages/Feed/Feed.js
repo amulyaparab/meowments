@@ -8,18 +8,22 @@ import "./feed.css";
 
 import { usePost } from "../../Contexts/PostsProvider";
 import { useEffect } from "react";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
-  const { state, postDispatch } = usePost();
-  const sortByTrendingHandler = () => {
-    postDispatch({ type: "SORT_BY_TRENDING" });
-  };
+  const { state } = usePost();
+  const { sortByLatest, sortByOldest, sortByTrendingHandler } = useUtils();
+
   useEffect(() => {
     if (state.sort === "Trending") {
       sortByTrendingHandler();
+    } else if (state.sort === "Latest") {
+      sortByLatest();
+    } else if (state.sort === "Oldest") {
+      sortByOldest();
     }
-  }, [state.feedPosts]);
+  }, [state.storePosts]);
   return (
     <div className="page-fractions">
       <SideNav />
@@ -35,11 +39,11 @@ export const Feed = () => {
           {showSort && (
             <div>
               <label>
-                <input type="radio" name="sort" />
+                <input type="radio" name="sort" onChange={sortByLatest} />
                 Latest Posts First
               </label>
               <label>
-                <input type="radio" name="sort" />
+                <input type="radio" name="sort" onChange={sortByOldest} />
                 Oldest Posts First
               </label>
             </div>

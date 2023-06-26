@@ -84,7 +84,7 @@ export const PostCard = ({
       )}
       {userState?.users?.map((user) =>
         user?.username === username ? (
-          <SuggestedUser {...user} date={createdAt} />
+          <SuggestedUser {...user} postDate={createdAt} />
         ) : null
       )}
       {imageUrl?.length ? (

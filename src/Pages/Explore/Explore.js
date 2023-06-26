@@ -18,7 +18,6 @@ export const Explore = () => {
           const likedByArray = post.likes.likedBy.filter(
             (currUser) => currUser._id === currentUser._id
           );
-
           return currentUser?.username !== post?.username ? (
             <PostCard {...post} isLiked={!!likedByArray.length} />
           ) : null;

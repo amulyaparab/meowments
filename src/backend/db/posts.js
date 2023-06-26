@@ -110,7 +110,7 @@ export const posts = [
       },
     ],
     username: "natashaiyer",
-    createdAt: "2023-07-18T09:10:59+05:30",
+    createdAt: "2023-06-18T09:10:59+05:30",
     updatedAt: formatDate(),
   },
 
@@ -184,7 +184,7 @@ export const posts = [
       },
     ],
     username: "ameliasmith",
-    createdAt: "2023-07-03T05:42:52+05:30",
+    createdAt: "2023-05-03T05:42:52+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -331,7 +331,7 @@ export const posts = [
       },
     ],
     username: "natashaiyer",
-    createdAt: "2023-09-12T07:36:59+05:30",
+    createdAt: "2023-04-12T07:36:59+05:30",
     updatedAt: formatDate(),
   },
 
@@ -383,7 +383,7 @@ export const posts = [
       },
     ],
     username: "amulyaparab",
-    createdAt: "2021-08-05T06:49:45+05:30",
+    createdAt: "2023-03-05T06:49:45+05:30",
     updatedAt: formatDate(),
   },
 

@@ -56,8 +56,16 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const sortByTrendingHandler = () => {
+    postDispatch({ type: "SORT_BY_TRENDING" });
+  };
+  const sortByLatest = () => {
+    postDispatch({ type: "SORT_BY_LATEST" });
+  };
+  const sortByOldest = () => {
+    postDispatch({ type: "SORT_BY_OLDEST" });
+  };
 
-  console.log(state.feedPosts);
   return (
     <UtilsContext.Provider
       value={{
@@ -66,6 +74,9 @@ export const UtilsProvider = ({ children }) => {
         bookMarkPostHandler,
         removeBookmarkHandler,
         fetchAllBookmarks,
+        sortByLatest,
+        sortByOldest,
+        sortByTrendingHandler,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-
+import dayjs from "dayjs";
 export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
@@ -11,7 +11,11 @@ export const postReducer = (state, action) => {
         storePosts: action.payload,
       };
     case "UPDATE_FEED_POSTS":
-      return { ...state, feedPosts: [...state.feedPosts, action.payload] };
+      return {
+        ...state,
+        feedPosts: [...state.feedPosts, action.payload],
+        storePosts: [...state.feedPosts, action.payload],
+      };
     case "LIKED_POST":
       return {
         ...state,
@@ -58,12 +62,27 @@ export const postReducer = (state, action) => {
       };
 
     case "SORT_BY_TRENDING":
-      console.log("hi");
       return {
         ...state,
         sort: "Trending",
-        feedPosts: state.feedPosts.sort(
+        feedPosts: state.storePosts.sort(
           (a, b) => b.likes.likeCount - a.likes.likeCount
+        ),
+      };
+    case "SORT_BY_LATEST":
+      return {
+        ...state,
+        sort: "Latest",
+        feedPosts: state.storePosts.sort((a, b) =>
+          dayjs(b.createdAt).diff(dayjs(a.createdAt))
+        ),
+      };
+    case "SORT_BY_OLDEST":
+      return {
+        ...state,
+        sort: "Oldest",
+        feedPosts: state.storePosts.sort((a, b) =>
+          dayjs(a.createdAt).diff(b.createdAt)
         ),
       };
     case "SET_POST_USERNAME":
