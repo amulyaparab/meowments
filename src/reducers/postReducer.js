@@ -45,6 +45,13 @@ export const postReducer = (state, action) => {
           action.payload.includes(post._id)
         ),
       };
+    case "REMOVE_BOOKMARK":
+      return {
+        ...state,
+        bookmarks: state.bookmarks.filter(
+          (bookmark) => !action.payload.includes(bookmark._id)
+        ),
+      };
     case "SET_POST_USERNAME":
       return {
         ...state,

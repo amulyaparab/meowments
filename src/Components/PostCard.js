@@ -18,8 +18,12 @@ export const PostCard = ({
   isLiked,
 }) => {
   const { state: userState } = useUsers();
-  const { likePostHandler, dislikePostHandler, bookMarkPostHandler } =
-    useUtils();
+  const {
+    likePostHandler,
+    dislikePostHandler,
+    bookMarkPostHandler,
+    removeBookmarkHandler,
+  } = useUtils();
   const { state, editPost, deleteThePost } = usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
@@ -107,7 +111,9 @@ export const PostCard = ({
         ></i>
         <i
           class={`fa-solid fa-bookmark ${isBookmarked && "yellow"}`}
-          onClick={() => bookMarkPostHandler(_id)}
+          onClick={() =>
+            isBookmarked ? removeBookmarkHandler(_id) : bookMarkPostHandler(_id)
+          }
         ></i>
       </div>
     </div>

@@ -17,28 +17,28 @@ const bookmarkPost = async (postId, token) => {
     return bookmarks;
   }
 };
-const removeBookmark = async (postId) => {
+const removeBookmark = async (postId, token) => {
   const {
     data: { bookmarks },
     status,
   } = await axios({
     method: "POST",
     url: `/api/users/remove-bookmark/${postId}`,
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
     data: {},
   });
   if (status === 200) {
     return bookmarks;
   }
 };
-const getAllBookmarks = async () => {
+const getAllBookmarks = async (token) => {
   const {
     data: { bookmarks },
     status,
   } = await axios({
     method: "GET",
     url: "/api/users/bookmark/",
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
   });
   if (status === 200) {
     return bookmarks;

@@ -3,7 +3,11 @@ import { getAllPosts } from "../Services/postServices";
 import { dislikePost, likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
-import { bookmarkPost } from "../Services/bookmarksServices";
+import {
+  bookmarkPost,
+  getAllBookmarks,
+  removeBookmark,
+} from "../Services/bookmarksServices";
 
 const UtilsContext = createContext();
 
@@ -29,16 +33,39 @@ export const UtilsProvider = ({ children }) => {
   const bookMarkPostHandler = async (postId) => {
     try {
       const bookmarked = await bookmarkPost(postId, currentToken);
-      console.log(bookmarked, state.bookmarks, "bookmarked");
-      postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
+      console.log(bookmarked, "bookmarked");
+      // postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
     } catch (err) {
       console.log(err);
     }
   };
-
+  const removeBookmarkHandler = async (postId) => {
+    try {
+      const unbookmarked = await removeBookmark(postId, currentToken);
+      console.log(unbookmarked, "unbookmarked");
+      // postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const fetchAllBookmarks = async () => {
+    try {
+      const allBookmarks = await getAllBookmarks(currentToken);
+      console.log(allBookmarks, "shjdkjashdkhasdkjhaskjdhsakjdh");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <UtilsContext.Provider
-      value={{ likePostHandler, dislikePostHandler, bookMarkPostHandler }}
+      value={{
+        likePostHandler,
+        dislikePostHandler,
+        bookMarkPostHandler,
+        removeBookmarkHandler,
+
+        fetchAllBookmarks,
+      }}
     >
       {children}
     </UtilsContext.Provider>
