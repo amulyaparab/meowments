@@ -6,20 +6,34 @@ import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 
 import "./feed.css";
 
+import { usePost } from "../../Contexts/PostsProvider";
+import { useEffect } from "react";
+
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
+  const { state, postDispatch } = usePost();
+  const sortByTrendingHandler = () => {
+    postDispatch({ type: "SORT_BY_TRENDING" });
+  };
+  useEffect(() => {
+    if (state.sort === "Trending") {
+      sortByTrendingHandler();
+    }
+  }, [state.feedPosts]);
   return (
     <div className="page-fractions">
       <SideNav />
       <div className="background">
         <h1>Your Feed</h1>
-        <button className="feed-buttons">Trending</button>
+        <button className="feed-buttons" onClick={sortByTrendingHandler}>
+          Trending
+        </button>
         <button className="feed-buttons" onClick={() => setShowSort(!showSort)}>
           Sort By Date
         </button>
-        <div className="sort-div">
+        <div>
           {showSort && (
-            <div className="sort-by-date">
+            <div>
               <label>
                 <input type="radio" name="sort" />
                 Latest Posts First

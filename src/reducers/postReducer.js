@@ -5,7 +5,11 @@ export const postReducer = (state, action) => {
     case "FETCH_ALL_POSTS":
       return { ...state, posts: action.payload };
     case "USER_FEED_POSTS":
-      return { ...state, feedPosts: action.payload };
+      return {
+        ...state,
+        feedPosts: action.payload,
+        storePosts: action.payload,
+      };
     case "UPDATE_FEED_POSTS":
       return { ...state, feedPosts: [...state.feedPosts, action.payload] };
     case "LIKED_POST":
@@ -50,6 +54,16 @@ export const postReducer = (state, action) => {
         ...state,
         bookmarks: state.bookmarks.filter(
           (bookmark) => !action.payload.includes(bookmark._id)
+        ),
+      };
+
+    case "SORT_BY_TRENDING":
+      console.log("hi");
+      return {
+        ...state,
+        sort: "Trending",
+        feedPosts: state.feedPosts.sort(
+          (a, b) => b.likes.likeCount - a.likes.likeCount
         ),
       };
     case "SET_POST_USERNAME":

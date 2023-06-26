@@ -56,6 +56,8 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  console.log(state.feedPosts);
   return (
     <UtilsContext.Provider
       value={{
@@ -63,7 +65,6 @@ export const UtilsProvider = ({ children }) => {
         dislikePostHandler,
         bookMarkPostHandler,
         removeBookmarkHandler,
-
         fetchAllBookmarks,
       }}
     >

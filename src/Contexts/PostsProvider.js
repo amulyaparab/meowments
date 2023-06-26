@@ -16,6 +16,8 @@ export const PostsProvider = ({ children }) => {
   const { currentUser, currentToken } = useAuth();
   const initialState = {
     posts: [],
+    sort: "",
+    storePosts: [],
     userPosts: [],
     feedPosts: [],
     bookmarks: [],

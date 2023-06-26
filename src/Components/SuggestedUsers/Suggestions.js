@@ -12,6 +12,7 @@ export const Suggestions = () => {
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
+      console.log(followed);
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
