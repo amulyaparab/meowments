@@ -5,6 +5,9 @@ import { SideNav } from "../../Components/SideNav/SideNav";
 import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 import { usePost } from "../../Contexts/PostsProvider";
 import { PostCard } from "../../Components/PostCard";
+import { useAuth } from "../../Contexts/AuthProvider";
+import { ProfileEditForm } from "../../Components/ProfileEditForm";
+import { AvatarForm } from "../../Components/AvatarForm";
 
 export const Profile = () => {
   const { userId } = useParams();
@@ -19,6 +22,14 @@ export const Profile = () => {
   });
   const year = formattedDate.getFullYear();
   const { state: userPostsState } = usePost();
+  const { currentUser } = useAuth();
+  const {
+    showUserEditForm,
+    setShowUserEditForm,
+    showAvatarForm,
+    setShowAvatarForm,
+  } = useUsers();
+  const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
   return (
     <div className="page-fractions">
       <SideNav />
@@ -31,6 +42,7 @@ export const Profile = () => {
                 className="profile-image"
                 alt={findUser?.username}
               />
+
               <div>
                 <h3>
                   {findUser?.firstName} {findUser?.lastName}
@@ -57,9 +69,15 @@ export const Profile = () => {
                 ${month}
                 ${year}`}
                 </p>
+                {isFoundUserSameAsCurrentUser && (
+                  <button onClick={() => setShowUserEditForm(true)}>
+                    Edit
+                  </button>
+                )}
               </div>
             </div>
-
+            {showUserEditForm && <ProfileEditForm />}
+            {showAvatarForm && <AvatarForm />}
             <div className="profile-tabs">
               <div>
                 <h4>0</h4>

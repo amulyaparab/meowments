@@ -49,9 +49,9 @@ export const Feed = () => {
             >
               Sort By Date
             </button>
-            <div>
+            <div className="sort-div">
               {showSort && (
-                <div>
+                <div className="sort-by-date">
                   <label>
                     <input type="radio" name="sort" onChange={sortByLatest} />
                     Latest Posts First
