@@ -7,6 +7,7 @@ import { useState } from "react";
 import { usePost } from "../Contexts/PostsProvider";
 import { toast } from "react-toastify";
 import { useAuth } from "../Contexts/AuthProvider";
+import { EditForm } from "./EditForm";
 export const PostCard = ({
   _id,
   imageUrl,
@@ -24,9 +25,11 @@ export const PostCard = ({
     bookMarkPostHandler,
     removeBookmarkHandler,
   } = useUtils();
-  const { state, editPost, deleteThePost } = usePost();
+  const { state, editPost, deleteThePost, setEditForm, showEditForm } =
+    usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
+
   const handleCopyLink = (postId) => {
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${postId}`)
@@ -66,7 +69,8 @@ export const PostCard = ({
         <div className="edit-block">
           <p
             onClick={() => {
-              editPost(_id);
+              // showEditForm(_id);
+              setEditForm(true);
               setShowDetails(false);
             }}
           >
@@ -82,6 +86,7 @@ export const PostCard = ({
           </p>
         </div>
       )}
+
       {userState?.users?.map((user) =>
         user?.username === username ? (
           <SuggestedUser {...user} postDate={createdAt} />

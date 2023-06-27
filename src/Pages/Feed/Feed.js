@@ -3,16 +3,17 @@ import { CreatePost } from "../../Components/Feed/CreatePost";
 import { FeedPosts } from "../../Components/Feed/FeedPosts";
 import { SideNav } from "../../Components/SideNav/SideNav";
 import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
-
+import example from "../../assets/Images/example.jpg";
 import "./feed.css";
 
 import { usePost } from "../../Contexts/PostsProvider";
 import { useEffect } from "react";
 import { useUtils } from "../../Contexts/UtilsProvider";
+import { EditForm } from "../../Components/EditForm";
 
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
-  const { state } = usePost();
+  const { state, editForm } = usePost();
   const { sortByLatest, sortByOldest, sortByTrendingHandler } = useUtils();
 
   useEffect(() => {
@@ -48,6 +49,9 @@ export const Feed = () => {
               </label>
             </div>
           )}
+        </div>
+        <div>
+          {editForm && <EditForm content={""} image={example} id={"fdsf"} />}
         </div>
         <CreatePost />
         <FeedPosts />

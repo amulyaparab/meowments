@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import { useAuth } from "./AuthProvider";
 import { postReducer } from "../reducers/postReducer";
 import { useUsers } from "./UsersProvider";
+import { useState } from "react";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
@@ -48,6 +49,13 @@ export const PostsProvider = ({ children }) => {
     },
   };
   const [state, postDispatch] = useReducer(postReducer, initialState);
+  const [editForm, setEditForm] = useState(false);
+  const showEditForm = (postId) => {
+    const exactPost = state.userPosts.find((post) => postId === post._id);
+    if (exactPost) {
+      return setEditForm(true);
+    }
+  };
   const { state: userState } = useUsers();
   const fetchPosts = async () => {
     try {
@@ -82,7 +90,7 @@ export const PostsProvider = ({ children }) => {
 
   const editPost = async (postId, newData) => {
     try {
-      await editPost(postId, newData);
+      const edited = await editPost(postId, newData);
     } catch (err) {
       console.log(err);
     }
@@ -129,6 +137,9 @@ export const PostsProvider = ({ children }) => {
         editPost,
         fetchUserFeedPosts,
         createPost,
+        editForm,
+        setEditForm,
+        showEditForm,
       }}
     >
       {children}

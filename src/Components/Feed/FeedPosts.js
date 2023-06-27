@@ -1,10 +1,13 @@
 import { useAuth } from "../../Contexts/AuthProvider";
 import { usePost } from "../../Contexts/PostsProvider";
+import { EditForm } from "../EditForm";
 import { PostCard } from "../PostCard";
 export const FeedPosts = () => {
   //   const feedPosts = () => {};
-  const { state } = usePost();
+  const { state, editForm } = usePost();
+
   const { currentUser } = useAuth();
+  console.log(editForm, "sskj");
   return (
     <>
       {state?.feedPosts?.map((post) => {
@@ -12,7 +15,11 @@ export const FeedPosts = () => {
           (currUser) => currUser._id === currentUser._id
         );
 
-        return <PostCard {...post} isLiked={!!likedByArray.length} />;
+        return (
+          <div>
+            <PostCard {...post} isLiked={!!likedByArray.length} />
+          </div>
+        );
       })}
     </>
   );

@@ -102,3 +102,62 @@
     width: 67%;
   }
 }
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+}
+.edit-form {
+  background-color: #ffc11b;
+  z-index: 10;
+  width: 320px;
+  height: 500px;
+  position: relative;
+  margin: auto;
+  margin-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+.edit-form .edit-post-img {
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.edit-form textarea {
+  height: 80px;
+  width: 90%;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  margin-top: 1rem;
+}
+.cross {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.edit-form .edit-buttons button {
+  padding: 0.3rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  color: #282c34;
+  cursor: pointer;
+  font-weight: bold;
+}
+.edit-form .edit-buttons button:hover {
+  background-color: #ffebb8;
+}
