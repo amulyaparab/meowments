@@ -30,7 +30,10 @@ export const Feed = () => {
       <SideNav />
       <div className="background">
         <h1>Your Feed</h1>
-        <button className="feed-buttons" onClick={sortByTrendingHandler}>
+        <button
+          className={`${state.sort === "Trending" && "yellow"} feed-buttons`}
+          onClick={sortByTrendingHandler}
+        >
           Trending
         </button>
         <button className="feed-buttons" onClick={() => setShowSort(!showSort)}>

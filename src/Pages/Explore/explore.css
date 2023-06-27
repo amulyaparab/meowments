@@ -44,6 +44,9 @@
 .posts .icons .yellow {
   color: #ffc11b;
 }
+.background .yellow {
+  color: #ffc11b;
+}
 .post-settings {
   position: absolute;
   right: 2rem;

@@ -102,6 +102,7 @@
     width: 67%;
   }
 }
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -110,6 +111,7 @@
   left: 0;
   right: 0;
   z-index: 6;
+  overflow-y: auto;
 }
 .edit-form {
   background-color: #ffc11b;
@@ -125,6 +127,7 @@
   justify-content: space-evenly;
   border-radius: 10px;
 }
+
 .edit-form .edit-post-img {
   width: 100%;
   margin: auto;
