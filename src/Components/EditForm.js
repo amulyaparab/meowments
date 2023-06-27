@@ -1,7 +1,7 @@
 import { usePost } from "../Contexts/PostsProvider";
-
+import example from "../assets/Images/example.jpg";
 export const EditForm = ({ content, image, id }) => {
-  const { state, setEditForm } = usePost();
+  const { state, setEditForm, postDispatch, createPost } = usePost();
   const findPostToBeEdited = state.feedPosts.find((post) => post._id === id);
   console.log(findPostToBeEdited);
   return (
@@ -12,12 +12,27 @@ export const EditForm = ({ content, image, id }) => {
             class="fa-solid fa-circle-xmark cross"
             onClick={() => setEditForm(false)}
           ></i>
-          <img src={image} alt="edit-post" className="edit-post-img" />
+          {content.length ? <h1>Edit Post</h1> : <h1>Create Post</h1>}
+          <img
+            src={state?.post?.imageUrl || example}
+            alt="edit-post"
+            className="edit-post-img"
+          />
           <label>
-            <textarea value={content}></textarea>
+            <textarea
+              value={state?.post?.content}
+              onChange={(event) =>
+                postDispatch({
+                  type: "POST_CONTENT",
+                  payload: event.target.value,
+                })
+              }
+            ></textarea>
           </label>
           <div className="edit-buttons">
-            <button>Save</button>
+            <button onClick={createPost}>
+              {content.length ? "Save" : "Post"}
+            </button>
             <button>Discard Changes</button>
           </div>
         </div>

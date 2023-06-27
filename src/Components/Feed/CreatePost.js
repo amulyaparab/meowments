@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Contexts/UsersProvider";
 export const CreatePost = () => {
   // const { user } = useUtils();
-  const { state, postDispatch, createPost, fetchUserFeedPosts } = usePost();
+  const { state, postDispatch, createPost, fetchUserFeedPosts, setEditForm } =
+    usePost();
   const { currentUser } = useAuth();
   const { state: userState } = useUsers();
   const handleShowToast = () => {
@@ -26,23 +27,26 @@ export const CreatePost = () => {
             onClick={() => navigate(`/profile/${currentUser?._id}`)}
           />
 
-          <textarea
+          <button
             placeholder="Share your meowment"
-            onChange={(event) =>
-              postDispatch({
-                type: "POST_CONTENT",
-                payload: event.target.value,
-              })
-            }
-          />
+            // onChange={(event) =>
+            //   postDispatch({
+            //     type: "POST_CONTENT",
+            //     payload: event.target.value,
+            //   })
+            // }
+            onClick={() => setEditForm(true)}
+          >
+            Share your meowment!
+          </button>
         </div>
-        <button
+        {/* <button
           onClick={() => {
             createPost();
           }}
         >
           Post
-        </button>
+        </button> */}
         {/* <label><input type="file" /></label> */}
 
         {/* <button onClick={handleShowToast}>Show Toast</button> */}

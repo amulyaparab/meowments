@@ -25,8 +25,14 @@ export const PostCard = ({
     bookMarkPostHandler,
     removeBookmarkHandler,
   } = useUtils();
-  const { state, editPost, deleteThePost, setEditForm, showEditForm } =
-    usePost();
+  const {
+    state,
+    editPost,
+    deleteThePost,
+    setEditForm,
+    showEditForm,
+    postDispatch,
+  } = usePost();
   const { currentUser } = useAuth();
   const [showDetails, setShowDetails] = useState(false);
 
@@ -72,6 +78,7 @@ export const PostCard = ({
               // showEditForm(_id);
               setEditForm(true);
               setShowDetails(false);
+              postDispatch({ type: "EDIT_POST", payload: _id });
             }}
           >
             Edit

@@ -6,7 +6,7 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap");
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -63,9 +63,8 @@
 
 .new-post {
   background-color: #ffc11b;
-  height: 300px;
-  padding: 2rem;
-  padding-bottom: 5rem;
+  height: 200px;
+  padding: 1rem 2rem 2rem;
   border-radius: 10px;
   width: 44%;
   margin: auto;
@@ -74,10 +73,11 @@
 }
 .new-post-div {
   display: flex;
+  align-items: center;
 }
 .new-post-div img {
   position: relative;
-  top: 20px;
+  top: 10px;
   left: 0px;
 }
 .new-post button {
@@ -92,16 +92,21 @@
   position: absolute;
   right: 2rem;
 }
-.new-post textarea {
-  width: 90%;
+.new-post button {
+  width: 75%;
   border: none;
   border-radius: 10px;
+  height: 40px;
+  color: #999999d0;
+  font-size: medium;
+  text-align: left;
+  letter-spacing: 0.5px;
+  font-family: "Maven Pro", sans-serif;
 }
 .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-right: 1rem;
   cursor: pointer;
 }
 @media screen and (max-width: 1024px) {
@@ -135,17 +140,19 @@
   background-color: #ffc11b;
   z-index: 10;
   width: 320px;
-  height: 500px;
+  height: max-content;
   position: relative;
   margin: auto;
-  margin-top: 25vh;
+  margin-top: 11vh;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   justify-content: space-evenly;
   border-radius: 10px;
 }
-
+.edit-form h1 {
+  color: #282c34;
+}
 .edit-form .edit-post-img {
   width: 100%;
   margin: auto;
@@ -163,22 +170,32 @@
 }
 .cross {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 22px;
+  right: 15px;
+  top: 15px;
+  font-size: 25px;
   cursor: pointer;
 }
 .edit-form .edit-buttons button {
-  padding: 0.3rem 2rem;
+  padding: 0.5rem 2rem;
   border: none;
   border-radius: 5px;
   margin-right: 0.5rem;
   margin-left: 0.5rem;
   margin-top: 0.5rem;
-  color: #282c34;
+
   cursor: pointer;
   font-weight: bold;
+  background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
+  color: #ffffff;
 }
 .edit-form .edit-buttons button:hover {
-  background-color: #ffebb8;
+  color: #ffc11b;
+}
+.circle-plus {
+  font-size: 60px;
+  position: absolute;
+  color: #ffc11b;
+  bottom: 6.5rem;
+  right: 3rem;
+  cursor: pointer;
 }

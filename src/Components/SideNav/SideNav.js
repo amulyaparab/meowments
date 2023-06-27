@@ -6,7 +6,7 @@ import { usePost } from "../../Contexts/PostsProvider";
 import { useUsers } from "../../Contexts/UsersProvider";
 export const SideNav = () => {
   const { authDispatch } = useAuth();
-  const { postDispatch } = usePost();
+  const { postDispatch, setEditForm } = usePost();
   const { userDispatch } = useUsers();
   const logout = () => {
     try {
@@ -48,6 +48,11 @@ export const SideNav = () => {
           <i className="fa-solid fa-bookmark"></i>{" "}
           <span className="nav-no-words">Bookmarks</span>
         </NavLink>
+
+        <div className="new-post-button" onClick={() => setEditForm(true)}>
+          <i className="fa-solid fa-circle-plus"></i>
+          <span className="nav-no-words">New Post</span>
+        </div>
 
         <button className="nav-no-words logout" onClick={logout}>
           Logout

@@ -38,6 +38,11 @@ export const postReducer = (state, action) => {
             ?.username,
         },
       };
+    case "EDIT_POST":
+      return {
+        ...state,
+        post: state.posts.find((post) => post._id === action.payload),
+      };
     case "CREATE_POST":
       return {
         ...state,

@@ -3,12 +3,13 @@ import { followUser, unfollowUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
 import { useAuth } from "../../Contexts/AuthProvider";
+import { usePost } from "../../Contexts/PostsProvider";
 
 export const Suggestions = () => {
   const { state, userDispatch } = useUsers();
 
   const { currentUser, currentToken } = useAuth();
-
+  const { setEditForm } = usePost();
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
@@ -66,6 +67,10 @@ export const Suggestions = () => {
           )
         )}
       </div>
+      <i
+        class="fa-solid fa-circle-plus circle-plus"
+        onClick={() => setEditForm(true)}
+      ></i>
     </div>
   );
 };

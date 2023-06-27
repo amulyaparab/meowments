@@ -34,7 +34,19 @@
 .side-nav i {
   margin-right: 10px;
 }
-
+.new-post-button {
+  color: #ffc11b;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0.5rem 0 0.5rem 2rem;
+  cursor: pointer;
+}
+.new-post-button:hover {
+  background-color: #ffebb8;
+}
+.new-post-button i {
+  margin-right: 10px;
+}
 @media screen and (max-width: 1024px) {
   .nav-no-words {
     display: none;
