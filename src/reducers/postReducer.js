@@ -4,6 +4,8 @@ export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
       return { ...state, posts: action.payload };
+    case "POST_LOADING":
+      return { ...state, loading: action.payload };
     case "USER_FEED_POSTS":
       return {
         ...state,
@@ -60,7 +62,13 @@ export const postReducer = (state, action) => {
           (bookmark) => !action.payload.includes(bookmark._id)
         ),
       };
-
+    case "UPDATE_BOOKMARKS":
+      return {
+        ...state,
+        bookmarks: state.posts.filter((post) =>
+          action.payload.includes(post._id)
+        ),
+      };
     case "SORT_BY_TRENDING":
       return {
         ...state,
@@ -99,6 +107,7 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         posts: [],
+        bookmarks: [],
         feedPosts: [],
         userPosts: [],
         post: {

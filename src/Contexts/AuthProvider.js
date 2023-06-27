@@ -118,7 +118,6 @@ export const AuthProvider = ({ children }) => {
   const fetchCurrentToken = () => {
     try {
       const userData = localStorage.getItem("userData");
-
       const currentToken = JSON.parse(userData)?.encodedToken;
       return currentToken;
     } catch (err) {

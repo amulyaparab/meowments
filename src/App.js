@@ -15,11 +15,15 @@ import { Header } from "./Components/Header/Header";
 import { RequiresAuth } from "./Components/RequireAuth";
 import Mockman from "mockman-js";
 import { SinglePost } from "./Pages/SinglePost";
+import { usePost } from "./Contexts/PostsProvider";
+import { Loader } from "./Components/Loader";
 
 function App() {
+  const { state } = usePost();
   return (
     <div className="App">
       <Header />
+      {/* {state.loading && <Loader />} */}
       <Routes>
         <Route
           path="/explore"

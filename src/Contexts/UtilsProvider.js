@@ -34,7 +34,7 @@ export const UtilsProvider = ({ children }) => {
     try {
       const bookmarked = await bookmarkPost(postId, currentToken);
       console.log(bookmarked, "bookmarked");
-      // postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
+      postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +43,7 @@ export const UtilsProvider = ({ children }) => {
     try {
       const unbookmarked = await removeBookmark(postId, currentToken);
       console.log(unbookmarked, "unbookmarked");
-      // postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
+      postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
     } catch (err) {
       console.log(err);
     }
@@ -52,6 +52,7 @@ export const UtilsProvider = ({ children }) => {
     try {
       const allBookmarks = await getAllBookmarks(currentToken);
       console.log(allBookmarks, "shjdkjashdkhasdkjhaskjdhsakjdh");
+      postDispatch({ type: "UPDATE_BOOKMARKS", payload: allBookmarks });
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +66,11 @@ export const UtilsProvider = ({ children }) => {
   const sortByOldest = () => {
     postDispatch({ type: "SORT_BY_OLDEST" });
   };
-
+  useEffect(() => {
+    if (currentToken) {
+      fetchAllBookmarks();
+    }
+  }, []);
   return (
     <UtilsContext.Provider
       value={{

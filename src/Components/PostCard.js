@@ -48,7 +48,7 @@ export const PostCard = ({
   const isBookmarked = state.bookmarks.filter(
     (bookmark) => bookmark._id === _id
   ).length;
-
+  console.log(isBookmarked, "booked");
   const isThePostByTheCurrentUser = state?.posts
     ?.filter((post) => post?.username === currentUser?.username)
     .map((post) => post?.username)

@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
     useAuth();
+  const navigate = useNavigate();
   const signUpHandler = async () => {
     try {
       await userSignUpData({
@@ -17,6 +18,8 @@ export const SignUp = () => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      navigate("/");
     }
   };
 

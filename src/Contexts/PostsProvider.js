@@ -17,6 +17,7 @@ export const PostsProvider = ({ children }) => {
   const { currentUser, currentToken } = useAuth();
   const initialState = {
     posts: [],
+    loading: false,
     sort: "",
     storePosts: [],
     userPosts: [],
@@ -59,10 +60,13 @@ export const PostsProvider = ({ children }) => {
   const { state: userState } = useUsers();
   const fetchPosts = async () => {
     try {
+      postDispatch({ type: "POST_LOADING", payload: true });
       const posts = await getAllPosts();
       postDispatch({ type: "FETCH_ALL_POSTS", payload: posts });
     } catch (err) {
       console.log(err);
+    } finally {
+      postDispatch({ type: "POST_LOADING", payload: false });
     }
   };
   const fetchUserFeedPosts = async () => {
