@@ -17,13 +17,19 @@ export const ProfileEditForm = () => {
             class="fa-solid fa-circle-xmark cross"
             onClick={() => setShowUserEditForm(false)}
           ></i>
-          <h1>Edit Profile</h1>
-          <img src={currentUser?.avatarUrl} alt={currentUser?.username} />
+          <h2>Edit Profile</h2>
+
+          <img
+            src={currentUser?.avatarUrl}
+            alt={currentUser?.username}
+            className="edit-profile-image"
+          />
           <i
-            class="fa-solid fa-pen"
+            class="fa-solid fa-pen edit-pen"
             onClick={() => setShowAvatarForm(true)}
           ></i>
-          <div>
+
+          <div className="side-by-side">
             <label>
               First Name
               <input />
@@ -33,15 +39,17 @@ export const ProfileEditForm = () => {
               <input />
             </label>
           </div>
-          <label>
+          <label className="bio">
             Bio <textarea />
           </label>
+
           <label>
-            Occupation <input />
+            Occupation <input className="full-length" />
           </label>
           <label>
-            Website <input />
+            Website <input className="full-length" />
           </label>
+
           <div>
             <button>Save</button>
             <button>Discard</button>

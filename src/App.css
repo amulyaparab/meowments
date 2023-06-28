@@ -108,38 +108,6 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1550px) {
-  .new-post button {
-    width: 65%;
-  }
-}
-@media screen and (max-width: 1340px) {
-  .new-post button {
-    width: fit-content;
-    padding: 0.7rem 1rem;
-    font-size: small;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .page-fractions {
-    grid-template-columns: 70px 3fr 1fr;
-  }
-  .new-post {
-    width: 58%;
-  }
-  .new-post button {
-    width: 65%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .page-fractions {
-    grid-template-columns: 1fr;
-  }
-  .new-post {
-    width: 67%;
-  }
-}
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -149,6 +117,20 @@
   right: 0;
   z-index: 6;
   overflow-y: auto;
+  margin-top: 3.5rem;
+}
+.edit-btn {
+  background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 2rem;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.edit-btn:hover {
+  color: #ffc11b;
 }
 .edit-form {
   background-color: #ffc11b;
@@ -215,6 +197,60 @@
 }
 .edit-profile {
   height: 700px;
+  text-align: left;
+  position: relative;
+}
+.edit-profile h2 {
+  text-align: center;
+}
+.edit-profile img {
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.edit-profile .edit-pen {
+  position: absolute;
+  top: 110px;
+  right: 30px;
+  color: #ededed;
+  font-size: 20px;
+  cursor: pointer;
+}
+.edit-profile input {
+  width: 140px;
+  padding: 0.3rem;
+  border: none;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+}
+.edit-profile label {
+  font-weight: bold;
+}
+.edit-profile button {
+  border: none;
+  margin-left: 1.5rem;
+  padding: 0.5rem 2.5rem;
+  border-radius: 5px;
+  background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
+  color: #ffffff;
+  margin-top: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.edit-profile button:hover {
+  color: #ffc11b;
+}
+.edit-profile .side-by-side {
+  display: flex;
+  gap: 1rem;
+}
+.edit-profile .full-length {
+  width: 97%;
+}
+.edit-profile textarea {
+  margin-top: 3px;
+  height: 45px;
+  padding: 0.5rem;
+  width: 95%;
 }
 .avatar-form {
   display: flex;
@@ -239,4 +275,38 @@
 .avatar-form .cross {
   right: 10px;
   top: 20px;
+}
+@media screen and (max-width: 1550px) {
+  .new-post button {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 1340px) {
+  .new-post button {
+    width: fit-content;
+    padding: 0.7rem 1rem;
+    font-size: small;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .page-fractions {
+    grid-template-columns: 70px 3fr 1fr;
+  }
+  .new-post {
+    width: 58%;
+  }
+  .new-post button {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-fractions {
+    grid-template-columns: 1fr;
+  }
+  .new-post {
+    width: 67%;
+  }
+  .overlay {
+    margin-top: 0;
+  }
 }

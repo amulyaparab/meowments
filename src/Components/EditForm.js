@@ -46,6 +46,7 @@ export const EditForm = () => {
                   payload: event.target.value,
                 })
               }
+              placeholder="Scratch down a meowment here."
             ></textarea>
           </label>
           <div className="edit-buttons">

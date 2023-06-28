@@ -50,7 +50,7 @@ export const Profile = () => {
                 <p className="profile-username">@{findUser?.username}</p>
                 <p>
                   <i class="fa-solid fa-paw"></i>
-                  {/* <i class="fa-solid fa-cat"></i> */}
+
                   {findUser?.bio}
                 </p>
                 <i class="fa-solid fa-display"></i>
@@ -63,14 +63,16 @@ export const Profile = () => {
                   {findUser?.occupation}
                 </p>
                 <p>
-                  {/* <i class="fa-solid fa-calendar"></i> */}
                   <i class="fa-regular fa-calendar"></i>
                   {`Joined on ${date}
                 ${month}
                 ${year}`}
                 </p>
                 {isFoundUserSameAsCurrentUser && (
-                  <button onClick={() => setShowUserEditForm(true)}>
+                  <button
+                    onClick={() => setShowUserEditForm(true)}
+                    className="edit-btn"
+                  >
                     Edit
                   </button>
                 )}
