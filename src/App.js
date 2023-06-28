@@ -16,14 +16,14 @@ import { RequiresAuth } from "./Components/RequireAuth";
 import Mockman from "mockman-js";
 import { SinglePost } from "./Pages/SinglePost";
 import { usePost } from "./Contexts/PostsProvider";
-import { Loader } from "./Components/Loader";
+import { EditForm } from "./Components/EditForm";
 
 function App() {
-  const { state } = usePost();
+  const { editForm } = usePost();
   return (
     <div className="App">
       <Header />
-      {/* {state.loading && <Loader />} */}
+      <div>{editForm && <EditForm />}</div>
       <Routes>
         <Route
           path="/explore"

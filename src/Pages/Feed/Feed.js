@@ -63,11 +63,7 @@ export const Feed = () => {
                 </div>
               )}
             </div>
-            <div>
-              {editForm && (
-                <EditForm content={""} image={example} id={"fdsf"} />
-              )}
-            </div>
+            {/* <div>{editForm && <EditForm />}</div> */}
             <CreatePost />
             <FeedPosts />
           </div>
