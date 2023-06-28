@@ -17,6 +17,7 @@
   background-color: #ffebb8;
   padding: 3rem;
   border-radius: 10px;
+  position: relative;
 }
 .profile a {
   text-decoration: none;
@@ -52,6 +53,21 @@
 .expandPosts .posts {
   width: 84%;
 }
+.logout-icon {
+  position: absolute;
+  top: 70px;
+  right: 90px;
+  font-size: 40px;
+  color: #333333;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .logout-icon {
+    font-size: 30px;
+    top: 70px;
+    right: 50px;
+  }
+}
 @media screen and (max-width: 768px) {
   .profile-deets {
     flex-wrap: wrap;
@@ -68,5 +84,8 @@
     margin-top: 0;
     margin-bottom: 0;
     border-radius: 0;
+  }
+  .logout-icon {
+    font-size: 30px;
   }
 }

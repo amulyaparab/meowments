@@ -13,7 +13,7 @@ const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { postDispatch, state } = usePost();
-  const { currentToken } = useAuth();
+  const { currentToken, authDispatch } = useAuth();
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
@@ -57,6 +57,28 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const logout = () => {
+    try {
+      localStorage.removeItem("userData");
+
+      // authDispatch({
+      //   type: "SET_USER",
+      //   payload: null,
+      //   encodedTokenPayload: null,
+      // });
+      authDispatch({
+        type: "EMPTY_EVERYTHING",
+      });
+      postDispatch({
+        type: "EMPTY_EVERYTHING",
+      });
+      // userDispatch({
+      //   type: "EMPTY_EVERYTHING",
+      // });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const sortByTrendingHandler = () => {
     postDispatch({ type: "SORT_BY_TRENDING" });
   };
@@ -82,6 +104,7 @@ export const UtilsProvider = ({ children }) => {
         sortByLatest,
         sortByOldest,
         sortByTrendingHandler,
+        logout,
       }}
     >
       {children}

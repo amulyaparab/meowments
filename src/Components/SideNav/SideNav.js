@@ -4,32 +4,34 @@ import { useAuth } from "../../Contexts/AuthProvider";
 
 import { usePost } from "../../Contexts/PostsProvider";
 import { useUsers } from "../../Contexts/UsersProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 export const SideNav = () => {
   const { authDispatch } = useAuth();
   const { postDispatch, setEditForm } = usePost();
   const { userDispatch } = useUsers();
-  const logout = () => {
-    try {
-      localStorage.removeItem("userData");
+  const { logout } = useUtils();
+  // const logout = () => {
+  //   try {
+  //     localStorage.removeItem("userData");
 
-      // authDispatch({
-      //   type: "SET_USER",
-      //   payload: null,
-      //   encodedTokenPayload: null,
-      // });
-      authDispatch({
-        type: "EMPTY_EVERYTHING",
-      });
-      postDispatch({
-        type: "EMPTY_EVERYTHING",
-      });
-      // userDispatch({
-      //   type: "EMPTY_EVERYTHING",
-      // });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     // authDispatch({
+  //     //   type: "SET_USER",
+  //     //   payload: null,
+  //     //   encodedTokenPayload: null,
+  //     // });
+  //     authDispatch({
+  //       type: "EMPTY_EVERYTHING",
+  //     });
+  //     postDispatch({
+  //       type: "EMPTY_EVERYTHING",
+  //     });
+  //     // userDispatch({
+  //     //   type: "EMPTY_EVERYTHING",
+  //     // });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <>
@@ -57,8 +59,9 @@ export const SideNav = () => {
           <i class="fa-solid fa-magnifying-glass"></i>
           <span className="nav-no-words">Search</span>
         </div>
-        <button className="nav-no-words logout" onClick={logout}>
-          Logout
+        <button className="logout" onClick={logout}>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span className="nav-no-words"> Logout</span>
         </button>
       </div>
     </>

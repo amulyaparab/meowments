@@ -1,38 +1,14 @@
 import { useUsers } from "../../Contexts/UsersProvider";
-import { followUser, unfollowUser } from "../../Services/followServices";
 import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { usePost } from "../../Contexts/PostsProvider";
+import { FollowButton } from "./FollowButton";
 
 export const Suggestions = () => {
-  const { state, userDispatch } = useUsers();
-
-  const { currentUser, currentToken } = useAuth();
+  const { state } = useUsers();
+  const { currentUser } = useAuth();
   const { setEditForm } = usePost();
-  const followUsername = async (userId) => {
-    try {
-      const followed = await followUser(userId, currentToken);
-      userDispatch({ type: "FOLLOW_USER", payload: followed });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const unfollowUsername = async (userId) => {
-    try {
-      const unfollowed = await unfollowUser(userId, currentToken);
-      userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const isUserFollowedByMe = (user) => {
-    const isUserFollowedByMe = user?.followers?.includes(
-      user?.followers.find((user) => user._id === currentUser._id)
-    );
-    return isUserFollowedByMe;
-  };
 
   return (
     <div className="followers followers-tab">
@@ -42,24 +18,7 @@ export const Suggestions = () => {
           user.username === currentUser.username ? null : (
             <div className="one-user">
               <SuggestedUser {...user} showUserName />
-              {isUserFollowedByMe(user) ? (
-                <button
-                  className="followed"
-                  onClick={() => {
-                    unfollowUsername(user._id);
-                  }}
-                >
-                  Unfollow
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    followUsername(user._id);
-                  }}
-                >
-                  + Follow
-                </button>
-              )}
+              <FollowButton user={user} />
             </div>
           )
         )}

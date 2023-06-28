@@ -75,6 +75,9 @@
   background-color: #ffc11b;
   color: #ffffff;
 }
+.profile-follow button {
+  background-color: #ffffff;
+}
 .suggestions .followed:hover {
   background-color: #ffebb8;
   color: #666666;
@@ -89,7 +92,7 @@
   }
   .suggestionsPerson h4 {
     font-size: 13px;
-    width: 90px;
+    width: 110px;
     margin-top: 10px;
   }
 }

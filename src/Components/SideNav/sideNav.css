@@ -47,6 +47,7 @@
 .new-post-button i {
   margin-right: 10px;
 }
+
 @media screen and (max-width: 1024px) {
   .nav-no-words {
     display: none;
@@ -64,6 +65,13 @@
   .side-nav i {
     font-size: 22px;
     margin-bottom: 1rem;
+  }
+  .side-nav button {
+    margin-left: 7px;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 15px;
+    margin-top: 0;
   }
 }
 

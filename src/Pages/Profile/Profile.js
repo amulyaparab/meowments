@@ -9,6 +9,8 @@ import { useAuth } from "../../Contexts/AuthProvider";
 import { ProfileEditForm } from "../../Components/ProfileEditForm";
 import { AvatarForm } from "../../Components/AvatarForm";
 import { editUser } from "../../Services/userServices";
+import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Profile = () => {
   const { userId } = useParams();
@@ -22,6 +24,7 @@ export const Profile = () => {
   } = useUsers();
   const { state: userPostsState } = usePost();
   const { currentUser } = useAuth();
+  const { logout } = useUtils();
   const findUser = state.users.find((user) => user._id === userId);
 
   const formattedDate = new Date(findUser?.createdAt);
@@ -79,13 +82,24 @@ export const Profile = () => {
                     Edit
                   </button>
                 )}
+                {isFoundUserSameAsCurrentUser && (
+                  <i
+                    class="fa-solid fa-right-from-bracket logout-icon"
+                    onClick={logout}
+                  ></i>
+                )}
+                {!isFoundUserSameAsCurrentUser && (
+                  <div className="suggestions profile-follow">
+                    <FollowButton user={findUser} />
+                  </div>
+                )}
               </div>
             </div>
             {showUserEditForm && <ProfileEditForm />}
             {showAvatarForm && <AvatarForm />}
             <div className="profile-tabs">
               <div>
-                <h4>0</h4>
+                <h4>{findUser?.following?.length}</h4>
                 <h4>Following</h4>
               </div>
               <div>
@@ -93,7 +107,7 @@ export const Profile = () => {
                 <h4>Posts</h4>
               </div>
               <div>
-                <h4>0</h4>
+                <h4>{findUser?.followers?.length}</h4>
                 <h4>Followers</h4>
               </div>
             </div>
