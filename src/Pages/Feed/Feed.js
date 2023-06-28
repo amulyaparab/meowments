@@ -44,7 +44,9 @@ export const Feed = () => {
               Trending
             </button>
             <button
-              className="feed-buttons"
+              className={`${
+                (state.sort === "Latest" || state.sort === "Oldest") && "yellow"
+              } feed-buttons`}
               onClick={() => setShowSort(!showSort)}
             >
               Sort By Date
@@ -53,11 +55,21 @@ export const Feed = () => {
               {showSort && (
                 <div className="sort-by-date">
                   <label className={`${state.sort === "Latest" && "yellow"} `}>
-                    <input type="radio" name="sort" onChange={sortByLatest} />
+                    <input
+                      type="radio"
+                      name="sort"
+                      onChange={sortByLatest}
+                      checked={state.sort === "Latest"}
+                    />
                     Latest Posts First
                   </label>
                   <label className={`${state.sort === "Oldest" && "yellow"} `}>
-                    <input type="radio" name="sort" onChange={sortByOldest} />
+                    <input
+                      type="radio"
+                      name="sort"
+                      onChange={sortByOldest}
+                      checked={state.sort === "Oldest"}
+                    />
                     Oldest Posts First
                   </label>
                 </div>

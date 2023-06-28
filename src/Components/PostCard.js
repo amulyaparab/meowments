@@ -119,7 +119,10 @@ export const PostCard = ({
             isLiked ? dislikePostHandler(_id) : likePostHandler(_id);
           }}
         ></i>
-        <i className="fa-regular fa-comment"></i>
+        <i
+          className="fa-regular fa-comment"
+          onClick={() => navigate(`/post/${_id}`)}
+        ></i>
         <i
           className="fa-solid fa-share-nodes"
           onClick={() => handleCopyLink(_id)}
