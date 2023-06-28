@@ -46,11 +46,16 @@
     background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
   }
   .sort-by-date {
-    width: 32.5%;
+    width: 26.5%;
+    left: 17.5%;
   }
 }
 @media screen and (max-width: 768px) {
   .feed-buttons {
     width: 39%;
+  }
+  .sort-by-date {
+    width: 31%;
+    left: 21%;
   }
 }

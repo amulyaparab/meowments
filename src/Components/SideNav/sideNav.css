@@ -55,7 +55,37 @@
   .side-nav a {
     padding: 0.5rem 1.5rem;
   }
+  .side-nav div {
+    padding: 0.5rem 1.5rem;
+  }
   .side-nav {
     box-shadow: 0 0 5px 5px #ffebb8;
+  }
+  .side-nav i {
+    font-size: 22px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bottom-footer {
+    position: fixed;
+    flex-direction: row;
+    top: 92vh;
+    background-color: #ffffff;
+    z-index: 20;
+    width: 100%;
+    height: max-content;
+    justify-content: space-evenly;
+  }
+
+  .bottom-footer i {
+    font-size: 25px;
+  }
+  .new-post-button:hover {
+    background-color: #ffffff;
+  }
+  .side-nav a:hover {
+    background-color: #ffffff;
   }
 }

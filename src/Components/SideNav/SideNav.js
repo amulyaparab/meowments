@@ -33,7 +33,7 @@ export const SideNav = () => {
 
   return (
     <>
-      <div className="side-nav">
+      <div className="side-nav bottom-footer">
         <NavLink to="/">
           <i className="fa-solid fa-house"></i>
           <span className="nav-no-words">Feed</span>
@@ -53,7 +53,10 @@ export const SideNav = () => {
           <i className="fa-solid fa-circle-plus"></i>
           <span className="nav-no-words">New Post</span>
         </div>
-
+        <div className="new-post-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span className="nav-no-words">Search</span>
+        </div>
         <button className="nav-no-words logout" onClick={logout}>
           Logout
         </button>

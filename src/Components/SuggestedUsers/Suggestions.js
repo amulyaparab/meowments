@@ -36,7 +36,7 @@ export const Suggestions = () => {
   };
 
   return (
-    <div className="followers">
+    <div className="followers followers-tab">
       <h3>Suggested Users</h3>
       <div className="suggestions">
         {state?.users?.map((user) =>
