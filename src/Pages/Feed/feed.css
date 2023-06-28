@@ -15,7 +15,7 @@
 }
 .sort-by-date {
   position: relative;
-  z-index: 7;
+  z-index: 3;
   left: 6.8rem;
   background-color: #ffffff;
   padding: 1.2rem;

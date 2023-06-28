@@ -8,11 +8,20 @@ import { PostCard } from "../../Components/PostCard";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { ProfileEditForm } from "../../Components/ProfileEditForm";
 import { AvatarForm } from "../../Components/AvatarForm";
+import { editUser } from "../../Services/userServices";
 
 export const Profile = () => {
   const { userId } = useParams();
-
-  const { state } = useUsers();
+  const {
+    showUserEditForm,
+    setShowUserEditForm,
+    showAvatarForm,
+    userDispatch,
+    state,
+    setShowAvatarForm,
+  } = useUsers();
+  const { state: userPostsState } = usePost();
+  const { currentUser } = useAuth();
   const findUser = state.users.find((user) => user._id === userId);
 
   const formattedDate = new Date(findUser?.createdAt);
@@ -21,15 +30,9 @@ export const Profile = () => {
     month: "long",
   });
   const year = formattedDate.getFullYear();
-  const { state: userPostsState } = usePost();
-  const { currentUser } = useAuth();
-  const {
-    showUserEditForm,
-    setShowUserEditForm,
-    showAvatarForm,
-    setShowAvatarForm,
-  } = useUsers();
+
   const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
+
   return (
     <div className="page-fractions">
       <SideNav />

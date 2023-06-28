@@ -11,7 +11,11 @@ export const UsersProvider = ({ children }) => {
   const fetchAllUsers = async () => {
     try {
       const users = await fetchUsers();
-      userDispatch({ type: "FETCH_ALL_USERS", payload: users });
+      userDispatch({
+        type: "FETCH_ALL_USERS",
+        payload: users,
+        currPayload: currentUser,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -19,6 +23,7 @@ export const UsersProvider = ({ children }) => {
 
   const initialState = {
     users: [],
+    currentUserData: currentUser,
   };
 
   const [showUserEditForm, setShowUserEditForm] = useState(false);

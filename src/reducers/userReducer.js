@@ -1,9 +1,57 @@
 export const userReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_USERS":
-      return { ...state, users: action.payload };
+      return {
+        ...state,
+        users: action.payload,
+        currentUserData: action.currPayload,
+      };
     case "EMPTY_EVERYTHING":
-      return { ...state, users: [] };
+      return { ...state, users: [], currentUserData: {} };
+
+    case "EDIT_FNAME":
+      return {
+        ...state,
+        currentUserData: {
+          ...state.currentUserData,
+          firstName: action.payload,
+        },
+      };
+    case "EDIT_LNAME":
+      return {
+        ...state,
+        currentUserData: { ...state.currentUserData, lastName: action.payload },
+      };
+    case "EDIT_BIO":
+      return {
+        ...state,
+        currentUserData: {
+          ...state.currentUserData,
+          bio: action.payload,
+        },
+      };
+    case "EDIT_JOB":
+      return {
+        ...state,
+        currentUserData: {
+          ...state.currentUserData,
+          occupation: action.payload,
+        },
+      };
+    case "EDIT_WEBSITE":
+      return {
+        ...state,
+        currentUserData: { ...state.currentUserData, website: action.payload },
+      };
+    case "EDIT_USER":
+      return {
+        ...state,
+        currentUserData: action.payload,
+        users: state.users.map((user) =>
+          user._id === action.payload._id ? action.payload : user
+        ),
+      };
+
     case "FOLLOW_USER":
       return {
         ...state,

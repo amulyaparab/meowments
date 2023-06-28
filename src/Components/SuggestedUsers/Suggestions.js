@@ -13,7 +13,6 @@ export const Suggestions = () => {
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
-      console.log(followed);
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
@@ -48,7 +47,6 @@ export const Suggestions = () => {
                   className="followed"
                   onClick={() => {
                     unfollowUsername(user._id);
-                    // isUserFollowedByMe(user);
                   }}
                 >
                   Unfollow
@@ -57,7 +55,6 @@ export const Suggestions = () => {
                 <button
                   onClick={() => {
                     followUsername(user._id);
-                    // isUserFollowedByMe(user);
                   }}
                 >
                   + Follow

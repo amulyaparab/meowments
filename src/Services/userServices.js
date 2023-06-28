@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const userData = localStorage.getItem("userData");
-const encodedToken = JSON.parse(userData)?.encodedToken;
 const fetchUsers = async () => {
   const {
     data: { users },
@@ -22,7 +20,7 @@ const fetchSingleUser = async (userId) => {
   }
 };
 
-const editUser = async (usersEditedData) => {
+const editUser = async (usersEditedData, token) => {
   const {
     status,
     data: { user },
@@ -30,7 +28,7 @@ const editUser = async (usersEditedData) => {
     method: "POST",
     url: "/api/users/edit",
     data: { userData: usersEditedData },
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
   });
   if (status === 201) {
     return user;
