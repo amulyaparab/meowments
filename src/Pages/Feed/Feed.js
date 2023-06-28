@@ -52,11 +52,11 @@ export const Feed = () => {
             <div className="sort-div">
               {showSort && (
                 <div className="sort-by-date">
-                  <label>
+                  <label className={`${state.sort === "Latest" && "yellow"} `}>
                     <input type="radio" name="sort" onChange={sortByLatest} />
                     Latest Posts First
                   </label>
-                  <label>
+                  <label className={`${state.sort === "Oldest" && "yellow"} `}>
                     <input type="radio" name="sort" onChange={sortByOldest} />
                     Oldest Posts First
                   </label>
