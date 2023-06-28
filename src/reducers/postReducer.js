@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import dayjs from "dayjs";
+import { formatDate } from "../backend/utils/authUtils";
 export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
@@ -42,6 +43,40 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         post: state.posts.find((post) => post._id === action.payload),
+      };
+    case "EDITED_POST":
+      return {
+        ...state,
+        posts: action.payload,
+      };
+    case "CLEAR_FORM":
+      return {
+        ...state,
+        post: {
+          _id: uuid(),
+          imageUrl: "",
+          content: "",
+          likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+          },
+          comments: [
+            {
+              _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+              username: "adarshsharma",
+              text: "Black Love.",
+              votes: {
+                upvotedBy: [],
+                downvotedBy: [],
+              },
+            },
+          ],
+          username:
+            JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+        },
       };
     case "CREATE_POST":
       return {

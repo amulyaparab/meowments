@@ -62,14 +62,14 @@ const deletePost = async (postId, token) => {
   }
 };
 
-const editPost = async (postId, postData) => {
+const editPost = async (postId, postData, token) => {
   const {
     data: { posts },
     status,
   } = await axios({
     method: "POST",
     url: `/api/posts/edit/${postId}`,
-    headers: { authorization: encodedToken },
+    headers: { authorization: token },
     data: { postData },
   });
   if (status === 201) {

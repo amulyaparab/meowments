@@ -7,7 +7,7 @@ export const FeedPosts = () => {
   const { state, editForm } = usePost();
 
   const { currentUser } = useAuth();
-  console.log(editForm, "sskj");
+
   return (
     <>
       {state?.feedPosts?.map((post) => {

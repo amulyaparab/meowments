@@ -50,11 +50,20 @@ export const PostCard = ({
         });
       });
   };
+  const editHandler = () => {
+    try {
+      setEditForm(true);
+      setShowDetails(false);
+      postDispatch({ type: "EDIT_POST", payload: _id });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const isBookmarked = state.bookmarks.filter(
     (bookmark) => bookmark._id === _id
   ).length;
-  console.log(isBookmarked, "booked");
+
   const isThePostByTheCurrentUser = state?.posts
     ?.filter((post) => post?.username === currentUser?.username)
     .map((post) => post?.username)
@@ -73,16 +82,7 @@ export const PostCard = ({
       )}
       {isThePostByTheCurrentUser && showDetails && (
         <div className="edit-block">
-          <p
-            onClick={() => {
-              // showEditForm(_id);
-              setEditForm(true);
-              setShowDetails(false);
-              postDispatch({ type: "EDIT_POST", payload: _id });
-            }}
-          >
-            Edit
-          </p>
+          <p onClick={editHandler}>Edit</p>
           <p
             onClick={() => {
               deleteThePost(_id);

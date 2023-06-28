@@ -70,7 +70,7 @@ export const PostsProvider = ({ children }) => {
     }
   };
   const fetchUserFeedPosts = async () => {
-    console.log(userState, currentUser, state.posts, "meww");
+    console.log(userState, currentUser, state.post, "meww");
     try {
       const currentUserInState = userState?.users?.find(
         (user) => user?.username === currentUser?.username
@@ -118,6 +118,8 @@ export const PostsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setEditForm(false);
     }
   };
 
