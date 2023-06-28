@@ -178,7 +178,6 @@
   margin-right: 0.5rem;
   margin-left: 0.5rem;
   margin-top: 0.5rem;
-
   cursor: pointer;
   font-weight: bold;
   background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
@@ -245,6 +244,15 @@
 }
 .edit-profile .full-length {
   width: 97%;
+}
+.inline-likes {
+  display: flex;
+  gap: 0.5rem;
+  color: #969595;
+  border-bottom: 1px solid #fad15b;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
+  font-size: small;
 }
 .edit-profile textarea {
   margin-top: 3px;

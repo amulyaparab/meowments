@@ -17,6 +17,7 @@ export const PostCard = ({
   createdAt,
   updatedAt,
   isLiked,
+  comments,
 }) => {
   const { state: userState } = useUsers();
   const {
@@ -93,7 +94,6 @@ export const PostCard = ({
           </p>
         </div>
       )}
-
       {userState?.users?.map((user) =>
         user?.username === username ? (
           <SuggestedUser {...user} postDate={createdAt} />
@@ -108,7 +108,10 @@ export const PostCard = ({
         />
       ) : null}
       <p className="post-text-width">{content}</p>
-      <div>{likes?.likeCount} likes </div>
+      <div className="inline-likes">
+        <div>{likes?.likeCount} likes </div>{" "}
+        <div>{comments?.length} comments</div>
+      </div>
       <div className="icons">
         <i
           className={`fa-solid fa-heart ${isLiked && "yellow"}`}

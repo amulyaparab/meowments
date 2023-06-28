@@ -28,9 +28,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "ksrewrewrxw_82ji_82nn_knwiu983ns9",
+        username: "jamesdavis",
+        text: "Looks like a great way to spend a Caturday!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -52,9 +52,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "vcxvsdfsdf_jshyuieyrwe_vvfcvfd",
+        username: "noahmartinez",
+        text: "Smart Alien Cutiepie.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -76,9 +76,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "dsfsdfsd_utnjg_biwn",
+        username: "ameliasmith",
+        text: "The small rainbow over her head 😍. I think I am in love.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -100,9 +100,27 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+        _id: "ewrewre_Vbcvii_lg343",
+        username: "shubhamsoni",
+        text: "Enjoy your trip!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "lhptyietnmvjc_hgyqr234",
+        username: "amulyaparab",
+        text: "Bon voyage!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "gfgniu_e4hium_iwewq",
         username: "adarshsharma",
-        text: "Black Love.",
+        text: "Have a wonderful trip!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -125,9 +143,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "fdsfdsf_gfdjkgjflkmb_oi777777",
+        username: "noahmartinez",
+        text: "I want to adopt a kitten. DM me.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -149,9 +167,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "wqewret_bkji_tuiioer",
+        username: "natashaiyer",
+        text: "Without a doubt the main protagonist of a band.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -172,17 +190,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [
-      {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
     username: "ameliasmith",
     createdAt: "2023-05-03T05:42:52+05:30",
     updatedAt: formatDate(),
@@ -198,9 +206,18 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+        _id: "kdswqe_obnimnb_uytns9",
         username: "adarshsharma",
-        text: "Black Love.",
+        text: "That's hilarious!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "kwekxw_trtttttttt_82ddddnn_knwwiewrewu983ns9",
+        username: "shubhamsoni",
+        text: "😂😂",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -222,9 +239,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "kdsfs_vcoirut_493cfgvfd",
+        username: "ameliasmith",
+        text: "That's so true.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -245,17 +262,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [
-      {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
     username: "adarshsharma",
     createdAt: "2021-12-22T17:55:37+05:30",
     updatedAt: formatDate(),
@@ -271,9 +278,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "23vgfhdh_awu3io_sdfsddhj",
+        username: "amulyaparab",
+        text: "So adorable!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -296,9 +303,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+        _id: "sfsdeop5km43_gjhgvbc_oipoq",
         username: "adarshsharma",
-        text: "Black Love.",
+        text: "Cutest thing alive!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -321,9 +328,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "kj3y432hhjkw_82sadsai_82sdnn_ghjs4l324j",
+        username: "jamesdavis",
+        text: "Very smol compared to this cutie.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -348,9 +355,18 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "eq32bjkdxf_oiow842_e8ghjf",
+        username: "shubhamsoni",
+        text: "😂😂",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "we3429_fguowie4ewjh_sdyubnzc",
+        username: "noahmartinez",
+        text: "Haha😂",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -373,9 +389,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "ergvdsfs_hdis34hn_fskbkasal",
+        username: "natashaiyer",
+        text: "So cute. I would pick her up without wasting a breath.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -398,9 +414,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "wewiiiiiiiiiijepo_fdshmv_3r324e",
+        username: "ameliasmith",
+        text: "Only if we could sleep so peacefully, life wouldn't be so stressful.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -421,17 +437,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [
-      {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
     username: "ameliasmith",
     createdAt: "2021-10-08T14:33:37+05:30",
     updatedAt: formatDate(),
@@ -447,9 +453,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
+        _id: "sewqdxfd_hgfiuiowd_23237cbvjk",
         username: "adarshsharma",
-        text: "Black Love.",
+        text: "Aww. That's a well mannered cat.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -469,17 +475,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    comments: [
-      {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+    comments: [],
     username: "jamesdavis",
     createdAt: "2022-05-17T23:24:22+05:30",
     updatedAt: formatDate(),
@@ -495,9 +491,9 @@ export const posts = [
     },
     comments: [
       {
-        _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-        username: "adarshsharma",
-        text: "Black Love.",
+        _id: "wrerfdf_fdgeujind_438gcvx",
+        username: "noahmartinez",
+        text: "Even my cat's a chomper.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -509,27 +505,3 @@ export const posts = [
     updatedAt: formatDate(),
   },
 ];
-//  {
-//     _id: "oakmkzsw_8dj2_w229_kjskl939s",
-//     content: "When in doubt, wear black🖤.",
-//     imageUrl: blackDress,
-//     likes: {
-//       likeCount: 49,
-//       likedBy: [],
-//       dislikedBy: [],
-//     },
-//     comments: [
-//   {
-//     _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-//     username: "adarshsharma",
-//     text: "Black Love.",
-//     votes: {
-//       upvotedBy: [],
-//       downvotedBy: [],
-//     },
-//   }
-// ],
-//     username: "swetaagarwal",
-//     createdAt: "2023-06-02T10:38:10+05:30",
-//     updatedAt: formatDate(),
-//   },
