@@ -3,10 +3,12 @@ import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+import { useUtils } from "../../Contexts/UtilsProvider";
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
     useAuth();
   const navigate = useNavigate();
+  const { isDarkMode } = useUtils();
   const signUpHandler = async () => {
     try {
       await userSignUpData({
@@ -26,7 +28,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div className="parent">
+    <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={signUpCat} alt="cat" />
       <div className="sign-up-form">
         <h1>SignUp</h1>

@@ -3,21 +3,27 @@ import "./header.css";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { SuggestedUser } from "../SuggestedUsers/Suggestion";
 import { useUsers } from "../../Contexts/UsersProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Header = () => {
   const navigate = useNavigate();
   const { state } = useAuth();
   const { state: userState } = useUsers();
+  const { isDarkMode, setIsDarkMode } = useUtils();
   return (
-    <div className="navbar">
+    <div className="navbar" id={`${isDarkMode && "dark"}`}>
       <h1 className="heading" onClick={() => navigate("/")}>
-        meow<span>Ments</span>
+        meow<span id={`${isDarkMode && "dark"}`}>Ments</span>
       </h1>
       <div className={`${state?.encodedToken && "userAndTheme"}`}>
         <div className="theme">
           <i className="fa-solid fa-sun"></i>
           <div className="theme-toggler">
-            <div className="toggle-button"></div>
+            <div
+              className="toggle-button"
+              id={`${isDarkMode && "dark-theme"}`}
+              onClick={() => setIsDarkMode(!isDarkMode)}
+            ></div>
           </div>
           <i className="fa-solid fa-moon"></i>
         </div>
@@ -26,6 +32,7 @@ export const Header = () => {
             {...userState?.currentUserData}
             showUserName
             hideUserDetails
+            dark
           />
         )}
       </div>

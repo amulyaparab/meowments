@@ -1,41 +1,16 @@
 import { NavLink } from "react-router-dom";
 import "./sideNav.css";
-import { useAuth } from "../../Contexts/AuthProvider";
 
 import { usePost } from "../../Contexts/PostsProvider";
-import { useUsers } from "../../Contexts/UsersProvider";
+
 import { useUtils } from "../../Contexts/UtilsProvider";
 export const SideNav = () => {
-  const { authDispatch } = useAuth();
-  const { postDispatch, setEditForm } = usePost();
-  const { userDispatch } = useUsers();
-  const { logout } = useUtils();
-  // const logout = () => {
-  //   try {
-  //     localStorage.removeItem("userData");
-
-  //     // authDispatch({
-  //     //   type: "SET_USER",
-  //     //   payload: null,
-  //     //   encodedTokenPayload: null,
-  //     // });
-  //     authDispatch({
-  //       type: "EMPTY_EVERYTHING",
-  //     });
-  //     postDispatch({
-  //       type: "EMPTY_EVERYTHING",
-  //     });
-  //     // userDispatch({
-  //     //   type: "EMPTY_EVERYTHING",
-  //     // });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const { setEditForm } = usePost();
+  const { isDarkMode, logout } = useUtils();
 
   return (
     <>
-      <div className="side-nav bottom-footer">
+      <div className="side-nav bottom-footer" id={`${isDarkMode && "dark"}`}>
         <NavLink to="/">
           <i className="fa-solid fa-house"></i>
           <span className="nav-no-words">Feed</span>

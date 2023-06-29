@@ -20,8 +20,6 @@
   display: flex;
   width: 350px;
   gap: 2.5rem;
-
-  /* border: #666666 solid; */
 }
 .theme {
   display: flex;
@@ -33,6 +31,8 @@
   border-radius: 100px;
   padding: 0.5rem 0.7rem;
   margin: 0 0.3rem;
+  position: relative;
+  height: 14px;
 }
 
 .toggle-button {
@@ -41,6 +41,8 @@
   height: 17px;
   border-radius: 50%;
   cursor: pointer;
+  position: absolute;
+  top: 0.4rem;
 }
 .theme i {
   font-size: 20px;
@@ -49,6 +51,12 @@
   content: ".";
   padding: 0 5px;
   color: #ffc11b;
+}
+
+#dark-theme {
+  background-color: #121212;
+  right: 10px;
+  top: 0.4rem;
 }
 @media screen and (max-width: 768px) {
   .no-display {

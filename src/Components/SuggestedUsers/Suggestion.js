@@ -3,6 +3,7 @@ import { getPostsByUser } from "../../Services/postServices";
 import { fetchSingleUser } from "../../Services/userServices";
 import { useNavigate } from "react-router-dom";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+import { useUtils } from "../../Contexts/UtilsProvider";
 export const SuggestedUser = ({
   _id,
   avatarUrl,
@@ -12,9 +13,11 @@ export const SuggestedUser = ({
   showUserName,
   postDate,
   hideUserDetails,
+  dark,
 }) => {
   const { postDispatch } = usePost();
   const navigate = useNavigate();
+  const { isDarkMode } = useUtils();
   const takeToProfilePage = async (userId, username) => {
     try {
       await fetchSingleUser(userId);
@@ -51,7 +54,7 @@ export const SuggestedUser = ({
       )} */}
       <div className={`${hideUserDetails && "no-display"}`}>
         {" "}
-        <h4>
+        <h4 id={`${isDarkMode && dark && "white"}`}>
           {firstName} {lastName}
         </h4>
         {showUserName ? (

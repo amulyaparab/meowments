@@ -3,12 +3,14 @@ import "./login.css";
 import loginCat from "../../assets/Images/login.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { usePost } from "../../Contexts/PostsProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Login = () => {
   const navigate = useNavigate();
   const { userLoginData, authDispatch, state, showPassword, setShowPassword } =
     useAuth();
   const { postDispatch } = usePost();
+  const { isDarkMode } = useUtils();
   // const [showPassword, setShowPassword] = useState({
   //   login: false,
   //   signUpPassword: false,
@@ -47,7 +49,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="parent">
+    <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={loginCat} alt="cat" />
       <div className="login-form">
         <h1>Login</h1>

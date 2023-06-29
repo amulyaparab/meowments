@@ -8,7 +8,8 @@ import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Bookmarks = () => {
   const { state } = usePost();
-  const { fetchAllBookmarks } = useUtils();
+
+  const { isDarkMode, fetchAllBookmarks } = useUtils();
   useEffect(() => {
     fetchAllBookmarks();
   }, []);
@@ -16,7 +17,7 @@ export const Bookmarks = () => {
     <>
       <div className="page-fractions">
         <SideNav />
-        <div className="background">
+        <div className="background" id={`${isDarkMode && "dark"}`}>
           <h1>Bookmarks</h1>
           {state.bookmarks.map((bookmark) => (
             <PostCard {...bookmark} />

@@ -107,11 +107,23 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
+#white {
+  color: #ffffff;
+}
 .white {
   /* color: #ffffff; */
   font-size: 22px;
   padding: 1rem;
+}
+#dark {
+  background-image: url("https://images.unsplash.com/photo-1533113354171-490d836238e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #121212;
+  color: #ffffff;
+}
+#light-text {
+  color: #ffffff;
 }
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);

@@ -27,7 +27,16 @@
   font-weight: bold;
   color: #666666;
 }
-
+#feed-dark-btns {
+  background-image: none;
+  background-color: #535353;
+  color: #ffffff;
+}
+#select {
+  background-image: none;
+  background-color: #535353;
+  color: #ffc11b;
+}
 .sort-by-date label {
   display: flex;
   margin: auto;

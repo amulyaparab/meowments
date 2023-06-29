@@ -36,6 +36,7 @@ export const PostCard = ({
     postDispatch,
   } = usePost();
   const { currentUser } = useAuth();
+  const { isDarkMode } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
 
   const handleCopyLink = (postId) => {

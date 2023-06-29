@@ -8,6 +8,7 @@ import {
   getAllBookmarks,
   removeBookmark,
 } from "../Services/bookmarksServices";
+import { useState } from "react";
 
 const UtilsContext = createContext();
 
@@ -88,6 +89,7 @@ export const UtilsProvider = ({ children }) => {
   const sortByOldest = () => {
     postDispatch({ type: "SORT_BY_OLDEST" });
   };
+  const [isDarkMode, setIsDarkMode] = useState(false);
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -105,6 +107,8 @@ export const UtilsProvider = ({ children }) => {
         sortByOldest,
         sortByTrendingHandler,
         logout,
+        isDarkMode,
+        setIsDarkMode,
       }}
     >
       {children}

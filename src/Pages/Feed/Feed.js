@@ -15,7 +15,8 @@ import { Loader } from "../../Components/Loader";
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
   const { state, editForm } = usePost();
-  const { sortByLatest, sortByOldest, sortByTrendingHandler } = useUtils();
+  const { sortByLatest, sortByOldest, sortByTrendingHandler, isDarkMode } =
+    useUtils();
 
   useEffect(() => {
     if (state.sort === "Trending") {
@@ -29,7 +30,7 @@ export const Feed = () => {
   return (
     <div className="page-fractions">
       <SideNav />
-      <div className="background">
+      <div className="background " id={`${isDarkMode && "dark"}`}>
         {state.loading ? (
           <Loader />
         ) : (
@@ -39,6 +40,7 @@ export const Feed = () => {
               className={`${
                 state.sort === "Trending" && "yellow"
               } feed-buttons`}
+              id={`${isDarkMode && "feed-dark-btns"}`}
               onClick={sortByTrendingHandler}
             >
               Trending
@@ -47,6 +49,7 @@ export const Feed = () => {
               className={`${
                 (state.sort === "Latest" || state.sort === "Oldest") && "yellow"
               } feed-buttons`}
+              id={`${isDarkMode && "feed-dark-btns"}`}
               onClick={() => setShowSort(!showSort)}
             >
               Sort By Date

@@ -24,7 +24,8 @@ export const Profile = () => {
   } = useUsers();
   const { state: userPostsState } = usePost();
   const { currentUser } = useAuth();
-  const { logout } = useUtils();
+
+  const { logout, isDarkMode } = useUtils();
   const findUser = state.users.find((user) => user._id === userId);
 
   const formattedDate = new Date(findUser?.createdAt);
@@ -37,10 +38,10 @@ export const Profile = () => {
   const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
 
   return (
-    <div className="page-fractions">
+    <div className="page-fractions" id={`${isDarkMode && "dark"}`}>
       <SideNav />
       <div className="profile-parent">
-        <div className="profile">
+        <div className="profile" id={`${isDarkMode && "dark"}`}>
           <div>
             <div className="profile-deets">
               <img
@@ -98,6 +99,7 @@ export const Profile = () => {
                 {isFoundUserSameAsCurrentUser && (
                   <i
                     class="fa-solid fa-right-from-bracket logout-icon"
+                    id={`${isDarkMode && "light-text"}`}
                     onClick={logout}
                   ></i>
                 )}
@@ -110,7 +112,7 @@ export const Profile = () => {
             </div>
             {showUserEditForm && <ProfileEditForm />}
             {showAvatarForm && <AvatarForm />}
-            <div className="profile-tabs">
+            <div className="profile-tabs" id={`${isDarkMode && "dark"}`}>
               <div>
                 <h4>{findUser?.following?.length}</h4>
                 <h4>Following</h4>

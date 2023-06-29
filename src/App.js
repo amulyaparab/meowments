@@ -17,7 +17,6 @@ import Mockman from "mockman-js";
 import { SinglePost } from "./Pages/SinglePost";
 import { usePost } from "./Contexts/PostsProvider";
 import { EditForm } from "./Components/EditForm";
-
 function App() {
   const { editForm } = usePost();
   return (
