@@ -108,6 +108,11 @@
   cursor: pointer;
 }
 
+.white {
+  /* color: #ffffff; */
+  font-size: 22px;
+  padding: 1rem;
+}
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -307,6 +312,11 @@
 .avatar-form .cross {
   right: 10px;
   top: 20px;
+}
+.post-text-width {
+  word-wrap: break-word;
+  width: 100%;
+  height: auto;
 }
 @media screen and (max-width: 1550px) {
   .new-post button {

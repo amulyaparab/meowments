@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Contexts/UsersProvider";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+
 export const CreatePost = () => {
   // const { user } = useUtils();
   const { state, postDispatch, createPost, fetchUserFeedPosts, setEditForm } =

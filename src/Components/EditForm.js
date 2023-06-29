@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useAuth } from "../Contexts/AuthProvider";
 import { usePost } from "../Contexts/PostsProvider";
 import { editPost } from "../Services/postServices";
 import example from "../assets/Images/example.jpg";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 export const EditForm = () => {
   const { state, setEditForm, postDispatch, createPost } = usePost();
   const findPostToBeEdited = state.posts.find(
@@ -20,6 +23,7 @@ export const EditForm = () => {
       setEditForm(false);
     }
   };
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   return (
     <div className="overlay-parent">
       <div className="overlay">
@@ -50,12 +54,28 @@ export const EditForm = () => {
             ></textarea>
           </label>
           <div className="edit-buttons">
+            <i
+              class="fa-solid fa-face-smile white"
+              onClick={() => setShowEmojiPicker(true)}
+            ></i>
+            {showEmojiPicker && (
+              <Picker
+                className="picker"
+                data={data}
+                onEmojiSelect={(event) => {
+                  postDispatch({
+                    type: "ADD_EMOJI_CONTENT",
+                    payload: event.native,
+                  });
+                  setShowEmojiPicker(false);
+                }}
+              />
+            )}
             {findPostToBeEdited ? (
               <button onClick={editPostHandler}>Save</button>
             ) : (
               <button onClick={createPost}>Post</button>
             )}
-            <button>Discard Changes</button>
           </div>
         </div>
       </div>

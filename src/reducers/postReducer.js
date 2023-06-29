@@ -39,6 +39,14 @@ export const postReducer = (state, action) => {
             ?.username,
         },
       };
+    case "ADD_EMOJI_CONTENT":
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          content: state.post.content + action.payload,
+        },
+      };
     case "EDIT_POST":
       return {
         ...state,
