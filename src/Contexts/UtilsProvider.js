@@ -3,18 +3,21 @@ import { getAllPosts } from "../Services/postServices";
 import { dislikePost, likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
+
 import {
   bookmarkPost,
   getAllBookmarks,
   removeBookmark,
 } from "../Services/bookmarksServices";
 import { useState } from "react";
+import { useUsers } from "./UsersProvider";
 
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { postDispatch, state } = usePost();
   const { currentToken, authDispatch } = useAuth();
+  const { state: userState, userDispatch } = useUsers();
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
@@ -95,6 +98,7 @@ export const UtilsProvider = ({ children }) => {
       fetchAllBookmarks();
     }
   }, []);
+
   return (
     <UtilsContext.Provider
       value={{

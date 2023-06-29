@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Contexts/UsersProvider";
-import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 
 export const CreatePost = () => {
   // const { user } = useUtils();
@@ -25,11 +24,7 @@ export const CreatePost = () => {
         <div className="new-post-div">
           <img
             className="avatar"
-            src={
-              state?.currentUserData?.avatarUrl?.length
-                ? state?.currentUserData?.avatarUrl
-                : blueCat
-            }
+            src={state?.currentUserData?.avatarUrl}
             alt={state?.currentUserData?.username}
             onClick={() => navigate(`/profile/${state?.currentUserData?._id}`)}
           />

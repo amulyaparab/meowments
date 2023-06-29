@@ -22,6 +22,8 @@ export const ProfileEditForm = () => {
       setShowUserEditForm(false);
     }
   };
+  console.log(state?.currentUserData);
+
   return (
     <div className="overlay-parent">
       <div className="overlay">

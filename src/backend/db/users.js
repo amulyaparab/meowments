@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 import { adarsh, amelia, amulya, james, natasha, noah, shubham } from ".";
 /**
@@ -20,9 +19,6 @@ export const users = [
     email: "amulyaparab123@gmail.com",
     createdAt: "2020-09-15T08:20:45+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
   {
     _id: "dsghfgs_mkdfjl",
@@ -37,9 +33,6 @@ export const users = [
     email: "ameliasmith123@gmail.com",
     createdAt: "2020-11-18T16:26:45+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
   {
     _id: "aowimdsmdjaldk_dksj",
@@ -54,9 +47,6 @@ export const users = [
     email: "noahmartinez123@gmail.com",
     createdAt: "2020-10-08T14:33:37+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
 
   {
@@ -73,9 +63,6 @@ export const users = [
     email: "shubhamsoni123@gmail.com",
     createdAt: "2018-06-07T20:52:07+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
   {
     _id: "haskjdhas_khdiuas",
@@ -90,9 +77,6 @@ export const users = [
     email: "jamesdavis123@gmail.com",
     createdAt: "2020-11-18T16:26:45+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
   {
     _id: "asdkhyasui_sajdaois",
@@ -107,9 +91,6 @@ export const users = [
     email: "natashaiyer123@gmail.com",
     createdAt: "2019-11-28T19:05:52+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
   {
     _id: "iwopeiwq_kjhds",
@@ -124,8 +105,5 @@ export const users = [
     email: "adarshsharma123@gmail.com",
     createdAt: "2019-12-15T01:17:30+05:30",
     updatedAt: formatDate(),
-    // bookmarks: [],
-    // followedBy: [],
-    // following: [],
   },
 ];

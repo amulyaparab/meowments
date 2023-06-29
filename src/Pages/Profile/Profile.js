@@ -12,6 +12,7 @@ import { editUser } from "../../Services/userServices";
 import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
 import { useUtils } from "../../Contexts/UtilsProvider";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+import { useEffect } from "react";
 export const Profile = () => {
   const { userId } = useParams();
   const {
@@ -37,6 +38,10 @@ export const Profile = () => {
 
   const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
 
+  console.log(
+    state.currentUserData,
+    "shhhhsssssssssssssssssssssssssssssssssssssssss"
+  );
   return (
     <div className="page-fractions" id={`${isDarkMode && "dark"}`}>
       <SideNav />
@@ -45,9 +50,7 @@ export const Profile = () => {
           <div>
             <div className="profile-deets">
               <img
-                src={
-                  findUser?.avatarUrl?.length ? findUser?.avatarUrl : blueCat
-                }
+                src={findUser?.avatarUrl}
                 className="profile-image"
                 alt={findUser?.username}
               />

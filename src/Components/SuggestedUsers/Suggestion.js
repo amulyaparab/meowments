@@ -2,7 +2,7 @@ import { usePost } from "../../Contexts/PostsProvider";
 import { getPostsByUser } from "../../Services/postServices";
 import { fetchSingleUser } from "../../Services/userServices";
 import { useNavigate } from "react-router-dom";
-import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+
 import { useUtils } from "../../Contexts/UtilsProvider";
 export const SuggestedUser = ({
   _id,
@@ -39,7 +39,7 @@ export const SuggestedUser = ({
     <div className="suggestionsPerson">
       {/* {avatarUrl?.length ? ( */}
       <img
-        src={avatarUrl?.length ? avatarUrl : blueCat}
+        src={avatarUrl}
         alt={username}
         onClick={() => takeToProfilePage(_id, username)}
       />

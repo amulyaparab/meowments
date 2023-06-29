@@ -11,12 +11,14 @@ import { useEffect } from "react";
 import { useUtils } from "../../Contexts/UtilsProvider";
 import { EditForm } from "../../Components/EditForm";
 import { Loader } from "../../Components/Loader";
+import { useUsers } from "../../Contexts/UsersProvider";
 
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
   const { state, editForm } = usePost();
   const { sortByLatest, sortByOldest, sortByTrendingHandler, isDarkMode } =
     useUtils();
+  const { state: userState, userDispatch } = useUsers();
 
   useEffect(() => {
     if (state.sort === "Trending") {
