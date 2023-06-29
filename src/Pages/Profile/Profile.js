@@ -11,7 +11,7 @@ import { AvatarForm } from "../../Components/AvatarForm";
 import { editUser } from "../../Services/userServices";
 import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
 import { useUtils } from "../../Contexts/UtilsProvider";
-
+import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 export const Profile = () => {
   const { userId } = useParams();
   const {
@@ -44,7 +44,9 @@ export const Profile = () => {
           <div>
             <div className="profile-deets">
               <img
-                src={findUser?.avatarUrl}
+                src={
+                  findUser?.avatarUrl?.length ? findUser?.avatarUrl : blueCat
+                }
                 className="profile-image"
                 alt={findUser?.username}
               />
@@ -54,20 +56,31 @@ export const Profile = () => {
                   {findUser?.firstName} {findUser?.lastName}
                 </h3>
                 <p className="profile-username">@{findUser?.username}</p>
-                <p>
-                  <i class="fa-solid fa-paw"></i>
-
-                  {findUser?.bio}
-                </p>
-                <i class="fa-solid fa-display"></i>
-                <a href={findUser?.website} target="_blank" rel="noreferrer">
-                  Portfolio website
-                </a>
-                <p>
-                  {" "}
-                  <i class="fa-solid fa-user"></i>
-                  {findUser?.occupation}
-                </p>
+                {findUser?.bio?.length && (
+                  <p>
+                    <i class="fa-solid fa-paw"></i>
+                    {findUser?.bio}
+                  </p>
+                )}
+                {findUser?.website?.length && (
+                  <div>
+                    <i class="fa-solid fa-display"></i>
+                    <a
+                      href={findUser?.website}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Portfolio website
+                    </a>
+                  </div>
+                )}
+                {findUser?.occupation?.length && (
+                  <p>
+                    {" "}
+                    <i class="fa-solid fa-user"></i>
+                    {findUser?.occupation}
+                  </p>
+                )}
                 <p>
                   <i class="fa-regular fa-calendar"></i>
                   {`Joined on ${date}

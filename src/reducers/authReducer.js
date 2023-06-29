@@ -13,7 +13,11 @@ export const authReducer = (state, action) => {
     case "NEW_USERNAME":
       return {
         ...state,
-        newUser: { ...state.newUser, username: action.payload },
+        newUser: {
+          ...state.newUser,
+          username: action.payload,
+          avatarUrl: action.imgPayload,
+        },
       };
     case "NEW_PASSWORD":
       return {

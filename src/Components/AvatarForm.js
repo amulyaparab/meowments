@@ -1,34 +1,7 @@
-import {
-  beigeCat,
-  blackAndWhiteCat,
-  blackCat,
-  blueCat,
-  blueEyedCat,
-  differentEyesCat,
-  grumpyCat,
-  hazelEyedCat,
-  kitten,
-  mainCat,
-  orangeKitten,
-  siameseCat,
-} from ".";
+import { avatarArray } from ".";
 import { useUsers } from "../Contexts/UsersProvider";
 
 export const AvatarForm = () => {
-  const avatarArray = [
-    beigeCat,
-    blackAndWhiteCat,
-    blackCat,
-    blueCat,
-    blueEyedCat,
-    differentEyesCat,
-    grumpyCat,
-    hazelEyedCat,
-    kitten,
-    mainCat,
-    orangeKitten,
-    siameseCat,
-  ];
   const { showAvatarForm, setShowAvatarForm } = useUsers();
   return (
     <div className="overlay-parent">

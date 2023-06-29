@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
+import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
     useAuth();
@@ -15,6 +16,7 @@ export const SignUp = () => {
         email: state?.newUser?.email,
         password: state?.newUser?.password,
         confirmPassword: state?.newUser?.comfirmPassword,
+        avatarUrl: state?.newUser?.avatarUrl,
       });
     } catch (err) {
       console.log(err);
@@ -34,7 +36,11 @@ export const SignUp = () => {
             className="inputs"
             placeholder="Amulya"
             onChange={(event) =>
-              authDispatch({ type: "FIRST_NAME", payload: event.target.value })
+              authDispatch({
+                type: "FIRST_NAME",
+                payload: event.target.value,
+                imgPayload: blueCat,
+              })
             }
           />
         </label>
@@ -44,7 +50,7 @@ export const SignUp = () => {
             className="inputs"
             placeholder="Parab"
             onChange={(event) =>
-              authDispatch({ type: "Last_NAME", payload: event.target.value })
+              authDispatch({ type: "LAST_NAME", payload: event.target.value })
             }
           />
         </label>

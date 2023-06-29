@@ -24,7 +24,7 @@ export const PostsProvider = ({ children }) => {
     feedPosts: [],
     bookmarks: [],
     post: {
-      _id: uuid(),
+      // _id: uuid(),
       imageUrl: "",
       content: "",
       likes: {
@@ -32,17 +32,7 @@ export const PostsProvider = ({ children }) => {
         likedBy: [],
         dislikedBy: [],
       },
-      comments: [
-        {
-          _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-          username: "adarshsharma",
-          text: "Black Love.",
-          votes: {
-            upvotedBy: [],
-            downvotedBy: [],
-          },
-        },
-      ],
+      comments: [],
       username:
         JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
       createdAt: formatDate(),

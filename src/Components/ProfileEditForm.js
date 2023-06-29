@@ -5,8 +5,9 @@ import { editUser } from "../Services/userServices";
 export const ProfileEditForm = () => {
   const { setShowUserEditForm, setShowAvatarForm, userDispatch, state } =
     useUsers();
-  const { currentUser, currentToken } = useAuth();
+  const { currentUser, currentToken, state: authState } = useAuth();
   console.log(state, "all users and stuffffffffff");
+  console.log(currentUser);
   const editProfileHandler = async () => {
     try {
       const editUserProfile = await editUser(
@@ -32,7 +33,7 @@ export const ProfileEditForm = () => {
           <h2>Edit Profile</h2>
 
           <img
-            src={currentUser?.avatarUrl}
+            src={state?.currentUserData?.avatarUrl}
             alt={currentUser?.username}
             className="edit-profile-image"
           />

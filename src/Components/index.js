@@ -10,8 +10,7 @@ import kitten from "../assets/AvatarImages/kitten.jpg";
 import mainCat from "../assets/AvatarImages/mainCat.jpg";
 import orangeKitten from "../assets/AvatarImages/orangeKitten.jpg";
 import siameseCat from "../assets/AvatarImages/siameseCat.jpg";
-
-export {
+export const avatarArray = [
   beigeCat,
   blackAndWhiteCat,
   blackCat,
@@ -24,4 +23,4 @@ export {
   mainCat,
   orangeKitten,
   siameseCat,
-};
+];

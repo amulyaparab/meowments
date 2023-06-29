@@ -3,7 +3,7 @@ import { fetchUsers } from "../Services/userServices";
 import { userReducer } from "../reducers/userReducer";
 import { useAuth } from "./AuthProvider";
 import { useState } from "react";
-
+import blueCat from "../assets/AvatarImages/blueCat.jpg";
 const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
@@ -23,7 +23,7 @@ export const UsersProvider = ({ children }) => {
 
   const initialState = {
     users: [],
-    currentUserData: currentUser,
+    currentUserData: { ...currentUser, avatarUrl: blueCat },
   };
 
   const [showUserEditForm, setShowUserEditForm] = useState(false);

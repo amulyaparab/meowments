@@ -2,7 +2,7 @@ import { usePost } from "../../Contexts/PostsProvider";
 import { getPostsByUser } from "../../Services/postServices";
 import { fetchSingleUser } from "../../Services/userServices";
 import { useNavigate } from "react-router-dom";
-
+import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 export const SuggestedUser = ({
   _id,
   avatarUrl,
@@ -34,27 +34,28 @@ export const SuggestedUser = ({
 
   return (
     <div className="suggestionsPerson">
-      {avatarUrl?.length !== 0 ? (
-        <img
-          src={avatarUrl}
-          alt={username}
-          onClick={() => takeToProfilePage(_id, username)}
-        />
-      ) : (
+      {/* {avatarUrl?.length ? ( */}
+      <img
+        src={avatarUrl?.length ? avatarUrl : blueCat}
+        alt={username}
+        onClick={() => takeToProfilePage(_id, username)}
+      />
+      {/* ) 
+      : (
         <div
           className="alt-profile-img"
           onClick={() => takeToProfilePage(_id, username)}
         >
-          <p>{firstName.charAt(0)}</p>
+          <p>{firstName.charAt(0).toUpperCase()}</p>
         </div>
-      )}
+      )} */}
       <div className={`${hideUserDetails && "no-display"}`}>
         {" "}
         <h4>
           {firstName} {lastName}
         </h4>
         {showUserName ? (
-          <p onClick={() => takeToProfilePage(_id, username)}>{username}</p>
+          <p onClick={() => takeToProfilePage(_id, username)}>@{username}</p>
         ) : (
           <p className="date">
             {`${date}
