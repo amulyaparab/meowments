@@ -2,11 +2,12 @@ import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { SuggestedUser } from "../SuggestedUsers/Suggestion";
+import { useUsers } from "../../Contexts/UsersProvider";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { state, currentUser } = useAuth();
-
+  const { state } = useAuth();
+  const { state: userState } = useUsers();
   return (
     <div className="navbar">
       <h1 className="heading" onClick={() => navigate("/")}>
@@ -21,7 +22,11 @@ export const Header = () => {
           <i className="fa-solid fa-moon"></i>
         </div>
         {state?.encodedToken && (
-          <SuggestedUser {...currentUser} showUserName hideUserDetails />
+          <SuggestedUser
+            {...userState?.currentUserData}
+            showUserName
+            hideUserDetails
+          />
         )}
       </div>
     </div>

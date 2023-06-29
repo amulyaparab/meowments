@@ -43,6 +43,14 @@ export const userReducer = (state, action) => {
         ...state,
         currentUserData: { ...state.currentUserData, website: action.payload },
       };
+    case "EDIT_AVATAR":
+      return {
+        ...state,
+        currentUserData: {
+          ...state.currentUserData,
+          avatarUrl: action.payload,
+        },
+      };
     case "EDIT_USER":
       return {
         ...state,

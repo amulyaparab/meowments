@@ -9,9 +9,10 @@ import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 
 export const CreatePost = () => {
   // const { user } = useUtils();
-  const { state, postDispatch, createPost, fetchUserFeedPosts, setEditForm } =
+  const { postDispatch, createPost, fetchUserFeedPosts, setEditForm } =
     usePost();
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
+  const { state } = useUsers();
   const { state: userState } = useUsers();
   const handleShowToast = () => {
     toast.success("Toast message!", { position: toast.POSITION.TOP_RIGHT });
@@ -25,10 +26,12 @@ export const CreatePost = () => {
           <img
             className="avatar"
             src={
-              currentUser?.avatarUrl?.length ? currentUser?.avatarUrl : blueCat
+              state?.currentUserData?.avatarUrl?.length
+                ? state?.currentUserData?.avatarUrl
+                : blueCat
             }
-            alt={currentUser?.username}
-            onClick={() => navigate(`/profile/${currentUser?._id}`)}
+            alt={state?.currentUserData?.username}
+            onClick={() => navigate(`/profile/${state?.currentUserData?._id}`)}
           />
 
           <button

@@ -2,7 +2,7 @@ import { avatarArray } from ".";
 import { useUsers } from "../Contexts/UsersProvider";
 
 export const AvatarForm = () => {
-  const { showAvatarForm, setShowAvatarForm } = useUsers();
+  const { showAvatarForm, setShowAvatarForm, userDispatch } = useUsers();
   return (
     <div className="overlay-parent">
       <div className="overlay">
@@ -12,7 +12,14 @@ export const AvatarForm = () => {
             onClick={() => setShowAvatarForm(false)}
           ></i>
           {avatarArray.map((cat) => (
-            <img src={cat} alt="cat" />
+            <img
+              src={cat}
+              alt="cat"
+              onClick={() => {
+                userDispatch({ type: "EDIT_AVATAR", payload: cat });
+                setShowAvatarForm(false);
+              }}
+            />
           ))}
         </div>
       </div>

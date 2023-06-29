@@ -15,6 +15,7 @@
   text-align: left;
   border-radius: 7px;
   position: relative;
+  max-width: 750px;
 }
 .posts .postImg {
   height: auto;
