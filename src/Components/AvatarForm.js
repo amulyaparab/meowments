@@ -1,10 +1,12 @@
 import { avatarArray } from ".";
 import { useUsers } from "../Contexts/UsersProvider";
+import { useUtils } from "../Contexts/UtilsProvider";
 
 export const AvatarForm = () => {
   const { showAvatarForm, setShowAvatarForm, userDispatch } = useUsers();
+  const { isDarkMode } = useUtils();
   return (
-    <div className="overlay-parent">
+    <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>
       <div className="overlay">
         <div className="avatar-form">
           <i

@@ -114,7 +114,9 @@ export const Profile = () => {
               </div>
             </div>
             {showUserEditForm && <ProfileEditForm />}
-            {showAvatarForm && <AvatarForm />}
+            {showAvatarForm && (
+              <AvatarForm id={`${isDarkMode && "dark-text"}`} />
+            )}
             <div className="profile-tabs" id={`${isDarkMode && "dark"}`}>
               <div>
                 <h4>{findUser?.following?.length}</h4>

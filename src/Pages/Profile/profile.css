@@ -61,6 +61,7 @@
   color: #333333;
   cursor: pointer;
 }
+
 @media screen and (max-width: 1024px) {
   .logout-icon {
     font-size: 30px;

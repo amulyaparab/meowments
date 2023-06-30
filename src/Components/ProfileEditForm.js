@@ -1,11 +1,13 @@
 import { useAuth } from "../Contexts/AuthProvider";
 import { useUsers } from "../Contexts/UsersProvider";
+import { useUtils } from "../Contexts/UtilsProvider";
 import { editUser } from "../Services/userServices";
 
 export const ProfileEditForm = () => {
   const { setShowUserEditForm, setShowAvatarForm, userDispatch, state } =
     useUsers();
   const { currentUser, currentToken, state: authState } = useAuth();
+  const { isDarkMode } = useUtils();
   console.log(state, "all users and stuffffffffff");
   console.log(currentUser);
   const editProfileHandler = async () => {
@@ -25,7 +27,7 @@ export const ProfileEditForm = () => {
   console.log(state?.currentUserData);
 
   return (
-    <div className="overlay-parent">
+    <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>
       <div className="overlay">
         <div className="edit-form edit-profile">
           <i
