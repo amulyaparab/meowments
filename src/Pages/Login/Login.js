@@ -4,20 +4,24 @@ import loginCat from "../../assets/Images/login.jpg";
 import { useAuth } from "../../Contexts/AuthProvider";
 import { usePost } from "../../Contexts/PostsProvider";
 import { useUtils } from "../../Contexts/UtilsProvider";
-
+import { toast } from "react-toastify";
 export const Login = () => {
   const navigate = useNavigate();
   const { userLoginData, authDispatch, state, showPassword, setShowPassword } =
     useAuth();
   const { postDispatch } = usePost();
   const { isDarkMode } = useUtils();
-  // const [showPassword, setShowPassword] = useState({
-  //   login: false,
-  //   signUpPassword: false,
-  //   signUpConfirmPassword: false,
-  // });
+
   const loginAsGuest = async () => {
     try {
+      authDispatch({
+        type: "SET_USERNAME",
+        payload: "adarshsharma",
+      });
+      authDispatch({
+        type: "SET_PASSWORD",
+        payload: "adarshsharma123",
+      });
       await userLoginData({
         username: "adarshsharma",
         password: "adarshsharma123",
@@ -32,8 +36,9 @@ export const Login = () => {
     }
   };
 
-  const login = async () => {
+  const login = async (event) => {
     try {
+      event.preventDefault();
       await userLoginData({
         username: state.username,
         password: state.password,
@@ -45,20 +50,23 @@ export const Login = () => {
       console.log(err);
     } finally {
       navigate("/");
+      toast.success("Successfully Logged In!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
   return (
     <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={loginCat} alt="cat" />
-      <div className="login-form">
+      <form className="login-form" onSubmit={login}>
         <h1>Login</h1>
         <label>
-          Email Address
+          Username
           <input
+            required
             className="inputs"
-            type="email"
-            placeholder="adarshbalika@gmail.com"
+            placeholder="adarshsharma"
             value={state?.username}
             onChange={(event) =>
               authDispatch({
@@ -94,6 +102,7 @@ export const Login = () => {
             ></i>
           )}
           <input
+            required
             className="inputs"
             type={`${showPassword.login ? "text" : "password"}`}
             placeholder="********"
@@ -110,12 +119,14 @@ export const Login = () => {
           <input type="checkbox" className="checkbox" />
           Remember Me
         </label>
-        <button onClick={login}>Login</button>
-        <button onClick={loginAsGuest}>Login As Guest</button>
+        <input type="submit" value="Login" className="login-button" />
+        <button onClick={loginAsGuest} className="login-button">
+          Login As Guest
+        </button>
         <small>
           <NavLink to="/signUp">Create New Account</NavLink>
         </small>
-      </div>
+      </form>
     </div>
   );
 };

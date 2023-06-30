@@ -25,7 +25,7 @@
   font-size: 40px;
 }
 
-.sign-up-form button {
+.sign-up-form .sign-up-btn {
   border: none;
   padding: 0.7rem;
   border-radius: 5px;
@@ -36,7 +36,7 @@
   width: 400px;
   color: #ffffff;
 }
-.sign-up-form button:hover {
+.sign-up-form .sign-up-btn:hover {
   background-color: #ffffff;
   color: #ffc11b;
 }

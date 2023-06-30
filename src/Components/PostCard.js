@@ -48,7 +48,7 @@ export const PostCard = ({
         });
       })
       .catch((error) => {
-        toast.success("Failed to copy link...Try again.", {
+        toast.error("Failed to copy link...Try again.", {
           position: toast.POSITION.TOP_RIGHT,
         });
       });

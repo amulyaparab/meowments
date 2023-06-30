@@ -55,9 +55,13 @@ export const EditForm = () => {
           </label>
           <div className="edit-buttons">
             <i
-              class="fa-solid fa-face-smile white"
+              class="fa-solid fa-face-smile add-on"
               onClick={() => setShowEmojiPicker(true)}
             ></i>
+            <label>
+              <i class="fa-solid fa-image add-on"></i>
+              <input className="hidden" type="file" accept="/image*" />
+            </label>
             {showEmojiPicker && (
               <Picker
                 className="picker"
