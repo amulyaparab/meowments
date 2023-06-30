@@ -1,22 +1,24 @@
 import "./App.css";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Route, Routes } from "react-router-dom";
 import {
   Bookmarks,
+  EditForm,
   Explore,
   Feed,
+  Header,
   Landing,
   Login,
   Profile,
+  RequiresAuth,
+  Route,
+  Routes,
   SignUp,
+  SinglePost,
+  ToastContainer,
+  usePost,
 } from "./Pages";
-import { Header } from "./Components/Header/Header";
-import { RequiresAuth } from "./Components/RequireAuth";
 import Mockman from "mockman-js";
-import { SinglePost } from "./Pages/SinglePost";
-import { usePost } from "./Contexts/PostsProvider";
-import { EditForm } from "./Components/EditForm";
+
 function App() {
   const { editForm } = usePost();
   return (
