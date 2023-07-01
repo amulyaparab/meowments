@@ -2,8 +2,8 @@ import { usePost } from "../../Contexts/PostsProvider";
 import { getPostsByUser } from "../../Services/postServices";
 import { fetchSingleUser } from "../../Services/userServices";
 import { useNavigate } from "react-router-dom";
-
 import { useUtils } from "../../Contexts/UtilsProvider";
+
 export const SuggestedUser = ({
   _id,
   avatarUrl,

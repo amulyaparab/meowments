@@ -187,6 +187,19 @@ export const postReducer = (state, action) => {
       };
     case "GET_USER_POSTS":
       return { ...state, userPosts: action.payload };
+    case "UPDATE_USER_POSTS":
+      console.log(
+        state.posts.filter((user) =>
+          action.payload.map((currUser) => currUser._id).includes(user._id)
+        ),
+        "sssssssssssssssssssssssssssssssssssssssssssueee"
+      );
+      return {
+        ...state,
+        userPosts: state.posts.filter((user) =>
+          action.payload.map((currUser) => currUser._id).includes(user._id)
+        ),
+      };
     default:
       return state;
   }

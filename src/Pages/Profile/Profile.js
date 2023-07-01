@@ -13,6 +13,7 @@ import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
 import { useUtils } from "../../Contexts/UtilsProvider";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 import { useEffect } from "react";
+import { getPostsByUser } from "../../Services/postServices";
 export const Profile = () => {
   const { userId } = useParams();
   const {
@@ -23,7 +24,7 @@ export const Profile = () => {
     state,
     setShowAvatarForm,
   } = useUsers();
-  const { state: userPostsState } = usePost();
+  const { state: userPostsState, postDispatch } = usePost();
   const { currentUser } = useAuth();
 
   const { logout, isDarkMode } = useUtils();
@@ -38,10 +39,17 @@ export const Profile = () => {
 
   const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
 
-  console.log(
-    state.currentUserData,
-    "shhhhsssssssssssssssssssssssssssssssssssssssss"
-  );
+  const fetchUserPosts = async () => {
+    try {
+      const postsByUser = await getPostsByUser(findUser?.username);
+      postDispatch({ type: "UPDATE_USER_POSTS", payload: postsByUser });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchUserPosts();
+  }, [findUser]);
   return (
     <div className="page-fractions" id={`${isDarkMode && "dark"}`}>
       <SideNav />
