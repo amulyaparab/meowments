@@ -103,8 +103,8 @@ export const postReducer = (state, action) => {
     case "REMOVE_BOOKMARK":
       return {
         ...state,
-        bookmarks: state.bookmarks.filter(
-          (bookmark) => !action.payload.includes(bookmark._id)
+        bookmarks: state.bookmarks.filter((bookmark) =>
+          action.payload.includes(bookmark._id)
         ),
       };
     case "UPDATE_BOOKMARKS":
