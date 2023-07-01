@@ -20,6 +20,7 @@ export const PostCard = ({
   updatedAt,
   isLiked,
   comments,
+  yellow,
 }) => {
   const { state: userState } = useUsers();
   const {
@@ -36,6 +37,8 @@ export const PostCard = ({
     showEditForm,
     postDispatch,
   } = usePost();
+
+  console.log({ state });
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
@@ -76,6 +79,7 @@ export const PostCard = ({
   const navigate = useNavigate();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
+
   return (
     <div className="posts" key={_id}>
       {isThePostByTheCurrentUser && (
@@ -125,8 +129,10 @@ export const PostCard = ({
           }}
         ></i>
         <i
-          className={`fa-regular fa-comment ${showComments && "yellow"}`}
-          onClick={() => setShowComments(!showComments)}
+          className={`fa-regular fa-comment ${
+            (showComments && "yellow") || (yellow && "yellow")
+          }`}
+          onClick={() => !yellow && setShowComments(!showComments)}
         ></i>
         <i
           className="fa-solid fa-share-nodes"

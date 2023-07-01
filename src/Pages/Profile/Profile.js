@@ -49,7 +49,7 @@ export const Profile = () => {
   };
   useEffect(() => {
     fetchUserPosts();
-  }, [findUser]);
+  }, [findUser, userPostsState.posts]);
   return (
     <div className="page-fractions" id={`${isDarkMode && "dark"}`}>
       <SideNav />
@@ -141,9 +141,12 @@ export const Profile = () => {
             </div>
           </div>
           <div className="expandPosts">
-            {userPostsState?.userPosts?.map((post) => (
-              <PostCard {...post} />
-            ))}
+            {userPostsState?.userPosts?.map((post) => {
+              const likedByArray = post.likes.likedBy.filter(
+                (currUser) => currUser._id === currentUser._id
+              );
+              return <PostCard {...post} isLiked={!!likedByArray.length} />;
+            })}
           </div>
         </div>
       </div>

@@ -29,6 +29,9 @@ export const postReducer = (state, action) => {
     //     storePosts: [...state.feedPosts, action.payload],
     //   };
     case "LIKED_POST":
+      const userPostToBeLiked = state?.userPosts?.find(
+        (post) => post._id === action.idPayload
+      );
       return {
         ...state,
         posts: action.payload,
@@ -181,8 +184,12 @@ export const postReducer = (state, action) => {
         feedPosts: state?.feedPosts?.filter(
           (post) => post._id !== action.payload
         ),
+        bookmarks: state?.bookmarks?.filter(
+          (post) => post._id !== action.payload
+        ),
       };
     case "GET_USER_POSTS":
+      console.log(action.payload);
       return { ...state, userPosts: action.payload };
     case "UPDATE_USER_POSTS":
       // console.log(

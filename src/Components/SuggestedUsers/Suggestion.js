@@ -15,7 +15,7 @@ export const SuggestedUser = ({
   hideUserDetails,
   dark,
 }) => {
-  const { postDispatch } = usePost();
+  const { state, postDispatch } = usePost();
   const navigate = useNavigate();
   const { isDarkMode } = useUtils();
   const takeToProfilePage = async (userId, username) => {

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect } from "react";
-import { getAllPosts } from "../Services/postServices";
+import { getAllPosts, getPostsByUser } from "../Services/postServices";
 import { dislikePost, likePost } from "../Services/likeServices";
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
@@ -16,12 +16,19 @@ const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { postDispatch, state } = usePost();
-  const { currentToken, authDispatch } = useAuth();
+  const { currentToken, authDispatch, currentUser } = useAuth();
   const { state: userState, userDispatch } = useUsers();
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
-      postDispatch({ type: "LIKED_POST", payload: liked });
+      console.log(liked, "likeds");
+      postDispatch({
+        type: "LIKED_POST",
+        payload: liked,
+      });
+      // const postsByUser = await getPostsByUser(currentUser?.username);
+      // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
+      // console.log(postsByUser, "yaya");
     } catch (err) {
       console.log(err);
     }
@@ -30,6 +37,9 @@ export const UtilsProvider = ({ children }) => {
     try {
       const disliked = await dislikePost(postId, currentToken);
       postDispatch({ type: "DISLIKE_POST", payload: disliked });
+      // const postsByUser = await getPostsByUser(currentUser?.username);
+      // console.log(postsByUser, "sffffffffffffffff");
+      // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
     }
