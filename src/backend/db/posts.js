@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 import {
   booksCat,
@@ -109,7 +108,7 @@ export const posts = [
   },
 
   {
-    _id: uuid(),
+    _id: "eiuwqoie_nmvnblck_43254",
     imageUrl: kittenAdopt,
     content: "Adopt this adorable abandoned baby. Contact me: 9432435656",
     likes: {
@@ -129,7 +128,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "iouweqio_nvklvj_weqe342",
     imageUrl: rockstarCat,
     content: "I am a Rockstar.*smirk* *wink wink*",
     likes: {
@@ -149,7 +148,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "lsak_weqwr_32432_REtert",
     imageUrl:
       "https://images.unsplash.com/photo-1634963980241-08a342c20eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80",
     content: "Mama forgot to give me food. I am hangry.",
@@ -164,7 +163,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "erwe_3534_vcb09_fdgf",
     imageUrl: rudeCat,
     content: "How rude! Why is this hooman taking a photo of my butt.",
     likes: {
@@ -189,7 +188,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "wewqe_xvknox_qweq_324234g",
     imageUrl: catInArms,
     content: "Holding your baby cat in your arms is no lesser than therapy.",
     likes: {
@@ -209,7 +208,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "wwoooxcmz_2opvox34_dsfk433",
     imageUrl:
       "https://images.pexels.com/photos/2499282/pexels-photo-2499282.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     content: "Those fishbits were yummy.",
@@ -224,7 +223,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "jksdhf_3242vxcv_768676_fhgfjjhgj",
     imageUrl: cuddlesCat,
     content: "I order you to give me cuddles, hooman.",
     likes: {
@@ -244,7 +243,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "qwewtreytyu_fgfjhkjlkjsdfs_5465876dfdss",
     imageUrl:
       "https://images.pexels.com/photos/1472999/pexels-photo-1472999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     content: "I sniff flowers.",
@@ -265,7 +264,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "wueiouwq_bnvvvvvvvvvvvv_5634553243ndfgh",
     imageUrl:
       "https://images.pexels.com/photos/16187713/pexels-photo-16187713/free-photo-of-kitten-on-windowsill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     content: "The world looks so smol from up here.",
@@ -287,7 +286,7 @@ export const posts = [
   },
 
   {
-    _id: uuid(),
+    _id: "weuwq_ghgjhk_nmvbxv_87685nvgds",
     imageUrl:
       "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     content:
@@ -314,7 +313,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "sdjsk_erwei_674_vbcj2222",
     imageUrl:
       "https://images.pexels.com/photos/2835623/pexels-photo-2835623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     content: "Hi there! Can I take a nap in your lap?",
@@ -336,7 +335,7 @@ export const posts = [
   },
 
   {
-    _id: uuid(),
+    _id: "sdjwe_cvxipoemt_32423fgdgfd",
     imageUrl: napCat,
     content: "I like naps. We'll get along if you don't wake me up.",
     likes: {
@@ -356,7 +355,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "tttttttttttttuysdagsj_klnjvbh_345hbgf",
     imageUrl:
       "https://images.pexels.com/photos/15171881/pexels-photo-15171881/free-photo-of-photo-of-a-tabby-kitten.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     content: "Bohemian catto?",
@@ -371,7 +370,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "mlerowe_birpote_345_bvc",
     imageUrl: dogHuggingCat,
     content: "Come here enemy, gimme a hug.",
     likes: {
@@ -391,7 +390,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "wewoiuionbvuuuuuu_Yyukjljgd_45646gfd",
     imageUrl: scratchCat,
     content: "Scratchity scratch.",
     likes: {
@@ -405,7 +404,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "euwqnmcx_jfgk_bounerm_453gdf",
     imageUrl: chomp,
     content: "Chomp!",
     likes: {
