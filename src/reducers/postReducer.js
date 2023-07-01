@@ -13,12 +13,21 @@ export const postReducer = (state, action) => {
         feedPosts: action.payload,
         storePosts: action.payload,
       };
-    case "UPDATE_FEED_POSTS":
+    case "UPDATE_ALL_POSTS":
       return {
         ...state,
-        feedPosts: [...state.feedPosts, action.payload],
-        storePosts: [...state.feedPosts, action.payload],
+        posts: action.payload,
+        // post: {
+        //   ...state.post,
+        //   _id: uuid(),
+        // },
       };
+    // case "UPDATE_FEED_POSTS":
+    //   return {
+    //     ...state,
+    //     feedPosts: [...state.feedPosts, action.payload],
+    //     storePosts: [...state.feedPosts, action.payload],
+    //   };
     case "LIKED_POST":
       return {
         ...state,
@@ -61,7 +70,7 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         post: {
-          _id: uuid(),
+          // _id: uuid(),
           imageUrl: "",
           content: "",
           likes: {
@@ -69,17 +78,7 @@ export const postReducer = (state, action) => {
             likedBy: [],
             dislikedBy: [],
           },
-          comments: [
-            {
-              _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-              username: "",
-              text: "",
-              votes: {
-                upvotedBy: [],
-                downvotedBy: [],
-              },
-            },
-          ],
+          comments: [],
           username:
             JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
           createdAt: formatDate(),
@@ -91,10 +90,8 @@ export const postReducer = (state, action) => {
         ...state,
         post: {
           ...state.post,
-          username: JSON.parse(localStorage.getItem("userData"))?.user
-            ?.username,
+          // _id: uuid(),
         },
-        posts: [...state.posts, state.post],
       };
     case "BOOKMARK_POSTS":
       return {
@@ -159,7 +156,7 @@ export const postReducer = (state, action) => {
         feedPosts: [],
         userPosts: [],
         post: {
-          _id: uuid(),
+          // _id: uuid(),
           imageUrl: "",
           content: "",
           likes: {
@@ -188,12 +185,12 @@ export const postReducer = (state, action) => {
     case "GET_USER_POSTS":
       return { ...state, userPosts: action.payload };
     case "UPDATE_USER_POSTS":
-      console.log(
-        state.posts.filter((user) =>
-          action.payload.map((currUser) => currUser._id).includes(user._id)
-        ),
-        "sssssssssssssssssssssssssssssssssssssssssssueee"
-      );
+      // console.log(
+      //   state.posts.filter((user) =>
+      //     action.payload.map((currUser) => currUser._id).includes(user._id)
+      //   ),
+      //   "sssssssssssssssssssssssssssssssssssssssssssueee"
+      // );
       return {
         ...state,
         userPosts: state.posts.filter((user) =>

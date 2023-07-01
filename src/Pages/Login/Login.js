@@ -54,7 +54,7 @@ export const Login = () => {
       console.log(err);
     }
   };
-  console.log(state, "sdfds");
+  // console.log(state, "sdfds");
   return (
     <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={loginCat} alt="cat" />

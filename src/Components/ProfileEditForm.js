@@ -8,15 +8,14 @@ export const ProfileEditForm = () => {
     useUsers();
   const { currentUser, currentToken, state: authState } = useAuth();
   const { isDarkMode } = useUtils();
-  console.log(state, "all users and stuffffffffff");
-  console.log(currentUser);
+
   const editProfileHandler = async () => {
     try {
       const editUserProfile = await editUser(
         state?.currentUserData,
         currentToken
       );
-      console.log(editUserProfile, "amulya");
+
       userDispatch({ type: "EDIT_USER", payload: editUserProfile });
     } catch (err) {
       console.log(err);
@@ -24,7 +23,6 @@ export const ProfileEditForm = () => {
       setShowUserEditForm(false);
     }
   };
-  console.log(state?.currentUserData);
 
   return (
     <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>

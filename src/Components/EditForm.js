@@ -7,14 +7,15 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 export const EditForm = () => {
   const { state, setEditForm, postDispatch, createPost } = usePost();
-  const findPostToBeEdited = state.posts.find(
-    (post) => post._id === state.post._id
+  const findPostToBeEdited = state.posts?.find(
+    (post) => post?._id === state.post?._id
   );
+
   const { currentToken } = useAuth();
   const editPostHandler = async () => {
     try {
       const edited = await editPost(state.post._id, state.post, currentToken);
-      console.log(edited, "sdfjdslfujklsdjffffffffffff");
+
       postDispatch({ type: "EDITED_POST", payload: edited });
     } catch (err) {
       console.log(err);
