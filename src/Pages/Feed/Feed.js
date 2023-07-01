@@ -42,7 +42,10 @@ export const Feed = () => {
               className={`${
                 state.sort === "Trending" && "yellow"
               } feed-buttons`}
-              id={`${isDarkMode && "feed-dark-btns"}`}
+              id={`${
+                (isDarkMode && state.sort === "Trending" && "select") ||
+                (isDarkMode && "feed-dark-btns")
+              }`}
               onClick={sortByTrendingHandler}
             >
               Trending
@@ -51,7 +54,12 @@ export const Feed = () => {
               className={`${
                 (state.sort === "Latest" || state.sort === "Oldest") && "yellow"
               } feed-buttons`}
-              id={`${isDarkMode && "feed-dark-btns"}`}
+              id={`${
+                (isDarkMode &&
+                  (state.sort === "Latest" || state.sort === "Oldest") &&
+                  "select") ||
+                (isDarkMode && "feed-dark-btns")
+              }`}
               onClick={() => setShowSort(!showSort)}
             >
               Sort By Date

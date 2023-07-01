@@ -72,8 +72,8 @@ export const postReducer = (state, action) => {
           comments: [
             {
               _id: "ksokmkkxw_82ji_82nn_knwiu983ns9",
-              username: "adarshsharma",
-              text: "Black Love.",
+              username: "",
+              text: "",
               votes: {
                 upvotedBy: [],
                 downvotedBy: [],
