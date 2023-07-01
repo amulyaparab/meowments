@@ -8,6 +8,7 @@ import { usePost } from "../Contexts/PostsProvider";
 import { toast } from "react-toastify";
 import { useAuth } from "../Contexts/AuthProvider";
 import { EditForm } from "./EditForm";
+import { Comments } from "./Comments";
 
 export const PostCard = ({
   _id,
@@ -38,7 +39,7 @@ export const PostCard = ({
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
-
+  const [showComments, setShowComments] = useState(false);
   const handleCopyLink = (postId) => {
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${postId}`)
@@ -73,6 +74,8 @@ export const PostCard = ({
     .includes(username);
 
   const navigate = useNavigate();
+  const findUser = (commentUser) =>
+    userState?.users.find((user) => user.username === commentUser);
   return (
     <div className="posts" key={_id}>
       {isThePostByTheCurrentUser && (
@@ -122,8 +125,8 @@ export const PostCard = ({
           }}
         ></i>
         <i
-          className="fa-regular fa-comment"
-          onClick={() => navigate(`/post/${_id}`)}
+          className={`fa-regular fa-comment ${showComments && "yellow"}`}
+          onClick={() => setShowComments(!showComments)}
         ></i>
         <i
           className="fa-solid fa-share-nodes"
@@ -136,6 +139,7 @@ export const PostCard = ({
           }
         ></i>
       </div>
+      {showComments && <Comments comments={comments} />}
     </div>
   );
 };

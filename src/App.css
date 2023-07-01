@@ -199,18 +199,21 @@
 .comment {
   background-color: #ffffff;
   width: 46.5%;
-  padding: 1rem;
+  /* padding: 0 1rem; */
   margin: auto;
   border-radius: 5px;
   margin-top: 5px;
+  padding: 1.5rem 1rem;
 }
-
+.comment .comment-background {
+  min-width: 98%;
+}
 .comment img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
-.comment .comment-text {
+.comment-text {
   text-align: left;
   font-size: 15px;
   margin-top: -10px;
@@ -218,6 +221,19 @@
   margin-bottom: 10px;
   margin-left: 67px;
   font-weight: 500;
+}
+.comment-background {
+  background-color: #fad15b;
+  padding: 0 1rem;
+  min-width: 98%;
+  border-radius: 0 10px 10px 10px;
+}
+.comment-background h4 {
+  text-align: left;
+  margin-left: 0;
+}
+.allPostsComments {
+  margin-top: 2rem;
 }
 .edit-form .edit-buttons button {
   padding: 0.5rem 2rem;
