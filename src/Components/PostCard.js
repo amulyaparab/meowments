@@ -40,7 +40,7 @@ export const PostCard = ({
 
   console.log({ state });
   const { currentUser } = useAuth();
-  const { isDarkMode } = useUtils();
+  const { showCommentBar, setShowCommentBar } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const handleCopyLink = (postId) => {
@@ -132,7 +132,10 @@ export const PostCard = ({
           className={`fa-regular fa-comment ${
             (showComments && "yellow") || (yellow && "yellow")
           }`}
-          onClick={() => !yellow && setShowComments(!showComments)}
+          onClick={() => {
+            !yellow && setShowComments(!showComments);
+            setShowCommentBar(true);
+          }}
         ></i>
         <i
           className="fa-solid fa-share-nodes"

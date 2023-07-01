@@ -104,6 +104,7 @@ export const UtilsProvider = ({ children }) => {
   };
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showCommentBar, setShowCommentBar] = useState(false);
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -126,6 +127,8 @@ export const UtilsProvider = ({ children }) => {
         showSearchBar,
         setShowSearchBar,
         setIsDarkMode,
+        showCommentBar,
+        setShowCommentBar,
       }}
     >
       {children}

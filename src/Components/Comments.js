@@ -1,20 +1,37 @@
+import { useState } from "react";
+import { useAuth } from "../Contexts/AuthProvider";
 import { useUsers } from "../Contexts/UsersProvider";
+import { useUtils } from "../Contexts/UtilsProvider";
 
 export const Comments = ({ comments, showUIForSinglePost }) => {
   const { state: userState } = useUsers();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
+  const { currentUser } = useAuth();
+  const findCurrUser = userState.users.find(
+    (user) => user._id === currentUser._id
+  );
+  const { showCommentBar, setShowCommentBar } = useUtils();
+
   return (
     <>
-      {/* {showUIForSinglePost && (
-        <div>
-          <input
-            placeholder="You look purrfect today. Share how you feline!"
-            className="commentBar"
-          />
-          <button className="commentBtn">Comment</button>
+      {showCommentBar && (
+        <div className="overlay">
+          <div className="commentBarParent">
+            <img
+              src={findCurrUser?.avatarUrl}
+              alt={findCurrUser?.username}
+              className="comment-img"
+            />
+            <input
+              placeholder="You look purrfect today. Share how you feline!"
+              className="commentBar"
+            />
+            <button className="commentBtn">Comment</button>
+          </div>
         </div>
-      )} */}
+      )}
+
       {comments?.length ? (
         comments?.map((comment) => (
           <div
