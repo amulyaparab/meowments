@@ -66,6 +66,7 @@ export const AuthProvider = ({ children }) => {
       console.log(foundUser, "sdks", status, "df");
     } catch (err) {
       console.log(err);
+      authDispatch({ type: "ERROR" });
     }
   };
 
@@ -126,7 +127,6 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchCurrentUser();
-
     fetchCurrentToken();
   }, [currentUser, currentToken]);
 

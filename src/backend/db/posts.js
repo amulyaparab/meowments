@@ -18,7 +18,7 @@ import {
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: "djjksh_wieou_c3782m",
     imageUrl: caturday,
     content: "Enjoying My Caturday!",
     likes: {
@@ -38,7 +38,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "sakuewqnm_ouweq_3233",
     imageUrl: booksCat,
     content: "Mama I am studying.",
     likes: {
@@ -58,7 +58,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "wqnmc_oqla_53455",
     imageUrl: myCat,
     content: "A yawn from the heart leads to rainbows and dreams.",
     likes: {
@@ -78,7 +78,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "skeilwqun_uieenwk_uuuuuuuu",
     imageUrl: family,
     content: "Family trip with my two lil' ones.",
     likes: {

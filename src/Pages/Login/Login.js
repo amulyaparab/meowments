@@ -46,16 +46,15 @@ export const Login = () => {
       postDispatch({
         type: "SET_POST_USERNAME",
       });
-    } catch (err) {
-      console.log(err);
-    } finally {
       navigate("/");
       toast.success("Successfully Logged In!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
+    } catch (err) {
+      console.log(err);
     }
   };
-
+  console.log(state, "sdfds");
   return (
     <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={loginCat} alt="cat" />
@@ -115,10 +114,7 @@ export const Login = () => {
             }
           />
         </label>
-        <label className="left">
-          <input type="checkbox" className="checkbox" />
-          Remember Me
-        </label>
+
         <input type="submit" value="Login" className="login-button" />
         <button onClick={loginAsGuest} className="login-button">
           Login As Guest
