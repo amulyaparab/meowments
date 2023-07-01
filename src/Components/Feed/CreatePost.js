@@ -10,23 +10,25 @@ export const CreatePost = () => {
   // const { user } = useUtils();
   const { postDispatch, createPost, fetchUserFeedPosts, setEditForm } =
     usePost();
-  // const { currentUser } = useAuth();
+  const { currentUser } = useAuth();
   const { state } = useUsers();
   const { state: userState } = useUsers();
   const handleShowToast = () => {
     toast.success("Toast message!", { position: toast.POSITION.TOP_RIGHT });
   };
   const navigate = useNavigate();
-
+  const findCurrUser = userState.users.find(
+    (user) => user._id === currentUser._id
+  );
   return (
     <>
       <div className="new-post">
         <div className="new-post-div">
           <img
             className="avatar"
-            src={state?.currentUserData?.avatarUrl}
-            alt={state?.currentUserData?.username}
-            onClick={() => navigate(`/profile/${state?.currentUserData?._id}`)}
+            src={findCurrUser?.avatarUrl}
+            alt={findCurrUser?.username}
+            onClick={() => navigate(`/profile/${currentUser?._id}`)}
           />
 
           <button

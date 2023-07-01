@@ -7,9 +7,12 @@ import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { state } = useAuth();
+  const { state, currentUser } = useAuth();
   const { state: userState } = useUsers();
   const { isDarkMode, setIsDarkMode } = useUtils();
+  const findCurrUser = userState.users.find(
+    (user) => user._id === currentUser._id
+  );
   return (
     <div className="navbar" id={`${isDarkMode && "dark"}`}>
       <h1 className="heading" onClick={() => navigate("/")}>
@@ -28,12 +31,7 @@ export const Header = () => {
           <i className="fa-solid fa-moon"></i>
         </div>
         {state?.encodedToken && (
-          <SuggestedUser
-            {...userState?.currentUserData}
-            showUserName
-            hideUserDetails
-            dark
-          />
+          <SuggestedUser {...findCurrUser} showUserName hideUserDetails dark />
         )}
       </div>
     </div>

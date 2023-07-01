@@ -6,7 +6,15 @@ export const Comments = ({ comments, showUIForSinglePost }) => {
     userState?.users.find((user) => user.username === commentUser);
   return (
     <>
-      {" "}
+      {/* {showUIForSinglePost && (
+        <div>
+          <input
+            placeholder="You look purrfect today. Share how you feline!"
+            className="commentBar"
+          />
+          <button className="commentBtn">Comment</button>
+        </div>
+      )} */}
       {comments?.length ? (
         comments?.map((comment) => (
           <div
