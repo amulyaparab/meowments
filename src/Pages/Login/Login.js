@@ -39,22 +39,33 @@ export const Login = () => {
   const login = async (event) => {
     try {
       event.preventDefault();
-      await userLoginData({
-        username: state.username,
-        password: state.password,
-      });
-      postDispatch({
-        type: "SET_POST_USERNAME",
-      });
-      navigate("/");
-      toast.success("Successfully Logged In!", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      if (
+        (await userLoginData({
+          username: state.username,
+          password: state.password,
+        })) === 200
+      ) {
+        await userLoginData({
+          username: state.username,
+          password: state.password,
+        });
+        postDispatch({
+          type: "SET_POST_USERNAME",
+        });
+        navigate("/");
+        toast.success("Successfully Logged In!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      } else {
+        toast.error("User not found.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
     } catch (err) {
       console.log(err);
     }
   };
-  // console.log(state, "sdfds");
+
   return (
     <div className="parent" id={`${isDarkMode && "dark"}`}>
       <img src={loginCat} alt="cat" />

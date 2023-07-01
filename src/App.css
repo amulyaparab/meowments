@@ -272,11 +272,14 @@
 }
 .edit-profile .edit-pen {
   position: absolute;
-  top: 110px;
-  right: 30px;
+  top: 99px;
+  right: 20px;
   color: #ededed;
   font-size: 20px;
   cursor: pointer;
+  background-color: #121212;
+  padding: 1rem;
+  border-radius: 5px;
 }
 .edit-profile input {
   width: 140px;

@@ -6,8 +6,7 @@ export const authReducer = (state, action) => {
         loginInUser: action.payload,
         encodedToken: action.encodedTokenPayload,
       };
-    case "ERROR":
-      return { ...state, encodedToken: null };
+
     case "SET_USERNAME":
       return { ...state, username: action.payload };
     case "SET_PASSWORD":

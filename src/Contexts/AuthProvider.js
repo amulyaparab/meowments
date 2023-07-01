@@ -61,12 +61,12 @@ export const AuthProvider = ({ children }) => {
           "userData",
           JSON.stringify({ user: foundUser, encodedToken: encodedToken })
         );
+        return status;
       }
 
       console.log(foundUser, "sdks", status, "df");
     } catch (err) {
       console.log(err);
-      authDispatch({ type: "ERROR" });
     }
   };
 
