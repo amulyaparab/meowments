@@ -18,13 +18,25 @@ import {
   usePost,
 } from "./Pages";
 import Mockman from "mockman-js";
+import { useUtils } from "./Contexts/UtilsProvider";
 
 function App() {
   const { editForm } = usePost();
+  const { showSearchBar, setShowSearchBar } = useUtils();
   return (
     <div className="App">
       <Header />
       <div>{editForm && <EditForm />}</div>
+      <div>
+        {showSearchBar && (
+          <div className="overlay">
+            <div className="search-parent">
+              <input className="top" />
+              <i class="fa-solid fa-magnifying-glass top-magnify"></i>
+            </div>
+          </div>
+        )}
+      </div>
       <Routes>
         <Route
           path="/explore"

@@ -18,7 +18,7 @@ export const SinglePost = () => {
     <div className="page-fractions">
       <SideNav />
       <div className="background">
-        <PostCard {...findPost} isLiked={!!likedByArray.length} yellow />
+        <PostCard {...findPost} isLiked={!!likedByArray?.length} yellow />
         <div>
           <Comments comments={findPost?.comments} showUIForSinglePost />
         </div>

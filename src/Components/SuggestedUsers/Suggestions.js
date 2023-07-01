@@ -13,6 +13,10 @@ export const Suggestions = () => {
   const { isDarkMode } = useUtils();
   return (
     <div className="followers followers-tab" id={`${isDarkMode && "dark"}`}>
+      <div className="search-parent">
+        <input className="searchBar" />
+        <i class="fa-solid fa-magnifying-glass magnify"></i>
+      </div>
       <h3>Suggested Users</h3>
       <div className="suggestions">
         {state?.users?.map((user) =>

@@ -4,9 +4,10 @@ import "./sideNav.css";
 import { usePost } from "../../Contexts/PostsProvider";
 
 import { useUtils } from "../../Contexts/UtilsProvider";
+import { useState } from "react";
 export const SideNav = () => {
   const { setEditForm } = usePost();
-  const { isDarkMode, logout } = useUtils();
+  const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
 
   return (
     <>
@@ -30,7 +31,10 @@ export const SideNav = () => {
           <i className="fa-solid fa-circle-plus"></i>
           <span className="nav-no-words">New Post</span>
         </div>
-        <div className="new-post-button">
+        <div
+          className="new-post-button not-visible"
+          onClick={() => setShowSearchBar(!showSearchBar)}
+        >
           <i class="fa-solid fa-magnifying-glass"></i>
           <span className="nav-no-words">Search</span>
         </div>

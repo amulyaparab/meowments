@@ -103,6 +103,7 @@ export const UtilsProvider = ({ children }) => {
     postDispatch({ type: "SORT_BY_OLDEST" });
   };
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -122,6 +123,8 @@ export const UtilsProvider = ({ children }) => {
         sortByTrendingHandler,
         logout,
         isDarkMode,
+        showSearchBar,
+        setShowSearchBar,
         setIsDarkMode,
       }}
     >

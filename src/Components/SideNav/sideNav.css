@@ -48,7 +48,9 @@
 .new-post-button i {
   margin-right: 10px;
 }
-
+.not-visible {
+  display: none;
+}
 @media screen and (max-width: 1024px) {
   .nav-no-words {
     display: none;
@@ -87,7 +89,9 @@
     height: max-content;
     justify-content: space-evenly;
   }
-
+  .not-visible {
+    display: block;
+  }
   .bottom-footer i {
     font-size: 25px;
   }

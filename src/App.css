@@ -356,6 +356,40 @@
   width: 100%;
   height: auto;
 }
+.search-parent {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.magnify {
+  font-size: 18px;
+  position: absolute;
+  top: 16px;
+  right: 50px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.searchBar {
+  width: 70%;
+  margin-top: 0.5rem;
+  font-size: 18px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 3px 3px 5px 5px #ffebb8;
+}
+.top {
+  margin-top: 10rem;
+  width: 60%;
+  font-size: 18px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 5px 2px #ffebb8;
+}
+.top-magnify {
+  position: relative;
+  right: 30px;
+  font-size: 17px;
+}
 @media screen and (max-width: 1550px) {
   .new-post button {
     width: 65%;
@@ -380,6 +414,12 @@
   }
   .comment {
     width: 62%;
+  }
+  .searchBar {
+    width: 95%;
+  }
+  .magnify {
+    right: 5px;
   }
 }
 @media screen and (max-width: 768px) {
