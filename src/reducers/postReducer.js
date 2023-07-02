@@ -4,7 +4,7 @@ import { formatDate } from "../backend/utils/authUtils";
 export const postReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_ALL_POSTS":
-      return { ...state, posts: action.payload };
+      return { ...state, posts: action.payload, primaryPosts: action.payload };
     case "POST_LOADING":
       return { ...state, loading: action.payload };
     case "USER_FEED_POSTS":

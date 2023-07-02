@@ -25,6 +25,7 @@ export const PostsProvider = ({ children }) => {
     userPosts: [],
     feedPosts: [],
     bookmarks: [],
+    primaryPosts: [],
     comment: "",
     post: {
       _id: "",
