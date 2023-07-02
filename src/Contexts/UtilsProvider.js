@@ -85,21 +85,12 @@ export const UtilsProvider = ({ children }) => {
   const logout = () => {
     try {
       localStorage.removeItem("userData");
-
-      // authDispatch({
-      //   type: "SET_USER",
-      //   payload: null,
-      //   encodedTokenPayload: null,
-      // });
       authDispatch({
         type: "EMPTY_EVERYTHING",
       });
       postDispatch({
         type: "EMPTY_EVERYTHING",
       });
-      // userDispatch({
-      //   type: "EMPTY_EVERYTHING",
-      // });
     } catch (err) {
       console.log(err);
     } finally {

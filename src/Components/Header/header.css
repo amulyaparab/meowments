@@ -33,6 +33,7 @@
   margin: 0 0.3rem;
   position: relative;
   height: 14px;
+  cursor: pointer;
 }
 
 .toggle-button {
@@ -40,7 +41,6 @@
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  cursor: pointer;
   position: absolute;
   top: 0.4rem;
 }

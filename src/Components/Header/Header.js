@@ -21,11 +21,13 @@ export const Header = () => {
       <div className={`${state?.encodedToken && "userAndTheme"}`}>
         <div className="theme">
           <i className="fa-solid fa-sun"></i>
-          <div className="theme-toggler">
+          <div
+            className="theme-toggler"
+            onClick={() => setIsDarkMode(!isDarkMode)}
+          >
             <div
               className="toggle-button"
               id={`${isDarkMode && "dark-theme"}`}
-              onClick={() => setIsDarkMode(!isDarkMode)}
             ></div>
           </div>
           <i className="fa-solid fa-moon"></i>

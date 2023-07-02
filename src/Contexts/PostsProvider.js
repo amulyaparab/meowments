@@ -12,6 +12,7 @@ import { useAuth } from "./AuthProvider";
 import { postReducer } from "../reducers/postReducer";
 import { useUsers } from "./UsersProvider";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
@@ -50,6 +51,7 @@ export const PostsProvider = ({ children }) => {
     }
   };
   const { state: userState } = useUsers();
+  const navigate = useNavigate();
   const fetchPosts = async () => {
     try {
       postDispatch({ type: "POST_LOADING", payload: true });
@@ -119,6 +121,7 @@ export const PostsProvider = ({ children }) => {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       setEditForm(false);
+      navigate("/");
       postDispatch({ type: "CLEAR_FORM" });
     }
   };
