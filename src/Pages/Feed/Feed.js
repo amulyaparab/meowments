@@ -37,7 +37,7 @@ export const Feed = () => {
           <Loader />
         ) : (
           <div>
-            <h1>Your Feed</h1>
+            <h1 className="general-heading">Your Feed</h1>
             <button
               className={`${
                 state.sort === "Trending" && "yellow"

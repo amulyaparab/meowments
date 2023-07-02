@@ -2,7 +2,9 @@
   background-color: #ffebb8;
   padding-bottom: 6rem;
 }
-
+.height {
+  height: 80vh;
+}
 .posts {
   display: flex;
   flex-direction: column;

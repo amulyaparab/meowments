@@ -60,7 +60,15 @@
 .yellow {
   color: #ffc11b;
 }
-
+.general-heading {
+  color: #333333;
+}
+.general-heading::after {
+  content: ".";
+  color: #ffc11b;
+  margin: 0 0.5rem;
+  font-size: larger;
+}
 .new-post {
   background-color: #ffc11b;
   height: 200px;
@@ -348,6 +356,8 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .edit-profile textarea {
   margin-top: 3px;
