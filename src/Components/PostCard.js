@@ -28,6 +28,7 @@ export const PostCard = ({
     dislikePostHandler,
     bookMarkPostHandler,
     removeBookmarkHandler,
+    position,
   } = useUtils();
   const {
     state,
@@ -37,9 +38,7 @@ export const PostCard = ({
     showEditForm,
     postDispatch,
   } = usePost();
-  const position = {
-    position: toast.POSITION.BOTTOM_RIGHT,
-  };
+
   const { currentUser } = useAuth();
   const { showCommentBar, setShowCommentBar } = useUtils();
   const [showDetails, setShowDetails] = useState(false);

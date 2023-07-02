@@ -4,6 +4,8 @@ import { usePost } from "../Contexts/PostsProvider";
 import { editPost } from "../Services/postServices";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
+import { useUtils } from "../Contexts/UtilsProvider";
+import { toast } from "react-toastify";
 export const EditForm = () => {
   const { state, setEditForm, postDispatch, createPost } = usePost();
   const findPostToBeEdited = state.posts?.find(
@@ -11,16 +13,17 @@ export const EditForm = () => {
   );
 
   const { currentToken } = useAuth();
+  const { position } = useUtils();
   const editPostHandler = async () => {
     try {
       const edited = await editPost(state.post._id, state.post, currentToken);
-
       postDispatch({ type: "EDITED_POST", payload: edited });
     } catch (err) {
       console.log(err);
     } finally {
       postDispatch({ type: "CLEAR_FORM" });
       setEditForm(false);
+      toast.success("Post Edited.", position);
     }
   };
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);

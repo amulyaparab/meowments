@@ -2,12 +2,12 @@ import { useAuth } from "../Contexts/AuthProvider";
 import { useUsers } from "../Contexts/UsersProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 import { editUser } from "../Services/userServices";
-
+import { toast } from "react-toastify";
 export const ProfileEditForm = () => {
   const { setShowUserEditForm, setShowAvatarForm, userDispatch, state } =
     useUsers();
   const { currentUser, currentToken, state: authState } = useAuth();
-  const { isDarkMode } = useUtils();
+  const { isDarkMode, position } = useUtils();
 
   const editProfileHandler = async () => {
     try {
@@ -15,12 +15,12 @@ export const ProfileEditForm = () => {
         state?.currentUserData,
         currentToken
       );
-
       userDispatch({ type: "EDIT_USER", payload: editUserProfile });
     } catch (err) {
       console.log(err);
     } finally {
       setShowUserEditForm(false);
+      toast.success("Profile Edited.", position);
     }
   };
 
@@ -112,7 +112,7 @@ export const ProfileEditForm = () => {
           </label>
 
           <div>
-            <button onClick={() => editProfileHandler()}>Save</button>
+            <button onClick={editProfileHandler}>Save</button>
             <button>Discard</button>
           </div>
         </div>

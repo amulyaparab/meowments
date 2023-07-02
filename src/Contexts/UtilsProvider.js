@@ -14,7 +14,7 @@ import { useUsers } from "./UsersProvider";
 import { followUser, unfollowUser } from "../Services/followServices";
 import { fetchSingleUser } from "../Services/userServices";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
@@ -22,6 +22,9 @@ export const UtilsProvider = ({ children }) => {
   const { currentToken, authDispatch, currentUser } = useAuth();
   const { state: userState, userDispatch } = useUsers();
   const navigate = useNavigate();
+  const position = {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  };
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
@@ -55,6 +58,8 @@ export const UtilsProvider = ({ children }) => {
       postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
     } catch (err) {
       console.log(err);
+    } finally {
+      toast.success("Bookmarked.", position);
     }
   };
   const removeBookmarkHandler = async (postId) => {
@@ -64,6 +69,8 @@ export const UtilsProvider = ({ children }) => {
       postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
     } catch (err) {
       console.log(err);
+    } finally {
+      toast.success("Removed Bookmark.", position);
     }
   };
   const fetchAllBookmarks = async () => {
@@ -95,6 +102,8 @@ export const UtilsProvider = ({ children }) => {
       // });
     } catch (err) {
       console.log(err);
+    } finally {
+      toast.info("Logged Out.", position);
     }
   };
   const sortByTrendingHandler = () => {
@@ -109,9 +118,13 @@ export const UtilsProvider = ({ children }) => {
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
+
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
+    } finally {
+      const user = userState.users.find((user) => user._id === userId);
+      toast.success(`Followed ${user?.username}`, position);
     }
   };
   const unfollowUsername = async (userId) => {
@@ -120,6 +133,9 @@ export const UtilsProvider = ({ children }) => {
       userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
     } catch (err) {
       console.log(err);
+    } finally {
+      const user = userState.users.find((user) => user._id === userId);
+      toast.info(`Unfollowed ${user?.username}`, position);
     }
   };
   const isUserFollowedByMe = (user) => {
@@ -138,9 +154,11 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showCommentBar, setShowCommentBar] = useState(false);
+
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -169,6 +187,7 @@ export const UtilsProvider = ({ children }) => {
         unfollowUsername,
         isUserFollowedByMe,
         takeToProfilePage,
+        position,
       }}
     >
       {children}

@@ -98,6 +98,10 @@ export const PostsProvider = ({ children }) => {
       postDispatch({ type: "DELETE_POST", payload: postId });
     } catch (err) {
       console.log(err);
+    } finally {
+      toast.error("Post Deleted.", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
   const createPost = async () => {
@@ -111,7 +115,7 @@ export const PostsProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     } finally {
-      toast.success("Posted Successfully!", {
+      toast.success("Posted Successfully.", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       setEditForm(false);

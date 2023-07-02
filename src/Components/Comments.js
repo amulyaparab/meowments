@@ -3,6 +3,7 @@ import { useAuth } from "../Contexts/AuthProvider";
 import { useUsers } from "../Contexts/UsersProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 import { usePost } from "../Pages";
+import { toast } from "react-toastify";
 
 export const Comments = ({
   comments,
@@ -17,8 +18,22 @@ export const Comments = ({
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
-  const { showCommentBar, setShowCommentBar } = useUtils();
+  const { showCommentBar, setShowCommentBar, position } = useUtils();
   const { postDispatch } = usePost();
+  const commentHandler = () => {
+    try {
+      postDispatch({
+        type: "COMMENT",
+        postPayload: postId,
+        userPayload: currentUser?.username,
+      });
+      setShowCommentBar(false);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      toast.success("Comment Added.", position);
+    }
+  };
   return (
     <>
       {showCommentBar && (
@@ -50,17 +65,7 @@ export const Comments = ({
                 })
               }
             />
-            <button
-              className="commentBtn"
-              onClick={() => {
-                postDispatch({
-                  type: "COMMENT",
-                  postPayload: postId,
-                  userPayload: currentUser?.username,
-                });
-                setShowCommentBar(false);
-              }}
-            >
+            <button className="commentBtn" onClick={commentHandler}>
               Comment
             </button>
           </div>
