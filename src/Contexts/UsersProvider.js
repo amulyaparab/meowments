@@ -24,6 +24,8 @@ export const UsersProvider = ({ children }) => {
   const initialState = {
     users: [],
     currentUserData: currentUser,
+    searchVal: "",
+    searchedUsers: [],
   };
   const [showUserEditForm, setShowUserEditForm] = useState(false);
   const [showAvatarForm, setShowAvatarForm] = useState(false);

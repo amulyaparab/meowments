@@ -19,20 +19,61 @@ import {
 } from "./Pages";
 import Mockman from "mockman-js";
 import { useUtils } from "./Contexts/UtilsProvider";
+import { useUsers } from "./Contexts/UsersProvider";
+import { SuggestedUser } from "./Components/SuggestedUsers/Suggestion";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const { editForm } = usePost();
+  const { userDispatch, state } = useUsers();
   const { showSearchBar, setShowSearchBar } = useUtils();
+  const navigate = useNavigate();
   return (
     <div className="App">
       <Header />
       <div>{editForm && <EditForm />}</div>
       <div>
         {showSearchBar && (
-          <div className="overlay">
-            <div className="search-parent">
-              <input className="top" />
+          <div
+            className="overlay"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowSearchBar(false);
+            }}
+          >
+            <div className="search-parent" onClick={(e) => e.stopPropagation()}>
+              <input
+                className="top"
+                onChange={(event) =>
+                  userDispatch({
+                    type: "SEARCH_USER_NAV",
+                    payload: event.target.value,
+                  })
+                }
+              />
               <i class="fa-solid fa-magnifying-glass top-magnify"></i>
+            </div>
+            <div onClick={(e) => e.stopPropagation()}>
+              {state?.searchVal?.length ? (
+                state?.searchedUsers?.length ? (
+                  <div className="center-parent">
+                    {state?.searchedUsers?.map((user) => (
+                      <div
+                        className="center"
+                        onClick={() => {
+                          navigate(`profile/${user._id}`);
+                          setShowSearchBar(false);
+                          userDispatch({ type: "CLEAR_SEARCH" });
+                        }}
+                      >
+                        <SuggestedUser {...user} showUserName />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="center">No Users Found</p>
+                )
+              ) : null}
             </div>
           </div>
         )}

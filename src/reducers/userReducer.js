@@ -66,7 +66,45 @@ export const userReducer = (state, action) => {
           user._id === action.payload._id ? action.payload : user
         ),
       };
-
+    case "SEARCH_USER":
+      console.log(action.payload);
+      return {
+        ...state,
+        searchVal: action.payload,
+        searchedUsers: action.payload.length
+          ? state.users.filter((user) =>
+              user.firstName
+                .toLowerCase()
+                .includes(action.payload.toLowerCase())
+            ) &&
+            state.users.filter((user) =>
+              user.lastName.toLowerCase().includes(action.payload.toLowerCase())
+            ) &&
+            state.users.filter((user) =>
+              user.username.toLowerCase().includes(action.payload.toLowerCase())
+            )
+          : [],
+      };
+    case "SEARCH_USER_NAV":
+      return {
+        ...state,
+        searchVal: action.payload,
+        searchedUsers: action.payload.length
+          ? state.users.filter((user) =>
+              user.firstName
+                .toLowerCase()
+                .includes(action.payload.toLowerCase())
+            ) &&
+            state.users.filter((user) =>
+              user.lastName.toLowerCase().includes(action.payload.toLowerCase())
+            ) &&
+            state.users.filter((user) =>
+              user.username.toLowerCase().includes(action.payload.toLowerCase())
+            )
+          : [],
+      };
+    case "CLEAR_SEARCH":
+      return { ...state, searchVal: "", searchedUsers: [] };
     case "FOLLOW_USER":
       return {
         ...state,

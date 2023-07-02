@@ -52,6 +52,10 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.cursor {
+  cursor: pointer;
 }
 .suggestions button {
   background-color: #ffebb8;
@@ -81,6 +85,10 @@
 .suggestions .followed:hover {
   background-color: #ffebb8;
   color: #666666;
+}
+.center {
+  margin: auto;
+  width: 70%;
 }
 @media screen and (max-width: 1024px) {
   .suggestions .one-user {

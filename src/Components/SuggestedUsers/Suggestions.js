@@ -7,15 +7,40 @@ import { FollowButton } from "./FollowButton";
 import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Suggestions = () => {
-  const { state } = useUsers();
+  const { state, userDispatch } = useUsers();
   const { currentUser } = useAuth();
   const { setEditForm } = usePost();
   const { isDarkMode } = useUtils();
+  console.log(state?.searchedUsers, "sdjaslkj");
   return (
     <div className="followers followers-tab" id={`${isDarkMode && "dark"}`}>
       <div className="search-parent">
-        <input className="searchBar" />
+        <input
+          className="searchBar"
+          value={state?.searchVal}
+          onChange={(event) =>
+            userDispatch({ type: "SEARCH_USER", payload: event.target.value })
+          }
+        />
         <i class="fa-solid fa-magnifying-glass magnify"></i>
+      </div>
+      <div>
+        {state?.searchVal?.length ? (
+          state?.searchedUsers?.length ? (
+            <div>
+              {state?.searchedUsers?.map((user) => (
+                <div
+                  className="center"
+                  onClick={() => userDispatch({ type: "CLEAR_SEARCH" })}
+                >
+                  <SuggestedUser {...user} showUserName />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No Users Found</p>
+          )
+        ) : null}
       </div>
       <h3>Suggested Users</h3>
       <div className="suggestions">

@@ -27,7 +27,11 @@ export const SuggestedUser = ({
       />
       <div className={`${hideUserDetails && "no-display"}`}>
         {" "}
-        <h4 id={`${isDarkMode && dark && "white"}`}>
+        <h4
+          className="cursor"
+          id={`${isDarkMode && dark && "white"} `}
+          onClick={() => takeToProfilePage(_id, username)}
+        >
           {firstName} {lastName}
         </h4>
         {showUserName ? (
