@@ -25,6 +25,24 @@ export const EditForm = () => {
     }
   };
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [imageURL, setImageURL] = useState(state.post.imageUrl);
+  const imageUploadHandler = (event) => {
+    const file = event.target.files[0];
+    const imageURL = URL.createObjectURL(file);
+    setImageURL(imageURL);
+    postDispatch({
+      type: "NEW_POST_IMG",
+      payload: imageURL,
+    });
+  };
+  const imageRevoker = () => {
+    URL.revokeObjectURL(imageURL);
+    postDispatch({
+      type: "NEW_POST_REMOVE_IMG",
+      payload: null,
+    });
+    setImageURL(null);
+  };
   return (
     <div className="overlay-parent">
       <div className="overlay">
@@ -37,11 +55,19 @@ export const EditForm = () => {
             }}
           ></i>
           {findPostToBeEdited ? <h1>Edit Post</h1> : <h1>Create Post</h1>}
-          <img
-            src={state?.post?.imageUrl || example}
-            alt="edit-post"
-            className="edit-post-img"
-          />
+          {imageURL && (
+            <div className="relative">
+              <i
+                class="fa-solid fa-xmark cross x-mark"
+                onClick={imageRevoker}
+              ></i>
+              <img
+                src={state?.post?.imageUrl || imageURL}
+                alt="edit-post"
+                className="edit-post-img"
+              />
+            </div>
+          )}
           <label>
             <textarea
               value={state?.post?.content}
@@ -54,6 +80,7 @@ export const EditForm = () => {
               placeholder="Scratch down a meowment here."
             ></textarea>
           </label>
+
           <div className="edit-buttons">
             <i
               class="fa-solid fa-face-smile add-on"
@@ -61,7 +88,12 @@ export const EditForm = () => {
             ></i>
             <label>
               <i class="fa-solid fa-image add-on"></i>
-              <input className="hidden" type="file" accept="/image*" />
+              <input
+                className="hidden"
+                type="file"
+                accept="/image*"
+                onChange={imageUploadHandler}
+              />
             </label>
             {showEmojiPicker && (
               <Picker

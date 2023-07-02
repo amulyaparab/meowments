@@ -59,6 +59,22 @@ export const postReducer = (state, action) => {
           content: state.post.content + action.payload,
         },
       };
+    case "NEW_POST_IMG":
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          imageUrl: action.payload,
+        },
+      };
+    case "NEW_POST_REMOVE_IMG":
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          imageUrl: action.payload,
+        },
+      };
     case "EDIT_POST":
       return {
         ...state,

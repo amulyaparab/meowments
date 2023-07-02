@@ -38,7 +38,6 @@ export const PostCard = ({
     postDispatch,
   } = usePost();
 
-  console.log({ state });
   const { currentUser } = useAuth();
   const { showCommentBar, setShowCommentBar } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
