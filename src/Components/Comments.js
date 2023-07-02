@@ -19,7 +19,6 @@ export const Comments = ({
   );
   const { showCommentBar, setShowCommentBar } = useUtils();
   const { postDispatch } = usePost();
-
   return (
     <>
       {showCommentBar && (

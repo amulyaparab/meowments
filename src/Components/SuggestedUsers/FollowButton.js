@@ -7,7 +7,6 @@ import "./suggestions.css";
 export const FollowButton = ({ user }) => {
   const { userDispatch } = useUsers();
   const { currentUser, currentToken } = useAuth();
-
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
@@ -24,7 +23,6 @@ export const FollowButton = ({ user }) => {
       console.log(err);
     }
   };
-
   const isUserFollowedByMe = (user) => {
     const isUserFollowedByMe = user?.followers?.includes(
       user?.followers.find((user) => user._id === currentUser._id)

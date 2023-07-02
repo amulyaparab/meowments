@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useAuth } from "../Contexts/AuthProvider";
 import { usePost } from "../Contexts/PostsProvider";
 import { editPost } from "../Services/postServices";
-import example from "../assets/Images/example.jpg";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 export const EditForm = () => {
@@ -84,7 +83,7 @@ export const EditForm = () => {
           <div className="edit-buttons">
             <i
               class="fa-solid fa-face-smile add-on"
-              onClick={() => setShowEmojiPicker(true)}
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             ></i>
             <label>
               <i class="fa-solid fa-image add-on"></i>

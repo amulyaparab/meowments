@@ -37,23 +37,22 @@ export const PostCard = ({
     showEditForm,
     postDispatch,
   } = usePost();
-
+  const position = {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  };
   const { currentUser } = useAuth();
   const { showCommentBar, setShowCommentBar } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  // const url = window.location.href;
   const handleCopyLink = (postId) => {
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${postId}`)
       .then(() => {
-        toast.success("Link copied successfully!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.success("Link copied successfully!", position);
       })
       .catch((error) => {
-        toast.error("Failed to copy link...Try again.", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error("Failed to copy link...Try again.", position);
       });
   };
   const findCurrUser = userState.users.find(

@@ -1,15 +1,7 @@
-import {
-  Dna,
-  Hearts,
-  MutatingDots,
-  ProgressBar,
-  ThreeDots,
-  Triangle,
-} from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 export const Loader = () => {
   return (
-    // <div className="loading">
     <div className="loader">
       <ThreeDots
         height="180"
@@ -22,6 +14,5 @@ export const Loader = () => {
         visible={true}
       />
     </div>
-    // </div>
   );
 };

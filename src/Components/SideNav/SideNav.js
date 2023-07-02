@@ -1,14 +1,10 @@
 import { NavLink } from "react-router-dom";
 import "./sideNav.css";
-
 import { usePost } from "../../Contexts/PostsProvider";
-
 import { useUtils } from "../../Contexts/UtilsProvider";
-import { useState } from "react";
 export const SideNav = () => {
   const { setEditForm } = usePost();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
-
   return (
     <>
       <div className="side-nav bottom-footer" id={`${isDarkMode && "dark"}`}>

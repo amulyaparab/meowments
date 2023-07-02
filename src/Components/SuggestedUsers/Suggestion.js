@@ -15,7 +15,7 @@ export const SuggestedUser = ({
   hideUserDetails,
   dark,
 }) => {
-  const { state, postDispatch } = usePost();
+  const { postDispatch } = usePost();
   const navigate = useNavigate();
   const { isDarkMode } = useUtils();
   const takeToProfilePage = async (userId, username) => {
@@ -37,21 +37,11 @@ export const SuggestedUser = ({
 
   return (
     <div className="suggestionsPerson">
-      {/* {avatarUrl?.length ? ( */}
       <img
         src={avatarUrl}
         alt={username}
         onClick={() => takeToProfilePage(_id, username)}
       />
-      {/* ) 
-      : (
-        <div
-          className="alt-profile-img"
-          onClick={() => takeToProfilePage(_id, username)}
-        >
-          <p>{firstName.charAt(0).toUpperCase()}</p>
-        </div>
-      )} */}
       <div className={`${hideUserDetails && "no-display"}`}>
         {" "}
         <h4 id={`${isDarkMode && dark && "white"}`}>

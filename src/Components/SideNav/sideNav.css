@@ -3,11 +3,9 @@
   flex-direction: column;
   text-align: left;
   padding: 1rem 0;
-  /* background-color: #ffebb8; */
   height: 89vh;
   position: sticky;
   top: 100px;
-  /* box-shadow: 0 0 5px 1px #ffebb8; */
 }
 .side-nav a {
   text-decoration: none;

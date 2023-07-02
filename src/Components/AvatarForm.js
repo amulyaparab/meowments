@@ -3,7 +3,7 @@ import { useUsers } from "../Contexts/UsersProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 
 export const AvatarForm = () => {
-  const { showAvatarForm, setShowAvatarForm, userDispatch } = useUsers();
+  const { setShowAvatarForm, userDispatch } = useUsers();
   const { isDarkMode } = useUtils();
   return (
     <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>
