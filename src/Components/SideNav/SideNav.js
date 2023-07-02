@@ -5,19 +5,21 @@ import { useUtils } from "../../Contexts/UtilsProvider";
 export const SideNav = () => {
   const { setEditForm } = usePost();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
+  const getActiveStyle = ({ isActive }) => (isActive ? "active" : "");
+
   return (
     <>
       <div className="side-nav bottom-footer" id={`${isDarkMode && "dark"}`}>
-        <NavLink to="/">
+        <NavLink to="/" className={getActiveStyle}>
           <i className="fa-solid fa-house"></i>
           <span className="nav-no-words">Feed</span>
         </NavLink>
-        <NavLink to="/explore">
+        <NavLink to="/explore" className={getActiveStyle}>
           <i className="fa-solid fa-earth-americas"></i>{" "}
           <span className="nav-no-words">Explore</span>
         </NavLink>
 
-        <NavLink to="/bookmarks">
+        <NavLink to="/bookmarks" className={getActiveStyle}>
           {" "}
           <i className="fa-solid fa-bookmark"></i>{" "}
           <span className="nav-no-words">Bookmarks</span>
