@@ -137,12 +137,15 @@ export const UtilsProvider = ({ children }) => {
   };
   const takeToProfilePage = async (userId, username) => {
     try {
+      postDispatch({ type: "POST_LOADING", payload: true });
       await fetchSingleUser(userId);
       navigate(`/profile/${userId}`);
       const postsByUser = await getPostsByUser(username);
       postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
+    } finally {
+      postDispatch({ type: "POST_LOADING", payload: false });
     }
   };
 
