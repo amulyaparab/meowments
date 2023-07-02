@@ -9,10 +9,11 @@ export const Header = () => {
   const navigate = useNavigate();
   const { state, currentUser } = useAuth();
   const { state: userState } = useUsers();
-  const { isDarkMode, setIsDarkMode } = useUtils();
+  const { isDarkMode, darkModeHandler } = useUtils();
   const findCurrUser = userState.users?.find(
     (user) => user?._id === currentUser?._id
   );
+
   return (
     <div className="navbar" id={`${isDarkMode && "dark"}`}>
       <h1 className="heading" onClick={() => navigate("/")}>
@@ -21,10 +22,7 @@ export const Header = () => {
       <div className={`${state?.encodedToken && "userAndTheme"}`}>
         <div className="theme">
           <i className="fa-solid fa-sun"></i>
-          <div
-            className="theme-toggler"
-            onClick={() => setIsDarkMode(!isDarkMode)}
-          >
+          <div className="theme-toggler" onClick={darkModeHandler}>
             <div
               className="toggle-button"
               id={`${isDarkMode && "dark-theme"}`}

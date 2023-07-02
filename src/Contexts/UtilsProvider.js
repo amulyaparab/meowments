@@ -146,10 +146,19 @@ export const UtilsProvider = ({ children }) => {
     }
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false ?? false
+  );
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showCommentBar, setShowCommentBar] = useState(false);
-
+  const darkModeHandler = () => {
+    try {
+      setIsDarkMode(!isDarkMode);
+      localStorage.setItem("theme", isDarkMode ? "light" : "dark");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -178,6 +187,7 @@ export const UtilsProvider = ({ children }) => {
         unfollowUsername,
         isUserFollowedByMe,
         takeToProfilePage,
+        darkModeHandler,
         position,
       }}
     >
