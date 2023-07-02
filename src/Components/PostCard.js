@@ -56,6 +56,9 @@ export const PostCard = ({
         });
       });
   };
+  const findCurrUser = userState.users.find(
+    (user) => user._id === currentUser._id
+  );
   const editHandler = () => {
     try {
       setEditForm(true);
@@ -117,9 +120,20 @@ export const PostCard = ({
       ) : null}
       <p className="post-text-width">{content}</p>
       <div className="inline-likes">
-        <div>{likes?.likeCount} likes </div>{" "}
-        <div>{comments?.length} comments</div>
+        <div className="inline-likes-child">
+          <div>{likes?.likeCount} likes </div>{" "}
+          <div>{comments?.length} comments</div>
+        </div>
+        <p
+          className="comments-link"
+          onClick={() => {
+            setShowCommentBar(true);
+          }}
+        >
+          Write Comment
+        </p>
       </div>
+
       <div className="icons">
         <i
           className={`fa-solid fa-heart ${isLiked && "yellow"}`}
@@ -133,7 +147,6 @@ export const PostCard = ({
           }`}
           onClick={() => {
             !yellow && setShowComments(!showComments);
-            setShowCommentBar(true);
           }}
         ></i>
         <i
@@ -147,7 +160,54 @@ export const PostCard = ({
           }
         ></i>
       </div>
-      {showComments && <Comments comments={comments} />}
+
+      {showComments && <Comments comments={comments} postId={_id} />}
+
+      {/* {showCommentBar && (
+        <div
+          className="overlay"
+          onClick={(event) => {
+            event.stopPropagation();
+            setShowCommentBar(false);
+          }}
+        >
+          <div
+            className="commentBarParent"
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            <img
+              src={findCurrUser?.avatarUrl}
+              alt={findCurrUser?.username}
+              className="comment-img"
+            />
+            <input
+              placeholder="You look purrfect today. Share how you feline!"
+              className="commentBar"
+              onChange={(event) =>
+                postDispatch({
+                  type: "COMMENT_CONTENT",
+                  payload: event.target.value,
+                })
+              }
+            />
+            <button
+              className="commentBtn"
+              onClick={() => {
+                postDispatch({
+                  type: "COMMENT",
+                  postPayload: _id,
+                  userPayload: currentUser?.username,
+                });
+                setShowCommentBar(false);
+              }}
+            >
+              Comment
+            </button>
+          </div>
+        </div>
+      )} */}
     </div>
   );
 };

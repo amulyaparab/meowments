@@ -2,8 +2,14 @@ import { useState } from "react";
 import { useAuth } from "../Contexts/AuthProvider";
 import { useUsers } from "../Contexts/UsersProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
+import { usePost } from "../Pages";
 
-export const Comments = ({ comments, showUIForSinglePost }) => {
+export const Comments = ({
+  comments,
+  showUIForSinglePost,
+  postId,
+  showComments,
+}) => {
   const { state: userState } = useUsers();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
@@ -12,12 +18,24 @@ export const Comments = ({ comments, showUIForSinglePost }) => {
     (user) => user._id === currentUser._id
   );
   const { showCommentBar, setShowCommentBar } = useUtils();
+  const { postDispatch } = usePost();
 
   return (
     <>
       {showCommentBar && (
-        <div className="overlay">
-          <div className="commentBarParent">
+        <div
+          className="overlay"
+          onClick={(event) => {
+            event.stopPropagation();
+            setShowCommentBar(false);
+          }}
+        >
+          <div
+            className="commentBarParent"
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
             <img
               src={findCurrUser?.avatarUrl}
               alt={findCurrUser?.username}
@@ -26,8 +44,26 @@ export const Comments = ({ comments, showUIForSinglePost }) => {
             <input
               placeholder="You look purrfect today. Share how you feline!"
               className="commentBar"
+              onChange={(event) =>
+                postDispatch({
+                  type: "COMMENT_CONTENT",
+                  payload: event.target.value,
+                })
+              }
             />
-            <button className="commentBtn">Comment</button>
+            <button
+              className="commentBtn"
+              onClick={() => {
+                postDispatch({
+                  type: "COMMENT",
+                  postPayload: postId,
+                  userPayload: currentUser?.username,
+                });
+                setShowCommentBar(false);
+              }}
+            >
+              Comment
+            </button>
           </div>
         </div>
       )}
@@ -41,16 +77,16 @@ export const Comments = ({ comments, showUIForSinglePost }) => {
           >
             <div className="suggestionsPerson">
               <img
-                src={findUser(comment?.username).avatarUrl}
-                alt={findUser(comment?.username).username}
+                src={findUser(comment?.username)?.avatarUrl}
+                alt={findUser(comment?.username)?.username}
               />
               <div className="comment-background">
                 <div>
                   <h4>
-                    {findUser(comment?.username).firstName}{" "}
-                    {findUser(comment?.username).lastName}
+                    {findUser(comment?.username)?.firstName}{" "}
+                    {findUser(comment?.username)?.lastName}
                   </h4>
-                  <p>@{findUser(comment?.username).username}</p>
+                  <p>@{findUser(comment?.username)?.username}</p>
                 </div>
                 <h4 className="comment-text">{comment?.text}</h4>
               </div>

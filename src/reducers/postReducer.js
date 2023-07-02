@@ -51,6 +51,41 @@ export const postReducer = (state, action) => {
             ?.username,
         },
       };
+    case "COMMENT_CONTENT":
+      return {
+        ...state,
+        comment: action.payload,
+      };
+    //     comments: [
+    //   {
+    //     _id: "ksrewrewrxw_82ji_82nn_knwiu983ns9",
+    //     username: "jamesdavis",
+    //     text: "Looks like a great way to spend a Caturday!",
+    //   },
+    // ],
+    case "COMMENT":
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          console.log(post._id === action.postPayload);
+
+          return post._id === action.postPayload
+            ? {
+                ...post,
+                comments: [
+                  ...post.comments,
+                  {
+                    _id: uuid(),
+                    username: action.userPayload,
+                    text: state.comment,
+                  },
+                ],
+              }
+            : post;
+        }),
+        // comment: "",
+      };
+
     case "ADD_EMOJI_CONTENT":
       return {
         ...state,
