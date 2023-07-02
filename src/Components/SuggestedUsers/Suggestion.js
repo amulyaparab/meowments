@@ -1,9 +1,4 @@
-import { usePost } from "../../Contexts/PostsProvider";
-import { getPostsByUser } from "../../Services/postServices";
-import { fetchSingleUser } from "../../Services/userServices";
-import { useNavigate } from "react-router-dom";
 import { useUtils } from "../../Contexts/UtilsProvider";
-
 export const SuggestedUser = ({
   _id,
   avatarUrl,
@@ -15,19 +10,7 @@ export const SuggestedUser = ({
   hideUserDetails,
   dark,
 }) => {
-  const { postDispatch } = usePost();
-  const navigate = useNavigate();
-  const { isDarkMode } = useUtils();
-  const takeToProfilePage = async (userId, username) => {
-    try {
-      await fetchSingleUser(userId);
-      navigate(`/profile/${userId}`);
-      const postsByUser = await getPostsByUser(username);
-      postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { isDarkMode, takeToProfilePage } = useUtils();
   const formattedDate = new Date(postDate);
   const date = formattedDate.getDate();
   const month = formattedDate.toLocaleString("default", {

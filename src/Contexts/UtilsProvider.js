@@ -11,6 +11,9 @@ import {
 } from "../Services/bookmarksServices";
 import { useState } from "react";
 import { useUsers } from "./UsersProvider";
+import { followUser, unfollowUser } from "../Services/followServices";
+import { fetchSingleUser } from "../Services/userServices";
+import { useNavigate } from "react-router-dom";
 
 const UtilsContext = createContext();
 
@@ -18,6 +21,7 @@ export const UtilsProvider = ({ children }) => {
   const { postDispatch, state } = usePost();
   const { currentToken, authDispatch, currentUser } = useAuth();
   const { state: userState, userDispatch } = useUsers();
+  const navigate = useNavigate();
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
@@ -102,6 +106,38 @@ export const UtilsProvider = ({ children }) => {
   const sortByOldest = () => {
     postDispatch({ type: "SORT_BY_OLDEST" });
   };
+  const followUsername = async (userId) => {
+    try {
+      const followed = await followUser(userId, currentToken);
+      userDispatch({ type: "FOLLOW_USER", payload: followed });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const unfollowUsername = async (userId) => {
+    try {
+      const unfollowed = await unfollowUser(userId, currentToken);
+      userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const isUserFollowedByMe = (user) => {
+    const isUserFollowedByMe = user?.followers?.includes(
+      user?.followers.find((user) => user._id === currentUser._id)
+    );
+    return isUserFollowedByMe;
+  };
+  const takeToProfilePage = async (userId, username) => {
+    try {
+      await fetchSingleUser(userId);
+      navigate(`/profile/${userId}`);
+      const postsByUser = await getPostsByUser(username);
+      postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showCommentBar, setShowCommentBar] = useState(false);
@@ -129,6 +165,10 @@ export const UtilsProvider = ({ children }) => {
         setIsDarkMode,
         showCommentBar,
         setShowCommentBar,
+        followUsername,
+        unfollowUsername,
+        isUserFollowedByMe,
+        takeToProfilePage,
       }}
     >
       {children}

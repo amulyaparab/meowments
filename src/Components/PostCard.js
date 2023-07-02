@@ -45,9 +45,10 @@ export const PostCard = ({
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
   // const url = window.location.href;
-  const handleCopyLink = (postId) => {
+  const handleCopyLink = () => {
     navigator.clipboard
-      .writeText(`https://meowments.vercel.app/post/${postId}`)
+      .writeText(`https://meowments.vercel.app/post/${_id}`)
+      // .writeText(url)
       .then(() => {
         toast.success("Link copied successfully!", position);
       })

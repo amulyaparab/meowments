@@ -10,6 +10,7 @@ import orangeKitten from "../assets/AvatarImages/orangeKitten.jpg";
 import siameseCat from "../assets/AvatarImages/siameseCat.jpg";
 import signUpCat from "../assets/Images/signUp.jpg";
 import loginCat from "../assets/Images/login.jpg";
+
 export const avatarArray = [
   beigeCat,
   blackAndWhiteCat,

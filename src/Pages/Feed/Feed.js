@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CreatePost } from "../../Components/Feed/CreatePost";
+
 import { FeedPosts } from "../../Components/Feed/FeedPosts";
 import { SideNav } from "../../Components/SideNav/SideNav";
 import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
-import example from "../../assets/Images/example.jpg";
+
 import "./feed.css";
 
 import { usePost } from "../../Contexts/PostsProvider";
@@ -89,7 +89,6 @@ export const Feed = () => {
               )}
             </div>
             {/* <div>{editForm && <EditForm />}</div> */}
-            <CreatePost />
             <FeedPosts />
           </div>
         )}
