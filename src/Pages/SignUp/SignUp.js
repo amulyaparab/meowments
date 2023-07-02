@@ -15,7 +15,10 @@ export const SignUp = () => {
   const signUpHandler = async (event) => {
     try {
       event.preventDefault();
-      if (state?.newUser?.password === state?.newUser?.confirmPassword) {
+      if (
+        state?.newUser?.password?.trim() ===
+        state?.newUser?.confirmPassword?.trim()
+      ) {
         await userSignUpData({
           firstName: state?.newUser?.firstName,
           lastName: state?.newUser?.lastName,
@@ -127,7 +130,7 @@ export const SignUp = () => {
             className="inputs"
             type={`${showPassword.signUpPassword ? "text" : "password"}`}
             placeholder="********"
-            value={state?.newUser?.password}
+            // value={state?.newUser?.password}
             minlength="6"
             onChange={(event) =>
               authDispatch({
@@ -165,7 +168,6 @@ export const SignUp = () => {
           <input
             className="inputs"
             required
-            value={state?.newUser?.confirmPassword}
             onChange={(event) =>
               authDispatch({
                 type: "CONFIRM_PASSWORD",

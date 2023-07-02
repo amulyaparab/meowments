@@ -320,6 +320,21 @@
   padding-bottom: 0.7rem;
   margin-bottom: 0.5rem;
   font-size: small;
+  align-items: center;
+  justify-content: space-between;
+}
+.inline-likes-child {
+  display: flex;
+  gap: 1rem;
+}
+
+.comments-link {
+  background-color: #ffebb8;
+  color: #333333;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 .edit-profile textarea {
   margin-top: 3px;

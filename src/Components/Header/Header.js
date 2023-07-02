@@ -10,8 +10,8 @@ export const Header = () => {
   const { state, currentUser } = useAuth();
   const { state: userState } = useUsers();
   const { isDarkMode, setIsDarkMode } = useUtils();
-  const findCurrUser = userState.users.find(
-    (user) => user._id === currentUser._id
+  const findCurrUser = userState.users?.find(
+    (user) => user?._id === currentUser?._id
   );
   return (
     <div className="navbar" id={`${isDarkMode && "dark"}`}>

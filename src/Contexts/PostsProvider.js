@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { toast } from "react-toastify";
 import {
   deletePost,
   getAllPosts,
@@ -23,6 +24,7 @@ export const PostsProvider = ({ children }) => {
     userPosts: [],
     feedPosts: [],
     bookmarks: [],
+    comment: "",
     post: {
       _id: "",
       imageUrl: "",
@@ -109,6 +111,9 @@ export const PostsProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     } finally {
+      toast.success("Posted Successfully!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       setEditForm(false);
       postDispatch({ type: "CLEAR_FORM" });
     }
