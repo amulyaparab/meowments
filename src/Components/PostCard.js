@@ -123,14 +123,14 @@ export const PostCard = ({
           <div>{likes?.likeCount} likes </div>{" "}
           <div>{comments?.length} comments</div>
         </div>
-        <p
+        {/* <p
           className="comments-link"
           onClick={() => {
             setShowCommentBar(true);
           }}
         >
           Write Comment
-        </p>
+        </p> */}
       </div>
 
       <div className="icons">
@@ -146,6 +146,7 @@ export const PostCard = ({
           }`}
           onClick={() => {
             !yellow && setShowComments(!showComments);
+            setShowCommentBar(true);
           }}
         ></i>
         <i

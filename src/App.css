@@ -277,6 +277,7 @@
 .edit-profile img {
   border-radius: 5px;
   margin-bottom: 1rem;
+  max-height: 320px;
 }
 .edit-profile .edit-pen {
   position: absolute;
@@ -484,6 +485,19 @@
 }
 .commentBtn:hover {
   background-image: url("https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80");
+}
+.upload-image {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 0.5rem 2rem;
+  margin-left: 50px;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+  font-size: small;
+  letter-spacing: 0.3px;
 }
 @media screen and (max-width: 1550px) {
   .new-post button {
