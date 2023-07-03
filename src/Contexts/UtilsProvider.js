@@ -15,7 +15,10 @@ import { followUser, unfollowUser } from "../Services/followServices";
 import { fetchSingleUser } from "../Services/userServices";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { addCommentHandler } from "../Services/commentsServices";
+import {
+  addCommentHandler,
+  deleteCommentHandler,
+} from "../Services/commentsServices";
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
@@ -176,7 +179,7 @@ export const UtilsProvider = ({ children }) => {
       );
       console.log(postsArray);
       postDispatch({
-        type: "ADD_COMMENT",
+        type: "RESET_POSTS_BY_COMMENT",
         payload: postsArray,
       });
       setShowCommentBar(false);
@@ -184,6 +187,28 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     } finally {
       toast.success("Comment added", position);
+    }
+  };
+  const deleteCommentsHandler = async (postId, commentId) => {
+    try {
+      const postsArray = await deleteCommentHandler(
+        postId,
+        commentId,
+        currentToken
+      );
+      console.log(postsArray);
+      postDispatch({
+        type: "RESET_POSTS_BY_COMMENT",
+        payload: postsArray,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const editCommentsHandler = async () => {
+    try {
+    } catch (err) {
+      console.log(err);
     }
   };
   const commentPostIdProvider = (postId) => {
@@ -235,7 +260,9 @@ export const UtilsProvider = ({ children }) => {
         commentHandler,
         commentPostIdProvider,
         position,
+        deleteCommentsHandler,
         addCommentsHandler,
+        editCommentsHandler,
       }}
     >
       {children}

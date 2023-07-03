@@ -4,6 +4,10 @@ import { useUsers } from "../Contexts/UsersProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 import { usePost } from "../Pages";
 import { toast } from "react-toastify";
+import {
+  deleteCommentHandler,
+  editCommentHandler,
+} from "../Services/commentsServices";
 
 export const Comments = ({
   comments,
@@ -14,64 +18,14 @@ export const Comments = ({
   const { state: userState } = useUsers();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
-  // const { currentUser } = useAuth();
-  // const findCurrUser = userState.users.find(
-  //   (user) => user._id === currentUser._id
-  // );
-  // const { showCommentBar, setShowCommentBar, position } = useUtils();
-  // const { postDispatch } = usePost();
-  // const commentHandler = () => {
-  //   try {
-  //     postDispatch({
-  //       type: "COMMENT",
-  //       postPayload: postId,
-  //       userPayload: currentUser?.username,
-  //     });
-  //     setShowCommentBar(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //   } finally {
-  //     toast.success("Comment Added.", position);
-  //   }
-  // };
+  const { currentUser, currentToken } = useAuth();
+  const { postDispatch } = usePost();
+  const isCommentByCurrentUser = (comment) =>
+    (findUser(comment?.username)?.username ||
+      findUser(comment?.user?.username)?.username) === currentUser?.username;
+  const { deleteCommentsHandler, setShowCommentBar } = useUtils();
   return (
     <>
-      {/* {showCommentBar && (
-        <div
-          className="overlay"
-          onClick={(event) => {
-            event.stopPropagation();
-            setShowCommentBar(false);
-          }}
-        >
-          <div
-            className="commentBarParent"
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            <img
-              src={findCurrUser?.avatarUrl}
-              alt={findCurrUser?.username}
-              className="comment-img"
-            />
-            <input
-              placeholder="You look purrfect today. Share how you feline!"
-              className="commentBar"
-              onChange={(event) =>
-                postDispatch({
-                  type: "COMMENT_CONTENT",
-                  payload: event.target.value,
-                })
-              }
-            />
-            <button className="commentBtn" onClick={commentHandler}>
-              Comment
-            </button>
-          </div>
-        </div>
-      )} */}
-
       {comments?.length ? (
         comments?.map((comment) => (
           <div
@@ -92,6 +46,27 @@ export const Comments = ({
               />
               <div className="comment-background">
                 <div>
+                  {isCommentByCurrentUser(comment) && (
+                    <div className="corner">
+                      <i
+                        class="fa-solid fa-trash"
+                        onClick={() =>
+                          deleteCommentsHandler(postId, comment._id)
+                        }
+                      ></i>
+                      <i
+                        class="fa-solid fa-pen"
+                        onClick={() => {
+                          postDispatch({
+                            type: "EDIT_COMMENT",
+                            postPayload: postId,
+                            payload: comment,
+                          });
+                          setShowCommentBar(true);
+                        }}
+                      ></i>
+                    </div>
+                  )}
                   <h4>
                     {findUser(comment?.username)?.firstName ||
                       findUser(comment?.user?.username)?.firstName}{" "}

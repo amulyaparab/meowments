@@ -235,6 +235,7 @@
   padding: 0 1rem;
   min-width: 98%;
   border-radius: 0 10px 10px 10px;
+  position: relative;
 }
 .comment-background h4 {
   text-align: left;
@@ -555,4 +556,14 @@
   .comment {
     width: 72%;
   }
+}
+.corner {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+}
+.corner i {
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 0.5rem;
 }

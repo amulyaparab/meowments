@@ -80,35 +80,46 @@ export const postReducer = (state, action) => {
     //     text: "Looks like a great way to spend a Caturday!",
     //   },
     // ],
-    case "ADD_COMMENT":
+    case "RESET_POSTS_BY_COMMENT":
+      return {
+        ...state,
+        posts: action.payload,
+        newComment: {
+          postId: "",
+          commentData: {},
+        },
+      };
+    case "CLEAR_COMMENT":
+      return {
+        ...state,
+        newComment: {
+          postId: "",
+          commentData: {},
+        },
+      };
+    case "EDIT_COMMENT":
+      console.log(action.payload, state.newComment);
+      return {
+        ...state,
+        newComment: {
+          postId: action.postPayload,
+          commentData: action.payload,
+        },
+      };
+    case "SAVE_COMMENT":
+      return {
+        ...state,
+        posts: action.payload,
+        newComment: {
+          postId: "",
+          commentData: {},
+        },
+      };
+    case "EDITED_COMMENT":
       return {
         ...state,
         posts: action.payload,
       };
-    case "COMMENT":
-      return {
-        ...state,
-        posts: state.posts.map((post) => {
-          console.log(post._id === action.postPayload);
-
-          return post._id === action.postPayload
-            ? {
-                ...post,
-                comments: [
-                  ...post.comments,
-                  {
-                    _id: uuid(),
-                    username: action.userPayload,
-                    text: state.comment,
-                  },
-                ],
-              }
-            : post;
-        }),
-        // comment: "",
-      };
-    // case "ADD_COMMENT":
-
     case "ADD_EMOJI_CONTENT":
       return {
         ...state,

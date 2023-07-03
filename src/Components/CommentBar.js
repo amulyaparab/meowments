@@ -11,9 +11,14 @@ export const CommentBar = () => {
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
-  const { showCommentBar, setShowCommentBar, position, addCommentsHandler } =
-    useUtils();
-  const { postDispatch } = usePost();
+  const {
+    showCommentBar,
+    setShowCommentBar,
+    position,
+    addCommentsHandler,
+    editCommentsHandler,
+  } = useUtils();
+  const { state, postDispatch } = usePost();
 
   return (
     <>
@@ -21,6 +26,7 @@ export const CommentBar = () => {
         className="overlay"
         onClick={(event) => {
           event.stopPropagation();
+          postDispatch({ type: "CLEAR_COMMENT" });
           setShowCommentBar(false);
         }}
       >
@@ -38,6 +44,7 @@ export const CommentBar = () => {
           <input
             placeholder="You look purrfect today. Share how you feline!"
             className="commentBar"
+            value={state.newComment.commentData.text}
             onChange={(event) =>
               postDispatch({
                 type: "COMMENT_CONTENT",
@@ -45,9 +52,15 @@ export const CommentBar = () => {
               })
             }
           />
-          <button className="commentBtn" onClick={addCommentsHandler}>
-            Comment
-          </button>
+          {state?.newComment?.commentData?.text?.length ? (
+            <button className="commentBtn" onClick={editCommentsHandler}>
+              Save
+            </button>
+          ) : (
+            <button className="commentBtn" onClick={addCommentsHandler}>
+              Comment
+            </button>
+          )}
         </div>
       </div>
     </>
