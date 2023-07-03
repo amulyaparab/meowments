@@ -4,7 +4,7 @@ import { PostCard } from "../Components/PostCard";
 import { SideNav } from "../Components/SideNav/SideNav";
 import { Suggestions } from "../Components/SuggestedUsers/Suggestions";
 import "../Components/SuggestedUsers/suggestions.css";
-import { Comments } from "../Components/Comments";
+import { Comments } from "../Components/Comments/Comments";
 import { useAuth } from "../Contexts/AuthProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
 export const SinglePost = () => {

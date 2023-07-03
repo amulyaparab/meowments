@@ -8,8 +8,8 @@ import { usePost } from "../Contexts/PostsProvider";
 import { toast } from "react-toastify";
 import { useAuth } from "../Contexts/AuthProvider";
 import { EditForm } from "./EditForm";
-import { Comments } from "./Comments";
-import { CommentBar } from "./CommentBar";
+import { Comments } from "./Comments/Comments";
+import { CommentBar } from "./Comments/CommentBar";
 
 export const PostCard = ({
   _id,

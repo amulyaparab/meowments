@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useAuth } from "../Contexts/AuthProvider";
-import { useUsers } from "../Contexts/UsersProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { usePost } from "../Pages";
+import { useAuth } from "../../Contexts/AuthProvider";
+import { useUsers } from "../../Contexts/UsersProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
+import { usePost } from "../../Pages";
 import { toast } from "react-toastify";
 import {
   deleteCommentHandler,
   editCommentHandler,
-} from "../Services/commentsServices";
+} from "../../Services/commentsServices";
 
 export const Comments = ({
   comments,

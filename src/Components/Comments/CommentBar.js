@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import { useAuth } from "../Contexts/AuthProvider";
-import { useUsers } from "../Contexts/UsersProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { usePost } from "../Pages";
+import { useAuth } from "../../Contexts/AuthProvider";
+import { useUsers } from "../../Contexts/UsersProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
+import { usePost } from "../../Pages";
 
 export const CommentBar = () => {
   const { state: userState } = useUsers();
@@ -52,7 +52,7 @@ export const CommentBar = () => {
               })
             }
           />
-          {state?.newComment?.commentData?.text?.length ? (
+          {state?.newComment?.commentData?._id?.length ? (
             <button className="commentBtn" onClick={editCommentsHandler}>
               Save
             </button>

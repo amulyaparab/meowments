@@ -22,7 +22,7 @@ import { useUtils } from "./Contexts/UtilsProvider";
 import { useUsers } from "./Contexts/UsersProvider";
 import { SuggestedUser } from "./Components/SuggestedUsers/Suggestion";
 import { useNavigate } from "react-router-dom";
-import { CommentBar } from "./Components/CommentBar";
+import { CommentBar } from "./Components/Comments/CommentBar";
 
 function App() {
   const { editForm } = usePost();

@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import {
   addCommentHandler,
   deleteCommentHandler,
+  editCommentHandler,
 } from "../Services/commentsServices";
 const UtilsContext = createContext();
 
@@ -189,6 +190,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Comment added", position);
     }
   };
+  console.log(state.newComment);
   const deleteCommentsHandler = async (postId, commentId) => {
     try {
       const postsArray = await deleteCommentHandler(
@@ -207,6 +209,13 @@ export const UtilsProvider = ({ children }) => {
   };
   const editCommentsHandler = async () => {
     try {
+      const postsArray = await editCommentHandler(
+        state.newComment.postId,
+        state.newComment.commentData._id,
+        state.newComment.commentData,
+        currentToken
+      );
+      console.log(postsArray);
     } catch (err) {
       console.log(err);
     }
