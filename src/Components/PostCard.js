@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../Contexts/AuthProvider";
 import { EditForm } from "./EditForm";
 import { Comments } from "./Comments";
+import { CommentBar } from "./CommentBar";
 
 export const PostCard = ({
   _id,
@@ -40,7 +41,8 @@ export const PostCard = ({
   } = usePost();
 
   const { currentUser } = useAuth();
-  const { showCommentBar, setShowCommentBar } = useUtils();
+  const { showCommentBar, setShowCommentBar, commentPostIdProvider } =
+    useUtils();
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
   // const url = window.location.href;
@@ -123,14 +125,15 @@ export const PostCard = ({
           <div>{likes?.likeCount} likes </div>{" "}
           <div>{comments?.length} comments</div>
         </div>
-        {/* <p
+        <p
           className="comments-link"
           onClick={() => {
             setShowCommentBar(true);
+            commentPostIdProvider(_id);
           }}
         >
           Write Comment
-        </p> */}
+        </p>
       </div>
 
       <div className="icons">
@@ -146,7 +149,7 @@ export const PostCard = ({
           }`}
           onClick={() => {
             !yellow && setShowComments(!showComments);
-            setShowCommentBar(true);
+            // setShowCommentBar(true);
           }}
         ></i>
         <i

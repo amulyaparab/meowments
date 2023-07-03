@@ -51,10 +51,27 @@ export const postReducer = (state, action) => {
             ?.username,
         },
       };
+    case "NEW_COMMENT_POST_ID":
+      //        newComment: {
+      //   postId: "",
+      //   commentData: {},
+      // },
+      return {
+        ...state,
+        newComment: {
+          ...state.newComment,
+          postId: action.payload,
+        },
+      };
     case "COMMENT_CONTENT":
       return {
         ...state,
-        comment: action.payload,
+        newComment: {
+          ...state.newComment,
+          commentData: {
+            text: action.payload,
+          },
+        },
       };
     //     comments: [
     //   {
@@ -63,6 +80,11 @@ export const postReducer = (state, action) => {
     //     text: "Looks like a great way to spend a Caturday!",
     //   },
     // ],
+    case "ADD_COMMENT":
+      return {
+        ...state,
+        posts: action.payload,
+      };
     case "COMMENT":
       return {
         ...state,
@@ -85,6 +107,7 @@ export const postReducer = (state, action) => {
         }),
         // comment: "",
       };
+    // case "ADD_COMMENT":
 
     case "ADD_EMOJI_CONTENT":
       return {

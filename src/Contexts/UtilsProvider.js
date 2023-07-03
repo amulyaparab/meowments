@@ -15,6 +15,7 @@ import { followUser, unfollowUser } from "../Services/followServices";
 import { fetchSingleUser } from "../Services/userServices";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { addCommentHandler } from "../Services/commentsServices";
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
@@ -162,6 +163,46 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const addCommentsHandler = async () => {
+    try {
+      //      newComment: {
+      //   postId: "",
+      //   commentData: {},
+      // },
+      const postsArray = await addCommentHandler(
+        state.newComment.postId,
+        state.newComment.commentData,
+        currentToken
+      );
+      console.log(postsArray);
+      postDispatch({
+        type: "ADD_COMMENT",
+        payload: postsArray,
+      });
+      setShowCommentBar(false);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      toast.success("Comment added", position);
+    }
+  };
+  const commentPostIdProvider = (postId) => {
+    postDispatch({ type: "NEW_COMMENT_POST_ID", payload: postId });
+  };
+  const commentHandler = () => {
+    try {
+      postDispatch({
+        type: "ADD_COMMENT",
+
+        userPayload: currentUser?.username,
+      });
+      setShowCommentBar(false);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      toast.success("Comment Added.", position);
+    }
+  };
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -191,7 +232,10 @@ export const UtilsProvider = ({ children }) => {
         isUserFollowedByMe,
         takeToProfilePage,
         darkModeHandler,
+        commentHandler,
+        commentPostIdProvider,
         position,
+        addCommentsHandler,
       }}
     >
       {children}

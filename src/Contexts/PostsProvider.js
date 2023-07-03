@@ -27,6 +27,10 @@ export const PostsProvider = ({ children }) => {
     bookmarks: [],
     primaryPosts: [],
     comment: "",
+    newComment: {
+      postId: "",
+      commentData: {},
+    },
     post: {
       _id: "",
       imageUrl: "",

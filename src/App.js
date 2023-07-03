@@ -22,16 +22,21 @@ import { useUtils } from "./Contexts/UtilsProvider";
 import { useUsers } from "./Contexts/UsersProvider";
 import { SuggestedUser } from "./Components/SuggestedUsers/Suggestion";
 import { useNavigate } from "react-router-dom";
+import { CommentBar } from "./Components/CommentBar";
 
 function App() {
   const { editForm } = usePost();
   const { userDispatch, state } = useUsers();
-  const { showSearchBar, setShowSearchBar } = useUtils();
+  const { showSearchBar, setShowSearchBar, setShowCommentBar, showCommentBar } =
+    useUtils();
+
   const navigate = useNavigate();
+
   return (
     <div className="App">
       <Header />
       <div>{editForm && <EditForm />}</div>
+      <div> {showCommentBar && <CommentBar />}</div>
       <div>
         {showSearchBar && (
           <div

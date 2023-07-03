@@ -14,29 +14,29 @@ export const Comments = ({
   const { state: userState } = useUsers();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
-  const { currentUser } = useAuth();
-  const findCurrUser = userState.users.find(
-    (user) => user._id === currentUser._id
-  );
-  const { showCommentBar, setShowCommentBar, position } = useUtils();
-  const { postDispatch } = usePost();
-  const commentHandler = () => {
-    try {
-      postDispatch({
-        type: "COMMENT",
-        postPayload: postId,
-        userPayload: currentUser?.username,
-      });
-      setShowCommentBar(false);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      toast.success("Comment Added.", position);
-    }
-  };
+  // const { currentUser } = useAuth();
+  // const findCurrUser = userState.users.find(
+  //   (user) => user._id === currentUser._id
+  // );
+  // const { showCommentBar, setShowCommentBar, position } = useUtils();
+  // const { postDispatch } = usePost();
+  // const commentHandler = () => {
+  //   try {
+  //     postDispatch({
+  //       type: "COMMENT",
+  //       postPayload: postId,
+  //       userPayload: currentUser?.username,
+  //     });
+  //     setShowCommentBar(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     toast.success("Comment Added.", position);
+  //   }
+  // };
   return (
     <>
-      {showCommentBar && (
+      {/* {showCommentBar && (
         <div
           className="overlay"
           onClick={(event) => {
@@ -70,7 +70,7 @@ export const Comments = ({
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
       {comments?.length ? (
         comments?.map((comment) => (
@@ -81,16 +81,28 @@ export const Comments = ({
           >
             <div className="suggestionsPerson">
               <img
-                src={findUser(comment?.username)?.avatarUrl}
-                alt={findUser(comment?.username)?.username}
+                src={
+                  findUser(comment?.username)?.avatarUrl ||
+                  findUser(comment?.user?.username)?.avatarUrl
+                }
+                alt={
+                  findUser(comment?.username)?.username ||
+                  findUser(comment?.user?.username)?.username
+                }
               />
               <div className="comment-background">
                 <div>
                   <h4>
-                    {findUser(comment?.username)?.firstName}{" "}
-                    {findUser(comment?.username)?.lastName}
+                    {findUser(comment?.username)?.firstName ||
+                      findUser(comment?.user?.username)?.firstName}{" "}
+                    {findUser(comment?.username)?.lastName ||
+                      findUser(comment?.user?.username)?.lastName}
                   </h4>
-                  <p>@{findUser(comment?.username)?.username}</p>
+                  <p>
+                    @
+                    {findUser(comment?.username)?.username ||
+                      findUser(comment?.user?.username)?.username}
+                  </p>
                 </div>
                 <h4 className="comment-text">{comment?.text}</h4>
               </div>

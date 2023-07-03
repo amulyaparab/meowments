@@ -473,6 +473,17 @@
 .relative {
   position: relative;
 }
+.overlay-comments {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+
+  /* margin-top: 3.5rem; */
+}
 .commentBtn {
   padding: 0.7rem 2rem;
   border-radius: 5px;
