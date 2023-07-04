@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { usePost } from "../../Contexts/PostsProvider";
 import { PostCard } from "../PostCard";
-import { useUsers } from "../../Contexts/UsersProvider";
+import { useAuth, usePost, useUsers } from "../../Contexts";
+
 export const FeedPosts = () => {
   const { state, setEditForm } = usePost();
   const { state: userState } = useUsers();

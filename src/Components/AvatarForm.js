@@ -1,6 +1,5 @@
 import { avatarArray } from ".";
-import { useUsers } from "../Contexts/UsersProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
+import { useUsers, useUtils } from "../Contexts";
 
 export const AvatarForm = () => {
   const { setShowAvatarForm, userDispatch } = useUsers();
@@ -12,23 +11,6 @@ export const AvatarForm = () => {
     setShowAvatarForm(false);
   };
 
-  //   const imageUploadHandler = (event) => {
-  //   const file = event.target.files[0];
-  //   const imageURL = URL.createObjectURL(file);
-  //   setImageURL(imageURL);
-  //   postDispatch({
-  //     type: "NEW_POST_IMG",
-  //     payload: imageURL,
-  //   });
-  // };
-  // const imageRevoker = () => {
-  //   URL.revokeObjectURL(imageURL);
-  //   postDispatch({
-  //     type: "NEW_POST_REMOVE_IMG",
-  //     payload: null,
-  //   });
-  //   setImageURL(null);
-  // };
   return (
     <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>
       <div className="overlay">

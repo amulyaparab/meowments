@@ -1,10 +1,6 @@
-import { useUsers } from "../../Contexts/UsersProvider";
-import { SuggestedUser } from "./Suggestion";
 import "./suggestions.css";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { usePost } from "../../Contexts/PostsProvider";
-import { FollowButton } from "./FollowButton";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { FollowButton, SuggestedUser } from "..";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const Suggestions = () => {
   const { state, userDispatch } = useUsers();

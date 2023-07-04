@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import "./header.css";
-import { useAuth } from "../../Contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 import { SuggestedUser } from "../SuggestedUsers/Suggestion";
-import { useUsers } from "../../Contexts/UsersProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { useAuth, useUsers, useUtils } from "../../Contexts";
 
 export const Header = () => {
   const navigate = useNavigate();

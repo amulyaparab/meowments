@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { useAuth } from "../Contexts/AuthProvider";
-import { usePost } from "../Contexts/PostsProvider";
-import { editPost } from "../Services/postServices";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import { useUtils } from "../Contexts/UtilsProvider";
+import { useState } from "react";
+import { editPost } from "../Services/postServices";
 import { toast } from "react-toastify";
+import { useAuth, usePost, useUtils } from "../Contexts";
 export const EditForm = () => {
   const { state, setEditForm, postDispatch, createPost } = usePost();
   const findPostToBeEdited = state.posts?.find(

@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { SuggestedUser } from "./SuggestedUsers/Suggestion";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { useUsers } from "../Contexts";
-// import { useUsers } from "../Contexts/UsersProvider";
+import { SuggestedUser } from "../Components";
+import { useUsers, useUtils } from "../Contexts";
 
 export const SearchBar = () => {
   const { userDispatch, state } = useUsers();
-  const { showSearchBar, setShowSearchBar, setShowCommentBar, showCommentBar } =
-    useUtils();
-
+  const { setShowSearchBar } = useUtils();
   const navigate = useNavigate();
+
   return (
     <div
       className="overlay"

@@ -1,15 +1,9 @@
-import { useUsers } from "../Contexts/UsersProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { SuggestedUser } from "./SuggestedUsers/Suggestion";
 import "../Pages/Explore/explore.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { usePost } from "../Contexts/PostsProvider";
 import { toast } from "react-toastify";
-import { useAuth } from "../Contexts/AuthProvider";
-import { EditForm } from "./EditForm";
-import { Comments } from "./Comments/Comments";
-import { CommentBar } from "./Comments/CommentBar";
+import { useAuth, usePost, useUsers, useUtils } from "../Contexts";
+import { SuggestedUser, Comments } from ".";
 
 export const PostCard = ({
   _id,
@@ -31,18 +25,10 @@ export const PostCard = ({
     removeBookmarkHandler,
     position,
   } = useUtils();
-  const {
-    state,
-    editPost,
-    deleteThePost,
-    setEditForm,
-    showEditForm,
-    postDispatch,
-  } = usePost();
+  const { state, deleteThePost, setEditForm, postDispatch } = usePost();
 
   const { currentUser } = useAuth();
-  const { showCommentBar, setShowCommentBar, commentPostIdProvider } =
-    useUtils();
+  const { setShowCommentBar, commentPostIdProvider } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
   // const url = window.location.href;
@@ -57,9 +43,7 @@ export const PostCard = ({
         toast.error("Failed to copy link...Try again.", position);
       });
   };
-  const findCurrUser = userState.users.find(
-    (user) => user._id === currentUser._id
-  );
+
   const editHandler = () => {
     try {
       setEditForm(true);
@@ -80,8 +64,6 @@ export const PostCard = ({
     .includes(username);
 
   const navigate = useNavigate();
-  const findUser = (commentUser) =>
-    userState?.users.find((user) => user.username === commentUser);
 
   return (
     <div className="posts" key={_id}>
@@ -149,7 +131,6 @@ export const PostCard = ({
           }`}
           onClick={() => {
             !yellow && setShowComments(!showComments);
-            // setShowCommentBar(true);
           }}
         ></i>
         <i
@@ -163,54 +144,7 @@ export const PostCard = ({
           }
         ></i>
       </div>
-
       {showComments && <Comments comments={comments} postId={_id} />}
-
-      {/* {showCommentBar && (
-        <div
-          className="overlay"
-          onClick={(event) => {
-            event.stopPropagation();
-            setShowCommentBar(false);
-          }}
-        >
-          <div
-            className="commentBarParent"
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            <img
-              src={findCurrUser?.avatarUrl}
-              alt={findCurrUser?.username}
-              className="comment-img"
-            />
-            <input
-              placeholder="You look purrfect today. Share how you feline!"
-              className="commentBar"
-              onChange={(event) =>
-                postDispatch({
-                  type: "COMMENT_CONTENT",
-                  payload: event.target.value,
-                })
-              }
-            />
-            <button
-              className="commentBtn"
-              onClick={() => {
-                postDispatch({
-                  type: "COMMENT",
-                  postPayload: _id,
-                  userPayload: currentUser?.username,
-                });
-                setShowCommentBar(false);
-              }}
-            >
-              Comment
-            </button>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };

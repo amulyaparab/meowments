@@ -1,24 +1,13 @@
-import { toast } from "react-toastify";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { useUsers } from "../../Contexts/UsersProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
-import { usePost } from "../../Pages";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const CommentBar = () => {
   const { state: userState } = useUsers();
-
   const { currentUser } = useAuth();
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
-
-  const {
-    showCommentBar,
-    setShowCommentBar,
-    position,
-    addCommentsHandler,
-    editCommentsHandler,
-  } = useUtils();
+  const { setShowCommentBar, addCommentsHandler, editCommentsHandler } =
+    useUtils();
   const { state, postDispatch } = usePost();
   const isCommentIdPresent = state?.newComment?.commentData?._id;
   return (

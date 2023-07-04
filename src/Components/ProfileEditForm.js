@@ -1,12 +1,11 @@
-import { useAuth } from "../Contexts/AuthProvider";
-import { useUsers } from "../Contexts/UsersProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
-import { editUser } from "../Services/userServices";
 import { toast } from "react-toastify";
+import { useAuth, useUsers, useUtils } from "../Contexts";
+import { editUser } from "../Services/userServices";
+
 export const ProfileEditForm = () => {
   const { setShowUserEditForm, setShowAvatarForm, userDispatch, state } =
     useUsers();
-  const { currentUser, currentToken, state: authState } = useAuth();
+  const { currentUser, currentToken } = useAuth();
   const { isDarkMode, position } = useUtils();
 
   const editProfileHandler = async () => {

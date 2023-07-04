@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
 import "./sideNav.css";
-import { usePost } from "../../Contexts/PostsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { NavLink } from "react-router-dom";
+import { usePost, useUtils } from "../../Contexts";
+
 export const SideNav = () => {
   const { setEditForm } = usePost();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();

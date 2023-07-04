@@ -1,13 +1,4 @@
-import { useState } from "react";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { useUsers } from "../../Contexts/UsersProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
-import { usePost } from "../../Pages";
-import { toast } from "react-toastify";
-import {
-  deleteCommentHandler,
-  editCommentHandler,
-} from "../../Services/commentsServices";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const Comments = ({
   comments,
@@ -18,7 +9,7 @@ export const Comments = ({
   const { state: userState } = useUsers();
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
-  const { currentUser, currentToken } = useAuth();
+  const { currentUser } = useAuth();
   const { postDispatch } = usePost();
   const isCommentByCurrentUser = (comment) =>
     (findUser(comment?.username)?.username ||
