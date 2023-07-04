@@ -69,6 +69,9 @@
   margin: 0 0.5rem;
   font-size: larger;
 }
+.background .general-heading-white {
+  color: #ffffff;
+}
 .new-post {
   background-color: #ffc11b;
   height: 200px;
@@ -115,7 +118,7 @@
   border-radius: 50%;
   cursor: pointer;
 }
-#white {
+.suggestions .white {
   color: #ffffff;
 }
 .add-on {
@@ -345,11 +348,14 @@
 }
 .center {
   width: 70%;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 10px;
   padding: 0.5rem;
   height: max-content;
   cursor: pointer;
+}
+.center-background {
+  background-color: #ffffff;
 }
 .comments-link {
   background-color: #ffebb8;

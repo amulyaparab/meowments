@@ -23,7 +23,13 @@ export const Bookmarks = () => {
           className={`background ${state.bookmarks.length <= 1 && "height"}`}
           id={`${isDarkMode && "dark"}`}
         >
-          <h1 className="general-heading">Bookmarks</h1>
+          <h1
+            className={`general-heading ${
+              isDarkMode && "general-heading-white"
+            }`}
+          >
+            Bookmarks
+          </h1>
           {state.bookmarks.map((bookmark) => {
             const likedByArray = bookmark.likes.likedBy.filter(
               (currUser) => currUser._id === currentUser._id

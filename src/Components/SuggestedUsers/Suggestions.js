@@ -33,7 +33,7 @@ export const Suggestions = () => {
                   className="center"
                   onClick={() => userDispatch({ type: "CLEAR_SEARCH" })}
                 >
-                  <SuggestedUser {...user} showUserName />
+                  <SuggestedUser {...user} showUserName dark />
                 </div>
               ))}
             </div>

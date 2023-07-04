@@ -57,6 +57,9 @@
 .cursor {
   cursor: pointer;
 }
+.suggestions .white {
+  color: #ffffff;
+}
 .suggestions button {
   background-color: #ffebb8;
   border: none;

@@ -15,7 +15,11 @@ export const Explore = () => {
     <div className="page-fractions">
       <SideNav />
       <div className="background" id={`${isDarkMode && "dark"}`}>
-        <h1 className="general-heading">Explore</h1>
+        <h1
+          className={`general-heading ${isDarkMode && "general-heading-white"}`}
+        >
+          Explore
+        </h1>
         {state?.posts.map((post) => {
           const likedByArray = post.likes.likedBy.filter(
             (currUser) => currUser._id === currentUser._id

@@ -64,7 +64,7 @@ function App() {
                   <div className="center-parent">
                     {state?.searchedUsers?.map((user) => (
                       <div
-                        className="center"
+                        className="center center-background"
                         onClick={() => {
                           navigate(`profile/${user._id}`);
                           setShowSearchBar(false);

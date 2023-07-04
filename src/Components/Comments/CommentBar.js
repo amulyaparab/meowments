@@ -11,6 +11,7 @@ export const CommentBar = () => {
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
+
   const {
     showCommentBar,
     setShowCommentBar,
@@ -19,7 +20,7 @@ export const CommentBar = () => {
     editCommentsHandler,
   } = useUtils();
   const { state, postDispatch } = usePost();
-
+  const isCommentIdPresent = state?.newComment?.commentData?._id;
   return (
     <>
       <div

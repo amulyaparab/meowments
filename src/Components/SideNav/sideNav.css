@@ -3,7 +3,7 @@
   flex-direction: column;
   text-align: left;
   padding: 1rem 0;
-  height: 83vh;
+  height: 87.5vh;
   position: sticky;
   top: 100px;
 }
@@ -114,12 +114,12 @@
   .new-post-button {
     margin: 0;
   }
-  .new-post-button:hover {
+  /* .new-post-button:hover {
     background-color: #ffffff;
   }
   .side-nav a:hover {
     background-color: #ffffff;
-  }
+  } */
 }
 .yellowNav {
   background-color: #ffebb8;
