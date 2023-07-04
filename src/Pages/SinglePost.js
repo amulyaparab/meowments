@@ -1,12 +1,8 @@
 import { useParams } from "react-router-dom";
-import { usePost } from "../Contexts/PostsProvider";
-import { PostCard } from "../Components/PostCard";
-import { SideNav } from "../Components/SideNav/SideNav";
-import { Suggestions } from "../Components/SuggestedUsers/Suggestions";
 import "../Components/SuggestedUsers/suggestions.css";
-import { Comments } from "../Components/Comments/Comments";
-import { useAuth } from "../Contexts/AuthProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
+import { useAuth, usePost, useUtils } from "../Contexts";
+import { Comments, PostCard, SideNav, Suggestions } from "../Components";
+
 export const SinglePost = () => {
   const { postId } = useParams();
   const { state } = usePost();

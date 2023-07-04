@@ -1,15 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./signUp.css";
 import signUpCat from "../../assets/Images/signUp.jpg";
-import { useAuth } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
-import { useUtils } from "../../Contexts/UtilsProvider";
-import { useUsers } from "../../Contexts/UsersProvider";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
+import { useAuth, useUtils } from "../../Contexts";
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
     useAuth();
-  const { state: userState, userDispatch } = useUsers();
   const navigate = useNavigate();
   const { isDarkMode } = useUtils();
   const signUpHandler = async (event) => {

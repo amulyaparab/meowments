@@ -6,49 +6,36 @@ import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
 import { usePost } from "../../Contexts/PostsProvider";
 import { PostCard } from "../../Components/PostCard";
 import { useAuth } from "../../Contexts/AuthProvider";
-import { ProfileEditForm } from "../../Components/ProfileEditForm";
+// import { ProfileEditForm } from "../../Components/ProfileEditForm";
 import { AvatarForm } from "../../Components/AvatarForm";
-import { editUser } from "../../Services/userServices";
 import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
 import { useUtils } from "../../Contexts/UtilsProvider";
-import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 import { useEffect } from "react";
 import { getPostsByUser } from "../../Services/postServices";
 import { Loader } from "../../Components/Loader";
+import { ProfileEditForm } from "../../Components";
 export const Profile = () => {
   const { userId } = useParams();
-  const {
-    showUserEditForm,
-    setShowUserEditForm,
-    showAvatarForm,
-    userDispatch,
-    state,
-    setShowAvatarForm,
-  } = useUsers();
+  const { showUserEditForm, setShowUserEditForm, showAvatarForm, state } =
+    useUsers();
   const { state: userPostsState, postDispatch } = usePost();
   const { currentUser } = useAuth();
-
   const { logout, isDarkMode } = useUtils();
   const findUser = state.users.find((user) => user._id === userId);
-
   const formattedDate = new Date(findUser?.createdAt);
   const date = formattedDate.getDate();
   const month = formattedDate.toLocaleString("default", {
     month: "long",
   });
   const year = formattedDate.getFullYear();
-
   const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
 
   const fetchUserPosts = async () => {
     try {
-      // postDispatch({ type: "POST_LOADING", payload: true });
       const postsByUser = await getPostsByUser(findUser?.username);
       postDispatch({ type: "UPDATE_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
-    } finally {
-      // postDispatch({ type: "POST_LOADING", payload: false });
     }
   };
   useEffect(() => {

@@ -2,6 +2,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import {
   Bookmarks,
+  CommentBar,
   EditForm,
   Explore,
   Feed,
@@ -12,77 +13,24 @@ import {
   RequiresAuth,
   Route,
   Routes,
+  SearchBar,
   SignUp,
   SinglePost,
   ToastContainer,
   usePost,
+  useUtils,
 } from "./Pages";
 import Mockman from "mockman-js";
-import { useUtils } from "./Contexts/UtilsProvider";
-import { useUsers } from "./Contexts/UsersProvider";
-import { SuggestedUser } from "./Components/SuggestedUsers/Suggestion";
-import { useNavigate } from "react-router-dom";
-import { CommentBar } from "./Components/Comments/CommentBar";
 
 function App() {
   const { editForm } = usePost();
-  const { userDispatch, state } = useUsers();
-  const { showSearchBar, setShowSearchBar, setShowCommentBar, showCommentBar } =
-    useUtils();
-
-  const navigate = useNavigate();
-
+  const { showSearchBar, showCommentBar } = useUtils();
   return (
     <div className="App">
       <Header />
       <div>{editForm && <EditForm />}</div>
       <div> {showCommentBar && <CommentBar />}</div>
-      <div>
-        {showSearchBar && (
-          <div
-            className="overlay"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowSearchBar(false);
-            }}
-          >
-            <div className="search-parent" onClick={(e) => e.stopPropagation()}>
-              <input
-                className="top"
-                onChange={(event) =>
-                  userDispatch({
-                    type: "SEARCH_USER_NAV",
-                    payload: event.target.value,
-                  })
-                }
-              />
-              <i class="fa-solid fa-magnifying-glass top-magnify"></i>
-            </div>
-            <div onClick={(e) => e.stopPropagation()}>
-              {state?.searchVal?.length ? (
-                state?.searchedUsers?.length ? (
-                  <div className="center-parent">
-                    {state?.searchedUsers?.map((user) => (
-                      <div
-                        className="center center-background"
-                        onClick={() => {
-                          navigate(`profile/${user._id}`);
-                          setShowSearchBar(false);
-                          userDispatch({ type: "CLEAR_SEARCH" });
-                        }}
-                      >
-                        <SuggestedUser {...user} showUserName />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="center">No Users Found</p>
-                )
-              ) : null}
-            </div>
-          </div>
-        )}
-      </div>
+      <div>{showSearchBar && <SearchBar />} </div>
       <Routes>
         <Route
           path="/explore"

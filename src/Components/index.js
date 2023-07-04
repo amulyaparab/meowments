@@ -25,3 +25,18 @@ export const avatarArray = [
   signUpCat,
   loginCat,
 ];
+export { EditForm } from "./EditForm";
+export { ProfileEditForm } from "./ProfileEditForm";
+// export { AvatarForm } from "./AvatarForm";
+export { Loader } from "./Loader";
+export { PostCard } from "./PostCard";
+export { SearchBar } from "./SearchBar";
+export { RequiresAuth } from "./RequiresAuth";
+export { CommentBar } from "./Comments/CommentBar";
+export { Comments } from "./Comments/Comments";
+export { Header } from "./Header/Header";
+export { FeedPosts } from "./Feed/FeedPosts";
+export { SideNav } from "./SideNav/SideNav";
+export { FollowButton } from "./SuggestedUsers/FollowButton";
+export { SuggestedUser } from "./SuggestedUsers/Suggestion";
+export { Suggestions } from "./SuggestedUsers/Suggestions";

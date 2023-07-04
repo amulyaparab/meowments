@@ -1,8 +1,4 @@
 import axios from "axios";
-import { useAuth } from "../Contexts/AuthProvider";
-
-const userData = localStorage.getItem("userData");
-const encodedToken = JSON.parse(userData)?.encodedToken;
 
 const getAllPosts = async () => {
   const {
