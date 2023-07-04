@@ -1,24 +1,13 @@
-import { useState } from "react";
-
-import { FeedPosts } from "../../Components/Feed/FeedPosts";
-import { SideNav } from "../../Components/SideNav/SideNav";
-import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
-
 import "./feed.css";
-
-import { usePost } from "../../Contexts/PostsProvider";
-import { useEffect } from "react";
-import { useUtils } from "../../Contexts/UtilsProvider";
-import { EditForm } from "../../Components/EditForm";
-import { Loader } from "../../Components/Loader";
-import { useUsers } from "../../Contexts/UsersProvider";
+import { useState, useEffect } from "react";
+import { usePost, useUtils } from "../../Contexts";
+import { FeedPosts, Loader, SideNav, Suggestions } from "../../Components";
 
 export const Feed = () => {
   const [showSort, setShowSort] = useState(false);
-  const { state, editForm } = usePost();
+  const { state } = usePost();
   const { sortByLatest, sortByOldest, sortByTrendingHandler, isDarkMode } =
     useUtils();
-  const { state: userState, userDispatch } = useUsers();
 
   useEffect(() => {
     if (state.sort === "Trending") {
@@ -29,6 +18,7 @@ export const Feed = () => {
       sortByOldest();
     }
   }, [state.storePosts]);
+
   return (
     <div className="page-fractions">
       <SideNav />
@@ -94,7 +84,6 @@ export const Feed = () => {
                 </div>
               )}
             </div>
-            {/* <div>{editForm && <EditForm />}</div> */}
             <FeedPosts />
           </div>
         )}

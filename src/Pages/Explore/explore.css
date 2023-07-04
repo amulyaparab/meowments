@@ -73,8 +73,6 @@
   box-shadow: 0 0 5px 5px #ffebb8;
 }
 .edit-block p {
-  /* border-bottom: #333333 solid 1px; */
-
   cursor: pointer;
 }
 .edit-block p:hover {

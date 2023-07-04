@@ -27,7 +27,7 @@ export const avatarArray = [
 ];
 export { EditForm } from "./EditForm";
 export { ProfileEditForm } from "./ProfileEditForm";
-// export { AvatarForm } from "./AvatarForm";
+export { AvatarForm } from "./AvatarForm";
 export { Loader } from "./Loader";
 export { PostCard } from "./PostCard";
 export { SearchBar } from "./SearchBar";

@@ -1,19 +1,19 @@
-import { useParams } from "react-router-dom";
 import "./profile.css";
-import { useUsers } from "../../Contexts/UsersProvider";
-import { SideNav } from "../../Components/SideNav/SideNav";
-import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
-import { usePost } from "../../Contexts/PostsProvider";
-import { PostCard } from "../../Components/PostCard";
-import { useAuth } from "../../Contexts/AuthProvider";
-// import { ProfileEditForm } from "../../Components/ProfileEditForm";
-import { AvatarForm } from "../../Components/AvatarForm";
-import { FollowButton } from "../../Components/SuggestedUsers/FollowButton";
-import { useUtils } from "../../Contexts/UtilsProvider";
+
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getPostsByUser } from "../../Services/postServices";
-import { Loader } from "../../Components/Loader";
-import { ProfileEditForm } from "../../Components";
+import {
+  AvatarForm,
+  FollowButton,
+  Loader,
+  PostCard,
+  ProfileEditForm,
+  SideNav,
+  Suggestions,
+} from "../../Components";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
+
 export const Profile = () => {
   const { userId } = useParams();
   const { showUserEditForm, setShowUserEditForm, showAvatarForm, state } =

@@ -1,11 +1,6 @@
-import { PostCard } from "../../Components/PostCard";
-import { SideNav } from "../../Components/SideNav/SideNav";
-import { Suggestions } from "../../Components/SuggestedUsers/Suggestions";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { usePost } from "../../Contexts/PostsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
-
 import "./explore.css";
+import { PostCard, SideNav, Suggestions } from "../../Components";
+import { useAuth, usePost, useUtils } from "../../Contexts";
 
 export const Explore = () => {
   const { state } = usePost();

@@ -34,11 +34,9 @@
 }
 .profile i {
   margin: 0 0.7rem 0 0;
-  /* color: green; */
 }
 .profile-deets {
   display: flex;
-  /* justify-content: space-evenly; */
   gap: 2rem;
   margin-left: 3rem;
   align-items: center;

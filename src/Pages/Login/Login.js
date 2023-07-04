@@ -1,10 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./login.css";
 import loginCat from "../../assets/Images/login.jpg";
-import { useAuth } from "../../Contexts/AuthProvider";
-import { usePost } from "../../Contexts/PostsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
 import { toast } from "react-toastify";
+import { useAuth, usePost, useUtils } from "../../Contexts";
+
 export const Login = () => {
   const navigate = useNavigate();
   const { userLoginData, authDispatch, state, showPassword, setShowPassword } =
