@@ -111,7 +111,15 @@ export const EditForm = () => {
             {findPostToBeEdited ? (
               <button onClick={editPostHandler}>Save</button>
             ) : (
-              <button onClick={createPost}>Post</button>
+              <button
+                onClick={createPost}
+                disabled={
+                  !state?.post?.content?.length &&
+                  !state?.post?.imageUrl?.length
+                }
+              >
+                Post
+              </button>
             )}
           </div>
         </div>

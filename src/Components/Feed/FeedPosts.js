@@ -28,16 +28,22 @@ export const FeedPosts = () => {
           </button>
         </div>
       </div>
-      {state?.feedPosts?.map((post) => {
-        const likedByArray = post.likes.likedBy.filter(
-          (currUser) => currUser._id === currentUser._id
-        );
-        return (
-          <div>
-            <PostCard {...post} isLiked={!!likedByArray.length} />
-          </div>
-        );
-      })}
+      {state?.feedPosts?.length ? (
+        state?.feedPosts?.map((post) => {
+          const likedByArray = post.likes.likedBy.filter(
+            (currUser) => currUser._id === currentUser._id
+          );
+          return (
+            <div>
+              <PostCard {...post} isLiked={!!likedByArray.length} />
+            </div>
+          );
+        })
+      ) : (
+        <h3 className="general-heading">
+          No Posts Yet 😦 Follow People And Share Posts To See More
+        </h3>
+      )}
     </>
   );
 };

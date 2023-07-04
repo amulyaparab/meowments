@@ -26,12 +26,18 @@ export const Bookmarks = () => {
           >
             Bookmarks
           </h1>
-          {state.bookmarks.map((bookmark) => {
-            const likedByArray = bookmark.likes.likedBy.filter(
-              (currUser) => currUser._id === currentUser._id
-            );
-            return <PostCard {...bookmark} isLiked={!!likedByArray.length} />;
-          })}
+          {state.bookmarks.length ? (
+            state.bookmarks.map((bookmark) => {
+              const likedByArray = bookmark.likes.likedBy.filter(
+                (currUser) => currUser._id === currentUser._id
+              );
+              return <PostCard {...bookmark} isLiked={!!likedByArray.length} />;
+            })
+          ) : (
+            <h3 className="general-heading" id={`${isDarkMode && "dark"}`}>
+              No Bookmarks Yet
+            </h3>
+          )}
         </div>
         <Suggestions />
       </div>
