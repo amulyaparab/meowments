@@ -7,7 +7,7 @@ export { Profile } from "./Profile/Profile";
 export { SignUp } from "./SignUp/SignUp";
 export { Header } from "../Components/Header/Header";
 export { RequiresAuth } from "../Components/RequiresAuth";
-export { SinglePost } from "./SinglePost";
+export { SinglePost } from "./SinglePost/SinglePost";
 export { usePost } from "../Contexts/PostsProvider";
 export { EditForm } from "../Components/EditForm";
 export { ToastContainer } from "react-toastify";

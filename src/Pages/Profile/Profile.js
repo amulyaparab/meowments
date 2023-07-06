@@ -65,13 +65,13 @@ export const Profile = () => {
                     <p className="profile-username">@{findUser?.username}</p>
                     {findUser?.bio?.length && (
                       <p>
-                        <i class="fa-solid fa-paw"></i>
+                        <i className="fa-solid fa-paw"></i>
                         {findUser?.bio}
                       </p>
                     )}
                     {findUser?.website?.length && (
                       <div>
-                        <i class="fa-solid fa-display"></i>
+                        <i className="fa-solid fa-display"></i>
                         <a
                           href={findUser?.website}
                           target="_blank"
@@ -84,12 +84,12 @@ export const Profile = () => {
                     {findUser?.occupation?.length && (
                       <p>
                         {" "}
-                        <i class="fa-solid fa-user"></i>
+                        <i className="fa-solid fa-user"></i>
                         {findUser?.occupation}
                       </p>
                     )}
                     <p>
-                      <i class="fa-regular fa-calendar"></i>
+                      <i className="fa-regular fa-calendar"></i>
                       {`Joined on ${date}
                 ${month}
                 ${year}`}
@@ -104,7 +104,7 @@ export const Profile = () => {
                     )}
                     {isFoundUserSameAsCurrentUser && (
                       <i
-                        class="fa-solid fa-right-from-bracket logout-icon"
+                        className="fa-solid fa-right-from-bracket logout-icon"
                         id={`${isDarkMode && "light-text"}`}
                         onClick={logout}
                       ></i>

@@ -90,7 +90,7 @@ export const PostCard = ({
       )}
       {userState?.users?.map((user) =>
         user?.username === username ? (
-          <SuggestedUser {...user} postDate={createdAt} />
+          <SuggestedUser {...user} postDate={createdAt} key={user._id} />
         ) : null
       )}
       {imageUrl?.length ? (
@@ -138,7 +138,7 @@ export const PostCard = ({
           onClick={() => handleCopyLink(_id)}
         ></i>
         <i
-          class={`fa-solid fa-bookmark ${isBookmarked && "yellow"}`}
+          className={`fa-solid fa-bookmark ${isBookmarked && "yellow"}`}
           onClick={() =>
             isBookmarked ? removeBookmarkHandler(_id) : bookMarkPostHandler(_id)
           }

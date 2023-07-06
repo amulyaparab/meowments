@@ -34,7 +34,7 @@ export const FeedPosts = () => {
             (currUser) => currUser._id === currentUser._id
           );
           return (
-            <div>
+            <div key={post._id}>
               <PostCard {...post} isLiked={!!likedByArray.length} />
             </div>
           );

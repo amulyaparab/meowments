@@ -20,6 +20,7 @@ export const Comments = ({
       {comments?.length ? (
         comments?.map((comment) => (
           <div
+            key={comment._id}
             className={`${
               showUIForSinglePost ? "comment" : "allPostsComments"
             }`}
@@ -40,13 +41,13 @@ export const Comments = ({
                   {isCommentByCurrentUser(comment) && (
                     <div className="corner">
                       <i
-                        class="fa-solid fa-trash"
+                        className="fa-solid fa-trash"
                         onClick={() =>
                           deleteCommentsHandler(postId, comment._id)
                         }
                       ></i>
                       <i
-                        class="fa-solid fa-pen"
+                        className="fa-solid fa-pen"
                         onClick={() => {
                           postDispatch({
                             type: "EDIT_COMMENT",

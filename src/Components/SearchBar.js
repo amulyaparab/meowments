@@ -25,7 +25,7 @@ export const SearchBar = () => {
             })
           }
         />
-        <i class="fa-solid fa-magnifying-glass top-magnify"></i>
+        <i className="fa-solid fa-magnifying-glass top-magnify"></i>
       </div>
       <div onClick={(e) => e.stopPropagation()}>
         {state?.searchVal?.length ? (
@@ -33,6 +33,7 @@ export const SearchBar = () => {
             <div className="center-parent">
               {state?.searchedUsers?.map((user) => (
                 <div
+                  key={user._id}
                   className="center center-background"
                   onClick={() => {
                     navigate(`profile/${user._id}`);

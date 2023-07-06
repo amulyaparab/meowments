@@ -18,7 +18,7 @@ export const Suggestions = () => {
             userDispatch({ type: "SEARCH_USER", payload: event.target.value })
           }
         />
-        <i class="fa-solid fa-magnifying-glass magnify"></i>
+        <i className="fa-solid fa-magnifying-glass magnify"></i>
       </div>
       <div>
         {state?.searchVal?.length ? (
@@ -26,6 +26,7 @@ export const Suggestions = () => {
             <div>
               {state?.searchedUsers?.map((user) => (
                 <div
+                  key={user._id}
                   className="center"
                   onClick={() => userDispatch({ type: "CLEAR_SEARCH" })}
                 >
@@ -42,7 +43,7 @@ export const Suggestions = () => {
       <div className="suggestions">
         {state?.users?.map((user) =>
           user.username === currentUser.username ? null : (
-            <div className="one-user">
+            <div className="one-user" key={user._id}>
               <SuggestedUser {...user} showUserName dark />
               <FollowButton user={user} />
             </div>
@@ -50,7 +51,7 @@ export const Suggestions = () => {
         )}
       </div>
       <i
-        class="fa-solid fa-circle-plus circle-plus"
+        className="fa-solid fa-circle-plus circle-plus"
         onClick={() => setEditForm(true)}
       ></i>
     </div>

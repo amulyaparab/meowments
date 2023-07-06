@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import "../Components/SuggestedUsers/suggestions.css";
-import { useAuth, usePost, useUtils } from "../Contexts";
-import { Comments, PostCard, SideNav, Suggestions } from "../Components";
+import "../../Components/SuggestedUsers/suggestions.css";
+import { useAuth, usePost, useUtils } from "../../Contexts";
+import { Comments, PostCard, SideNav, Suggestions } from "../../Components";
 
 export const SinglePost = () => {
   const { postId } = useParams();

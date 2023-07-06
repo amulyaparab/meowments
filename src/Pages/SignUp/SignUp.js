@@ -101,7 +101,7 @@ export const SignUp = () => {
           Password{" "}
           {showPassword.signUpPassword ? (
             <i
-              class="fa-solid fa-eye"
+              className="fa-solid fa-eye"
               onClick={() =>
                 state?.newUser?.password &&
                 setShowPassword({
@@ -112,7 +112,7 @@ export const SignUp = () => {
             ></i>
           ) : (
             <i
-              class="fa-solid fa-eye-slash"
+              className="fa-solid fa-eye-slash"
               onClick={() =>
                 state?.newUser?.password &&
                 setShowPassword({
@@ -141,7 +141,7 @@ export const SignUp = () => {
           Confirm Password{" "}
           {showPassword.signUpConfirmPassword ? (
             <i
-              class="fa-solid fa-eye"
+              className="fa-solid fa-eye"
               onClick={() =>
                 state?.newUser?.confirmPassword?.length &&
                 setShowPassword({
@@ -152,7 +152,7 @@ export const SignUp = () => {
             ></i>
           ) : (
             <i
-              class="fa-solid fa-eye-slash"
+              className="fa-solid fa-eye-slash"
               onClick={() =>
                 state?.newUser?.confirmPassword?.length &&
                 setShowPassword({

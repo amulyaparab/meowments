@@ -28,7 +28,7 @@ export const ProfileEditForm = () => {
       <div className="overlay">
         <div className="edit-form edit-profile">
           <i
-            class="fa-solid fa-circle-xmark cross"
+            className="fa-solid fa-circle-xmark cross"
             onClick={() => setShowUserEditForm(false)}
           ></i>
           <h2>Edit Profile</h2>
@@ -39,7 +39,7 @@ export const ProfileEditForm = () => {
             className="edit-profile-image"
           />
           <i
-            class="fa-solid fa-pen edit-pen"
+            className="fa-solid fa-pen edit-pen"
             onClick={() => setShowAvatarForm(true)}
           ></i>
 

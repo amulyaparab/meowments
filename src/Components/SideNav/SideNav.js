@@ -33,11 +33,11 @@ export const SideNav = () => {
           className="new-post-button not-visible"
           onClick={() => setShowSearchBar(!showSearchBar)}
         >
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
           <span className="nav-no-words">Search</span>
         </div>
         <button className="logout" onClick={logout}>
-          <i class="fa-solid fa-right-from-bracket"></i>
+          <i className="fa-solid fa-right-from-bracket"></i>
           <span className="nav-no-words"> Logout</span>
         </button>
       </div>

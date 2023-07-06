@@ -48,7 +48,7 @@ export const EditForm = () => {
       <div className="overlay">
         <div className="edit-form">
           <i
-            class="fa-solid fa-circle-xmark cross"
+            className="fa-solid fa-circle-xmark cross"
             onClick={() => {
               setEditForm(false);
               postDispatch({ type: "CLEAR_FORM" });
@@ -58,7 +58,7 @@ export const EditForm = () => {
           {imageURL && (
             <div className="relative">
               <i
-                class="fa-solid fa-xmark cross x-mark"
+                className="fa-solid fa-xmark cross x-mark"
                 onClick={imageRevoker}
               ></i>
               <img
@@ -83,11 +83,11 @@ export const EditForm = () => {
 
           <div className="edit-buttons">
             <i
-              class="fa-solid fa-face-smile add-on"
+              className="fa-solid fa-face-smile add-on"
               onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             ></i>
             <label>
-              <i class="fa-solid fa-image add-on"></i>
+              <i className="fa-solid fa-image add-on"></i>
               <input
                 className="hidden"
                 type="file"

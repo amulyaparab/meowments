@@ -89,7 +89,7 @@ export const Login = () => {
           Password
           {showPassword.login ? (
             <i
-              class="fa-solid fa-eye"
+              className="fa-solid fa-eye"
               onClick={() =>
                 state?.password?.length !== 0 &&
                 setShowPassword({
@@ -100,7 +100,7 @@ export const Login = () => {
             ></i>
           ) : (
             <i
-              class="fa-solid fa-eye-slash"
+              className="fa-solid fa-eye-slash"
               onClick={() =>
                 state?.password?.length !== 0 &&
                 setShowPassword({
