@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { PostCard } from "../Posts/PostCard";
-import { useAuth, usePost, useUsers } from "../../Contexts";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const FeedPosts = () => {
   const { state, setEditForm } = usePost();
   const { state: userState } = useUsers();
   const { currentUser } = useAuth();
+  const { isDarkMode } = useUtils();
   const navigate = useNavigate();
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
@@ -40,7 +41,7 @@ export const FeedPosts = () => {
           );
         })
       ) : (
-        <h3 className="general-heading">
+        <h3 className="general-heading" id={`${isDarkMode && "dark"}`}>
           No Posts Yet 😦 Follow People And Share Posts To See More
         </h3>
       )}

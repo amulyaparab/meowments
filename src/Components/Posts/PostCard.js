@@ -27,7 +27,6 @@ export const PostCard = ({
     position,
   } = useUtils();
   const { state, deleteThePost, setEditForm, postDispatch } = usePost();
-
   const { currentUser } = useAuth();
   const { setShowCommentBar, commentPostIdProvider } = useUtils();
   const [showDetails, setShowDetails] = useState(false);
