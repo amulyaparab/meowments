@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { SuggestedUser } from "../Components";
-import { useUsers, useUtils } from "../Contexts";
+import { SuggestedUser } from "..";
+import { useUsers, useUtils } from "../../Contexts";
 
 export const SearchBar = () => {
   const { userDispatch, state } = useUsers();

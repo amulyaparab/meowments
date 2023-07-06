@@ -1,5 +1,5 @@
-import { avatarArray } from ".";
-import { useUsers, useUtils } from "../Contexts";
+import { avatarArray } from "..";
+import { useUsers, useUtils } from "../../Contexts";
 
 export const AvatarForm = () => {
   const { setShowAvatarForm, userDispatch } = useUsers();

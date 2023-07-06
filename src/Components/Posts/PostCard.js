@@ -1,9 +1,9 @@
-import "../Pages/Explore/explore.css";
+import "../../Pages/Explore/explore.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useAuth, usePost, useUsers, useUtils } from "../Contexts";
-import { SuggestedUser, Comments } from ".";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
+import { SuggestedUser, Comments } from "..";
 
 export const PostCard = ({
   _id,

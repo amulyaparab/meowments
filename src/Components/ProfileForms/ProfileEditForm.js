@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { useAuth, useUsers, useUtils } from "../Contexts";
-import { editUser } from "../Services/userServices";
+import { useAuth, useUsers, useUtils } from "../../Contexts";
+import { editUser } from "../../Services/userServices";
 
 export const ProfileEditForm = () => {
   const { setShowUserEditForm, setShowAvatarForm, userDispatch, state } =

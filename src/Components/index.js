@@ -25,13 +25,13 @@ export const avatarArray = [
   signUpCat,
   loginCat,
 ];
-export { EditForm } from "./EditForm";
-export { ProfileEditForm } from "./ProfileEditForm";
-export { AvatarForm } from "./AvatarForm";
-export { Loader } from "./Loader";
-export { PostCard } from "./PostCard";
-export { SearchBar } from "./SearchBar";
-export { RequiresAuth } from "./RequiresAuth";
+export { PostForm } from "./Posts/PostForm";
+export { ProfileEditForm } from "./ProfileForms/ProfileEditForm";
+export { AvatarForm } from "./ProfileForms/AvatarForm";
+export { Loader } from "./Loader/Loader";
+export { PostCard } from "./Posts/PostCard";
+export { SearchBar } from "./SearchBar/SearchBar";
+export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 export { CommentBar } from "./Comments/CommentBar";
 export { Comments } from "./Comments/Comments";
 export { Header } from "./Header/Header";

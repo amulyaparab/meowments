@@ -3,12 +3,12 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   Bookmarks,
   CommentBar,
-  EditForm,
   Explore,
   Feed,
   Header,
   Landing,
   Login,
+  PostForm,
   Profile,
   RequiresAuth,
   Route,
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div>{editForm && <EditForm />}</div>
+      <div>{editForm && <PostForm />}</div>
       <div> {showCommentBar && <CommentBar />}</div>
       <div>{showSearchBar && <SearchBar />} </div>
       <Routes>

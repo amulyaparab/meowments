@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { PostCard } from "../PostCard";
+import { PostCard } from "../Posts/PostCard";
 import { useAuth, usePost, useUsers } from "../../Contexts";
 
 export const FeedPosts = () => {
