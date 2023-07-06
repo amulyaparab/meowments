@@ -30,6 +30,7 @@ export const UsersProvider = ({ children }) => {
   const [showUserEditForm, setShowUserEditForm] = useState(false);
   const [showAvatarForm, setShowAvatarForm] = useState(false);
   const [state, userDispatch] = useReducer(userReducer, initialState);
+
   useEffect(() => {
     if (currentUser) fetchAllUsers();
   }, [currentUser]);

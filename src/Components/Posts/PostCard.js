@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 import { SuggestedUser, Comments } from "..";
+import { getSinglePost } from "../../Services/postServices";
 
 export const PostCard = ({
   _id,
@@ -43,7 +44,14 @@ export const PostCard = ({
         toast.error("Failed to copy link...Try again.", position);
       });
   };
-
+  const fetchSinglePost = async () => {
+    try {
+      const post = await getSinglePost(_id);
+      console.log(post, _id, "post");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const editHandler = () => {
     try {
       setEditForm(true);
@@ -98,7 +106,10 @@ export const PostCard = ({
           className="postImg"
           src={imageUrl}
           alt={`Cat post with the caption ${content}`}
-          onClick={() => navigate(`/post/${_id}`)}
+          onClick={() => {
+            // fetchSinglePost(_id);
+            navigate(`/post/${_id}`);
+          }}
         />
       ) : null}
       <p className="post-text-width">{content}</p>

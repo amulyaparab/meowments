@@ -15,7 +15,7 @@ const getSinglePost = async (postId) => {
     data: { post },
     status,
   } = await axios.get(`/api/posts/${postId}`);
-  if (status === "200") {
+  if (status === 200) {
     return post;
   }
 };
