@@ -31,7 +31,13 @@ export const Bookmarks = () => {
               const likedByArray = bookmark.likes.likedBy.filter(
                 (currUser) => currUser._id === currentUser._id
               );
-              return <PostCard {...bookmark} isLiked={!!likedByArray.length} />;
+              return (
+                <PostCard
+                  {...bookmark}
+                  isLiked={!!likedByArray.length}
+                  key={bookmark._id}
+                />
+              );
             })
           ) : (
             <h3 className="general-heading" id={`${isDarkMode && "dark"}`}>

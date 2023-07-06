@@ -8,14 +8,6 @@ export const userReducer = (state, action) => {
       };
     case "EMPTY_EVERYTHING":
       return { ...state, users: [], currentUserData: {} };
-    case "SET_AVATAR_URL":
-      return {
-        ...state,
-        currentUserData: {
-          ...state.currentUserData,
-          avatarUrl: action.payload,
-        },
-      };
     case "EDIT_FNAME":
       return {
         ...state,

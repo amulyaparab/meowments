@@ -20,7 +20,11 @@ export const Explore = () => {
             (currUser) => currUser._id === currentUser._id
           );
           return currentUser?.username !== post?.username ? (
-            <PostCard {...post} isLiked={!!likedByArray.length} />
+            <PostCard
+              {...post}
+              isLiked={!!likedByArray.length}
+              key={post._id}
+            />
           ) : null;
         })}
       </div>

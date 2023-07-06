@@ -21,7 +21,6 @@ import {
   useUtils,
 } from "./Pages";
 import Mockman from "mockman-js";
-
 function App() {
   const { editForm } = usePost();
   const { showSearchBar, showCommentBar } = useUtils();

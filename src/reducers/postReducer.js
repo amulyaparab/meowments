@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import dayjs from "dayjs";
 import { formatDate } from "../backend/utils/authUtils";
 export const postReducer = (state, action) => {
@@ -17,21 +16,9 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         posts: action.payload,
-        // post: {
-        //   ...state.post,
-        //   _id: uuid(),
-        // },
       };
-    // case "UPDATE_FEED_POSTS":
-    //   return {
-    //     ...state,
-    //     feedPosts: [...state.feedPosts, action.payload],
-    //     storePosts: [...state.feedPosts, action.payload],
-    //   };
+
     case "LIKED_POST":
-      const userPostToBeLiked = state?.userPosts?.find(
-        (post) => post._id === action.idPayload
-      );
       return {
         ...state,
         posts: action.payload,
@@ -52,10 +39,6 @@ export const postReducer = (state, action) => {
         },
       };
     case "NEW_COMMENT_POST_ID":
-      //        newComment: {
-      //   postId: "",
-      //   commentData: {},
-      // },
       return {
         ...state,
         newComment: {
@@ -73,13 +56,6 @@ export const postReducer = (state, action) => {
           },
         },
       };
-    //     comments: [
-    //   {
-    //     _id: "ksrewrewrxw_82ji_82nn_knwiu983ns9",
-    //     username: "jamesdavis",
-    //     text: "Looks like a great way to spend a Caturday!",
-    //   },
-    // ],
     case "EDIT_COMMENT_CONTENT":
       return {
         ...state,
@@ -115,20 +91,6 @@ export const postReducer = (state, action) => {
           commentData: action.payload,
           commentId: action.payload._id,
         },
-      };
-    case "SAVE_COMMENT":
-      return {
-        ...state,
-        posts: action.payload,
-        newComment: {
-          postId: "",
-          commentData: {},
-        },
-      };
-    case "EDITED_COMMENT":
-      return {
-        ...state,
-        posts: action.payload,
       };
     case "ADD_EMOJI_CONTENT":
       return {
@@ -168,7 +130,6 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         post: {
-          // _id: uuid(),
           imageUrl: "",
           content: "",
           likes: {
@@ -181,14 +142,6 @@ export const postReducer = (state, action) => {
             JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
           createdAt: formatDate(),
           updatedAt: formatDate(),
-        },
-      };
-    case "CREATE_POST":
-      return {
-        ...state,
-        post: {
-          ...state.post,
-          // _id: uuid(),
         },
       };
     case "BOOKMARK_POSTS":
@@ -254,7 +207,6 @@ export const postReducer = (state, action) => {
         feedPosts: [],
         userPosts: [],
         post: {
-          // _id: uuid(),
           imageUrl: "",
           content: "",
           likes: {
@@ -267,8 +219,6 @@ export const postReducer = (state, action) => {
             JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
         },
       };
-    // case "EDIT_POST":
-    //   return {};
     case "DELETE_POST":
       return {
         ...state,

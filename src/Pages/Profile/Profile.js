@@ -140,7 +140,13 @@ export const Profile = () => {
                   const likedByArray = post.likes.likedBy.filter(
                     (currUser) => currUser._id === currentUser._id
                   );
-                  return <PostCard {...post} isLiked={!!likedByArray.length} />;
+                  return (
+                    <PostCard
+                      {...post}
+                      isLiked={!!likedByArray.length}
+                      key={post._id}
+                    />
+                  );
                 })}
               </div>
             </div>

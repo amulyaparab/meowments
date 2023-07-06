@@ -16,13 +16,14 @@ export const AvatarForm = () => {
       <div className="overlay">
         <div className="avatar-form">
           <i
-            class="fa-solid fa-circle-xmark cross"
+            className="fa-solid fa-circle-xmark cross"
             onClick={() => setShowAvatarForm(false)}
           ></i>
           {avatarArray.map((cat) => (
             <img
               src={cat}
               alt="cat"
+              key={cat}
               onClick={() => {
                 userDispatch({ type: "EDIT_AVATAR", payload: cat });
                 setShowAvatarForm(false);
