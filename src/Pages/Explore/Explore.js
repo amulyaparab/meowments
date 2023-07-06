@@ -6,6 +6,7 @@ export const Explore = () => {
   const { state } = usePost();
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
+
   return (
     <div className="page-fractions">
       <SideNav />

@@ -4,6 +4,7 @@ import { useUsers, useUtils } from "../../Contexts";
 export const AvatarForm = () => {
   const { setShowAvatarForm, userDispatch } = useUsers();
   const { isDarkMode } = useUtils();
+
   const profileImageHandler = (e) => {
     const image = e.target.files[0];
     const imageURL = URL.createObjectURL(image);

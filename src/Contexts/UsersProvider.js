@@ -8,6 +8,18 @@ const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
   const { currentUser } = useAuth();
+  const [showUserEditForm, setShowUserEditForm] = useState(false);
+  const [showAvatarForm, setShowAvatarForm] = useState(false);
+
+  const initialState = {
+    users: [],
+    currentUserData: currentUser,
+    searchVal: "",
+    searchedUsers: [],
+  };
+
+  const [state, userDispatch] = useReducer(userReducer, initialState);
+
   const fetchAllUsers = async () => {
     try {
       const users = await fetchUsers();
@@ -20,16 +32,6 @@ export const UsersProvider = ({ children }) => {
       console.log(err);
     }
   };
-
-  const initialState = {
-    users: [],
-    currentUserData: currentUser,
-    searchVal: "",
-    searchedUsers: [],
-  };
-  const [showUserEditForm, setShowUserEditForm] = useState(false);
-  const [showAvatarForm, setShowAvatarForm] = useState(false);
-  const [state, userDispatch] = useReducer(userReducer, initialState);
 
   useEffect(() => {
     if (currentUser) fetchAllUsers();
@@ -50,4 +52,5 @@ export const UsersProvider = ({ children }) => {
     </UsersContext.Provider>
   );
 };
+
 export const useUsers = () => useContext(UsersContext);

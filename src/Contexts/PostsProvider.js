@@ -17,6 +17,10 @@ const PostContext = createContext();
 
 export const PostsProvider = ({ children }) => {
   const { currentUser, currentToken } = useAuth();
+  const { state: userState } = useUsers();
+  const navigate = useNavigate();
+  const [editForm, setEditForm] = useState(false);
+
   const initialState = {
     posts: [],
     loading: false,
@@ -49,16 +53,16 @@ export const PostsProvider = ({ children }) => {
       updatedAt: formatDate(),
     },
   };
+
   const [state, postDispatch] = useReducer(postReducer, initialState);
-  const [editForm, setEditForm] = useState(false);
+
   const showEditForm = (postId) => {
     const exactPost = state.userPosts.find((post) => postId === post._id);
     if (exactPost) {
       return setEditForm(true);
     }
   };
-  const { state: userState } = useUsers();
-  const navigate = useNavigate();
+
   const fetchPosts = async () => {
     try {
       postDispatch({ type: "POST_LOADING", payload: true });
@@ -70,6 +74,7 @@ export const PostsProvider = ({ children }) => {
       postDispatch({ type: "POST_LOADING", payload: false });
     }
   };
+
   const fetchUserFeedPosts = async () => {
     try {
       const currentUserInState = userState?.users?.find(
@@ -87,14 +92,6 @@ export const PostsProvider = ({ children }) => {
         type: "USER_FEED_POSTS",
         payload: postsByFollowingAndUser,
       });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const editPost = async (postId, newData) => {
-    try {
-      const edited = await editPost(postId, newData);
     } catch (err) {
       console.log(err);
     }
@@ -142,13 +139,13 @@ export const PostsProvider = ({ children }) => {
       fetchUserFeedPosts();
     }
   }, [currentUser, userState?.users, state?.posts]);
+
   return (
     <PostContext.Provider
       value={{
         state,
         postDispatch,
         deleteThePost,
-        editPost,
         fetchUserFeedPosts,
         createPost,
         editForm,
@@ -160,4 +157,5 @@ export const PostsProvider = ({ children }) => {
     </PostContext.Provider>
   );
 };
+
 export const usePost = () => useContext(PostContext);

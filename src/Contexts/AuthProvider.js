@@ -1,9 +1,15 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+  useEffect,
+} from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { formatDate } from "../backend/utils/authUtils";
 import { v4 as uuid } from "uuid";
 import { authReducer } from "../reducers/authReducer";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -34,11 +40,18 @@ export const AuthProvider = ({ children }) => {
     encodedToken:
       JSON?.parse(localStorage?.getItem("userData"))?.encodedToken || "",
   };
+
+  const [state, authDispatch] = useReducer(authReducer, initialState);
   const [showPassword, setShowPassword] = useState({
     login: false,
     signUpPassword: false,
     signUpConfirmPassword: false,
   });
+
+  const userData = localStorage.getItem("userData");
+  const currentUser = JSON.parse(userData)?.user;
+  const currentToken = JSON.parse(userData)?.encodedToken;
+
   const userLoginData = async (loginData) => {
     try {
       const {
@@ -63,8 +76,6 @@ export const AuthProvider = ({ children }) => {
         );
         return status;
       }
-
-      console.log(foundUser, "sdks", status, "df");
     } catch (err) {
       console.log(err);
     }
@@ -95,17 +106,11 @@ export const AuthProvider = ({ children }) => {
           })
         );
       }
-      console.log(createdUser, "user", status, "df");
     } catch (err) {
       console.log(err);
     }
   };
 
-  const [state, authDispatch] = useReducer(authReducer, initialState);
-
-  const userData = localStorage.getItem("userData");
-  const currentUser = JSON.parse(userData)?.user;
-  const currentToken = JSON.parse(userData)?.encodedToken;
   const fetchCurrentUser = () => {
     try {
       const userData = localStorage.getItem("userData");
@@ -125,6 +130,7 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     fetchCurrentUser();
     fetchCurrentToken();
@@ -149,4 +155,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
 export const useAuth = () => useContext(AuthContext);

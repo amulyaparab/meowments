@@ -2,9 +2,11 @@ import "./landing.css";
 import landingCat from "../../assets/Images/landing.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUtils } from "../../Contexts/UtilsProvider";
+
 export const Landing = () => {
   const navigate = useNavigate();
   const { isDarkMode } = useUtils();
+
   return (
     <>
       <div className="landing" id={`${isDarkMode && "dark"}`}>

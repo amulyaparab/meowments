@@ -10,22 +10,27 @@ export const SinglePost = () => {
   const { state, postDispatch } = usePost();
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
-  // const findPost = state?.posts?.find((post) => post._id === postId);
+
   const likedByArray = state?.singlePost?.likes?.likedBy.filter(
     (currUser) => currUser._id === currentUser._id
   );
+
   const fetchSinglePost = async () => {
     try {
+      postDispatch({ type: "POST_LOADING", payload: true });
       const post = await getSinglePost(postId);
-      console.log(post, postId, "post", state.posts);
       postDispatch({ type: "SINGLE_POST", payload: post });
     } catch (err) {
       console.log(err);
+    } finally {
+      postDispatch({ type: "POST_LOADING", payload: false });
     }
   };
+
   useEffect(() => {
     fetchSinglePost();
   }, []);
+
   return (
     <div className="page-fractions">
       <SideNav />

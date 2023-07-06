@@ -6,12 +6,16 @@ import { toast } from "react-toastify";
 import { useAuth, usePost, useUtils } from "../../Contexts";
 export const PostForm = () => {
   const { state, setEditForm, postDispatch, createPost } = usePost();
+  const { currentToken } = useAuth();
+  const { position } = useUtils();
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [imageURL, setImageURL] = useState(state.post.imageUrl);
+
   const findPostToBeEdited = state.posts?.find(
     (post) => post?._id === state.post?._id
   );
 
-  const { currentToken } = useAuth();
-  const { position } = useUtils();
   const editPostHandler = async () => {
     try {
       const edited = await editPost(state.post._id, state.post, currentToken);
@@ -24,8 +28,7 @@ export const PostForm = () => {
       toast.success("Post Edited.", position);
     }
   };
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [imageURL, setImageURL] = useState(state.post.imageUrl);
+
   const imageUploadHandler = (event) => {
     const file = event.target.files[0];
     const imageURL = URL.createObjectURL(file);
@@ -35,6 +38,7 @@ export const PostForm = () => {
       payload: imageURL,
     });
   };
+
   const imageRevoker = () => {
     URL.revokeObjectURL(imageURL);
     postDispatch({
@@ -43,6 +47,7 @@ export const PostForm = () => {
     });
     setImageURL(null);
   };
+
   return (
     <div className="overlay-parent">
       <div className="overlay">

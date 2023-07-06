@@ -21,14 +21,16 @@ export const Profile = () => {
   const { state: userPostsState, postDispatch } = usePost();
   const { currentUser } = useAuth();
   const { logout, isDarkMode } = useUtils();
+
   const findUser = state.users.find((user) => user._id === userId);
+  const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
+
   const formattedDate = new Date(findUser?.createdAt);
   const date = formattedDate.getDate();
   const month = formattedDate.toLocaleString("default", {
     month: "long",
   });
   const year = formattedDate.getFullYear();
-  const isFoundUserSameAsCurrentUser = findUser?._id === currentUser?._id;
 
   const fetchUserPosts = async () => {
     try {
@@ -38,9 +40,11 @@ export const Profile = () => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     fetchUserPosts();
   }, [findUser, userPostsState.posts]);
+
   return (
     <div className="page-fractions" id={`${isDarkMode && "dark"}`}>
       <SideNav />

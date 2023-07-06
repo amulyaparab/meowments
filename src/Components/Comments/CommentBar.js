@@ -3,15 +3,18 @@ import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 export const CommentBar = () => {
   const { state: userState } = useUsers();
   const { currentUser } = useAuth();
+  const { state, postDispatch } = usePost();
+  const { setShowCommentBar, addCommentsHandler, editCommentsHandler } =
+    useUtils();
+
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
-  const { setShowCommentBar, addCommentsHandler, editCommentsHandler } =
-    useUtils();
-  const { state, postDispatch } = usePost();
+
   const findPost = state.posts.find(
     (post) => post._id === state.newComment.postId
   );
+
   const isCommentPresentInPost = findPost?.comments?.find(
     (comment) => comment?._id === state?.newComment?.commentId
   );

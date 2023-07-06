@@ -5,6 +5,7 @@ import { usePost, useUtils } from "../../Contexts";
 export const SideNav = () => {
   const { setEditForm } = usePost();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
+
   const getActiveStyle = ({ isActive }) => (isActive ? "active" : "");
 
   return (

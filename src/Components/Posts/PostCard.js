@@ -25,17 +25,20 @@ export const PostCard = ({
     bookMarkPostHandler,
     removeBookmarkHandler,
     position,
+    setShowCommentBar,
+    commentPostIdProvider,
   } = useUtils();
   const { state, deleteThePost, setEditForm, postDispatch } = usePost();
   const { currentUser } = useAuth();
-  const { setShowCommentBar, commentPostIdProvider } = useUtils();
+  const navigate = useNavigate();
+
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
+
   // const url = window.location.href;
   const handleCopyLink = () => {
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${_id}`)
-      // .writeText(url)
       .then(() => {
         toast.success("Link copied successfully!", position);
       })
@@ -62,8 +65,6 @@ export const PostCard = ({
     ?.filter((post) => post?.username === currentUser?.username)
     .map((post) => post?.username)
     .includes(username);
-
-  const navigate = useNavigate();
 
   return (
     <div className="posts" key={_id}>

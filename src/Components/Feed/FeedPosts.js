@@ -8,9 +8,11 @@ export const FeedPosts = () => {
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
   const navigate = useNavigate();
+
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
+
   return (
     <>
       <div className="new-post">

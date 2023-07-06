@@ -7,14 +7,17 @@ export const Comments = ({
   showComments,
 }) => {
   const { state: userState } = useUsers();
-  const findUser = (commentUser) =>
-    userState?.users.find((user) => user.username === commentUser);
   const { currentUser } = useAuth();
   const { postDispatch } = usePost();
+  const { deleteCommentsHandler, setShowCommentBar } = useUtils();
+
+  const findUser = (commentUser) =>
+    userState?.users.find((user) => user.username === commentUser);
+
   const isCommentByCurrentUser = (comment) =>
     (findUser(comment?.username)?.username ||
       findUser(comment?.user?.username)?.username) === currentUser?.username;
-  const { deleteCommentsHandler, setShowCommentBar } = useUtils();
+
   return (
     <>
       {comments?.length ? (

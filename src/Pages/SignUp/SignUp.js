@@ -4,11 +4,13 @@ import signUpCat from "../../assets/Images/signUp.jpg";
 import { toast } from "react-toastify";
 import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 import { useAuth, useUtils } from "../../Contexts";
+
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
     useAuth();
   const navigate = useNavigate();
   const { isDarkMode } = useUtils();
+
   const signUpHandler = async (event) => {
     try {
       event.preventDefault();

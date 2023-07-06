@@ -1,25 +1,26 @@
-import { createContext, useContext, useEffect } from "react";
-import { getAllPosts, getPostsByUser } from "../Services/postServices";
-import { dislikePost, likePost } from "../Services/likeServices";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { usePost } from "./PostsProvider";
 import { useAuth } from "./AuthProvider";
+import { useUsers } from "./UsersProvider";
 
+import { getPostsByUser } from "../Services/postServices";
+import { dislikePost, likePost } from "../Services/likeServices";
 import {
   bookmarkPost,
   getAllBookmarks,
   removeBookmark,
 } from "../Services/bookmarksServices";
-import { useState } from "react";
-import { useUsers } from "./UsersProvider";
 import { followUser, unfollowUser } from "../Services/followServices";
 import { fetchSingleUser } from "../Services/userServices";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import {
   addCommentHandler,
   deleteCommentHandler,
   editCommentHandler,
 } from "../Services/commentsServices";
+
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
@@ -27,34 +28,38 @@ export const UtilsProvider = ({ children }) => {
   const { currentToken, authDispatch, currentUser } = useAuth();
   const { state: userState, userDispatch } = useUsers();
   const navigate = useNavigate();
+
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false ?? false
+  );
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showCommentBar, setShowCommentBar] = useState(false);
+
   const position = {
     position: toast.POSITION.BOTTOM_RIGHT,
   };
+
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
-
       postDispatch({
         type: "LIKED_POST",
         payload: liked,
       });
-      // const postsByUser = await getPostsByUser(currentUser?.username);
-      // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
     }
   };
+
   const dislikePostHandler = async (postId) => {
     try {
       const disliked = await dislikePost(postId, currentToken);
       postDispatch({ type: "DISLIKE_POST", payload: disliked });
-      // const postsByUser = await getPostsByUser(currentUser?.username);
-
-      // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
     }
   };
+
   const bookMarkPostHandler = async (postId) => {
     try {
       const bookmarked = await bookmarkPost(postId, currentToken);
@@ -65,6 +70,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Bookmarked.", position);
     }
   };
+
   const removeBookmarkHandler = async (postId) => {
     try {
       const unbookmarked = await removeBookmark(postId, currentToken);
@@ -75,6 +81,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Removed Bookmark.", position);
     }
   };
+
   const fetchAllBookmarks = async () => {
     try {
       const allBookmarks = await getAllBookmarks(currentToken);
@@ -83,6 +90,7 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const logout = () => {
     try {
       localStorage.removeItem("userData");
@@ -98,19 +106,22 @@ export const UtilsProvider = ({ children }) => {
       toast.info("Logged Out.", position);
     }
   };
+
   const sortByTrendingHandler = () => {
     postDispatch({ type: "SORT_BY_TRENDING" });
   };
+
   const sortByLatest = () => {
     postDispatch({ type: "SORT_BY_LATEST" });
   };
+
   const sortByOldest = () => {
     postDispatch({ type: "SORT_BY_OLDEST" });
   };
+
   const followUsername = async (userId) => {
     try {
       const followed = await followUser(userId, currentToken);
-
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
       console.log(err);
@@ -119,6 +130,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success(`Followed ${user?.username}`, position);
     }
   };
+
   const unfollowUsername = async (userId) => {
     try {
       const unfollowed = await unfollowUser(userId, currentToken);
@@ -130,12 +142,14 @@ export const UtilsProvider = ({ children }) => {
       toast.info(`Unfollowed ${user?.username}`, position);
     }
   };
+
   const isUserFollowedByMe = (user) => {
     const isUserFollowedByMe = user?.followers?.includes(
       user?.followers.find((user) => user._id === currentUser._id)
     );
     return isUserFollowedByMe;
   };
+
   const takeToProfilePage = async (userId, username) => {
     try {
       postDispatch({ type: "POST_LOADING", payload: true });
@@ -150,11 +164,6 @@ export const UtilsProvider = ({ children }) => {
     }
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("theme") === "dark" ? true : false ?? false
-  );
-  const [showSearchBar, setShowSearchBar] = useState(false);
-  const [showCommentBar, setShowCommentBar] = useState(false);
   const darkModeHandler = () => {
     try {
       setIsDarkMode(!isDarkMode);
@@ -163,12 +172,9 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const addCommentsHandler = async () => {
     try {
-      //      newComment: {
-      //   postId: "",
-      //   commentData: {},
-      // },
       const postsArray = await addCommentHandler(
         state.newComment.postId,
         state.newComment.commentData,
@@ -211,7 +217,6 @@ export const UtilsProvider = ({ children }) => {
         state.newComment.commentData,
         currentToken
       );
-
       postDispatch({
         type: "RESET_POSTS_BY_COMMENT",
         payload: postsArray,
@@ -221,9 +226,11 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const commentPostIdProvider = (postId) => {
     postDispatch({ type: "NEW_COMMENT_POST_ID", payload: postId });
   };
+
   const commentHandler = () => {
     try {
       postDispatch({
@@ -238,6 +245,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Comment Added.", position);
     }
   };
+
   useEffect(() => {
     if (currentToken) {
       fetchAllBookmarks();
@@ -279,4 +287,5 @@ export const UtilsProvider = ({ children }) => {
     </UtilsContext.Provider>
   );
 };
+
 export const useUtils = () => useContext(UtilsContext);
