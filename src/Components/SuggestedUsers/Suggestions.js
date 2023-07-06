@@ -7,7 +7,7 @@ export const Suggestions = () => {
   const { currentUser } = useAuth();
   const { setEditForm } = usePost();
   const { isDarkMode } = useUtils();
-  console.log(state?.searchedUsers, "sdjaslkj");
+
   return (
     <div className="followers followers-tab" id={`${isDarkMode && "dark"}`}>
       <div className="search-parent">

@@ -67,7 +67,6 @@ export const userReducer = (state, action) => {
         ),
       };
     case "SEARCH_USER":
-      console.log(action.payload);
       return {
         ...state,
         searchVal: action.payload,

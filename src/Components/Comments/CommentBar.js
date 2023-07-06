@@ -9,7 +9,13 @@ export const CommentBar = () => {
   const { setShowCommentBar, addCommentsHandler, editCommentsHandler } =
     useUtils();
   const { state, postDispatch } = usePost();
-  const isCommentIdPresent = state?.newComment?.commentData?._id;
+  const findPost = state.posts.find(
+    (post) => post._id === state.newComment.postId
+  );
+  const isCommentPresentInPost = findPost?.comments?.find(
+    (comment) => comment?._id === state?.newComment?.commentId
+  );
+
   return (
     <>
       <div
@@ -31,23 +37,32 @@ export const CommentBar = () => {
             alt={findCurrUser?.username}
             className="comment-img"
           />
-          <input
+          <textarea
             placeholder="You look purrfect today. Share how you feline!"
             className="commentBar"
             value={state.newComment.commentData.text}
             onChange={(event) =>
-              postDispatch({
-                type: "COMMENT_CONTENT",
-                payload: event.target.value,
-              })
+              isCommentPresentInPost
+                ? postDispatch({
+                    type: "EDIT_COMMENT_CONTENT",
+                    payload: event.target.value,
+                  })
+                : postDispatch({
+                    type: "COMMENT_CONTENT",
+                    payload: event.target.value,
+                  })
             }
-          />
-          {state?.newComment?.commentData?._id?.length ? (
+          ></textarea>
+          {isCommentPresentInPost ? (
             <button className="commentBtn" onClick={editCommentsHandler}>
               Save
             </button>
           ) : (
-            <button className="commentBtn" onClick={addCommentsHandler}>
+            <button
+              className="commentBtn"
+              onClick={addCommentsHandler}
+              disabled={!state?.newComment?.commentData?.text?.length}
+            >
               Comment
             </button>
           )}

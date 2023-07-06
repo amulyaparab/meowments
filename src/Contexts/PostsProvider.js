@@ -69,7 +69,6 @@ export const PostsProvider = ({ children }) => {
     }
   };
   const fetchUserFeedPosts = async () => {
-    // console.log(userState, currentUser, state.post, "meww");
     try {
       const currentUserInState = userState?.users?.find(
         (user) => user?.username === currentUser?.username
@@ -114,7 +113,6 @@ export const PostsProvider = ({ children }) => {
   const createPost = async () => {
     try {
       const posts = await newPost({ ...state.post, _id: uuid() }, currentToken);
-      // console.log(state, "daslkdhaskjhdkjsah");
       postDispatch({
         type: "UPDATE_ALL_POSTS",
         payload: posts,

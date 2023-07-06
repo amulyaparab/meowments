@@ -5,7 +5,6 @@ const getCommentsHandler = async (postId) => {
     data: { comments },
     status,
   } = await axios.get(`/api/comments/${postId}`);
-  console.log(comments);
   if (status === 200) {
     return comments;
   }

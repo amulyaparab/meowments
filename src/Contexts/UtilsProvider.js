@@ -33,14 +33,13 @@ export const UtilsProvider = ({ children }) => {
   const likePostHandler = async (postId) => {
     try {
       const liked = await likePost(postId, currentToken);
-      console.log(liked, "likeds");
+
       postDispatch({
         type: "LIKED_POST",
         payload: liked,
       });
       // const postsByUser = await getPostsByUser(currentUser?.username);
       // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
-      // console.log(postsByUser, "yaya");
     } catch (err) {
       console.log(err);
     }
@@ -50,7 +49,7 @@ export const UtilsProvider = ({ children }) => {
       const disliked = await dislikePost(postId, currentToken);
       postDispatch({ type: "DISLIKE_POST", payload: disliked });
       // const postsByUser = await getPostsByUser(currentUser?.username);
-      // console.log(postsByUser, "sffffffffffffffff");
+
       // postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
       console.log(err);
@@ -59,7 +58,6 @@ export const UtilsProvider = ({ children }) => {
   const bookMarkPostHandler = async (postId) => {
     try {
       const bookmarked = await bookmarkPost(postId, currentToken);
-      console.log(bookmarked, "bookmarked");
       postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
     } catch (err) {
       console.log(err);
@@ -70,7 +68,6 @@ export const UtilsProvider = ({ children }) => {
   const removeBookmarkHandler = async (postId) => {
     try {
       const unbookmarked = await removeBookmark(postId, currentToken);
-      console.log(unbookmarked, "unbookmarked");
       postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
     } catch (err) {
       console.log(err);
@@ -81,7 +78,6 @@ export const UtilsProvider = ({ children }) => {
   const fetchAllBookmarks = async () => {
     try {
       const allBookmarks = await getAllBookmarks(currentToken);
-      console.log(allBookmarks, "shjdkjashdkhasdkjhaskjdhsakjdh");
       postDispatch({ type: "UPDATE_BOOKMARKS", payload: allBookmarks });
     } catch (err) {
       console.log(err);
@@ -178,7 +174,7 @@ export const UtilsProvider = ({ children }) => {
         state.newComment.commentData,
         currentToken
       );
-      console.log(postsArray);
+
       postDispatch({
         type: "RESET_POSTS_BY_COMMENT",
         payload: postsArray,
@@ -190,7 +186,7 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Comment added", position);
     }
   };
-  console.log(state.newComment);
+
   const deleteCommentsHandler = async (postId, commentId) => {
     try {
       const postsArray = await deleteCommentHandler(
@@ -198,7 +194,7 @@ export const UtilsProvider = ({ children }) => {
         commentId,
         currentToken
       );
-      console.log(postsArray);
+
       postDispatch({
         type: "RESET_POSTS_BY_COMMENT",
         payload: postsArray,
@@ -211,11 +207,16 @@ export const UtilsProvider = ({ children }) => {
     try {
       const postsArray = await editCommentHandler(
         state.newComment.postId,
-        state.newComment.commentData._id,
+        state.newComment.commentId,
         state.newComment.commentData,
         currentToken
       );
-      console.log(postsArray);
+
+      postDispatch({
+        type: "RESET_POSTS_BY_COMMENT",
+        payload: postsArray,
+      });
+      setShowCommentBar(false);
     } catch (err) {
       console.log(err);
     }

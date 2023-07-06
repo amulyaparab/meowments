@@ -80,6 +80,16 @@ export const postReducer = (state, action) => {
     //     text: "Looks like a great way to spend a Caturday!",
     //   },
     // ],
+    case "EDIT_COMMENT_CONTENT":
+      return {
+        ...state,
+        newComment: {
+          ...state.newComment,
+          commentData: {
+            text: action.payload,
+          },
+        },
+      };
     case "RESET_POSTS_BY_COMMENT":
       return {
         ...state,
@@ -98,12 +108,12 @@ export const postReducer = (state, action) => {
         },
       };
     case "EDIT_COMMENT":
-      console.log(action.payload, state.newComment);
       return {
         ...state,
         newComment: {
           postId: action.postPayload,
           commentData: action.payload,
+          commentId: action.payload._id,
         },
       };
     case "SAVE_COMMENT":
@@ -274,15 +284,8 @@ export const postReducer = (state, action) => {
         ),
       };
     case "GET_USER_POSTS":
-      console.log(action.payload);
       return { ...state, userPosts: action.payload };
     case "UPDATE_USER_POSTS":
-      // console.log(
-      //   state.posts.filter((user) =>
-      //     action.payload.map((currUser) => currUser._id).includes(user._id)
-      //   ),
-      //   "sssssssssssssssssssssssssssssssssssssssssssueee"
-      // );
       return {
         ...state,
         userPosts: state.posts.filter((user) =>

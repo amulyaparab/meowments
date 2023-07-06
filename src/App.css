@@ -228,11 +228,13 @@
   text-align: left;
   font-size: 15px;
   margin-top: -10px;
+  width: 90%;
   /* font-family: "Maven Pro", sans-serif; */
   margin-bottom: 10px;
   margin-left: 67px;
   font-weight: 500;
 }
+
 .comment-background {
   background-color: #fad15b;
   padding: 0 1rem;
@@ -458,7 +460,7 @@
   border-radius: 5px;
   box-shadow: 0 0 7px 3px #ffebb8;
   margin: auto;
-  margin-top: 18rem;
+  margin-top: 19rem;
   padding-left: 2rem;
   display: flex;
   background-color: #ffffff;
@@ -471,6 +473,7 @@
   border: none;
   font-size: 17px;
   outline: none;
+  height: max-content;
 }
 .comment-img {
   width: 50px;
@@ -528,6 +531,9 @@
     padding: 0.7rem 1rem;
     font-size: small;
   }
+  .comment {
+    width: 40%;
+  }
 }
 @media screen and (max-width: 1024px) {
   .page-fractions {
@@ -539,14 +545,24 @@
   .new-post button {
     width: 65%;
   }
-  .comment {
-    width: 62%;
+  .comment-background {
+    min-width: 90%;
+  }
+  .comment-text {
+    min-width: 100%;
   }
   .searchBar {
     width: 95%;
   }
   .magnify {
     right: 5px;
+  }
+  .commentBarParent {
+    flex-direction: column;
+  }
+  .commentBar {
+    height: 200px;
+    width: 200px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -559,8 +575,18 @@
   .overlay {
     margin-top: 0;
   }
-  .comment {
-    width: 72%;
+  .comment-background {
+    min-width: 90%;
+  }
+  .comment-text {
+    min-width: 100%;
+  }
+  .commentBarParent {
+    width: 300px;
+  }
+  .commentBar {
+    height: 300px;
+    width: 300px;
   }
 }
 .corner {
