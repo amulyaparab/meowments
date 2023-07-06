@@ -92,6 +92,8 @@ export const postReducer = (state, action) => {
           commentId: action.payload._id,
         },
       };
+    case "SINGLE_POST":
+      return { ...state, singlePost: action.payload };
     case "ADD_EMOJI_CONTENT":
       return {
         ...state,

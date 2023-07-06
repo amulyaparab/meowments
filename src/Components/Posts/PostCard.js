@@ -44,14 +44,7 @@ export const PostCard = ({
         toast.error("Failed to copy link...Try again.", position);
       });
   };
-  const fetchSinglePost = async () => {
-    try {
-      const post = await getSinglePost(_id);
-      console.log(post, _id, "post");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
   const editHandler = () => {
     try {
       setEditForm(true);
@@ -106,13 +99,12 @@ export const PostCard = ({
           className="postImg"
           src={imageUrl}
           alt={`Cat post with the caption ${content}`}
-          onClick={() => {
-            // fetchSinglePost(_id);
-            navigate(`/post/${_id}`);
-          }}
+          onClick={() => navigate(`/post/${_id}`)}
         />
       ) : null}
-      <p className="post-text-width">{content}</p>
+      <p className="post-text-width" onClick={() => navigate(`/post/${_id}`)}>
+        {content}
+      </p>
       <div className="inline-likes">
         <div className="inline-likes-child">
           <div>{likes?.likeCount} likes </div>{" "}

@@ -7,17 +7,18 @@ import { getSinglePost } from "../../Services/postServices";
 
 export const SinglePost = () => {
   const { postId } = useParams();
-  const { state } = usePost();
+  const { state, postDispatch } = usePost();
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
-  const findPost = state?.posts?.find((post) => post._id === postId);
-  const likedByArray = findPost?.likes.likedBy.filter(
+  // const findPost = state?.posts?.find((post) => post._id === postId);
+  const likedByArray = state?.singlePost?.likes?.likedBy.filter(
     (currUser) => currUser._id === currentUser._id
   );
   const fetchSinglePost = async () => {
     try {
       const post = await getSinglePost(postId);
-      console.log(post, postId, "post");
+      console.log(post, postId, "post", state.posts);
+      postDispatch({ type: "SINGLE_POST", payload: post });
     } catch (err) {
       console.log(err);
     }
@@ -29,9 +30,16 @@ export const SinglePost = () => {
     <div className="page-fractions">
       <SideNav />
       <div className="background" id={`${isDarkMode && "dark"}`}>
-        <PostCard {...findPost} isLiked={!!likedByArray?.length} yellow />
+        <PostCard
+          {...state?.singlePost}
+          isLiked={!!likedByArray?.length}
+          yellow
+        />
         <div>
-          <Comments comments={findPost?.comments} showUIForSinglePost />
+          <Comments
+            comments={state?.singlePost?.comments}
+            showUIForSinglePost
+          />
         </div>
       </div>
       <Suggestions />

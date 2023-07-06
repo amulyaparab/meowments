@@ -43,6 +43,7 @@
 .posts p {
   color: #333333;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .posts .icons .yellow {

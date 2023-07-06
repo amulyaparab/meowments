@@ -26,10 +26,12 @@ export const PostsProvider = ({ children }) => {
     feedPosts: [],
     bookmarks: [],
     primaryPosts: [],
+    singlePost: {},
     comment: "",
     newComment: {
       postId: "",
       commentData: {},
+      commentId: "",
     },
     post: {
       _id: "",
