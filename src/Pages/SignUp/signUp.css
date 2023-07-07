@@ -1,9 +1,10 @@
 .parent {
-  height: 90vh;
+  height: 100vh;
   display: flex;
 }
 .parent img {
   width: 50%;
+  height: 100%;
 }
 
 .sign-up-form {
@@ -22,7 +23,7 @@
 .sign-up-form h1 {
   text-align: center;
   color: #333333;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .sign-up-form .sign-up-btn {
@@ -87,4 +88,19 @@
   top: 2.6rem;
   right: 0.7rem;
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .sign-up-form {
+    width: 330px;
+  }
+  .sign-up-form .inputs {
+    width: 320px;
+  }
+  .sign-up-form .sign-up-btn {
+    width: 350px;
+  }
+  .parent {
+    height: 100%;
+    padding-bottom: 2rem;
+  }
 }
