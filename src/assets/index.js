@@ -22,19 +22,19 @@ const siameseCat =
 
 // Users
 const adarsh =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738488/pexels-stefan-stefancik-91227_n7dxbg.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742493/pexels-stefan-stefancik-91227-modified_ybgqz4.png";
 const amulya =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738510/IMG_20220326_220142_j0mabe.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742051/IMG_20220326_220142-modified_sgar9n.png";
 const amelia =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738482/pexels-andrea-piacquadio-733872_bt4amh.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742484/pexels-andrea-piacquadio-733872-modified_nsaz3q.png";
 const james =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738500/pexels-fabio-lange-4329871_tgjbth.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742500/pexels-fabio-lange-4329871-modified_i9yede.png";
 const natasha =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738498/pexels-pixabay-36027_wzyfex.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742484/pexels-andrea-piacquadio-733872-modified_nsaz3q.png";
 const noah =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738491/pexels-maksim-goncharenok-5486199_i2jnxo.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742495/pexels-maksim-goncharenok-5486199-modified_go6gqh.png";
 const shubham =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688738484/pexels-italo-melo-2379005_el0iqp.jpg";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688742500/pexels-fabio-lange-4329871-modified_i9yede.png";
 
 // Posts
 const booksCat =
