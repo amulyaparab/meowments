@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const SideNav = () => {
-  const { setEditForm } = usePost();
+  const { setEditForm, editForm } = usePost();
   const { currentUser } = useAuth();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
   const { state } = useUsers();
 
-  const getActiveStyle = ({ isActive }) => (isActive ? "active" : "");
+  const getActiveStyle = ({ isActive }) =>
+    !editForm && isActive && !showSearchBar ? "active" : "";
 
   const findCurrUser = state.users.find((user) => user._id === currentUser._id);
   return (
@@ -29,7 +30,10 @@ export const SideNav = () => {
           <span className="nav-no-words">Bookmarks</span>
         </NavLink>
 
-        <div className="new-post-button" onClick={() => setEditForm(true)}>
+        <div
+          className={` new-post-button ${editForm && "active"}`}
+          onClick={() => !showSearchBar && setEditForm(true)}
+        >
           <i className="fa-solid fa-circle-plus"></i>
           <span className="nav-no-words">New Post</span>
         </div>
@@ -37,7 +41,7 @@ export const SideNav = () => {
           to={`/profile/${findCurrUser?._id}`}
           className={`${getActiveStyle} display-none`}
         >
-          <div className="align-items ">
+          <div className="align-items">
             <img
               src={findCurrUser?.avatarUrl}
               className="side-nav-img"
@@ -47,8 +51,11 @@ export const SideNav = () => {
           </div>
         </NavLink>
         <div
-          className="new-post-button not-visible"
-          onClick={() => setShowSearchBar(!showSearchBar)}
+          className={`new-post-button not-visible ${showSearchBar && "active"}`}
+          onClick={() => {
+            setEditForm(false);
+            setShowSearchBar(!showSearchBar);
+          }}
         >
           <i className="fa-solid fa-magnifying-glass"></i>
           <span className="nav-no-words">Search</span>
