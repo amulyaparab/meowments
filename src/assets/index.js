@@ -34,7 +34,7 @@ const natasha =
 const noah =
   "https://res.cloudinary.com/amulya27/image/upload/v1688742495/pexels-maksim-goncharenok-5486199-modified_go6gqh.png";
 const shubham =
-  "https://res.cloudinary.com/amulya27/image/upload/v1688742500/pexels-fabio-lange-4329871-modified_i9yede.png";
+  "https://res.cloudinary.com/amulya27/image/upload/v1688758679/pexels-italo-melo-2379005-modified_1_2_kucqki.png";
 
 // Posts
 const booksCat =

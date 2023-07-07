@@ -22,7 +22,6 @@ export const ProfileEditForm = () => {
       toast.success("Profile Edited.", position);
     }
   };
-
   return (
     <div className="overlay-parent" id={`${isDarkMode && "dark-text"}`}>
       <div className="overlay">

@@ -100,6 +100,9 @@ export const UtilsProvider = ({ children }) => {
       postDispatch({
         type: "EMPTY_EVERYTHING",
       });
+      userDispatch({
+        type: "EMPTY_EVERYTHING",
+      });
     } catch (err) {
       console.error(err);
     } finally {
