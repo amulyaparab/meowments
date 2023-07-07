@@ -91,21 +91,27 @@
   .bottom-footer {
     position: fixed;
     flex-direction: row;
-    top: 92vh;
+    top: 91vh;
     background-color: #ffffff;
     z-index: 20;
     width: 100%;
-    height: max-content;
-    justify-content: space-evenly;
+    height: fit-content;
+    padding: 0;
   }
   .not-visible {
     display: block;
   }
   .bottom-footer i {
-    font-size: 25px;
+    font-size: 20px;
   }
   .new-post-button {
     margin: 0;
+  }
+  .side-nav div {
+    padding: 1rem;
+  }
+  .side-nav a {
+    padding: 1rem;
   }
 }
 .yellowNav {

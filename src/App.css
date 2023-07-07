@@ -561,8 +561,8 @@
     flex-direction: column;
   }
   .commentBar {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    max-width: 300px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -571,6 +571,9 @@
   }
   .new-post {
     width: 67%;
+  }
+  .new-post button {
+    width: 50%;
   }
   .overlay {
     margin-top: 0;
@@ -582,11 +585,17 @@
     min-width: 100%;
   }
   .commentBarParent {
-    width: 300px;
+    width: 280px;
+    margin-top: 8rem;
   }
   .commentBar {
-    height: 300px;
-    width: 300px;
+    height: 100px;
+    width: 200px;
+  }
+  .edit-form {
+    margin: auto;
+    margin-top: 8rem;
+    width: 60%;
   }
 }
 .corner {
