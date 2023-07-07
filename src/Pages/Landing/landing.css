@@ -34,6 +34,7 @@
   color: #ffc11b;
   letter-spacing: 0.5px;
 }
+
 .landing .landing-details p::after {
   content: ".";
   font-size: 35px;
@@ -70,6 +71,9 @@
   text-decoration: none;
 }
 
+.landing .login-link span {
+  color: #ffc11b;
+}
 @media screen and (max-width: 1024px) {
   .landing {
     height: auto;

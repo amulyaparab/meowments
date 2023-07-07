@@ -40,7 +40,10 @@ export const Bookmarks = () => {
               );
             })
           ) : (
-            <h3 className="general-heading" id={`${isDarkMode && "dark"}`}>
+            <h3
+              className="general-heading"
+              id={`${isDarkMode && "light-text"}`}
+            >
               No Bookmarks Yet
             </h3>
           )}

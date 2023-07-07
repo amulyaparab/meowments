@@ -43,7 +43,7 @@ export const FeedPosts = () => {
           );
         })
       ) : (
-        <h3 className="general-heading" id={`${isDarkMode && "dark"}`}>
+        <h3 className="general-heading" id={`${isDarkMode && "light-text"}`}>
           No Posts Yet 😦 Follow People And Share Posts To See More
         </h3>
       )}

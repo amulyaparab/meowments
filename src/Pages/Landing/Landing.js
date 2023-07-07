@@ -25,8 +25,12 @@ export const Landing = () => {
           </p>
           <button onClick={() => navigate("/signUp")}>Join Now</button>
           <small>
-            <NavLink to="/login" id={`${isDarkMode && "dark"}`}>
-              Already have an account ?
+            <NavLink
+              to="/login"
+              id={`${isDarkMode && "light-text"}`}
+              className="login-link"
+            >
+              Already have an account ? <span>Login here.</span>
             </NavLink>
           </small>
         </div>

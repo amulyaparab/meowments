@@ -520,6 +520,15 @@
   font-size: small;
   letter-spacing: 0.3px;
 }
+.entire-page {
+  height: 100vh;
+  background-color: #ffebb8;
+}
+.error-img {
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 4rem;
+}
 @media screen and (max-width: 1550px) {
   .new-post button {
     width: 65%;

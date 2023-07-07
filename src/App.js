@@ -21,6 +21,7 @@ import {
   useUtils,
 } from "./Pages";
 import Mockman from "mockman-js";
+import { Error } from "./Pages/Error/Error";
 function App() {
   const { editForm } = usePost();
   const { showSearchBar, showCommentBar } = useUtils();
@@ -75,6 +76,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer />
     </div>

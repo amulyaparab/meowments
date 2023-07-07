@@ -1,7 +1,13 @@
 import { useParams } from "react-router-dom";
 import "../../Components/SuggestedUsers/suggestions.css";
 import { useAuth, usePost, useUtils } from "../../Contexts";
-import { Comments, PostCard, SideNav, Suggestions } from "../../Components";
+import {
+  Comments,
+  Loader,
+  PostCard,
+  SideNav,
+  Suggestions,
+} from "../../Components";
 import { useEffect } from "react";
 import { getSinglePost } from "../../Services/postServices";
 
@@ -35,17 +41,23 @@ export const SinglePost = () => {
     <div className="page-fractions">
       <SideNav />
       <div className="background" id={`${isDarkMode && "dark"}`}>
-        <PostCard
-          {...state?.singlePost}
-          isLiked={!!likedByArray?.length}
-          yellow
-        />
-        <div>
-          <Comments
-            comments={state?.singlePost?.comments}
-            showUIForSinglePost
-          />
-        </div>
+        {state?.loading ? (
+          <Loader />
+        ) : (
+          <div>
+            <PostCard
+              {...state?.singlePost}
+              isLiked={!!likedByArray?.length}
+              yellow
+            />
+            <div>
+              <Comments
+                comments={state?.singlePost?.comments}
+                showUIForSinglePost
+              />
+            </div>
+          </div>
+        )}
       </div>
       <Suggestions />
     </div>
