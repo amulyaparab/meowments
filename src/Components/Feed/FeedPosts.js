@@ -1,26 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { PostCard } from "../Posts/PostCard";
 import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 export const FeedPosts = () => {
   const { state, setEditForm } = usePost();
   const { state: userState } = useUsers();
   const { currentUser } = useAuth();
-  const { isDarkMode, logout } = useUtils();
+  const { isDarkMode } = useUtils();
   const navigate = useNavigate();
 
   const findCurrUser = userState.users.find(
     (user) => user._id === currentUser._id
   );
-  // useEffect(() => {
-  //   if (!findCurrUser) {
-  //     toast.error("User Not Found!", {
-  //       position: toast.POSITION.TOP_CENTER,
-  //     });
-  //   }
-  // }, [findCurrUser]);
+
   return (
     <>
       <div className="new-post">

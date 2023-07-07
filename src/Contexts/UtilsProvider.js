@@ -245,6 +245,19 @@ export const UtilsProvider = ({ children }) => {
       toast.success("Comment Added.", position);
     }
   };
+  const createdAt = new Date(currentUser?.createdAt).getFullYear();
+  const currentDate = new Date().getFullYear();
+
+  const findCurrUser = userState?.users?.find(
+    (user) => user?._id === currentUser?._id
+  );
+
+  useEffect(() => {
+    if (createdAt === currentDate && !findCurrUser) {
+      logout();
+      toast.error("User Not Found", position);
+    }
+  }, []);
 
   useEffect(() => {
     if (currentToken) {
