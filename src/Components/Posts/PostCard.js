@@ -30,6 +30,7 @@ export const PostCard = ({
   } = useUtils();
   const { state, deleteThePost, setEditForm, postDispatch } = usePost();
   const { currentUser } = useAuth();
+  const { isDarkMode } = useUtils();
   const navigate = useNavigate();
 
   const [showDetails, setShowDetails] = useState(false);
@@ -71,6 +72,7 @@ export const PostCard = ({
       {isThePostByTheCurrentUser && (
         <div
           className="post-settings"
+          id={`${isDarkMode && "dark-text"}`}
           onClick={() => setShowDetails(!showDetails)}
         >
           ...
