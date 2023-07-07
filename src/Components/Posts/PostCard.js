@@ -30,7 +30,7 @@ export const PostCard = ({
   } = useUtils();
   const { state, deleteThePost, setEditForm, postDispatch } = usePost();
   const { currentUser } = useAuth();
-  const { isDarkMode } = useUtils();
+  const { isDarkMode, conditionForNewUser } = useUtils();
   const navigate = useNavigate();
 
   const [showDetails, setShowDetails] = useState(false);
@@ -143,10 +143,12 @@ export const PostCard = ({
             !yellow && setShowComments(!showComments);
           }}
         ></i>
-        <i
-          className="fa-solid fa-share-nodes"
-          onClick={() => handleCopyLink(_id)}
-        ></i>
+        {!conditionForNewUser && (
+          <i
+            className="fa-solid fa-share-nodes"
+            onClick={() => handleCopyLink(_id)}
+          ></i>
+        )}
         <i
           className={`fa-solid fa-bookmark ${isBookmarked && "yellow"}`}
           onClick={() =>

@@ -250,9 +250,10 @@ export const UtilsProvider = ({ children }) => {
   const findCurrUser = userState?.users?.find(
     (user) => user?._id === currentUser?._id
   );
-
+  const condition = createdAt === currentDate && !findCurrUser;
+  const conditionForNewUser = createdAt === currentDate;
   useEffect(() => {
-    if (createdAt === currentDate && !findCurrUser) {
+    if (condition) {
       logout();
       toast.error("User Not Found", position);
     }
@@ -293,6 +294,7 @@ export const UtilsProvider = ({ children }) => {
         deleteCommentsHandler,
         addCommentsHandler,
         editCommentsHandler,
+        conditionForNewUser,
       }}
     >
       {children}

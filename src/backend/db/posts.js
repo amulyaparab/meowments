@@ -1,4 +1,3 @@
-import { formatDate } from "../utils/authUtils";
 import {
   booksCat,
   catInArms,
@@ -9,11 +8,27 @@ import {
   family,
   kittenAdopt,
   myCat,
-  napCat,
+  nap,
   rockstarCat,
   rudeCat,
   scratchCat,
-} from ".";
+} from "../../assets";
+import { formatDate } from "../utils/authUtils";
+// import {
+//   booksCat,
+//   catInArms,
+//   caturday,
+//   chomp,
+//   cuddlesCat,
+//   dogHuggingCat,
+//   family,
+//   kittenAdopt,
+//   myCat,
+//   napCat,
+//   rockstarCat,
+//   rudeCat,
+//   scratchCat,
+// } from ".";
 
 export const posts = [
   {
@@ -336,7 +351,7 @@ export const posts = [
 
   {
     _id: "sdjwe_cvxipoemt_32423fgdgfd",
-    imageUrl: napCat,
+    imageUrl: nap,
     content: "I like naps. We'll get along if you don't wake me up.",
     likes: {
       likeCount: 27,

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const Comments = ({
@@ -10,6 +11,7 @@ export const Comments = ({
   const { currentUser } = useAuth();
   const { postDispatch } = usePost();
   const { deleteCommentsHandler, setShowCommentBar } = useUtils();
+  const navigate = useNavigate();
 
   const findUser = (commentUser) =>
     userState?.users.find((user) => user.username === commentUser);
@@ -17,6 +19,15 @@ export const Comments = ({
   const isCommentByCurrentUser = (comment) =>
     (findUser(comment?.username)?.username ||
       findUser(comment?.user?.username)?.username) === currentUser?.username;
+
+  const navigateToProfile = (comment) => {
+    navigate(
+      `/profile/${
+        findUser(comment?.username)?._id ||
+        findUser(comment?.user?.username)?._id
+      } `
+    );
+  };
 
   return (
     <>
@@ -38,6 +49,7 @@ export const Comments = ({
                   findUser(comment?.username)?.username ||
                   findUser(comment?.user?.username)?.username
                 }
+                onClick={() => navigateToProfile(comment)}
               />
               <div className="comment-background">
                 <div>
@@ -68,7 +80,7 @@ export const Comments = ({
                     {findUser(comment?.username)?.lastName ||
                       findUser(comment?.user?.username)?.lastName}
                   </h4>
-                  <p>
+                  <p onClick={() => navigateToProfile(comment)}>
                     @
                     {findUser(comment?.username)?.username ||
                       findUser(comment?.user?.username)?.username}

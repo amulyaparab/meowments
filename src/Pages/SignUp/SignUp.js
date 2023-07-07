@@ -1,9 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./signUp.css";
-import signUpCat from "../../assets/Images/signUp.jpg";
 import { toast } from "react-toastify";
-import blueCat from "../../assets/AvatarImages/blueCat.jpg";
 import { useAuth, useUtils } from "../../Contexts";
+import { blueCat, signUp } from "../../assets";
 
 export const SignUp = () => {
   const { state, userSignUpData, authDispatch, showPassword, setShowPassword } =
@@ -44,7 +43,7 @@ export const SignUp = () => {
 
   return (
     <div className="parent" id={`${isDarkMode && "dark"}`}>
-      <img src={signUpCat} alt="cat" />
+      <img src={signUp} alt="cat" />
       <form className="sign-up-form" onSubmit={signUpHandler}>
         <h1>SignUp</h1>
         <label>

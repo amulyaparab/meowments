@@ -1,5 +1,13 @@
 import { formatDate } from "../utils/authUtils";
-import { adarsh, amelia, amulya, james, natasha, noah, shubham } from ".";
+import {
+  adarsh,
+  amelia,
+  amulya,
+  james,
+  natasha,
+  noah,
+  shubham,
+} from "../../assets";
 /**
  * User Database can be added here.
  * You can add default users of your wish with different attributes

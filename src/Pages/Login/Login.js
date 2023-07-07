@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./login.css";
-import loginCat from "../../assets/Images/login.jpg";
+import { login as loginCat } from "../../assets";
 import { toast } from "react-toastify";
 import { useAuth, usePost, useUtils } from "../../Contexts";
 

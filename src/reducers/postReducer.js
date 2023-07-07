@@ -221,7 +221,7 @@ export const postReducer = (state, action) => {
             likedBy: [],
             dislikedBy: [],
           },
-
+          comments: [],
           username:
             JSON.parse(localStorage.getItem("userData"))?.user?.username || "",
         },

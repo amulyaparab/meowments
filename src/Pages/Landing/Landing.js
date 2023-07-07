@@ -1,7 +1,7 @@
 import "./landing.css";
-import landingCat from "../../assets/Images/landing.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUtils } from "../../Contexts/UtilsProvider";
+import { landing } from "../../assets";
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export const Landing = () => {
             </NavLink>
           </small>
         </div>
-        <img src={landingCat} alt="orange kitten" className="landing-img" />
+        <img src={landing} alt="orange kitten" className="landing-img" />
       </div>
     </>
   );

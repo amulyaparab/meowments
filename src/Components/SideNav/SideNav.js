@@ -1,13 +1,16 @@
 import "./sideNav.css";
 import { NavLink } from "react-router-dom";
-import { usePost, useUtils } from "../../Contexts";
+import { useAuth, usePost, useUsers, useUtils } from "../../Contexts";
 
 export const SideNav = () => {
   const { setEditForm } = usePost();
+  const { currentUser } = useAuth();
   const { isDarkMode, logout, showSearchBar, setShowSearchBar } = useUtils();
+  const { state } = useUsers();
 
   const getActiveStyle = ({ isActive }) => (isActive ? "active" : "");
 
+  const findCurrUser = state.users.find((user) => user._id === currentUser._id);
   return (
     <>
       <div className="side-nav bottom-footer" id={`${isDarkMode && "dark"}`}>
@@ -30,6 +33,19 @@ export const SideNav = () => {
           <i className="fa-solid fa-circle-plus"></i>
           <span className="nav-no-words">New Post</span>
         </div>
+        <NavLink
+          to={`/profile/${findCurrUser?._id}`}
+          className={`${getActiveStyle} display-none`}
+        >
+          <div className="align-items ">
+            <img
+              src={findCurrUser?.avatarUrl}
+              className="side-nav-img"
+              alt={findCurrUser?.username}
+            />
+            <span className="nav-no-words">Profile</span>
+          </div>
+        </NavLink>
         <div
           className="new-post-button not-visible"
           onClick={() => setShowSearchBar(!showSearchBar)}
