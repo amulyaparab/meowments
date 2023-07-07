@@ -131,17 +131,15 @@ export const PostCard = ({
       <div className="icons">
         <i
           className={`fa-solid fa-heart ${isLiked && "yellow"}`}
-          onClick={() => {
-            isLiked ? dislikePostHandler(_id) : likePostHandler(_id);
-          }}
+          onClick={() =>
+            isLiked ? dislikePostHandler(_id) : likePostHandler(_id)
+          }
         ></i>
         <i
           className={`fa-regular fa-comment ${
             (showComments && "yellow") || (yellow && "yellow")
           }`}
-          onClick={() => {
-            !yellow && setShowComments(!showComments);
-          }}
+          onClick={() => !yellow && setShowComments(!showComments)}
         ></i>
         {!conditionForNewUser && (
           <i

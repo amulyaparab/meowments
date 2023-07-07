@@ -5,8 +5,8 @@ export const AvatarForm = () => {
   const { setShowAvatarForm, userDispatch } = useUsers();
   const { isDarkMode } = useUtils();
 
-  const profileImageHandler = (e) => {
-    const image = e.target.files[0];
+  const profileImageHandler = (event) => {
+    const image = event.target.files[0];
     const imageURL = URL.createObjectURL(image);
     userDispatch({ type: "EDIT_AVATAR", payload: imageURL });
     setShowAvatarForm(false);

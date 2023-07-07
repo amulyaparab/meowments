@@ -10,12 +10,15 @@ export const SearchBar = () => {
   return (
     <div
       className="overlay"
-      onClick={(e) => {
-        e.stopPropagation();
+      onClick={(event) => {
+        event.stopPropagation();
         setShowSearchBar(false);
       }}
     >
-      <div className="search-parent" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="search-parent"
+        onClick={(event) => event.stopPropagation()}
+      >
         <input
           className="top"
           onChange={(event) =>
@@ -27,7 +30,7 @@ export const SearchBar = () => {
         />
         <i className="fa-solid fa-magnifying-glass top-magnify"></i>
       </div>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div onClick={(event) => event.stopPropagation()}>
         {state?.searchVal?.length ? (
           state?.searchedUsers?.length ? (
             <div className="center-parent">

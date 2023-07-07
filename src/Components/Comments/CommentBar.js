@@ -31,9 +31,7 @@ export const CommentBar = () => {
       >
         <div
           className="commentBarParent"
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
+          onClick={(event) => event.stopPropagation()}
         >
           <img
             src={findCurrUser?.avatarUrl}

@@ -5,22 +5,11 @@ export const FollowButton = ({ user }) => {
   return (
     <>
       {isUserFollowedByMe(user) ? (
-        <button
-          className="followed"
-          onClick={() => {
-            unfollowUsername(user._id);
-          }}
-        >
+        <button className="followed" onClick={() => unfollowUsername(user._id)}>
           Unfollow
         </button>
       ) : (
-        <button
-          onClick={() => {
-            followUsername(user._id);
-          }}
-        >
-          + Follow
-        </button>
+        <button onClick={() => followUsername(user._id)}>+ Follow</button>
       )}
     </>
   );
