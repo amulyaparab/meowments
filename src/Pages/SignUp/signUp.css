@@ -1,10 +1,12 @@
 .parent {
-  height: 100vh;
+  height: 100%;
   display: flex;
+  padding: 2rem;
 }
 .parent img {
   width: 50%;
   height: 100%;
+  border-radius: 7px;
 }
 
 .sign-up-form {
@@ -19,6 +21,7 @@
   border-radius: 10px;
   padding: 3rem;
   text-align: left;
+  margin-top: 0.5rem;
 }
 .sign-up-form h1 {
   text-align: center;
@@ -89,18 +92,38 @@
   right: 0.7rem;
   cursor: pointer;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .sign-up-form {
-    width: 330px;
+    width: 350px;
   }
   .sign-up-form .inputs {
-    width: 320px;
+    width: 350px;
   }
   .sign-up-form .sign-up-btn {
-    width: 350px;
+    width: 370px;
   }
   .parent {
     height: 100%;
     padding-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sign-up-form {
+    width: 200px;
+  }
+  .sign-up-form .inputs {
+    width: 200px;
+  }
+  .sign-up-form .sign-up-btn {
+    width: 220px;
+  }
+
+  .parent {
+    height: 100%;
+    padding: 0;
+  }
+  .parent img {
+    width: 70%;
+    border-radius: 7px;
   }
 }
