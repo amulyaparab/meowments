@@ -369,6 +369,12 @@
   margin-top: 0;
   margin-bottom: 0;
 }
+.comments-link-small {
+  cursor: pointer;
+}
+.comments-link-small:hover {
+  text-decoration: underline;
+}
 .edit-profile textarea {
   margin-top: 3px;
   height: 45px;

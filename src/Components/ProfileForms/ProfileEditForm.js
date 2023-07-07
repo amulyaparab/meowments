@@ -16,7 +16,7 @@ export const ProfileEditForm = () => {
       );
       userDispatch({ type: "EDIT_USER", payload: editUserProfile });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       setShowUserEditForm(false);
       toast.success("Profile Edited.", position);

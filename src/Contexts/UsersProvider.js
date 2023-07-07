@@ -29,7 +29,7 @@ export const UsersProvider = ({ children }) => {
         currPayload: currentUser,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

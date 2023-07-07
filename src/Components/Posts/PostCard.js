@@ -54,7 +54,7 @@ export const PostCard = ({
       setShowDetails(false);
       postDispatch({ type: "EDIT_POST", payload: _id });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -110,7 +110,12 @@ export const PostCard = ({
       <div className="inline-likes">
         <div className="inline-likes-child">
           <div>{likes?.likeCount} likes </div>{" "}
-          <div>{comments?.length} comments</div>
+          <div
+            onClick={() => setShowComments(true)}
+            className="comments-link-small"
+          >
+            {comments?.length} comments
+          </div>
         </div>
         <p
           className="comments-link"

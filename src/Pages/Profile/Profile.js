@@ -37,7 +37,7 @@ export const Profile = () => {
       const postsByUser = await getPostsByUser(findUser?.username);
       postDispatch({ type: "UPDATE_USER_POSTS", payload: postsByUser });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

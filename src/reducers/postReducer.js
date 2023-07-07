@@ -66,6 +66,11 @@ export const postReducer = (state, action) => {
           },
         },
       };
+    case "SET_COMMENTS":
+      return {
+        ...state,
+        singlePost: { ...state.singlePost, comments: action.payload },
+      };
     case "RESET_POSTS_BY_COMMENT":
       return {
         ...state,

@@ -38,7 +38,7 @@ export const SignUp = () => {
         navigate("/signUp");
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -130,7 +130,7 @@ export const SignUp = () => {
             type={`${showPassword.signUpPassword ? "text" : "password"}`}
             placeholder="********"
             // value={state?.newUser?.password}
-            minlength="6"
+            minLength="6"
             onChange={(event) =>
               authDispatch({
                 type: "NEW_PASSWORD",

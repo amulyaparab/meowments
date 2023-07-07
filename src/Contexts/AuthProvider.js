@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
         return status;
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -107,7 +107,7 @@ export const AuthProvider = ({ children }) => {
         );
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -117,7 +117,7 @@ export const AuthProvider = ({ children }) => {
       const currentUser = JSON.parse(userData)?.user;
       return currentUser;
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -127,7 +127,7 @@ export const AuthProvider = ({ children }) => {
       const currentToken = JSON.parse(userData)?.encodedToken;
       return currentToken;
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

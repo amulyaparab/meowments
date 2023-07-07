@@ -47,7 +47,7 @@ export const UtilsProvider = ({ children }) => {
         payload: liked,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -56,7 +56,7 @@ export const UtilsProvider = ({ children }) => {
       const disliked = await dislikePost(postId, currentToken);
       postDispatch({ type: "DISLIKE_POST", payload: disliked });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -65,7 +65,7 @@ export const UtilsProvider = ({ children }) => {
       const bookmarked = await bookmarkPost(postId, currentToken);
       postDispatch({ type: "BOOKMARK_POSTS", payload: bookmarked });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.success("Bookmarked.", position);
     }
@@ -76,7 +76,7 @@ export const UtilsProvider = ({ children }) => {
       const unbookmarked = await removeBookmark(postId, currentToken);
       postDispatch({ type: "REMOVE_BOOKMARK", payload: unbookmarked });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.success("Removed Bookmark.", position);
     }
@@ -87,7 +87,7 @@ export const UtilsProvider = ({ children }) => {
       const allBookmarks = await getAllBookmarks(currentToken);
       postDispatch({ type: "UPDATE_BOOKMARKS", payload: allBookmarks });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -101,7 +101,7 @@ export const UtilsProvider = ({ children }) => {
         type: "EMPTY_EVERYTHING",
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.info("Logged Out.", position);
     }
@@ -124,7 +124,7 @@ export const UtilsProvider = ({ children }) => {
       const followed = await followUser(userId, currentToken);
       userDispatch({ type: "FOLLOW_USER", payload: followed });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       const user = userState.users.find((user) => user._id === userId);
       toast.success(`Followed ${user?.username}`, position);
@@ -136,7 +136,7 @@ export const UtilsProvider = ({ children }) => {
       const unfollowed = await unfollowUser(userId, currentToken);
       userDispatch({ type: "UNFOLLOW_USER", payload: unfollowed });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       const user = userState.users.find((user) => user._id === userId);
       toast.info(`Unfollowed ${user?.username}`, position);
@@ -158,7 +158,7 @@ export const UtilsProvider = ({ children }) => {
       const postsByUser = await getPostsByUser(username);
       postDispatch({ type: "GET_USER_POSTS", payload: postsByUser });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       postDispatch({ type: "POST_LOADING", payload: false });
     }
@@ -169,7 +169,7 @@ export const UtilsProvider = ({ children }) => {
       setIsDarkMode(!isDarkMode);
       localStorage.setItem("theme", isDarkMode ? "light" : "dark");
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -180,14 +180,13 @@ export const UtilsProvider = ({ children }) => {
         state.newComment.commentData,
         currentToken
       );
-
       postDispatch({
         type: "RESET_POSTS_BY_COMMENT",
         payload: postsArray,
       });
       setShowCommentBar(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.success("Comment added", position);
     }
@@ -206,7 +205,7 @@ export const UtilsProvider = ({ children }) => {
         payload: postsArray,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   const editCommentsHandler = async () => {
@@ -223,7 +222,7 @@ export const UtilsProvider = ({ children }) => {
       });
       setShowCommentBar(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -240,7 +239,7 @@ export const UtilsProvider = ({ children }) => {
       });
       setShowCommentBar(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.success("Comment Added.", position);
     }

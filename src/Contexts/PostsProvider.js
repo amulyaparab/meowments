@@ -69,7 +69,7 @@ export const PostsProvider = ({ children }) => {
       const posts = await getAllPosts();
       postDispatch({ type: "FETCH_ALL_POSTS", payload: posts });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       postDispatch({ type: "POST_LOADING", payload: false });
     }
@@ -93,7 +93,7 @@ export const PostsProvider = ({ children }) => {
         payload: postsByFollowingAndUser,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -102,7 +102,7 @@ export const PostsProvider = ({ children }) => {
       await deletePost(postId, currentToken);
       postDispatch({ type: "DELETE_POST", payload: postId });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.error("Post Deleted.", {
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -117,7 +117,7 @@ export const PostsProvider = ({ children }) => {
         payload: posts,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       toast.success("Posted Successfully.", {
         position: toast.POSITION.BOTTOM_RIGHT,

@@ -29,7 +29,7 @@ export const Login = () => {
         type: "SET_POST_USERNAME",
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       navigate("/");
     }
@@ -61,7 +61,7 @@ export const Login = () => {
         });
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

@@ -21,7 +21,7 @@ export const PostForm = () => {
       const edited = await editPost(state.post._id, state.post, currentToken);
       postDispatch({ type: "EDITED_POST", payload: edited });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       postDispatch({ type: "CLEAR_FORM" });
       setEditForm(false);

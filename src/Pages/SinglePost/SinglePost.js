@@ -8,34 +8,18 @@ import {
   SideNav,
   Suggestions,
 } from "../../Components";
-import { useEffect } from "react";
-import { getSinglePost } from "../../Services/postServices";
 
 export const SinglePost = () => {
   const { postId } = useParams();
-  const { state, postDispatch } = usePost();
+  const { state } = usePost();
   const { currentUser } = useAuth();
   const { isDarkMode } = useUtils();
 
-  const likedByArray = state?.singlePost?.likes?.likedBy.filter(
+  const findPost = state.posts.find((post) => post._id === postId);
+
+  const likedByArray = findPost?.likes?.likedBy.filter(
     (currUser) => currUser._id === currentUser._id
   );
-
-  const fetchSinglePost = async () => {
-    try {
-      postDispatch({ type: "POST_LOADING", payload: true });
-      const post = await getSinglePost(postId);
-      postDispatch({ type: "SINGLE_POST", payload: post });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      postDispatch({ type: "POST_LOADING", payload: false });
-    }
-  };
-
-  useEffect(() => {
-    fetchSinglePost();
-  }, []);
 
   return (
     <div className="page-fractions">
@@ -45,17 +29,29 @@ export const SinglePost = () => {
           <Loader />
         ) : (
           <div>
-            <PostCard
-              {...state?.singlePost}
-              isLiked={!!likedByArray?.length}
-              yellow
-            />
-            <div>
-              <Comments
-                comments={state?.singlePost?.comments}
-                showUIForSinglePost
-              />
-            </div>
+            {findPost ? (
+              <div>
+                <PostCard
+                  {...findPost}
+                  isLiked={!!likedByArray?.length}
+                  yellow
+                />
+                <div>
+                  <Comments
+                    comments={findPost?.comments}
+                    showUIForSinglePost
+                    postId={findPost?._id}
+                  />
+                </div>
+              </div>
+            ) : (
+              <h1
+                className="general-heading"
+                id={`${isDarkMode && "light-text"}`}
+              >
+                Post Not Found
+              </h1>
+            )}
           </div>
         )}
       </div>
