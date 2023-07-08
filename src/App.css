@@ -250,7 +250,7 @@
   margin-top: 2rem;
 }
 .allPostsComments .comment-background {
-  width: 90%;
+  width: 70%;
 }
 .edit-form .edit-buttons button {
   padding: 0.5rem 2rem;
@@ -544,6 +544,9 @@
   .new-post button {
     width: 65%;
   }
+  .allPostsComments .comment-background {
+    width: 50%;
+  }
 }
 @media screen and (max-width: 1340px) {
   .new-post button {
@@ -553,6 +556,9 @@
   }
   .comment {
     width: 47%;
+  }
+  .allPostsComments .comment-background {
+    width: 30%;
   }
 }
 @media screen and (max-width: 1024px) {
