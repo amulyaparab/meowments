@@ -2,35 +2,50 @@
 
 A social media app to capture all those adorable cat meowments! - https://meowments.vercel.app/
 
-![pexels-alex-bargain-1472999](https://github.com/amulyaparab/meowments/assets/86553695/26fe3f11-2c9a-4134-a628-8532ee358396)
-
 # Demo video
+https://github.com/amulyaparab/meowments/assets/86553695/9b8d07d1-aade-4138-b19b-136a6aa98d0d
+
 
 # Features
 * User Feed
-  * List all user posts
+  * Lists all user posts and those of whom they follow
   * Sort by Date & Trending
+
 * Post Actions
   * Create a Post
   * Like a post
   * Edit & Delete Post
-  * Comment on Post
+  * Comment on Post 
+  * Edit or Delete Comments
+  * Bookmark a Posts
+
 * User Profile
-  * Add Avatars
-  * Add Bio
-  * Add Portfolio URL
+  * Add or Edit Avatars
+  * Add or Edit Bio
+  * Add or Edit Portfolio URL
+  * Upload own image as avatar
   * Edit Profile
-* Follow/Unfollow
+    
+* Other Users
+  * Follow/Unfollow Suggested Users
+  * Search for users
+
 * Explore Feed
-* Bookmark Post
+  * Lists all posts except the current user's posts for the user to explore
+    
+* Bookmarked Posts can be seen in Bookmarks tab
+  
 * Authentication
   * Sign-up
   * Login
   * Logout
-* Search Users
-* Single Post Page
-* Toasts And Loaders
-* Responsive
+
+* Others    
+  * Single Post Page with comments displayed
+  * Toasts 
+  * Loaders
+  * Light/Dark Mode
+  * Responsive
 
 # Tech Stack
 * React JS
@@ -50,8 +65,8 @@ A social media app to capture all those adorable cat meowments! - https://meowme
 ```
 $ git clone https://github.com/amulyaparab/meowments.git
 $ cd meowments
-$ npm install
-$ npm start 
+$ npm install or $ yarn install
+$ npm start or $ yarn start
 ```
 
 # Find me here
