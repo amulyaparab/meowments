@@ -15,10 +15,7 @@ export const Bookmarks = () => {
     <>
       <div className="page-fractions">
         <SideNav />
-        <div
-          className={`background ${state.bookmarks.length <= 1 && "height"}`}
-          id={`${isDarkMode && "dark"}`}
-        >
+        <div className="background" id={`${isDarkMode && "dark"}`}>
           <h1
             className={`general-heading ${
               isDarkMode && "general-heading-white"
