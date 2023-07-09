@@ -116,48 +116,6 @@ export const getBookmarkPostsHandler = function (schema, request) {
  * send POST Request at /api/users/bookmark/:postId/
  * */
 
-// export const bookmarkPostHandler = function (schema, request) {
-//   const { postId } = request.params;
-//   const post = schema.posts.findBy({ _id: postId }).attrs;
-//   const user = requiresAuth.call(this, request);
-//   try {
-//     if (!user) {
-//       return new Response(
-//         404,
-//         {},
-//         {
-//           errors: [
-//             "The username you entered is not Registered. Not Found error",
-//           ],
-//         }
-//       );
-//     }
-//     const isBookmarked = user.bookmarks.some(
-//       (currPost) => currPost._id === postId
-//     );
-//     if (isBookmarked) {
-//       return new Response(
-//         400,
-//         {},
-//         { errors: ["This Post is already bookmarked"] }
-//       );
-//     }
-//     user.bookmarks.push(post);
-//     this.db.users.update(
-//       { _id: user._id },
-//       { ...user, updatedAt: formatDate() }
-//     );
-//     return new Response(200, {}, { bookmarks: user.bookmarks });
-//   } catch (error) {
-//     return new Response(
-//       500,
-//       {},
-//       {
-//         error,
-//       }
-//     );
-//   }
-// };
 export const bookmarkPostHandler = function (schema, request) {
   const { postId } = request.params;
   const post = schema.posts.findBy({ _id: postId }).attrs;

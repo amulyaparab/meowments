@@ -36,7 +36,6 @@ export const PostCard = ({
   const [showDetails, setShowDetails] = useState(false);
   const [showComments, setShowComments] = useState(false);
 
-  // const url = window.location.href;
   const handleCopyLink = () => {
     navigator.clipboard
       .writeText(`https://meowments.vercel.app/post/${_id}`)

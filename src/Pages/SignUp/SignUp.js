@@ -128,7 +128,6 @@ export const SignUp = () => {
             className="inputs"
             type={`${showPassword.signUpPassword ? "text" : "password"}`}
             placeholder="********"
-            // value={state?.newUser?.password}
             minLength="6"
             onChange={(event) =>
               authDispatch({

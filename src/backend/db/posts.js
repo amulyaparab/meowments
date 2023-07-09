@@ -14,21 +14,6 @@ import {
   scratchCat,
 } from "../../assets";
 import { formatDate } from "../utils/authUtils";
-// import {
-//   booksCat,
-//   catInArms,
-//   caturday,
-//   chomp,
-//   cuddlesCat,
-//   dogHuggingCat,
-//   family,
-//   kittenAdopt,
-//   myCat,
-//   napCat,
-//   rockstarCat,
-//   rudeCat,
-//   scratchCat,
-// } from ".";
 
 export const posts = [
   {
