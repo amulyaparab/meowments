@@ -39,6 +39,7 @@
     transform: rotate(360deg);
   }
 }
+
 .loading {
   z-index: 15;
   position: fixed;
@@ -212,7 +213,6 @@
 .comment {
   background-color: #ffffff;
   width: 46.5%;
-  /* padding: 0 1rem; */
   margin: auto;
   border-radius: 5px;
   margin-top: 5px;
@@ -231,7 +231,6 @@
   font-size: 15px;
   margin-top: -10px;
   width: 90%;
-  /* font-family: "Maven Pro", sans-serif; */
   margin-bottom: 10px;
   margin-left: 67px;
   font-weight: 500;
@@ -355,7 +354,6 @@
 }
 .center {
   width: 70%;
-  /* background-color: #ffffff; */
   border-radius: 10px;
   padding: 0.5rem;
   height: max-content;
@@ -380,8 +378,7 @@
 .comments-link-small:hover {
   text-decoration: underline;
 }
-.single-post-comments {
-}
+
 .edit-profile textarea {
   margin-top: 3px;
   height: 45px;
@@ -504,8 +501,6 @@
   left: 0;
   right: 0;
   z-index: 3;
-
-  /* margin-top: 3.5rem; */
 }
 .commentBtn {
   padding: 0.7rem 2rem;
@@ -528,7 +523,6 @@
   margin-top: 1rem;
   cursor: pointer;
   border-radius: 5px;
-
   text-transform: uppercase;
   font-size: small;
   letter-spacing: 0.3px;
