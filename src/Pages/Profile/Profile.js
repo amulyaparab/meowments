@@ -53,107 +53,116 @@ export const Profile = () => {
           <Loader />
         ) : (
           <div className="profile-parent">
-            <div className="profile" id={`${isDarkMode && "dark"}`}>
-              <div>
-                <div className="profile-deets">
-                  <img
-                    src={findUser?.avatarUrl}
-                    className="profile-image"
-                    alt={findUser?.username}
-                  />
+            {findUser ? (
+              <div className="profile" id={`${isDarkMode && "dark"}`}>
+                <div>
+                  <div className="profile-deets">
+                    <img
+                      src={findUser?.avatarUrl}
+                      className="profile-image"
+                      alt={findUser?.username}
+                    />
 
-                  <div>
-                    <h3>
-                      {findUser?.firstName} {findUser?.lastName}
-                    </h3>
-                    <p className="profile-username">@{findUser?.username}</p>
-                    {findUser?.bio?.length && (
+                    <div>
+                      <h3>
+                        {findUser?.firstName} {findUser?.lastName}
+                      </h3>
+                      <p className="profile-username">@{findUser?.username}</p>
+                      {findUser?.bio?.length && (
+                        <p>
+                          <i className="fa-solid fa-paw"></i>
+                          {findUser?.bio}
+                        </p>
+                      )}
+                      {findUser?.website?.length && (
+                        <div>
+                          <i className="fa-solid fa-display"></i>
+                          <a
+                            href={findUser?.website}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Portfolio website
+                          </a>
+                        </div>
+                      )}
+                      {findUser?.occupation?.length && (
+                        <p>
+                          {" "}
+                          <i className="fa-solid fa-user"></i>
+                          {findUser?.occupation}
+                        </p>
+                      )}
                       <p>
-                        <i className="fa-solid fa-paw"></i>
-                        {findUser?.bio}
-                      </p>
-                    )}
-                    {findUser?.website?.length && (
-                      <div>
-                        <i className="fa-solid fa-display"></i>
-                        <a
-                          href={findUser?.website}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Portfolio website
-                        </a>
-                      </div>
-                    )}
-                    {findUser?.occupation?.length && (
-                      <p>
-                        {" "}
-                        <i className="fa-solid fa-user"></i>
-                        {findUser?.occupation}
-                      </p>
-                    )}
-                    <p>
-                      <i className="fa-regular fa-calendar"></i>
-                      {`Joined on ${date}
+                        <i className="fa-regular fa-calendar"></i>
+                        {`Joined on ${date}
                 ${month}
                 ${year}`}
-                    </p>
-                    {isFoundUserSameAsCurrentUser && (
-                      <button
-                        onClick={() => setShowUserEditForm(true)}
-                        className="edit-btn"
-                      >
-                        Edit
-                      </button>
-                    )}
-                    {isFoundUserSameAsCurrentUser && (
-                      <i
-                        className="fa-solid fa-right-from-bracket logout-icon"
-                        id={`${isDarkMode && "light-text"}`}
-                        onClick={logout}
-                      ></i>
-                    )}
-                    {!isFoundUserSameAsCurrentUser && (
-                      <div className="suggestions profile-follow">
-                        <FollowButton user={findUser} />
-                      </div>
-                    )}
+                      </p>
+                      {isFoundUserSameAsCurrentUser && (
+                        <button
+                          onClick={() => setShowUserEditForm(true)}
+                          className="edit-btn"
+                        >
+                          Edit
+                        </button>
+                      )}
+                      {isFoundUserSameAsCurrentUser && (
+                        <i
+                          className="fa-solid fa-right-from-bracket logout-icon"
+                          id={`${isDarkMode && "light-text"}`}
+                          onClick={logout}
+                        ></i>
+                      )}
+                      {!isFoundUserSameAsCurrentUser && (
+                        <div className="suggestions profile-follow">
+                          <FollowButton user={findUser} />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {showUserEditForm && <ProfileEditForm />}
+                  {showAvatarForm && (
+                    <AvatarForm id={`${isDarkMode && "dark-text"}`} />
+                  )}
+                  <div className="profile-tabs" id={`${isDarkMode && "dark"}`}>
+                    <div>
+                      <h4>{findUser?.following?.length}</h4>
+                      <h4>Following</h4>
+                    </div>
+                    <div>
+                      <h4>{userPostsState?.userPosts?.length}</h4>
+                      <h4>Posts</h4>
+                    </div>
+                    <div>
+                      <h4>{findUser?.followers?.length}</h4>
+                      <h4>Followers</h4>
+                    </div>
                   </div>
                 </div>
-                {showUserEditForm && <ProfileEditForm />}
-                {showAvatarForm && (
-                  <AvatarForm id={`${isDarkMode && "dark-text"}`} />
-                )}
-                <div className="profile-tabs" id={`${isDarkMode && "dark"}`}>
-                  <div>
-                    <h4>{findUser?.following?.length}</h4>
-                    <h4>Following</h4>
-                  </div>
-                  <div>
-                    <h4>{userPostsState?.userPosts?.length}</h4>
-                    <h4>Posts</h4>
-                  </div>
-                  <div>
-                    <h4>{findUser?.followers?.length}</h4>
-                    <h4>Followers</h4>
-                  </div>
+                <div className="expandPosts">
+                  {userPostsState?.userPosts?.map((post) => {
+                    const likedByArray = post.likes.likedBy.filter(
+                      (currUser) => currUser._id === currentUser._id
+                    );
+                    return (
+                      <PostCard
+                        {...post}
+                        isLiked={!!likedByArray.length}
+                        key={post._id}
+                      />
+                    );
+                  })}
                 </div>
               </div>
-              <div className="expandPosts">
-                {userPostsState?.userPosts?.map((post) => {
-                  const likedByArray = post.likes.likedBy.filter(
-                    (currUser) => currUser._id === currentUser._id
-                  );
-                  return (
-                    <PostCard
-                      {...post}
-                      isLiked={!!likedByArray.length}
-                      key={post._id}
-                    />
-                  );
-                })}
-              </div>
-            </div>
+            ) : (
+              <h2
+                className="general-heading"
+                id={`${isDarkMode && "light-text"}`}
+              >
+                User Not Found
+              </h2>
+            )}
           </div>
         )}
       </div>
