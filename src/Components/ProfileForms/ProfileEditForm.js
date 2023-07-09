@@ -108,20 +108,7 @@ export const ProfileEditForm = () => {
               }
             />
           </label>
-
-          <div>
-            <button onClick={editProfileHandler}>Save</button>
-            <button
-              onClick={() =>
-                userDispatch({
-                  type: "DISCARD_CHANGES",
-                  payload: currentUser,
-                })
-              }
-            >
-              Discard
-            </button>
-          </div>
+          <button onClick={editProfileHandler}>Save</button>
         </div>
       </div>
     </div>
