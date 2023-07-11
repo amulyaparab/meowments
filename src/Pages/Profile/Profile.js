@@ -80,7 +80,7 @@ export const Profile = () => {
                           <a
                             href={findUser?.website}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                           >
                             Portfolio website
                           </a>
